@@ -13,7 +13,7 @@ public class PacketHandler implements IPacketHandler{
 
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		if(packet.channel.equals("MoChests")){
+		if(packet.channel.equals("MixedCraft")){
 			handlePckaet(packet); 
 		}
 	}
@@ -27,7 +27,8 @@ public class PacketHandler implements IPacketHandler{
 		try{
 			Int1 = inputStream.readInt();
 			Int2 = inputStream.readInt();
-		}catch(IOException e){
+		}
+		catch(IOException e){
 			e.printStackTrace(); 
 			return;
 		}

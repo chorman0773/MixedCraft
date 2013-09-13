@@ -3,6 +3,7 @@ package com.MixedCraft.entity.render;
 import org.lwjgl.opengl.GL11;
 
 import com.MixedCraft.entity.model.ModelBomb;
+import com.MixedCraft.handler.EntityResourceLocation;
 import com.MixedCraft.helper.Utils;
 
 import net.minecraft.client.renderer.entity.Render;
@@ -10,8 +11,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderBomb extends Render{
-
-	private static final ResourceLocation texture = new ResourceLocation("mixedcraft", "textures/model/Bomb.png");
 	
 	private ModelBomb model;
 	
@@ -35,7 +34,7 @@ public class RenderBomb extends Render{
 
 	@Override
 	protected ResourceLocation func_110775_a(Entity entity) {
-		return texture;
+		return EntityResourceLocation.Bomb;
 	}
 
 }

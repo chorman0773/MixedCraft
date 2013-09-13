@@ -48,7 +48,7 @@ public class MixedCraftTickHandler implements ITickHandler
 					player.motionY = 0;
 				}
 
-				System.out.println("[MixedCraft Tick Handler] Tick Handler Works Good!");
+				System.out.println("[MixedCraft Tick Handler] Tick Handler Works Well!");
 				player.capabilities.allowFlying = true;
 				player.fallDistance = 0.0F;
 

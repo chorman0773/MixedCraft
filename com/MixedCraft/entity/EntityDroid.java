@@ -83,7 +83,7 @@ public class EntityDroid extends Entity{
 				}
 			}
 		}
-		setPosition(posX + motionX, posY + motionY, posZ + motionZ);
+		//setPosition(posX + motionX, posY + motionY, posZ + motionZ);
 	}
 
 	public float getCoreRotation() {

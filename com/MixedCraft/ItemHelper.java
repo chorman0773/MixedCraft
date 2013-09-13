@@ -168,7 +168,7 @@ public class ItemHelper {
 	//Slime:
 	//Zombie:
 	//Chicken:
-	//Pig:
+	//Pig: DONE
 	//Squid:
 	//WitherSkeleton:
 	//Wither:

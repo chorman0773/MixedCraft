@@ -1,5 +1,6 @@
 package com.MixedCraft;
 
+import com.MixedCraft.handler.HelperHandler;
 import com.MixedCraft.helper.CraftingHandler;
 import com.MixedCraft.helper.PickupHandler;
 
@@ -8,7 +9,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
-public class Achievements {
+public class Achievements extends HelperHandler{
 	
 	public static AchievementPage MixedPage;
 
@@ -39,15 +40,4 @@ public class Achievements {
 		addAchievementDesc("Copper", "Smelt Copper Ore!");
 
 	}
-
-	private static void addAchievementName(String ach, String name)
-	{
-		LanguageRegistry.instance().addStringLocalization("achievement." + ach, "en_US", name);
-	}
-
-	private static void addAchievementDesc(String ach, String desc)
-	{
-		LanguageRegistry.instance().addStringLocalization("achievement." + ach + ".desc", "en_US", desc);
-	}
-
 }

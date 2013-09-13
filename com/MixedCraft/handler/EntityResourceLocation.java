@@ -2,21 +2,20 @@ package com.MixedCraft.handler;
 
 import net.minecraft.util.ResourceLocation;
 
-import com.MixedCraft.helper.Utils;
-
-public class EntityResourceLocation {
+public class EntityResourceLocation extends HelperHandler{
 	
-	public static String prefix = Utils.MOD_ID + ":" + "/textures/entity/";
+	
 
-	public static ResourceLocation ChickenCow = new ResourceLocation(prefix + "ChickenCow.png");
-	public static ResourceLocation CowEnderman = new ResourceLocation(prefix + "CowEnderman.png");
-	public static ResourceLocation CowEndermanEyes = new ResourceLocation(prefix + "CowEndermanEyes.png");
-	public static ResourceLocation CowPig = new ResourceLocation(prefix + "CowPig.png");
-	public static ResourceLocation CowSheep = new ResourceLocation(prefix + "CowSheep.png");
-	public static ResourceLocation CowSheepWool = new ResourceLocation(prefix + "CowSheepWool.png");
-	public static ResourceLocation CowZombie = new ResourceLocation(prefix + "CowZombie.png");
-	public static ResourceLocation CowCreeper = new ResourceLocation(prefix + "CowCreeper.png");
+	public static ResourceLocation ChickenCow = new ResourceLocation(MobTexturePrefix + "ChickenCow.png");
+	public static ResourceLocation CowEnderman = new ResourceLocation(MobTexturePrefix + "CowEnderman.png");
+	public static ResourceLocation CowEndermanEyes = new ResourceLocation(MobTexturePrefix + "CowEndermanEyes.png");
+	public static ResourceLocation CowPig = new ResourceLocation(MobTexturePrefix + "CowPig.png");
+	public static ResourceLocation CowSheep = new ResourceLocation(MobTexturePrefix + "CowSheep.png");
+	public static ResourceLocation CowSheepWool = new ResourceLocation(MobTexturePrefix + "CowSheepWool.png");
+	public static ResourceLocation CowZombie = new ResourceLocation(MobTexturePrefix + "CowZombie.png");
+	public static ResourceLocation CowCreeper = new ResourceLocation(MobTexturePrefix + "CowCreeper.png");
 
-	public static ResourceLocation Droid = new ResourceLocation("mixedcraft", "textures/Model/Droid.png");
+	public static ResourceLocation Droid = new ResourceLocation(ModelTexturePrefix + "Droid.png");
+	public static ResourceLocation Bomb = new ResourceLocation(ModelTexturePrefix + "Bomb.png");
 
 }

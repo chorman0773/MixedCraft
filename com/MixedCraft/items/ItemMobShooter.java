@@ -12,6 +12,7 @@ public class ItemMobShooter extends ItemsBase {
 		super(par1);
 		setMaxStackSize(1);
 		setUnlocalizedName("Wand");
+		registerTextures("Wand");
 	}
 	
 	@Override
