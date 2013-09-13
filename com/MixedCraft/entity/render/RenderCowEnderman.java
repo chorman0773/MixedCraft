@@ -17,6 +17,7 @@ import org.lwjgl.opengl.GL12;
 
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.entity.EntityCowEnderman;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,8 +25,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCowEnderman extends RenderLiving
 {
-	private static final ResourceLocation field_110840_a = new ResourceLocation("MixedCraft:/textures/mobs/CowEndermanEyes.png");
-	private static final ResourceLocation field_110839_f = new ResourceLocation("MixedCraft:/textures/mobs/CowEnderman.png");
 
 	/** The model of the enderman */
 	private ModelEnderman endermanModel;
@@ -58,7 +57,7 @@ public class RenderCowEnderman extends RenderLiving
 
 	protected ResourceLocation func_110838_a(EntityCowEnderman par1EntityCowEnderman)
 	{
-		return field_110839_f;
+		return EntityResourceLocation.CowEnderman;
 	}
 
 	/**
@@ -102,7 +101,7 @@ public class RenderCowEnderman extends RenderLiving
 		}
 		else
 		{
-			this.func_110776_a(field_110840_a);
+			this.func_110776_a(EntityResourceLocation.CowEndermanEyes);
 			float f1 = 1.0F;
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);

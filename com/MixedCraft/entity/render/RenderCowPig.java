@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.entity.EntityCowPig;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,8 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCowPig extends RenderLiving
 {
-    private static final ResourceLocation field_110833_a = new ResourceLocation("MixedCraft:/textures/mobs/CowPig.png");
-
+	
     public RenderCowPig(ModelBase par1ModelBase, float par2)
     {
         super(par1ModelBase, par2);
@@ -24,7 +24,7 @@ public class RenderCowPig extends RenderLiving
 
     protected ResourceLocation func_110832_a(EntityCowPig par1EntityCowPig)
     {
-        return field_110833_a;
+        return EntityResourceLocation.CowPig;
     }
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
@@ -32,8 +32,7 @@ public class RenderCowPig extends RenderLiving
         return this.func_110832_a((EntityCowPig)par1Entity);
     }
     
-    protected void renderLabel(EntityCowPig entityLiving, double par2, double par4, double par6)
-	{
+    protected void renderLabel(EntityCowPig entityLiving, double par2, double par4, double par6){
 	int distanceToEntity = 32;
 	this.renderLivingLabel(entityLiving, entityLiving.getDisplayName(), par2, par4, par6, distanceToEntity);
 	par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);

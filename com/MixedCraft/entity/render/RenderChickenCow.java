@@ -2,6 +2,7 @@ package com.MixedCraft.entity.render;
 
 import com.MixedCraft.entity.EntityChickenCow;
 import com.MixedCraft.entity.EntityCowCreeper;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -16,8 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderChickenCow extends RenderLiving
 {
-    private static final ResourceLocation field_110920_a = new ResourceLocation("MixedCraft:/textures/mobs/ChickenCow.png");
-
+	
     public RenderChickenCow(ModelBase par1ModelBase, float par2)
     {
         super(par1ModelBase, par2);
@@ -30,7 +30,7 @@ public class RenderChickenCow extends RenderLiving
 
     protected ResourceLocation func_110919_a(EntityChickenCow par1EntityChickenCow)
     {
-        return field_110920_a;
+        return EntityResourceLocation.ChickenCow;
     }
 
     protected float getWingRotation(EntityChickenCow par1EntityChickenCow, float par2)

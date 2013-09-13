@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
 import com.MixedCraft.entity.model.ModelDroid;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 public class RenderDroidItem implements IItemRenderer{
 
@@ -45,7 +46,7 @@ public class RenderDroidItem implements IItemRenderer{
 			default:
 		}
 
-		Minecraft.getMinecraft().func_110434_K().func_110577_a(RenderDroid.texture);
+		Minecraft.getMinecraft().func_110434_K().func_110577_a(EntityResourceLocation.Droid);
 		
 		model.render(0, 0, - (float)Math.PI / 2, -6, 0.5F, 0, item.stackSize / 64F, 0.0625F);
 		

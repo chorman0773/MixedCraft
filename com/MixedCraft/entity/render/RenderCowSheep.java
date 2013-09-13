@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.entity.EntityCowSheep;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,8 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCowSheep extends RenderLiving
 {
-    private static final ResourceLocation field_110885_a = new ResourceLocation("MixedCraft:/textures/mobs/CowSheep_Fur.png");
-    private static final ResourceLocation field_110884_f = new ResourceLocation("MixedCraft:/textures/mobs/CowSheep.png");
 
     public RenderCowSheep(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3)
     {
@@ -30,7 +29,7 @@ public class RenderCowSheep extends RenderLiving
     {
         if (par2 == 0 && !par1EntityCowSheep.getSheared())
         {
-            this.func_110776_a(field_110885_a);
+            this.func_110776_a(EntityResourceLocation.CowSheepWool);
             float f1 = 1.0F;
             int j = par1EntityCowSheep.getFleeceColor();
             return 1;
@@ -43,7 +42,7 @@ public class RenderCowSheep extends RenderLiving
 
     protected ResourceLocation func_110883_a(EntityCowSheep par1EntityCowSheep)
     {
-        return field_110884_f;
+        return EntityResourceLocation.CowSheep;
     }
 
     /**

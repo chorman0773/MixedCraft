@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.MixedCraft.entity.EntityCowCreeper;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,7 +20,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RenderCowCreeper extends RenderLiving
 {
 	private static final ResourceLocation field_110831_a = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
-	private static final ResourceLocation field_110830_f = new ResourceLocation("MixedCraft:/textures/mobs/CreeperCow.png");
 
 	/** The creeper model. */
 	private ModelBase creeperModel = new ModelCreeper(2.0F);
@@ -141,7 +141,7 @@ public class RenderCowCreeper extends RenderLiving
 
 	protected ResourceLocation func_110829_a(EntityCowCreeper par1EntityCowCreeper)
 	{
-		return field_110830_f;
+		return EntityResourceLocation.CowCreeper;
 	}
 
 	/**

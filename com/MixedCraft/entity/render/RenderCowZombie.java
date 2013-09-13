@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.entity.EntityCowZombie;
+import com.MixedCraft.handler.EntityResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,7 +16,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCowZombie extends RenderLiving
 {
-    private static final ResourceLocation field_110833_a = new ResourceLocation("MixedCraft:/textures/mobs/CowZombie.png");
 
     private ModelZombie endermanModel;
 
@@ -29,7 +29,7 @@ public class RenderCowZombie extends RenderLiving
 
     protected ResourceLocation func_110832_a(EntityCowZombie par1EntityCowPig)
     {
-        return field_110833_a;
+        return EntityResourceLocation.CowZombie;
     }
 
     protected ResourceLocation func_110775_a(Entity par1Entity)

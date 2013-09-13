@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import com.MixedCraft.entity.EntityDroid;
 import com.MixedCraft.entity.model.ModelDroid;
+import com.MixedCraft.handler.EntityResourceLocation;
 import com.MixedCraft.helper.Utils;
 
 public class RenderDroid extends Render{
@@ -20,7 +21,6 @@ public class RenderDroid extends Render{
 		
 	}
 
-	public static final ResourceLocation texture = new ResourceLocation("mixedcraft", "textures/Model/Droid.png");
 
 
 	public void renderDroid(EntityDroid droid, double x, double y, double z, float yaw, float partialTickTime){
@@ -37,7 +37,7 @@ public class RenderDroid extends Render{
 
 	@Override
 	protected ResourceLocation func_110775_a(Entity entity) {
-		return texture;
+		return EntityResourceLocation.Droid;
 	}
 
 	@Override
