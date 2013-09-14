@@ -9,7 +9,7 @@ public class DimensionHelper
 	public static void init(){		 
 
 		//DimensionManager.registerProviderType(FlyLightID, WorldProviderFlyLight.class, true);
-		DimensionManager.registerDimension(FlyLightID, FlyLightID);
+		//DimensionManager.registerDimension(FlyLightID, FlyLightID);
 	}	
 }
 

@@ -29,7 +29,7 @@ public class LightningBow extends ItemsBase
 	{
 		super(par1);
 		this.maxStackSize = 1;
-		this.setMaxDamage(384);
+		this.setMaxDamage(500);
 	}
 
 

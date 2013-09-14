@@ -46,8 +46,9 @@ public class EntityLightningArrow extends Entity implements IProjectile
 	public Entity shootingEntity;
 	private int ticksInGround;
 	private int ticksInAir;
-	private double damage = 2.0D;
-
+	private double damage = 10.0D;
+	private EntityPlayer player;
+	
 	/** The amount of knockback an arrow applies when it hits a mob. */
 	private int knockbackStrength;
 
@@ -415,7 +416,7 @@ public class EntityLightningArrow extends Entity implements IProjectile
 							 {
 
 								 this.setDead();
-								// this.onImpact(movingobjectposition, worldObj, entityplayer);
+								//this.onImpact(movingobjectposition, worldObj, player);
 							 }
 						 }
 						 else

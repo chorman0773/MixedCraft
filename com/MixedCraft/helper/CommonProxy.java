@@ -29,47 +29,47 @@ import cpw.mods.fml.relauncher.Side;
 
 public class CommonProxy
 {
-    public void registerRenderInformation()
-    {        
-   
-    }    
-    
-    public static void Arrow(){
+	public void registerRenderInformation()
+	{        
+
+	}    
+
+	public static void Arrow(){
 		RenderingRegistry.registerEntityRenderingHandler(EntityLightningArrow.class, new RenderLightningArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTNTArrow.class, new RenderTNTArrow());
 
 	}
-    
-    public void preInit(FMLPreInitializationEvent event)
-    {         
+
+	public void preInit(FMLPreInitializationEvent event)
+	{         
 
 		ConfigHelper.initConfig(event);
-	
+
 		NetworkRegistry.instance().registerGuiHandler(MixedCraft.instance, new GuiHandler());
 
-        //MinecraftForge.EVENT_BUS.register(new SoundHandler());
-        GameRegistry.registerWorldGenerator(new WorldGenMixedMinable());
-        BlockHelper.addNames();
-        ItemHelper.addNames(); 
-        HarvestLevelHelper.init();
-        RecipeRemover.init();
-        MobRendering.init();
-        MobRegistry.init();
-        DimensionHelper.init();
-        MinecraftForge.EVENT_BUS.register(new ExplosiveArrowHitHandler());
-        tickRegistry();
-    }
-    
+		//MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		GameRegistry.registerWorldGenerator(new WorldGenMixedMinable());
+		BlockHelper.addNames();
+		ItemHelper.addNames(); 
+		HarvestLevelHelper.init();
+		RecipeRemover.init();
+		MobRendering.init();
+		MobRegistry.init();
+		DimensionHelper.init();
+		MinecraftForge.EVENT_BUS.register(new ExplosiveArrowHitHandler());
+		tickRegistry();
+	}
 
-    public void init(FMLInitializationEvent event)
-    {     
-    	Arrow();
-    	//Achievements.init();
-    	MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
-    }
-    
-    public static void tickRegistry(){
-    	TickRegistry.registerTickHandler(new MixedCraftTickHandler(), Side.CLIENT);
 
-    }
+	public void init(FMLInitializationEvent event)
+	{     
+		Arrow();
+		//Achievements.init();
+		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
+	}
+
+	public static void tickRegistry(){
+		TickRegistry.registerTickHandler(new MixedCraftTickHandler(), Side.CLIENT);
+
+	}
 }
