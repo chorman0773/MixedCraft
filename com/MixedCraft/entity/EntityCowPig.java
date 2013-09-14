@@ -1,6 +1,7 @@
 package com.MixedCraft.entity;
 
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -53,9 +54,11 @@ public class EntityCowPig extends EntityAnimal
     	return "Cow Pig";
     }
 
-    public int getMaxHealth()
+    protected void applyEntityAttributes()
     {
-        return 10;
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
     }
 
     protected void updateAITasks()

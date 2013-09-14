@@ -23,8 +23,8 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 
 public class EntityCowEnderman extends EntityMob
 {
-    private static final UUID field_110192_bp = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
-    private static final AttributeModifier field_110193_bq = (new AttributeModifier(field_110192_bp, "Attacking speed boost", 6.199999809265137D, 0)).func_111168_a(false);
+    private static final UUID attackingSpeedBoostModifierUUID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
+    private static final AttributeModifier attackingSpeedBoostModifier = (new AttributeModifier(attackingSpeedBoostModifierUUID, "Attacking speed boost", 6.199999809265137D, 0)).setSaved(false);
     public static boolean[] carriableBlocks = new boolean[256];
 
     /**
@@ -42,12 +42,12 @@ public class EntityCowEnderman extends EntityMob
         this.stepHeight = 1.0F;
     }
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(40.0D);
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.30000001192092896D);
-        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(7.0D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(7.0D);
     }
 
     protected void entityInit()
@@ -152,12 +152,12 @@ public class EntityCowEnderman extends EntityMob
 
         if (this.field_110194_bu != this.entityToAttack)
         {
-            AttributeInstance attributeinstance = this.func_110148_a(SharedMonsterAttributes.field_111263_d);
-            attributeinstance.func_111124_b(field_110193_bq);
+            AttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            attributeinstance.removeModifier(attackingSpeedBoostModifier);
 
             if (this.entityToAttack != null)
             {
-                attributeinstance.func_111121_a(field_110193_bq);
+                attributeinstance.applyModifier(attackingSpeedBoostModifier);
             }
         }
 

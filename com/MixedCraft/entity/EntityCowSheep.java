@@ -8,6 +8,7 @@ import com.MixedCraft.blocks.container.ContainerCowSheep;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIEatGrass;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -79,9 +80,11 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
         super.onLivingUpdate();
     }
 
-    public int getMaxHealth()
+    protected void applyEntityAttributes()
     {
-        return 10;
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.23000000417232513D);
     }
 
     protected void entityInit()

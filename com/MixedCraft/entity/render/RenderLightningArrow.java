@@ -21,7 +21,7 @@ public class RenderLightningArrow extends Render
 
     public void renderArrow(EntityLightningArrow par1EntityLightningArrow, double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntityLightningArrow);
+        this.bindEntityTexture(par1EntityLightningArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntityLightningArrow.prevRotationYaw + (par1EntityLightningArrow.rotationYaw - par1EntityLightningArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -80,14 +80,14 @@ public class RenderLightningArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntityLightningArrow par1EntityLightningArrow)
-    {
-        return field_110780_a;
-    }
-
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) {
+		return field_110780_a;
+	}
+	
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110779_a((EntityLightningArrow)par1Entity);
+        return this.getEntityTexture((EntityLightningArrow)par1Entity);
     }
 
     /**
@@ -100,4 +100,6 @@ public class RenderLightningArrow extends Render
     {
         this.renderArrow((EntityLightningArrow)par1Entity, par2, par4, par6, par8, par9);
     }
+
+
 }

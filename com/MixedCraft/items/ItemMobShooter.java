@@ -18,8 +18,10 @@ public class ItemMobShooter extends ItemsBase {
 		registerTextures("Wand");
 	}
 	
+	
+	
 	@Override
-	public boolean func_111207_a(ItemStack itemstack, EntityPlayer player, EntityLivingBase target) {
+	public boolean itemInteractionForEntity(ItemStack itemstack, EntityPlayer player, EntityLivingBase target) {
 		
 		if(!target.worldObj.isRemote){
 			target.motionY = 4;

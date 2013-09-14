@@ -28,8 +28,7 @@ public class RenderChickenCow extends RenderLiving
         super.doRenderLiving(par1EntityChickenCow, par2, par4, par6, par8, par9);
     }
 
-    protected ResourceLocation func_110919_a(EntityChickenCow par1EntityChickenCow)
-    {
+	protected ResourceLocation getEntityTexture(Entity entity){
         return EntityResourceLocation.ChickenCow;
     }
 
@@ -60,7 +59,7 @@ public class RenderChickenCow extends RenderLiving
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110919_a((EntityChickenCow)par1Entity);
+        return this.getEntityTexture((EntityChickenCow)par1Entity);
     }
 
     /**

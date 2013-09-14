@@ -58,10 +58,10 @@ public class EntityCowCreeper extends EntityCreature
 
     }
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
     {
-        super.func_110147_ax();
-        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.25D);
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
     }
     
     public String getDisplayName(){
@@ -76,9 +76,9 @@ public class EntityCowCreeper extends EntityCreature
         return true;
     }
 
-    public int func_82143_as()
+    public int getMaxSafePointTries()
     {
-        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.func_110143_aJ() - 1.0F);
+        return this.getAttackTarget() == null ? 3 : 3 + (int)(this.getHealth() - 1.0F);
     }
 
     /**

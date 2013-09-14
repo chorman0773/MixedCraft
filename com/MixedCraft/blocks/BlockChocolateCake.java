@@ -84,10 +84,10 @@ public class BlockChocolateCake extends Block
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:" + this.func_111023_E() + "_Side");
-        this.field_94382_c = par1IconRegister.registerIcon("MixedCraft:" + this.func_111023_E() + "_Inner");
-        this.cakeTopIcon = par1IconRegister.registerIcon("MixedCraft:" + this.func_111023_E() + "_Top");
-        this.cakeBottomIcon = par1IconRegister.registerIcon("MixedCraft:" + this.func_111023_E() + "_Bottom");
+        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Side");
+        this.field_94382_c = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Inner");
+        this.cakeTopIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Top");
+        this.cakeBottomIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Bottom");
     }
 
     public boolean isOpaqueCube()

@@ -68,8 +68,6 @@ public class ModFire extends BlocksBase
         this.setBurnRate(Block.tallGrass.blockID, 60, 100);
         this.setBurnRate(Block.cloth.blockID, 30, 60);
         this.setBurnRate(Block.vine.blockID, 15, 100);
-        this.setBurnRate(Block.field_111034_cE.blockID, 5, 5);
-        this.setBurnRate(Block.field_111038_cB.blockID, 60, 20);
     }
 
     /**

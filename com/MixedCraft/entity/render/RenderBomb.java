@@ -26,14 +26,14 @@ public class RenderBomb extends Render{
 		GL11.glTranslatef((float)x, (float)y, (float)z);
 		GL11.glScalef(-1F, -1F, 1F);
 		
-		func_110777_b(entity);
+		bindEntityTexture(entity);
 		model.render(entity, 0, 0, 0, 0, 0, 0.0635F);
 		
 		GL11.glPopMatrix();
 	}
 
 	@Override
-	protected ResourceLocation func_110775_a(Entity entity) {
+	protected ResourceLocation getEntityTexture(Entity entity) {
 		return EntityResourceLocation.Bomb;
 	}
 

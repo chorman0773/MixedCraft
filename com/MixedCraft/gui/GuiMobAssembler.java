@@ -39,7 +39,7 @@ public class GuiMobAssembler extends GuiContainer{
 
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(field_110410_t);
+		this.mc.getTextureManager().bindTexture(field_110410_t);
 		
 		this.xSize = 176;
 		this.ySize = 197;

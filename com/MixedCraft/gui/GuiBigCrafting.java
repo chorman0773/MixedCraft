@@ -29,7 +29,7 @@ public class GuiBigCrafting extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 
-		this.mc.func_110434_K().func_110577_a(GuiResourceLocation.BigCrafting);
+		this.mc.getTextureManager().bindTexture(GuiResourceLocation.BigCrafting);
 
 		this.ySize = 231;
 		this.xSize = 176;

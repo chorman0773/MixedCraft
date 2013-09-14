@@ -26,15 +26,14 @@ public class RenderCowZombie extends RenderLiving
         this.setRenderPassModel(this.endermanModel);
     }
 
-
-    protected ResourceLocation func_110832_a(EntityCowZombie par1EntityCowPig)
-    {
+    @Override
+	protected ResourceLocation getEntityTexture(Entity entity) {    
         return EntityResourceLocation.CowZombie;
     }
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110832_a((EntityCowZombie)par1Entity);
+        return this.getEntityTexture((EntityCowZombie)par1Entity);
     }
     
     protected void renderLabel(EntityCowZombie entityLiving, double par2, double par4, double par6)

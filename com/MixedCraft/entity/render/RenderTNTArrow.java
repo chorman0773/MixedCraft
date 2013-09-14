@@ -21,7 +21,7 @@ public class RenderTNTArrow extends Render
 
     public void renderArrow(EntityTNTArrow par1EntityTNTArrow, double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntityTNTArrow);
+        this.bindEntityTexture(par1EntityTNTArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntityTNTArrow.prevRotationYaw + (par1EntityTNTArrow.rotationYaw - par1EntityTNTArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -80,14 +80,14 @@ public class RenderTNTArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntityTNTArrow par1EntityTNTArrow)
-    {
-        return field_110780_a;
-    }
-
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) {
+		return field_110780_a;
+	}
+    
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110779_a((EntityTNTArrow)par1Entity);
+        return this.getEntityTexture((EntityTNTArrow)par1Entity);
     }
 
     /**
@@ -100,4 +100,6 @@ public class RenderTNTArrow extends Render
     {
         this.renderArrow((EntityTNTArrow)par1Entity, par2, par4, par6, par8, par9);
     }
+
+
 }

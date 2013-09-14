@@ -57,7 +57,7 @@ public class CraftingBigManager
         this.addShapedRecipe(new ItemStack(Block.netherFence, 6), new Object[] {"###", "###", '#', Block.netherBrick});
         this.addShapedRecipe(new ItemStack(Block.fenceGate, 1), new Object[] {"#W#", "#W#", '#', Item.stick, 'W', Block.planks});
         this.addShapedRecipe(new ItemStack(Block.jukebox, 1), new Object[] {"###", "#X#", "###", '#', Block.planks, 'X', Item.diamond});
-        this.addShapedRecipe(new ItemStack(Item.field_111214_ch, 2), new Object[] {"~~ ", "~O ", "  ~", '~', Item.silk, 'O', Item.slimeBall});
+        this.addShapedRecipe(new ItemStack(Item.leash, 2), new Object[] {"~~ ", "~O ", "  ~", '~', Item.silk, 'O', Item.slimeBall});
         this.addShapedRecipe(new ItemStack(Block.music, 1), new Object[] {"###", "#X#", "###", '#', Block.planks, 'X', Item.redstone});
         this.addShapedRecipe(new ItemStack(Block.bookShelf, 1), new Object[] {"###", "XXX", "###", '#', Block.planks, 'X', Item.book});
         this.addShapedRecipe(new ItemStack(Block.blockSnow, 1), new Object[] {"##", "##", '#', Item.snowball});

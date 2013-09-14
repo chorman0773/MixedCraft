@@ -29,7 +29,7 @@ public class GuiBaseDNA extends GuiContainer{
 	{
         
 		
-		this.mc.func_110434_K().func_110577_a(GuiResourceLocation.DNA);
+		this.mc.getTextureManager().bindTexture(GuiResourceLocation.DNA);
 
 		this.xSize = 238;
 		this.ySize = 247;

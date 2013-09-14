@@ -1,11 +1,13 @@
 package com.MixedCraft.entity;
 
 import java.util.Calendar;
+import java.util.UUID;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -16,6 +18,10 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeInstance;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,6 +38,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntityCowZombie extends EntityMob
 {
 
+	protected static final Attribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).func_111117_a("Spawn Reinforcements Chance");
+    private static final UUID babySpeedBoostUUID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
+    private static final AttributeModifier babySpeedBoostModifier = new AttributeModifier(babySpeedBoostUUID, "Baby speed boost", 0.5D, 1);
+
+	
     public EntityCowZombie(World par1World)
     {
     	 super(par1World);
@@ -50,13 +61,18 @@ public class EntityCowZombie extends EntityMob
          this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
     }
 
-    protected int func_96121_ay()
-    {
-        return 40;
-    }
     
     public String getDisplayName(){
     	return "Cow Zombie";
+    }
+
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.23000000417232513D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
+        this.getAttributeMap().func_111150_b(field_110186_bp).setAttribute(this.rand.nextDouble() * 0.10000000149011612D);
     }
 
     protected void entityInit()
@@ -65,11 +81,6 @@ public class EntityCowZombie extends EntityMob
         this.getDataWatcher().addObject(12, Byte.valueOf((byte)0));
         this.getDataWatcher().addObject(13, Byte.valueOf((byte)0));
         this.getDataWatcher().addObject(14, Byte.valueOf((byte)0));
-    }
-
-    public int getMaxHealth()
-    {
-        return 20;
     }
 
     /**
@@ -108,7 +119,18 @@ public class EntityCowZombie extends EntityMob
      */
     public void setChild(boolean par1)
     {
-        this.getDataWatcher().updateObject(12, Byte.valueOf((byte)1));
+        this.getDataWatcher().updateObject(12, Byte.valueOf((byte)(par1 ? 1 : 0)));
+
+        if (this.worldObj != null && !this.worldObj.isRemote)
+        {
+            AttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            attributeinstance.removeModifier(babySpeedBoostModifier);
+
+            if (par1)
+            {
+                attributeinstance.applyModifier(babySpeedBoostModifier);
+            }
+        }
     }
 
     

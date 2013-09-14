@@ -22,14 +22,13 @@ public class RenderCowPig extends RenderLiving
         super(par1ModelBase, par2);
     }
 
-    protected ResourceLocation func_110832_a(EntityCowPig par1EntityCowPig)
-    {
+	protected ResourceLocation getEntityTexture(Entity entity){
         return EntityResourceLocation.CowPig;
     }
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110832_a((EntityCowPig)par1Entity);
+        return this.getEntityTexture((EntityCowPig)par1Entity);
     }
     
     protected void renderLabel(EntityCowPig entityLiving, double par2, double par4, double par6){

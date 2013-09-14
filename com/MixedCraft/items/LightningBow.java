@@ -33,7 +33,7 @@ public class LightningBow extends ItemsBase
 	}
 
 
-	public void lightning(EntityPlayer player){
+	/*public void lightning(EntityPlayer player){
 		float f = 1.0F;
 		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
 		float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
@@ -51,7 +51,7 @@ public class LightningBow extends ItemsBase
 		double d3 = 5000D;
 		Vec3 vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
 
-	}
+	}*/
 
 
 
@@ -109,7 +109,7 @@ public class LightningBow extends ItemsBase
 
 			EntityLightningArrow entityarrow = new EntityLightningArrow(par2World, player, f10 * 2.0F);
 			//EntityLightningBolt lightning = new EntityLightningBolt(par2World, player.posX, player.posY, player.posZ);
-			MovingObjectPosition movingobjectposition = par2World.rayTraceBlocks_do_do(vec3d, vec3d1, false, true);
+			//MovingObjectPosition movingobjectposition = par2World.rayTraceBlocks_do_do(vec3d, vec3d1, false, true);
 
 
 
@@ -149,7 +149,7 @@ public class LightningBow extends ItemsBase
 				player.inventory.consumeInventoryItem(ItemHelper.LightningArrow.itemID);
 			}
 
-			if(movingobjectposition == null)
+			/*if(movingobjectposition == null)
 			{
 				return;
 			}
@@ -161,7 +161,7 @@ public class LightningBow extends ItemsBase
 				int o = movingobjectposition.blockZ;
 				par2World.spawnEntityInWorld(new EntityLightningBolt(par2World, b, r, o));
 
-			}
+			}*/
 
 				//par2World.spawnEntityInWorld(lightning);
 				par2World.spawnEntityInWorld(entityarrow);

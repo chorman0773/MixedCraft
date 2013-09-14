@@ -132,7 +132,7 @@ public class ItemHelper {
 	public static final Item TNTBow = new ItemTNTBow(x.TNTBowID).setUnlocalizedName("TNTBow").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item TNTArrow = new ModItem(x.TNTArrowID).registerTextures("TNTArrow").setUnlocalizedName("TNTArrow").setCreativeTab(MixedCraft.MiscTab);
 
-	public static final Item ChocalateCake = new ItemReed(x.ChocolateCakeID, BlockHelper.ChocolateCake).setUnlocalizedName("ChocolateCake").func_111206_d("MixedCraft:ChocolateCake").setCreativeTab(MixedCraft.BlockTab);
+	public static final Item ChocalateCake = new ItemReed(x.ChocolateCakeID, BlockHelper.ChocolateCake).setUnlocalizedName("ChocolateCake").setTextureName("MixedCraft:ChocolateCake").setCreativeTab(MixedCraft.BlockTab);
 	public static final Item LightningRod = new ItemLightningRod(x.LightningRodID).registerTextures("LightningRod").setUnlocalizedName("LightningRod").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item FlameSword = new ItemFlameSword(x.FlameSwordID, Flame).registerTexture("FlameSword").setUnlocalizedName("FlameSword");
 

@@ -39,7 +39,7 @@ public class GuiDNAExtractor extends GuiContainer{
 
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(GuiResourceLocation.Extractor);
+		this.mc.getTextureManager().bindTexture(GuiResourceLocation.Extractor);
 		
 		this.xSize = 176;
 		this.ySize = 197;

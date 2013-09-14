@@ -29,7 +29,7 @@ public class RenderCowSheep extends RenderLiving
     {
         if (par2 == 0 && !par1EntityCowSheep.getSheared())
         {
-            this.func_110776_a(EntityResourceLocation.CowSheepWool);
+            this.bindTexture(EntityResourceLocation.CowSheepWool);
             float f1 = 1.0F;
             int j = par1EntityCowSheep.getFleeceColor();
             return 1;
@@ -40,8 +40,7 @@ public class RenderCowSheep extends RenderLiving
         }
     }
 
-    protected ResourceLocation func_110883_a(EntityCowSheep par1EntityCowSheep)
-    {
+	protected ResourceLocation getEntityTexture(Entity entity) {
         return EntityResourceLocation.CowSheep;
     }
 
@@ -55,7 +54,7 @@ public class RenderCowSheep extends RenderLiving
 
     protected ResourceLocation func_110775_a(Entity par1Entity)
     {
-        return this.func_110883_a((EntityCowSheep)par1Entity);
+        return this.getEntityTexture((EntityCowSheep)par1Entity);
     }
     
     protected void renderLabel(EntityCowSheep entityLiving, double par2, double par4, double par6)

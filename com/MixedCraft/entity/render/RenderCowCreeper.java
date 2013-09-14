@@ -105,7 +105,7 @@ public class RenderCowCreeper extends RenderLiving
 			if (par2 == 1)
 			{
 				float f1 = (float)par1EntityCowCreeper.ticksExisted + par3;
-				this.func_110776_a(field_110831_a);
+				this.bindTexture(field_110831_a);
 				GL11.glMatrixMode(GL11.GL_TEXTURE);
 				GL11.glLoadIdentity();
 				float f2 = f1 * 0.01F;
@@ -139,8 +139,7 @@ public class RenderCowCreeper extends RenderLiving
 		return -1;
 	}
 
-	protected ResourceLocation func_110829_a(EntityCowCreeper par1EntityCowCreeper)
-	{
+	protected ResourceLocation getEntityTexture(Entity entity) {
 		return EntityResourceLocation.CowCreeper;
 	}
 
@@ -176,7 +175,7 @@ public class RenderCowCreeper extends RenderLiving
 
 	protected ResourceLocation func_110775_a(Entity par1Entity)
 	{
-		return this.func_110829_a((EntityCowCreeper)par1Entity);
+		return this.getEntityTexture((EntityCowCreeper)par1Entity);
 	}
 
 	protected void renderLabel(EntityCowCreeper entityLiving, double par2, double par4, double par6)

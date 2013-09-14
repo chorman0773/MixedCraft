@@ -55,8 +55,7 @@ public class RenderCowEnderman extends RenderLiving
 		super.doRenderLiving(par1EntityCowEnderman, par2, par4, par6, par8, par9);
 	}
 
-	protected ResourceLocation func_110838_a(EntityCowEnderman par1EntityCowEnderman)
-	{
+	protected ResourceLocation getEntityTexture(Entity entity){
 		return EntityResourceLocation.CowEnderman;
 	}
 
@@ -83,7 +82,7 @@ public class RenderCowEnderman extends RenderLiving
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)j / 1.0F, (float)k / 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			this.func_110776_a(TextureMap.field_110575_b);
+			this.bindTexture(TextureMap.locationBlocksTexture);
 			this.renderBlocks.renderBlockAsItem(Block.blocksList[par1EntityCowEnderman.getCarried()], par1EntityCowEnderman.getCarryingData(), 1.0F);
 			GL11.glPopMatrix();
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
@@ -101,7 +100,7 @@ public class RenderCowEnderman extends RenderLiving
 		}
 		else
 		{
-			this.func_110776_a(EntityResourceLocation.CowEndermanEyes);
+			this.bindTexture(EntityResourceLocation.CowEndermanEyes);
 			float f1 = 1.0F;
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -153,7 +152,7 @@ public class RenderCowEnderman extends RenderLiving
 
 	protected ResourceLocation func_110775_a(Entity par1Entity)
 	{
-		return this.func_110838_a((EntityCowEnderman)par1Entity);
+		return this.getEntityTexture((EntityCowEnderman)par1Entity);
 	}
 
 	/**
@@ -178,4 +177,5 @@ public class RenderCowEnderman extends RenderLiving
 	{
 		this.renderLabel((EntityCowEnderman)par1EntityLiving, par2, par4, par6);
 	}
+
 }

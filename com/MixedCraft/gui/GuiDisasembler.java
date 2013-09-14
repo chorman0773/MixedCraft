@@ -36,7 +36,7 @@ public class GuiDisasembler extends GuiContainer
 	{
 		
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(GuiResourceLocation.Dissasembler);
+		this.mc.getTextureManager().bindTexture(GuiResourceLocation.Dissasembler);
 		this.xSize = 176;
 		this.ySize = 184;
         int var5 = (this.width - this.xSize) / 2;

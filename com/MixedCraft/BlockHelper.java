@@ -49,10 +49,10 @@ public class BlockHelper {
 
 	public static final Block House1 = new BlockHouse1(x.House1ID).setHardness(3.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("House1").setLightValue(0.875F);
 
-    public static final Block SlowSand = new BlockSinkSand(x.BlueTorchOnID).setHardness(1.0F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("SlowSand").func_111022_d("sand");
+    public static final Block SlowSand = new BlockSinkSand(x.BlueTorchOnID).setHardness(1.0F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("SlowSand").setTextureName("sand");
 
-    public static final Block ChocolateCake = new BlockChocolateCake(x.ChocolateCakeBlockID).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("ChocolateCake").func_111022_d("ChocolateCake");
-    public static final Block ChocolateCrop = new BlockChocolateCrop(x.ChocolateCropBlockID).setUnlocalizedName("ChocolateCrop").func_111022_d("ChocolateCrop");
+    public static final Block ChocolateCake = new BlockChocolateCake(x.ChocolateCakeBlockID).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("ChocolateCake").setTextureName("ChocolateCake");
+    public static final Block ChocolateCrop = new BlockChocolateCrop(x.ChocolateCropBlockID).setUnlocalizedName("ChocolateCrop").setTextureName("ChocolateCrop");
 
 	public static void addNames(){  
 

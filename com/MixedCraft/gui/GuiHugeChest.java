@@ -30,7 +30,7 @@ public class GuiHugeChest extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 
-		this.mc.func_110434_K().func_110577_a(field_110410_t);
+		this.mc.getTextureManager().bindTexture(field_110410_t);
 
 		this.ySize = 311;
 		this.xSize = 176;

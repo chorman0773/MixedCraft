@@ -36,7 +36,7 @@ public class RenderTable extends TileEntitySpecialRenderer
             rotation = tile.getBlockMetadata();
         }
         
-        this.func_110628_a(texture);
+        this.bindTexture(texture);
         
         GL11.glPushMatrix();
         GL11.glTranslatef((float)x + 0.5F, (float)y - 0.6F, (float)z + 0.5F);
