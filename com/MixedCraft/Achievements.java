@@ -18,12 +18,12 @@ public class Achievements extends HelperHandler{
 	public static Achievement CopperOre;
 	
 	public static void init(){
-		
+		AchievementPage.registerAchievementPage(MixedPage);
+
     	GameRegistry.registerPickupHandler(new PickupHandler());
     	GameRegistry.registerCraftingHandler(new CraftingHandler());
 		
 		MixedPage = new AchievementPage("Mixed Achievements", Extractor, Copper);
-		AchievementPage.registerAchievementPage(MixedPage);
 
 		Extractor = new Achievement(40, "Extractor", 0, 0, BlockHelper.Extractor, Extractor).registerAchievement(); 
 		Copper = new Achievement(41, "Copper", 0, 0, ItemHelper.CopperIngot, Copper).registerAchievement(); 

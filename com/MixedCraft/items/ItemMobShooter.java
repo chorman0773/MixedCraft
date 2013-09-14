@@ -8,6 +8,9 @@ import com.MixedCraft.helper.ItemsBase;
 
 public class ItemMobShooter extends ItemsBase {
 	
+	private int TICK = 300;
+	private EntityPlayer player;
+	
 	public ItemMobShooter(int par1) {
 		super(par1);
 		setMaxStackSize(1);
@@ -17,6 +20,7 @@ public class ItemMobShooter extends ItemsBase {
 	
 	@Override
 	public boolean func_111207_a(ItemStack itemstack, EntityPlayer player, EntityLivingBase target) {
+		
 		if(!target.worldObj.isRemote){
 			target.motionY = 4;
 			if(isCharged(itemstack.getItemDamage())){
@@ -32,7 +36,6 @@ public class ItemMobShooter extends ItemsBase {
 	}
 
 	private boolean isCharged(int itemDamage){
-		return false;
+			return false;
 	}
-
 }
