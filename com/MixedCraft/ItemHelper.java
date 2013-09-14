@@ -138,6 +138,7 @@ public class ItemHelper {
 
     public static final Item ChocolateBean = new ItemModSeeds(x.ChocolateBeanID, BlockHelper.ChocolateCrop.blockID, Block.tilledField.blockID).registerTextures("ChocolateBean").setUnlocalizedName("ChocolateBean");
 
+    /*
     public static final Item SuperHelmet = new ItemSuperArmor(4235, SuperArmor, 0, HEAD).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("SuperHelmet");
 	public static final Item SuperBody = new ItemSuperArmor(4236, SuperArmor, 1, BODY).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("SuperBody");
 	public static final Item SuperLegs = new ItemSuperArmor(4237, SuperArmor, 2, LEGS).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("SuperLegs");
@@ -147,7 +148,7 @@ public class ItemHelper {
 	public static final Item FlameBody = new ItemFlameArmor(4240, FlameArmor, 1, BODY).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("FlameBody");
 	public static final Item FlameLegs = new ItemFlameArmor(4241, FlameArmor, 2, LEGS).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("FlameLegs");
 	public static final Item FlameBoots = new ItemFlameArmor(4242, FlameArmor, 3, BOOTS).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("FlameBoots");
-    
+    */
 	public static final Item Droid = new ItemDroid(4243);
 	
 	public static final Item mobShooter = new ItemMobShooter(4244);

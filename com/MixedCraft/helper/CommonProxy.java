@@ -14,6 +14,7 @@ import com.MixedCraft.dimension.DimensionHelper;
 import com.MixedCraft.entity.*;
 import com.MixedCraft.entity.render.*;
 import com.MixedCraft.gen.WorldGenMixedMinable;
+import com.MixedCraft.handler.EntityLivingHandler;
 import com.MixedCraft.handler.ExplosiveArrowHitHandler;
 import com.MixedCraft.handler.MixedCraftTickHandler;
 import com.MixedCraft.recipes.RecipeHelper;
@@ -64,6 +65,7 @@ public class CommonProxy
     {     
     	Arrow();
     	//Achievements.init();
+    	MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
     }
     
     public static void tickRegistry(){

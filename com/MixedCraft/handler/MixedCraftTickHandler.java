@@ -25,7 +25,7 @@ public class MixedCraftTickHandler implements ITickHandler
 {
 	Random rand = new Random();
 
-	public void onPlayerTick(EntityPlayer player, World par2World, Random random, int x, int y, int z)
+	/*public void onPlayerTick(EntityPlayer player, World par2World, Random random, int x, int y, int z)
 	{
 		ItemStack boots = player.getCurrentArmor(0);
 		ItemStack legs = player.getCurrentArmor(1);
@@ -76,14 +76,14 @@ public class MixedCraftTickHandler implements ITickHandler
 				player.addPotionEffect((new PotionEffect((Potion.fireResistance.id), 200, 1)));
 			}
 		}
-	}
+	}*/
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
 		if(type.equals(EnumSet.of(TickType.PLAYER)))
 		{
-			onPlayerTick((EntityPlayer) tickData[0], null, null, 0, 0, 0);
+			//onPlayerTick((EntityPlayer) tickData[0], null, null, 0, 0, 0);
 		}
 	}
 	@Override

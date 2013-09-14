@@ -3,7 +3,6 @@ package com.MixedCraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.biome.BiomeGenBase;
 
-import com.MixedCraft.dimension.flylight.Flylight;
 import com.MixedCraft.gui.BlockTab;
 import com.MixedCraft.gui.DNATab;
 import com.MixedCraft.gui.MiscTab;
@@ -16,9 +15,7 @@ import com.MixedCraft.helper.Utils;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -47,7 +44,7 @@ public class MixedCraft{
 	public static final CreativeTabs MiscTab = new MiscTab("Misc");
 
 
-	public static final BiomeGenBase flyLight = new Flylight(50);
+	//public static final BiomeGenBase flyLight = new Flylight(50);
 	
 
 	public static void addTabName(){

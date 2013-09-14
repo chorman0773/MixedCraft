@@ -33,7 +33,7 @@ public class ItemFlameArmor extends ItemArmor{
         return this;
     }
 
-    @Override
+   /* @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, int layer)
     {
         if (itemstack.itemID == ItemHelper.FlameHelmet.itemID || itemstack.itemID == ItemHelper.FlameBody.itemID || itemstack.itemID == ItemHelper.FlameBoots.itemID)
@@ -60,7 +60,7 @@ public class ItemFlameArmor extends ItemArmor{
         if(itemID == ItemHelper.FlameBoots.itemID) {
             this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "FlameBoots");
         }	   
-    }
+    }*/
 
     @Override
     @SideOnly(Side.CLIENT)

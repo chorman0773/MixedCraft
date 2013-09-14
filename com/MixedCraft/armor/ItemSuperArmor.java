@@ -33,7 +33,7 @@ public class ItemSuperArmor extends ItemArmor{
         return this;
     }
 
-    @Override
+   /* @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, int layer)
     {
         if (itemstack.itemID == ItemHelper.SuperHelmet.itemID || itemstack.itemID == ItemHelper.SuperBody.itemID || itemstack.itemID == ItemHelper.SuperBoots.itemID)
@@ -60,7 +60,7 @@ public class ItemSuperArmor extends ItemArmor{
         if(itemID == ItemHelper.SuperBoots.itemID) {
             this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "SuperBoots");
         }	   
-    }
+    }*/
 
     @Override
     @SideOnly(Side.CLIENT)
