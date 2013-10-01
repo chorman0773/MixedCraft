@@ -9,6 +9,7 @@ import com.MixedCraft.gui.MiscTab;
 import com.MixedCraft.gui.MixedTab;
 import com.MixedCraft.gui.SpawnerTab;
 import com.MixedCraft.gui.ToolTab;
+import com.MixedCraft.handler.HelperHandler;
 import com.MixedCraft.helper.CommonProxy;
 import com.MixedCraft.helper.PacketHandler;
 import com.MixedCraft.helper.Utils;
@@ -26,7 +27,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Utils.MOD_ID, name = Utils.MOD_NAME, version = Utils.MOD_VERSION)
 @NetworkMod(channels = { Utils.MOD_ID }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
-public class MixedCraft{
+public class MixedCraft extends HelperHandler{
 
 
 	@Instance(Utils.MOD_ID)
@@ -54,14 +55,9 @@ public class MixedCraft{
 		addTabName("Block", "Block Tab");
 		addTabName("Tool", "Tool Tab");
 		addTabName("Misc", "Misc. Tab");
-		
-		
-		LanguageRegistry.instance().addStringLocalization("itemGroup." + "DNA", "eng_US", "DNA Tab");
 	}
 
-	public static void addTabName(String par1, String name){
-		LanguageRegistry.instance().addStringLocalization("itemGroup." + par1, "eng_US", name);
-	}	
+
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

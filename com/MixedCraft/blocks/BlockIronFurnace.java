@@ -164,7 +164,7 @@ public class BlockIronFurnace extends BlockContainer
             par1World.setBlock(par2, par3, par4, BlockHelper.IronFurnaceOff.blockID);
         }
 
-        keepIronFurnaceInventory = false;
+        keepIronFurnaceInventory = true;
         par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
 
         if (tileentity != null)

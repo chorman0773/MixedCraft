@@ -20,7 +20,7 @@ public class BlockDNAMixer extends ContainerBase {
 
     private Random furnaceRand = new Random();
 
-    private static boolean keepFurnaceInventory = false;
+    private static boolean keepFurnaceInventory = true;
     
 	public BlockDNAMixer(int par1) {
 		super(par1, Material.wood);
@@ -66,7 +66,7 @@ public class BlockDNAMixer extends ContainerBase {
 	            par1World.setBlock(par2, par3, par4, BlockHelper.Mixer.blockID);
 	        }
 
-	        keepFurnaceInventory = false;
+	        keepFurnaceInventory = true;
 	        par1World.setBlockMetadataWithNotify(par2, par3, par4, var5, 2);
 
 	        if (var6 != null)

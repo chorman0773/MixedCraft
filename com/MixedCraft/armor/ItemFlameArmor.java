@@ -36,30 +36,14 @@ public class ItemFlameArmor extends ItemArmor{
    /* @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, int layer)
     {
-        if (itemstack.itemID == ItemHelper.FlameHelmet.itemID || itemstack.itemID == ItemHelper.FlameBody.itemID || itemstack.itemID == ItemHelper.FlameBoots.itemID)
-            return Utils.MOD_ID + ":" + "/textures/items/armor/Flame_1.png";
-
-        if (itemstack.itemID == ItemHelper.FlameLegs.itemID)
-            return Utils.MOD_ID + ":" + "/textures/items/armor/Flame_2.png";
-        return Utils.MOD_ID + ":" + "/textures/items/armor/Flame_2.png"; 
+        
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-        if(itemID == ItemHelper.FlameHelmet.itemID) {
-            this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "FlameHelmet");
-        }
-        if(itemID == ItemHelper.FlameBody.itemID) {
-            this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "FlameBody");
-        }
-        if(itemID == ItemHelper.FlameLegs.itemID) {
-            this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "FlameLegs");
-        }
-        if(itemID == ItemHelper.FlameBoots.itemID) {
-            this.itemIcon = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "FlameBoots");
-        }	   
+        
     }*/
 
     @Override

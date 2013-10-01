@@ -65,10 +65,10 @@ public class BlocksBase extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister) {
-        tileSide = TextureHelper.getIconFromTextureName(par1IconRegister, tileSideName);
-        tileTop = TextureHelper.getIconFromTextureName(par1IconRegister, tileTopName);
-        tileBottom = TextureHelper.getIconFromTextureName(par1IconRegister, tileBottomName);
+    public void registerIcons(IconRegister icon) {
+        tileSide = icon.registerIcon(Utils.MOD_ID +":" + tileSideName);
+        tileTop = icon.registerIcon(Utils.MOD_ID +":" + tileTopName);
+        tileBottom = icon.registerIcon(Utils.MOD_ID +":" + tileBottomName);
     }
 
     @Override

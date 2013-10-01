@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
 import com.MixedCraft.MixedCraft;
-import com.MixedCraft.helper.TextureHelper;
+import com.MixedCraft.helper.Utils;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,7 +26,7 @@ public class FoodBase extends ItemFood{
 
 	    @Override
 	    @SideOnly(Side.CLIENT)
-	    public void registerIcons(IconRegister iconRegister) {
-	        itemIcon = TextureHelper.getIconFromTextureName(iconRegister, iconPath);
+	    public void registerIcons(IconRegister icon) {
+	        itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
 	    }
 }

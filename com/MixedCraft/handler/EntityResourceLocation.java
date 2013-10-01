@@ -17,5 +17,7 @@ public class EntityResourceLocation extends HelperHandler{
 
 	public static ResourceLocation Droid = new ResourceLocation(ModelTexturePrefix + "Droid.png");
 	public static ResourceLocation Bomb = new ResourceLocation(ModelTexturePrefix + "Bomb.png");
+	public static ResourceLocation Ship = new ResourceLocation(ModelTexturePrefix + "Ship.png");
+	public static ResourceLocation ChargedShip = new ResourceLocation(ModelTexturePrefix + "Ship_Charged.png");
 
 }

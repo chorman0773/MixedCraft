@@ -28,43 +28,23 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
     private static final int[] slots_bottom = new int[] {2, 1};
     private static final int[] slots_sides = new int[] {1};
 
-    /**
-     * The ItemStacks that hold the items currently being used in the furnace
-     */
     private ItemStack[] furnaceItemStacks = new ItemStack[3];
 
-    /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
-
-    /**
-     * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
-     */
     public int currentItemBurnTime;
-
-    /** The number of ticks that the current item has been cooking for */
     public int furnaceCookTime;
     private String field_94130_e;
 
-    /**
-     * Returns the number of slots in the inventory.
-     */
     public int getSizeInventory()
     {
         return this.furnaceItemStacks.length;
     }
 
-    /**
-     * Returns the stack in slot i
-     */
     public ItemStack getStackInSlot(int par1)
     {
         return this.furnaceItemStacks[par1];
     }
 
-    /**
-     * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
-     * new stack.
-     */
     public ItemStack decrStackSize(int par1, int par2)
     {
         if (this.furnaceItemStacks[par1] != null)
@@ -95,10 +75,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * When some containers are closed they call this on each slot, then drop whatever it returns as an EntityItem -
-     * like when you close a workbench GUI.
-     */
     public ItemStack getStackInSlotOnClosing(int par1)
     {
         if (this.furnaceItemStacks[par1] != null)
@@ -113,9 +89,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-     */
     public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
     {
         this.furnaceItemStacks[par1] = par2ItemStack;
@@ -126,18 +99,11 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Returns the name of the inventory.
-     */
     public String getInvName()
     {
         return this.isInvNameLocalized() ? this.field_94130_e : "container.furnace";
     }
 
-    /**
-     * If this returns false, the inventory name will be used as an unlocalized name, and translated into the player's
-     * language. Otherwise it will be used directly.
-     */
     public boolean isInvNameLocalized()
     {
         return this.field_94130_e != null && this.field_94130_e.length() > 0;
@@ -151,9 +117,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         this.field_94130_e = par1Str;
     }
 
-    /**
-     * Reads a tile entity from NBT.
-     */
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
@@ -181,9 +144,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Writes a tile entity to NBT.
-     */
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
@@ -210,32 +170,18 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't
-     * this more of a set than a get?*
-     */
     public int getInventoryStackLimit()
     {
         return 64;
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns an integer between 0 and the passed value representing how close the current item is to being completely
-     * cooked
-     */
     public int getCookProgressScaled(int par1)
     {
-        return this.furnaceCookTime * par1 / 200;
+        return this.furnaceCookTime * par1 / 50;
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns an integer between 0 and the passed value representing how much burn time is left on the current fuel
-     * item, where 0 means that the item is exhausted and the passed value means that the item is fresh
-     */
     public int getBurnTimeRemainingScaled(int par1)
     {
         if (this.currentItemBurnTime == 0)
@@ -246,18 +192,11 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
     }
 
-    /**
-     * Returns true if the furnace is currently burning
-     */
     public boolean isBurning()
     {
         return this.furnaceBurnTime > 0;
     }
 
-    /**
-     * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
-     * ticks and creates a new spawn inside its implementation.
-     */
     public void updateEntity()
     {
         boolean flag = this.furnaceBurnTime > 0;
@@ -294,7 +233,7 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
             {
                 ++this.furnaceCookTime;
 
-                if (this.furnaceCookTime == 200)
+                if (this.furnaceCookTime == 50)
                 {
                     this.furnaceCookTime = 0;
                     this.smeltItem();
@@ -319,9 +258,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
-     */
     private boolean canSmelt()
     {
         if (this.furnaceItemStacks[0] == null)
@@ -339,9 +275,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
-     */
     public void smeltItem()
     {
         if (this.canSmelt())
@@ -366,10 +299,6 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
-     * fuel
-     */
     public static int getItemBurnTime(ItemStack par0ItemStack)
     {
         if (par0ItemStack == null)
@@ -413,17 +342,11 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
     }
 
-    /**
-     * Return true if item is a fuel source (getItemBurnTime() > 0).
-     */
     public static boolean isItemFuel(ItemStack par0ItemStack)
     {
         return getItemBurnTime(par0ItemStack) > 0;
     }
 
-    /**
-     * Do not make give this method the name canInteractWith because it clashes with Container
-     */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
@@ -433,36 +356,21 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
     public void closeChest() {}
 
-    /**
-     * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
-     */
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
     {
         return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
     }
 
-    /**
-     * Returns an array containing the indices of the slots that can be accessed by automation on the given side of this
-     * block.
-     */
     public int[] getAccessibleSlotsFromSide(int par1)
     {
         return par1 == 0 ? slots_bottom : (par1 == 1 ? slots_top : slots_sides);
     }
 
-    /**
-     * Returns true if automation can insert the given item in the given slot from the given side. Args: Slot, item,
-     * side
-     */
     public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
     {
         return this.isItemValidForSlot(par1, par2ItemStack);
     }
 
-    /**
-     * Returns true if automation can extract the given item in the given slot from the given side. Args: Slot, item,
-     * side
-     */
     public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
     {
         return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;

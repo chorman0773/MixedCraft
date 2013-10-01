@@ -51,9 +51,6 @@ public class ContainerDiamondFurnace extends Container
         par1ICrafting.sendProgressBarUpdate(this, 2, this.furnace.currentItemBurnTime);
     }
 
-    /**
-     * Looks for changes made in the container, sends them to every listener.
-     */
     public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
@@ -107,9 +104,6 @@ public class ContainerDiamondFurnace extends Container
         return this.furnace.isUseableByPlayer(par1EntityPlayer);
     }
 
-    /**
-     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
-     */
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
     {
         ItemStack itemstack = null;

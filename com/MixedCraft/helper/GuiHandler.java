@@ -42,7 +42,9 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerDiamondFurnace(player.inventory, (TileEntityDiamondFurnace) world.getBlockTileEntity(x, y, z));
 		}
 		
-		
+		if(entity instanceof TileEntityGoldFurnace){
+			return new ContainerGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
+		}
 		switch(id)
 		{
 
@@ -99,6 +101,9 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiDiamondFurnace(player.inventory, (TileEntityDiamondFurnace) world.getBlockTileEntity(x, y, z));
 		}
 		
+		if(entity instanceof TileEntityGoldFurnace){
+			return new GuiGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
+		}
 		
 		switch(id)
 		{

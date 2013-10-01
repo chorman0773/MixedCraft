@@ -8,9 +8,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.MixedCraft.blocks.*;
+import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
 import com.MixedCraft.helper.BlocksBase;
 import com.MixedCraft.helper.ConfigHelper;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class BlockHelper {
@@ -54,8 +56,17 @@ public class BlockHelper {
     public static final Block ChocolateCake = new BlockChocolateCake(x.ChocolateCakeBlockID).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("ChocolateCake").setTextureName("ChocolateCake");
     public static final Block ChocolateCrop = new BlockChocolateCrop(x.ChocolateCropBlockID).setUnlocalizedName("ChocolateCrop").setTextureName("ChocolateCrop");
 
-	public static void addNames(){  
+    public static final Block Bomb = new BlockBomb(x.BombBlockID).setUnlocalizedName("Bomb");
+    //public static final Block Machine = new BlockMachine(x.MachineBlockID);
+    
+    public static final Block GoldFurnaceOff = new GoldFurnace(x.GoldFurnaceID, false).setUnlocalizedName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block GoldFurnaceOn = new GoldFurnace(x.GoldFurnaceOnID, true).setUnlocalizedName("GoldFurnace").setCreativeTab(null);
 
+    public static final PoisionOre poisonOre = (PoisionOre)new PoisionOre(x.poisonOreID);
+    
+	public static void addNames(){  
+		
+		addName("GoldFurnace", "Gold Furnace");
 		addName("House1", EnumChatFormatting.DARK_GREEN + "Auto House: 1");
 		addName("DiamondFurnaceOn", "Diamond Furnace");
 		addName("DiamondFurnaceOff", "Diamond Furnace");

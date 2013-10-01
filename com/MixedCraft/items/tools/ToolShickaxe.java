@@ -16,7 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 
-import com.MixedCraft.helper.TextureHelper;
+import com.MixedCraft.helper.Utils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -43,8 +43,8 @@ public class ToolShickaxe extends ItemTool
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister) {
-        itemIcon = TextureHelper.getIconFromTextureName(iconRegister, iconPath);
+    public void registerIcons(IconRegister icon) {
+        itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 
     @Override

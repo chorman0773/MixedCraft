@@ -136,75 +136,43 @@ public class ContainerDNAAssembler extends Container
         return this.furnace.isUseableByPlayer(var1);
     }
 
-    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
-    {
-        ItemStack var3 = null;
-        Slot var4 = (Slot)this.inventorySlots.get(par2);
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int i)
+	{
+		ItemStack stack = null;
+		Slot slot_object = (Slot) inventorySlots.get(i);
 
-        if (var4 != null && var4.getHasStack())
-        {
-            ItemStack var5 = var4.getStack();
-            var3 = var5.copy();
+		if(slot_object != null && slot_object.getHasStack())
+			{
+			ItemStack stack_in_slot = slot_object.getStack();
+			stack = stack_in_slot.copy();
 
-            if (par2 == 2)
-            {
-                if (!this.mergeItemStack(var5, 3, 39, true))
-                {
-                    return null;
-                }
+			if(i == 0 || i == 1)
+			{
+				if(!mergeItemStack(stack_in_slot, 1, inventorySlots.size(), true))
+				{
+					return null;
+				}
+			} 
+			else if(!mergeItemStack(stack_in_slot, 0, 1, false))
+			{
+				return null;
+			}
+			
+			if(i == 2)
+			{
+				return null;
+			}
 
-                var4.onSlotChange(var5, var3);
-            }
-            else if (par2 != 1 && par2 != 0)
-            {
-                if (ExtractorRecipes.smelting().getSmeltingResult(var5) != null)
-                {
-                    if (!this.mergeItemStack(var5, 0, 1, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (TileEntityDNAAssembler.isItemFuel(var5))
-                {
-                    if (!this.mergeItemStack(var5, 1, 2, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par2 >= 3 && par2 < 30)
-                {
-                    if (!this.mergeItemStack(var5, 30, 39, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
-                {
-                    return null;
-                }
-            }
-            else if (!this.mergeItemStack(var5, 3, 39, false))
-            {
-                return null;
-            }
+			if(stack_in_slot.stackSize == 0)
+			{
+				slot_object.putStack(null);
+			} else
+			{
+				slot_object.onSlotChanged();
+			}
+		}
 
-            if (var5.stackSize == 0)
-            {
-                var4.putStack((ItemStack)null);
-            }
-            else
-            {
-                var4.onSlotChanged();
-            }
-
-            if (var5.stackSize == var3.stackSize)
-            {
-                return null;
-            }
-
-            var4.onPickupFromSlot(par1EntityPlayer, var5);
-        }
-
-        return var3;
-    }
+		return stack;
+	}
 }

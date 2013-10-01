@@ -2,19 +2,17 @@ package com.MixedCraft.items;
 
 import java.util.List;
 
-import com.MixedCraft.helper.TextureHelper;
-import com.MixedCraft.items.tools.SwordBase;
-
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.MixedCraft.items.tools.SwordBase;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

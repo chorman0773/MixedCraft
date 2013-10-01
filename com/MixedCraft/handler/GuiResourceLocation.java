@@ -15,5 +15,6 @@ public class GuiResourceLocation extends HelperHandler{
 	public static ResourceLocation IronFurnace = new ResourceLocation(GuiTexturePrefix + "IronFurnace.png");
 	public static ResourceLocation Mixer = new ResourceLocation(GuiTexturePrefix + "Mixer.png");
 	public static ResourceLocation BiggerCrafting = new ResourceLocation(GuiTexturePrefix + "BiggerCraftingTable.png");
+	public static ResourceLocation GoldFurnace = new ResourceLocation(GuiTexturePrefix + "GoldFurnace.png");
 
 }

@@ -35,7 +35,7 @@ public class ItemsBase extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister) {
-        itemIcon = TextureHelper.getIconFromTextureName(iconRegister, iconPath);
+    public void registerIcons(IconRegister icon) {
+        itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 }

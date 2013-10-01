@@ -17,14 +17,16 @@ public class MobRegistry {
 
 	public static void init(){
 
-		ModMobRegistry.registerEntity(EntityChickenCow.class, "ChickenCow", START_EID++, 64, 10, true);
-		ModMobRegistry.registerEntity(EntityCowCreeper.class, "CowCreeper", START_EID++, 64, 10, true);
-		ModMobRegistry.registerEntity(EntityCowPig.class, "CowPig", START_EID++, 64, 10, true);
-		ModMobRegistry.registerEntity(EntityCowSheep.class, "CowSheep", START_EID++, 64, 10, true);
-		ModMobRegistry.registerEntity(EntityCowEnderman.class, "CowEnderman", START_EID++, 64, 10, true);
-		ModMobRegistry.registerEntity(EntityCowZombie.class, "CowZombie", START_EID++, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityChickenCow.class, "ChickenCow", 0, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityCowCreeper.class, "CowCreeper", 1, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityCowPig.class, "CowPig", 2, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityCowSheep.class, "CowSheep", 3, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityCowEnderman.class, "CowEnderman", 4, 64, 10, true);
+		ModMobRegistry.registerEntity(EntityCowZombie.class, "CowZombie", 5, 64, 10, true);
 		
-		EntityRegistry.registerModEntity(EntityDroid.class, "Droid", START_EID++, MixedCraft.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityDroid.class, "Droid", 6, MixedCraft.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityShip.class, "EntitySpaceship", 7, MixedCraft.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityBomb.class, "EntityBomb", 8, MixedCraft.instance, 80, 3, true);
 
 		addNames();
 	}

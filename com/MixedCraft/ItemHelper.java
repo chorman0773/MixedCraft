@@ -6,6 +6,7 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemReed;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumHelper;
 
 import com.MixedCraft.armor.*;
@@ -149,10 +150,10 @@ public class ItemHelper {
 	public static final Item FlameLegs = new ItemFlameArmor(4241, FlameArmor, 2, LEGS).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("FlameLegs");
 	public static final Item FlameBoots = new ItemFlameArmor(4242, FlameArmor, 3, BOOTS).setCreativeTab(MixedCraft.MiscTab).setUnlocalizedName("FlameBoots");
     */
-	public static final Item Droid = new ItemDroid(4243);
+	public static final Item Droid = new ItemDroid(x.DroidID);
 	
-	public static final Item mobShooter = new ItemMobShooter(4244);
-	
+	public static final Item mobShooter = new ItemMobShooter(x.WandID);
+	//public static final Item Card = new ItemCard(x.CardID);
 	//TODO Every drive for every mob!
 	
 	//TODO Mobs: Blaze, Spider, Creeper, Enderman, Ghast, MagmaCube, Skeleton, Slime, Zombie, Chicken, Cow, Pig, Squid, Sheep, WitherSkeleton, Wither.
@@ -176,6 +177,10 @@ public class ItemHelper {
 
 	
 	public static void addNames(){
+		//for (int i = 0; i < ItemInfo.CARD_NAMES.length; i++) {
+		//	LanguageRegistry.addName(new ItemStack(Card,  1, i), ItemInfo.CARD_NAMES[i]);
+		//}
+		
 		addName("ChocolateCake", "Chocolate Cake");
 		
 		addName("LightningRod", "Lightning Rod");

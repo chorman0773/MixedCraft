@@ -1,38 +1,49 @@
 package com.MixedCraft.helper;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+
+import com.MixedCraft.entity.EntityShip;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
+
 import cpw.mods.fml.common.network.IPacketHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 
-public class PacketHandler implements IPacketHandler{
+public class PacketHandler implements IPacketHandler {
 
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		if(packet.channel.equals("MixedCraft")){
-			handlePckaet(packet); 
+		ByteArrayDataInput reader = ByteStreams.newDataInput(packet.data);
+		
+		int entityId = reader.readInt();
+		
+		EntityPlayer entityPlayer = (EntityPlayer)player;
+		Entity entity = entityPlayer.worldObj.getEntityByID(entityId);
+		if (entity != null && entity instanceof EntityShip) {
+			((EntityShip)entity).doDrop();
 		}
 	}
 
-	private void handlePckaet(Packet250CustomPayload packet) {
-		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-		
-		int Int1;
-		int Int2;
-		
-		try{
-			Int1 = inputStream.readInt();
-			Int2 = inputStream.readInt();
-		}
-		catch(IOException e){
-			e.printStackTrace(); 
-			return;
+	public static void sendShipPacket(EntityShip spaceship) {
+		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+		DataOutputStream dataStream = new DataOutputStream(byteStream);
+
+		try {
+			dataStream.writeInt(spaceship.entityId);
+						
+			PacketDispatcher.sendPacketToServer(PacketDispatcher.getPacket("MixedCraft", byteStream.toByteArray()));		
+		}catch(IOException ex) {
+			System.err.append("Failed to send spaceship drop packet");
 		}
 		
-		System.out.println(Int1 + "" + Int2);
 	}
+	
 }

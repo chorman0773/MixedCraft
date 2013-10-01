@@ -33,7 +33,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
     public int currentItemBurnTime = 0;
 
     /** The number of ticks that the current item has been cooking for */
-    public int furnaceCookTime = 700;
+    public int furnaceCookTime = 0;
 
     /**
      * Returns the number of slots in the inventory.
@@ -190,7 +190,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
      */
     public int getCookProgressScaled(int par1)
     {
-        return this.furnaceCookTime * par1 / 100;
+        return this.furnaceCookTime * par1 / 270;
     }
 
     @SideOnly(Side.CLIENT)
@@ -203,7 +203,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
     {
         if (this.currentItemBurnTime == 0)
         {
-            this.currentItemBurnTime = 100;
+            this.currentItemBurnTime = 270;
         }
 
         return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
@@ -257,7 +257,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
             {
                 ++this.furnaceCookTime;
 
-                if (this.furnaceCookTime == 100)
+                if (this.furnaceCookTime == 270)
                 {
                     this.furnaceCookTime = 0;
                     this.smeltItem();
@@ -363,7 +363,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
             		var1 == ItemHelper.CowEndermanSpawner.itemID ||
             		var1 == ItemHelper.CowZombieSpawner.itemID)
             {
-                return 100;
+                return 270;
             }
 
             return GameRegistry.getFuelValue(par0ItemStack);

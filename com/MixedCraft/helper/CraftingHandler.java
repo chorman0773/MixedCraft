@@ -19,6 +19,16 @@ public class CraftingHandler implements ICraftingHandler {
 		{
 			player.addStat(Achievements.Extractor, 1);
 		}
+		
+		if (item.itemID == BlockHelper.Mixer.blockID)
+		{
+			player.addStat(Achievements.Mixer, 1);
+		}
+		
+		if (item.itemID == BlockHelper.Assembler.blockID)
+		{
+			player.addStat(Achievements.Assembler, 1);
+		}
 	}
 
 	@Override
@@ -27,6 +37,11 @@ public class CraftingHandler implements ICraftingHandler {
 		if (item.itemID == ItemHelper.CopperIngot.itemID)
 		{
 			player.addStat(Achievements.Copper, 1);
+		}
+		
+		if (item.itemID == ItemHelper.TinIngot.itemID)
+		{
+			player.addStat(Achievements.Tin, 1);
 		}
 	}
 }

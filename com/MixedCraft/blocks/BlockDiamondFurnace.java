@@ -27,18 +27,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockDiamondFurnace extends BlockContainer
 {
-    /**
-     * Is the random generator used by DiamondFurnace to drop the inventory contents in random directions.
-     */
+
     private final Random DiamondFurnaceRand = new Random();
 
-    /** True if this is an active DiamondFurnace, false if idle */
     private final boolean isActive;
 
-    /**
-     * This flag is used to prevent the DiamondFurnace inventory to be dropped upon block removal, is used internally when the
-     * DiamondFurnace block changes from idle to active and vice-versa.
-     */
     private static boolean keepDiamondFurnaceInventory;
     @SideOnly(Side.CLIENT)
     private Icon DiamondFurnaceIconTop;
@@ -52,26 +45,17 @@ public class BlockDiamondFurnace extends BlockContainer
         GameRegistry.registerBlock(this);
     }
 
-    /**
-     * Returns the ID of the items to drop on destruction.
-     */
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return BlockHelper.DiamondFurnaceOff.blockID;
     }
 
-    /**
-     * Called whenever the block is added into the world. Args: world, x, y, z
-     */
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
         super.onBlockAdded(par1World, par2, par3, par4);
         this.setDefaultDirection(par1World, par2, par3, par4);
     }
 
-    /**
-     * set a blocks direction
-     */
     private void setDefaultDirection(World par1World, int par2, int par3, int par4)
     {
         if (!par1World.isRemote)
@@ -107,21 +91,12 @@ public class BlockDiamondFurnace extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
-     */
     public Icon getIcon(int par1, int par2)
     {
         return par1 == 1 ? this.DiamondFurnaceIconTop : (par1 == 0 ? this.DiamondFurnaceIconTop : (par1 != par2 ? this.blockIcon : this.DiamondFurnaceIconFront));
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
-     */
     public void registerIcons(IconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("MixedCraft:DiamondFurnace");
@@ -129,9 +104,7 @@ public class BlockDiamondFurnace extends BlockContainer
         this.DiamondFurnaceIconTop = par1IconRegister.registerIcon("MixedCraft:DiamondFurnace");
     }
 
-    /**
-     * Called upon block activation (right click on the block.)
-     */
+
     public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer player, int var6, float var7, float var8, float var9)
     {
             if (!player.isSneaking())
@@ -145,9 +118,6 @@ public class BlockDiamondFurnace extends BlockContainer
             }
     }
 
-    /**
-     * Update which block ID the DiamondFurnace is using depending on whether or not it is burning
-     */
     public static void updateDiamondFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
     {
         int l = par1World.getBlockMetadata(par2, par3, par4);
@@ -174,10 +144,7 @@ public class BlockDiamondFurnace extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * A randomly called display update to be able to add particles or other items for display
-     */
+    @Override
     public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (this.isActive)
@@ -212,17 +179,12 @@ public class BlockDiamondFurnace extends BlockContainer
         }
     }
 
-    /**
-     * Returns a new instance of a block's tile entity class. Called on placing the block.
-     */
+    @Override
     public TileEntity createNewTileEntity(World par1World)
     {
         return new TileEntityDiamondFurnace();
     }
 
-    /**
-     * Called when the block is placed in the world.
-     */
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
     {
         int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
@@ -253,9 +215,6 @@ public class BlockDiamondFurnace extends BlockContainer
         }
     }
 
-    /**
-     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
-     */
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
         if (!keepDiamondFurnaceInventory)
@@ -307,29 +266,17 @@ public class BlockDiamondFurnace extends BlockContainer
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 
-    /**
-     * If this returns true, then comparators facing away from this block will use the value from
-     * getComparatorInputOverride instead of the actual redstone signal strength.
-     */
     public boolean hasComparatorInputOverride()
     {
         return true;
     }
 
-    /**
-     * If hasComparatorInputOverride returns true, the return value from this is used instead of the redstone signal
-     * strength when this block inputs to a comparator.
-     */
     public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
     {
         return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
     }
 
     @SideOnly(Side.CLIENT)
-
-    /**
-     * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
-     */
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
         return BlockHelper.DiamondFurnaceOff.blockID;

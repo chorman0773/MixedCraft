@@ -227,7 +227,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
      */
     public int getCookProgressScaled(int par1)
     {
-        return this.furnaceCookTime * par1 / 200;
+        return this.furnaceCookTime * par1 / 125;
     }
 
     @SideOnly(Side.CLIENT)
@@ -294,7 +294,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
             {
                 ++this.furnaceCookTime;
 
-                if (this.furnaceCookTime == 200)
+                if (this.furnaceCookTime == 125)
                 {
                     this.furnaceCookTime = 0;
                     this.smeltItem();

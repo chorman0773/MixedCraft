@@ -19,7 +19,7 @@ public class BlockDNAExtractor extends ContainerBase {
 
     private Random furnaceRand = new Random();
 
-    private static boolean keepFurnaceInventory = false;
+    private static boolean keepFurnaceInventory = true;
     
 	public BlockDNAExtractor(int par1) {
 		super(par1, Material.wood);
@@ -65,7 +65,7 @@ public class BlockDNAExtractor extends ContainerBase {
 	            par1World.setBlock(par2, par3, par4, BlockHelper.Extractor.blockID);
 	        }
 
-	        keepFurnaceInventory = false;
+	        keepFurnaceInventory = true;
 	        par1World.setBlockMetadataWithNotify(par2, par3, par4, var5, 2);
 
 	        if (var6 != null)
