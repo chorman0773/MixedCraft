@@ -1,39 +1,28 @@
 package com.MixedCraft.helper;
 
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
-
-import com.MixedCraft.MixedCraft;
-
-import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ModMobRegistry 
 {
-	public static void registerModEntity(Class<? extends Entity> clazz, String name, int modID, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
-		EntityRegistry.registerModEntity(clazz, name, modID, MixedCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
-	}
-	
-	public static void registerEntity(Class<? extends Entity> clazz, String name, int modID, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates) {
-		EntityRegistry.registerGlobalEntityID(clazz, name, availableID(), 0x000000, 0xFFFFFF);
-		EntityRegistry.registerModEntity(clazz, name, modID, MixedCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
-	}
-	
-	public static void registerEntity(Class<? extends Entity> clazz, String name, int modID, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates, int eggColor1, int eggColor2) 
+	static int eggID = 150;
+
+	public static void registerEntity(Class entityClass, String entityName)
 	{
-		EntityRegistry.registerGlobalEntityID(clazz, name, availableID(), eggColor1, eggColor2);
-		EntityRegistry.registerModEntity(clazz, name, modID, MixedCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
+		int entityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(entityClass, entityName, entityID);
+		LanguageRegistry.instance().addStringLocalization("entity." + entityName + ".name", entityName);
+		int ID = getUniqueID(); 
+		EntityList.IDtoClassMapping.put(ID, entityClass);
+		EntityList.entityEggs.put(ID, new EntityEggInfo(ID, 0x000000, 0xFFFFFF));
 	}
-	
-	public static int availableID() {
-		return EntityRegistry.findGlobalUniqueEntityId();
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static void registerRender(Class<? extends Entity> clazz, Render render)
+
+
+	private static int getUniqueID() 
 	{
-		RenderingRegistry.registerEntityRenderingHandler(clazz, render);
+		return eggID++;
 	}
 }

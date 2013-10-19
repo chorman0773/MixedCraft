@@ -1,5 +1,6 @@
 package com.MixedCraft.entity.render;
 
+import com.MixedCraft.MobNames;
 import com.MixedCraft.entity.EntityChickenCow;
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.handler.EntityResourceLocation;
@@ -76,7 +77,7 @@ public class RenderChickenCow extends RenderLiving
     protected void renderLabel(EntityChickenCow entityLiving, double par2, double par4, double par6)
 	{
 		int distanceToEntity = 32;
-		this.renderLivingLabel(entityLiving, entityLiving.getDisplayName(), par2, par4, par6, distanceToEntity);
+		this.renderLivingLabel(entityLiving, MobNames.COWCHICKEN, par2, par4, par6, distanceToEntity);
 		par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	}
 

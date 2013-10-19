@@ -56,13 +56,16 @@ public class BlockHelper {
     public static final Block ChocolateCake = new BlockChocolateCake(x.ChocolateCakeBlockID).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("ChocolateCake").setTextureName("ChocolateCake");
     public static final Block ChocolateCrop = new BlockChocolateCrop(x.ChocolateCropBlockID).setUnlocalizedName("ChocolateCrop").setTextureName("ChocolateCrop");
 
-    public static final Block Bomb = new BlockBomb(x.BombBlockID).setUnlocalizedName("Bomb");
+    //public static final Block Bomb = new BlockBomb(x.BombBlockID).setUnlocalizedName("Bomb");
     //public static final Block Machine = new BlockMachine(x.MachineBlockID);
     
     public static final Block GoldFurnaceOff = new GoldFurnace(x.GoldFurnaceID, false).setUnlocalizedName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
     public static final Block GoldFurnaceOn = new GoldFurnace(x.GoldFurnaceOnID, true).setUnlocalizedName("GoldFurnace").setCreativeTab(null);
 
-    public static final PoisionOre poisonOre = (PoisionOre)new PoisionOre(x.poisonOreID);
+    public static final PoisionOre poisonOre = (PoisionOre)new PoisionOre(x.poisonOreID).setUnlocalizedName("PoisionOre").setTextureName("MixedCraft:PoisonOre");
+    
+    //public static final Block DoubleFurnace = new BlockDoubleFurnace(x.DoubleFurnaceID, false).setUnlocalizedName("DoubleFurnace");
+    //public static final Block DoubleFurnaceOn = new BlockDoubleFurnace(x.DoubleFurnaceID, true).setUnlocalizedName("DoubleFurnace");
     
 	public static void addNames(){  
 		

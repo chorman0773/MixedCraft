@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import com.MixedCraft.MobNames;
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.entity.EntityCowEnderman;
 import com.MixedCraft.handler.EntityResourceLocation;
@@ -91,7 +92,7 @@ public class RenderCowEnderman extends RenderLiving
 
 	/**
 	 * Render the endermans eyes
-	 */
+	 *
 	protected int renderEyes(EntityCowEnderman par1EntityCowEnderman, int par2, float par3)
 	{
 		if (par2 != 0)
@@ -126,7 +127,7 @@ public class RenderCowEnderman extends RenderLiving
 			return 1;
 		}
 	}
-
+*/
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.renderEnderman((EntityCowEnderman)par1EntityLiving, par2, par4, par6, par8, par9);
@@ -134,12 +135,12 @@ public class RenderCowEnderman extends RenderLiving
 
 	/**
 	 * Queries whether should render the specified pass or not.
-	 */
+	 *
 	protected int shouldRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
 	{
 		return this.renderEyes((EntityCowEnderman)par1EntityLivingBase, par2, par3);
 	}
-
+*/
 	protected void renderEquippedItems(EntityLivingBase par1EntityLivingBase, float par2)
 	{
 		this.renderCarrying((EntityCowEnderman)par1EntityLivingBase, par2);
@@ -169,7 +170,7 @@ public class RenderCowEnderman extends RenderLiving
 	protected void renderLabel(EntityCowEnderman entityLiving, double par2, double par4, double par6)
 	{
 		int distanceToEntity = 32;
-		this.renderLivingLabel(entityLiving, entityLiving.getDisplayName(), par2, par4, par6, distanceToEntity);
+		this.renderLivingLabel(entityLiving, MobNames.COWENDERMAN, par2, par4, par6, distanceToEntity);
 		par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	}
 

@@ -11,7 +11,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-import com.MixedCraft.entity.EntityShip;
+import com.MixedCraft.entity.EntityDroid;
 import com.MixedCraft.helper.ItemsBase;
 import com.MixedCraft.helper.Utils;
 
@@ -84,14 +84,14 @@ public class ItemMobShooter extends ItemsBase {
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote && player.isSneaking()) {
-			EntityShip ship = new EntityShip(world);
+			EntityDroid ship = new EntityDroid(world);
 			
 			ship.posX = x + 0.5;
 			ship.posY = y + 1.5;
 			ship.posZ = z + 0.5;
 			
 			if (isCharged(stack.getItemDamage())) {
-				ship.setCharged();	
+				world.spawnEntityInWorld(ship);
 				
 				stack.setItemDamage(0);
 			}else{

@@ -30,11 +30,11 @@ public class ItemHelper {
 	public static EnumToolMaterial Silver = EnumHelper.addToolMaterial("Silver", 4, 1000, 11.0F, 7, 16);
     public static EnumToolMaterial SilverShick = EnumHelper.addToolMaterial("SilverShick", 5, -1, 150.0F, 22, 20);
 	public static EnumToolMaterial Flame = EnumHelper.addToolMaterial("Flame", 4, -1, 0.0F, 6, 16);
-	public static EnumToolMaterial Iron = EnumHelper.addToolMaterial("Iron", 4, -1, 0.2F, 4, 16);
-	public static EnumToolMaterial Diamond = EnumHelper.addToolMaterial("Diamond", 4, -1, 0.2F, 7, 16);
-	public static EnumToolMaterial Gold = EnumHelper.addToolMaterial("Gold", 4, -1, 0.2F, 4, 16);
-	public static EnumToolMaterial Wood = EnumHelper.addToolMaterial("Wood", 0, -1, 0.1F, 0, 5);
-	public static EnumToolMaterial Stone = EnumHelper.addToolMaterial("Stone", 4, -1, 0.2F, 2, 16);
+	public static EnumToolMaterial Iron = EnumHelper.addToolMaterial("Iron", 4, 1000, 0.2F, 4, 16);
+	public static EnumToolMaterial Diamond = EnumHelper.addToolMaterial("Diamond", 4, 1000, 0.2F, 7, 16);
+	public static EnumToolMaterial Gold = EnumHelper.addToolMaterial("Gold", 4, 1000, 0.2F, 4, 16);
+	public static EnumToolMaterial Wood = EnumHelper.addToolMaterial("Wood", 0, 1000, 0.1F, 0, 5);
+	public static EnumToolMaterial Stone = EnumHelper.addToolMaterial("Stone", 4, 1000, 0.2F, 2, 16);
 
 	static EnumArmorMaterial SuperArmor = EnumHelper.addArmorMaterial("Super", -1, new int[]{3, 8, 6, 3}, 10);
 	static EnumArmorMaterial FlameArmor = EnumHelper.addArmorMaterial("Fire", -1, new int[]{3, 8, 6, 3}, 10);
@@ -120,11 +120,11 @@ public class ItemHelper {
 	public static final Item SilverPickaxe = new ToolPickaxe(x.SilverPickaxeID, Silver).registerItemTexture("SilverPickaxe").setUnlocalizedName("SilverPickaxe").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item SilverAxe = new ToolAxe(x.SilverAxeID, Silver).registerItemTexture("SilverAxe").setUnlocalizedName("SilverAxe").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item SilverShickaxe = new ToolShickaxe(x.SilverShickaxeID, SilverShick).registerShickaxeTextures("SilverShickaxe").setUnlocalizedName("SilverShickaxe").setCreativeTab(MixedCraft.ToolTab);
-	public static final Item DiamondBigSword = new ItemBigSword(x.DiamondBigSwordID, Diamond).registerTexture("DiamondBigSword").setUnlocalizedName("DiamondBigSword").setCreativeTab(MixedCraft.ToolTab);
-	public static final Item IronBigSword = new ItemBigSword(x.IronBigSwordID, Iron).registerTexture("IronBigSword").setUnlocalizedName("IronBigSword").setCreativeTab(MixedCraft.ToolTab);
-	public static final Item GoldBigSword = new ItemBigSword(x.GoldBigSwordID, Gold).registerTexture("GoldenBigSword").setUnlocalizedName("GoldBigSword").setCreativeTab(MixedCraft.ToolTab);
-	public static final Item WoodBigSword = new ItemBigSword(x.WoodBigSwordID, Wood).registerTexture("WoodenBigSword").setUnlocalizedName("WoodBigSword").setCreativeTab(MixedCraft.ToolTab);
-	public static final Item StoneBigSword = new ItemBigSword(x.StoneBigSwordID, Stone).registerTexture("StoneBigSword").setUnlocalizedName("StoneBigSword").setCreativeTab(MixedCraft.ToolTab);
+	public static final Item DiamondBigSword = new ItemBigSword(x.DiamondBigSwordID, Diamond, "DiamondBigSword").setCreativeTab(MixedCraft.ToolTab);
+	public static final Item IronBigSword = new ItemBigSword(x.IronBigSwordID, Iron, "IronBigSword").setCreativeTab(MixedCraft.ToolTab);
+	public static final Item GoldBigSword = new ItemBigSword(x.GoldBigSwordID, Gold, "GoldenBigSword").setCreativeTab(MixedCraft.ToolTab);
+	public static final Item WoodBigSword = new ItemBigSword(x.WoodBigSwordID, Wood, "WoodenBigSword").setCreativeTab(MixedCraft.ToolTab);
+	public static final Item StoneBigSword = new ItemBigSword(x.StoneBigSwordID, Stone, "StoneBigSword").setCreativeTab(MixedCraft.ToolTab);
 
 	public static final Item LightningBow = new LightningBow(x.LightningBowID).setUnlocalizedName("LightningBow").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item LightningArrow = new ModItem(x.LightningArrowID).registerTextures("LightningArrow").setUnlocalizedName("LightningArrow").setCreativeTab(MixedCraft.MiscTab);
@@ -154,6 +154,8 @@ public class ItemHelper {
 	
 	public static final Item mobShooter = new ItemMobShooter(x.WandID);
 	//public static final Item Card = new ItemCard(x.CardID);
+	
+	public static final Item Test = new ItemHouse(4235);
 	//TODO Every drive for every mob!
 	
 	//TODO Mobs: Blaze, Spider, Creeper, Enderman, Ghast, MagmaCube, Skeleton, Slime, Zombie, Chicken, Cow, Pig, Squid, Sheep, WitherSkeleton, Wither.

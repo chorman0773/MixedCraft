@@ -4,6 +4,7 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class DNAKeys {
 	
+	
 	//MISC.
 	public static String[] Failed = {EnumChatFormatting.RED + "FAILED"};
 

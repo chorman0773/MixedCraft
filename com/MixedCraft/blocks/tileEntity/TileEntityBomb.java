@@ -42,7 +42,7 @@ public class TileEntityBomb extends TileEntity {
 	
 	private void spread(int x, int y, int z) {
 		if (worldObj.isAirBlock(x, y, z)) {
-			worldObj.setBlock(x, y, z, BlockHelper.Bomb.blockID);
+			//worldObj.setBlock(x, y, z, BlockHelper.Bomb.blockID);
 			
 			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
 			

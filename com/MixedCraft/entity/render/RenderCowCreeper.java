@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.MixedCraft.MobNames;
 import com.MixedCraft.entity.EntityCowCreeper;
 import com.MixedCraft.handler.EntityResourceLocation;
 
@@ -180,13 +181,13 @@ public class RenderCowCreeper extends RenderLiving
 
 	protected void renderLabel(EntityCowCreeper entityLiving, double par2, double par4, double par6)
 	{
-	int distanceToEntity = 32;
-	this.renderLivingLabel(entityLiving, entityLiving.getDisplayName(), par2, par4, par6, distanceToEntity);
-	par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
+		int distanceToEntity = 32;
+		this.renderLivingLabel(entityLiving, MobNames.COWCREEPER, par2, par4, par6, distanceToEntity);
+		par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	}
 
 	protected void passSpecialRender(EntityLivingBase par1EntityLiving, double par2, double par4, double par6)
 	{
-	this.renderLabel((EntityCowCreeper)par1EntityLiving, par2, par4, par6);
+		this.renderLabel((EntityCowCreeper)par1EntityLiving, par2, par4, par6);
 	}
 }

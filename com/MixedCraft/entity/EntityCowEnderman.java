@@ -67,10 +67,6 @@ public class EntityCowEnderman extends EntityMob
         par1NBTTagCompound.setShort("carried", (short)this.getCarried());
         par1NBTTagCompound.setShort("carriedData", (short)this.getCarryingData());
     }
-
-    public String getDisplayName(){
-    	return "Cow Enderman";
-    }
     
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.

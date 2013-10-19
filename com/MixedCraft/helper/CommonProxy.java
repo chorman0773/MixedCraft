@@ -12,6 +12,7 @@ import com.MixedCraft.blocks.tileEntity.TileEntityDNAMixer;
 import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntityGoldFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntityIronFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
 import com.MixedCraft.dimension.DimensionHelper;
 import com.MixedCraft.entity.EntityLightningArrow;
 import com.MixedCraft.entity.EntityTNTArrow;
@@ -45,7 +46,6 @@ public class CommonProxy extends HelperHandler
 	public static void Arrow(){
 		RenderingRegistry.registerEntityRenderingHandler(EntityLightningArrow.class, new RenderLightningArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTNTArrow.class, new RenderTNTArrow());
-
 	}
 
 	public void preInit(FMLPreInitializationEvent event)
@@ -70,12 +70,14 @@ public class CommonProxy extends HelperHandler
 	}
 
 	public void registerTileEntity(){
-		GameRegistry.registerTileEntity(TileEntityDiamondFurnace.class, "TileEntityDiamondFurnace");
-		GameRegistry.registerTileEntity(TileEntityIronFurnace.class, "TileEntityIronFurnace");
-		GameRegistry.registerTileEntity(TileEntityDNAExtractor.class, "TileEntityExtractor");
-		GameRegistry.registerTileEntity(TileEntityDNAMixer.class, "TileEntityMixer");
-		GameRegistry.registerTileEntity(TileEntityDNAAssembler.class, "TileEntityAssember");
-		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntityGoldFurnace");
+		GameRegistry.registerTileEntity(TileEntityDiamondFurnace.class, "TileEntity Diamond Furnace");
+		GameRegistry.registerTileEntity(TileEntityIronFurnace.class, "TileEntity Iron Furnace");
+		GameRegistry.registerTileEntity(TileEntityDNAExtractor.class, "TileEntity Extractor");
+		GameRegistry.registerTileEntity(TileEntityDNAMixer.class, "TileEntity Mixer");
+		GameRegistry.registerTileEntity(TileEntityDNAAssembler.class, "TileEntity Assember");
+		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
+		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
+
 	}
 
 	public void init(FMLInitializationEvent event)

@@ -27,7 +27,6 @@ public class BlockSolarPanel extends ContainerBase
     public BlockSolarPanel(int par1)
     {
         super(par1, Material.wood);
-        //this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.375F, 1.0F);
         this.setCreativeTab(MixedCraft.BlockTab);
         GameRegistry.registerBlock(this);
         registerTexture("SolarPanel_Side", "SolarPanel_Top", "SolarPanel_Bottom");
@@ -79,16 +78,6 @@ public class BlockSolarPanel extends ContainerBase
                 par1World.setBlockMetadataWithNotify(par2, par3, par4, i1, 3);
             }
         }
-    }
-
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
-
-    public boolean isOpaqueCube()
-    {
-        return false;
     }
 
     public boolean canProvidePower()

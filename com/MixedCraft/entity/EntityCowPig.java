@@ -27,7 +27,7 @@ public class EntityCowPig extends EntityAnimal
     public EntityCowPig(World par1World)
     {
         super(par1World);
-        this.setSize(0.9F, 0.9F);
+        this.setSize(0.9F, 1.3F);
         this.getNavigator().setAvoidsWater(true);
         float f = 0.25F;
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -48,10 +48,6 @@ public class EntityCowPig extends EntityAnimal
     public boolean isAIEnabled()
     {
         return true;
-    }
-    
-    public String getDisplayName(){
-    	return "Cow Pig";
     }
 
     protected void applyEntityAttributes()

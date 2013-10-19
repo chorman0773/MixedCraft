@@ -63,10 +63,6 @@ public class EntityCowCreeper extends EntityCreature
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
     }
-    
-    public String getDisplayName(){
-		return "Cow Creeper";
-    }
 
     /**
      * Returns true if the newer Entity AI code should be run

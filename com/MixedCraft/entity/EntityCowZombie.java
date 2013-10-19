@@ -61,11 +61,6 @@ public class EntityCowZombie extends EntityMob
          this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
     }
 
-    
-    public String getDisplayName(){
-    	return "Cow Zombie";
-    }
-
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

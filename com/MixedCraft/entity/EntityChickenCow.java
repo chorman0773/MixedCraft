@@ -52,10 +52,6 @@ public class EntityChickenCow extends EntityAnimal
     {
         return true;
     }
-    
-    public String getDisplayName(){
-    	return "Cow Chicken";
-    }
 
     protected void applyEntityAttributes()
     {

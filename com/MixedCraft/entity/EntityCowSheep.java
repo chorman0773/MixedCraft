@@ -66,10 +66,6 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
         super.updateAITasks();
     }
     
-    public String getDisplayName(){
-    	return "Cow Sheep";
-    }
-
     public void onLivingUpdate()
     {
         if (this.worldObj.isRemote)

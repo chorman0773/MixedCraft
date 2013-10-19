@@ -35,7 +35,7 @@ public class ModelDroid extends ModelBase{
 						2, 8, 2);
 			}
 		}
-		//pillars.setRotationPoint(0, -6, 0);
+		pillars.setRotationPoint(0, -6, 0);
 		parts.add(pillars);
 
 		ModelRenderer top = new ModelRenderer(this, 0, 20);
@@ -70,7 +70,6 @@ public class ModelDroid extends ModelBase{
 					8, 5, 1);
 
 			panelOuter.setRotationPoint(0, 5, 0);
-			//panelOuter.rotateAngleX = - (float)Math.PI / 2;
 			panel.addChild(panelOuter);
 			outerPanels.add(panelOuter);
 		}
@@ -96,7 +95,7 @@ public class ModelDroid extends ModelBase{
 			panel.rotateAngleX = OuterPanelRotation;
 		}
 
-		pillars.rotationPointY = HelmetPosition;
+		//pillars.rotationPointY = HelmetPosition;
 
 		GL11.glColor4f(1F, 1F, 1F, 1F); 
 

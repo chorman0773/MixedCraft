@@ -22,10 +22,7 @@ public class PoisionOre extends BlocksBase {
 
 	public PoisionOre(int id) {
 		super(id, Material.rock);
-		registerTexture("PoisonOre");
 		setHardness(1F);
-		setStepSound(Block.soundStoneFootstep);
-		setUnlocalizedName("PoisonOre");
 	}
 	
 	@SideOnly(Side.CLIENT)	
@@ -35,6 +32,7 @@ public class PoisionOre extends BlocksBase {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
 		particleIcon = register.registerIcon(Utils.MOD_ID + ":" + "Poison_NoColour");
+		blockIcon = register.registerIcon(Utils.MOD_ID + ":" + "Poison");
 	}
 	
 	@Override
