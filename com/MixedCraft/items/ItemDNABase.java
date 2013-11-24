@@ -18,7 +18,7 @@ public class ItemDNABase extends ItemsBase{
 	  private int GuiID;
 	  
 	  public ItemDNABase(int ID, int GuiID){
-		  super(ID);
+		  super(ID, "DNAKey");
 		  this.GuiID = GuiID;
 	  }
 	  

@@ -14,7 +14,7 @@ public class ItemCowChickenSpawner extends ItemsBase
 
 	public ItemCowChickenSpawner(int var1)
 	{
-		super(var1);
+		super(var1, "");
 	}
 
 

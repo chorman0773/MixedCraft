@@ -13,6 +13,8 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {
 
+	public static int craftingTable = 1, extractor = 17;
+	
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 		
@@ -45,10 +47,15 @@ public class GuiHandler implements IGuiHandler {
 		if(entity instanceof TileEntityGoldFurnace){
 			return new ContainerGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
 		}
+		
+		if(entity instanceof TileEntityDNAExtractor){
+			return new ContainerDoubleFurnace(player.inventory, (TileEntityDoubleFurnace) world.getBlockTileEntity(x, y, z));
+		}
+		
 		switch(id)
 		{
 
-		case 1: return id == 1 && world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new ContainerBigCrafting(player.inventory, world, x, y, z) : null;
+		case 1: return id == craftingTable && world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new ContainerBigCrafting(player.inventory, world, x, y, z) : null;
 		  
 		case 2: return new DNAContainer();
 		case 3: return new DNAContainer();
@@ -65,10 +72,7 @@ public class GuiHandler implements IGuiHandler {
 		case 14: return new DNAContainer();
 		case 15: return new DNAContainer();
 		case 16: return new DNAContainer();
-
-		//case 17: return id == 1 && world.getBlockId(x, y, z) == BlockHelper.HugeChest.blockID ? new ContainerHugeChest(player.inventory, player.inventory) : null;
 		}
-		
 		return null;
 	}
 
@@ -105,9 +109,13 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
 		}
 		
+		if(entity instanceof TileEntityDoubleFurnace){ 
+			return new GuiDoubleFurnace(player.inventory, (TileEntityDoubleFurnace) world.getBlockTileEntity(x, y, z));
+		}
+		
 		switch(id)
 		{
-		case 1: return id == 1 && world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new GuiBigCrafting(player.inventory, world, x, y, z) : null;
+		case 1: return id == craftingTable && world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new GuiBigCrafting(player.inventory, world, x, y, z) : null;
 		
 		case 2: return new GuiCowDNA(new DNAContainer());
 		case 3: return new GuiPigDNA(new DNAContainer());
@@ -124,9 +132,7 @@ public class GuiHandler implements IGuiHandler {
 		case 14: return new GuiWitherDNA(new DNAContainer());
 		case 15: return new GuiWitherSkeletonDNA(new DNAContainer());
 		case 16: return new GuiZombieDNA(new DNAContainer());
- 
-		//case 17: return id == 1 && world.getBlockId(x, y, z) == BlockHelper.HugeChest.blockID ? new GuiHugeChest(player.inventory, world, x, y, z) : null;
-		}
+ 		}
 		
 		return null;
 	}

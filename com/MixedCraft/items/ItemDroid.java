@@ -10,7 +10,7 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemDroid extends ItemsBase{
 
 	public ItemDroid(int ID){
-		super(ID);
+		super(ID, "");
 		setUnlocalizedName("DroidItem");
 	}
 	

@@ -2,6 +2,8 @@ package com.MixedCraft.items.tools;
 
 import java.util.List;
 
+import com.MixedCraft.MixedCraft;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
@@ -14,8 +16,11 @@ public class ToolPickaxe extends PickaxeBase {
     private final EnumToolMaterial field_40439_b;
 
 	
-	public ToolPickaxe(int par1, EnumToolMaterial par3enum) {
+	public ToolPickaxe(int par1, EnumToolMaterial par3enum, String par2) {
 		super(par1, par3enum);
+        registerItemTexture(par2);
+        setUnlocalizedName(par2);
+        setCreativeTab(MixedCraft.ToolTab);
         this.field_40439_b = par3enum;
 
 	}

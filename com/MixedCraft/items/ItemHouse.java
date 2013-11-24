@@ -12,7 +12,7 @@ public class ItemHouse extends ItemsBase
 {
 
 	public ItemHouse(int id) {
-		super(id);
+		super(id, "");
 		registerTextures("House");
 		setUnlocalizedName("House");
 	}

@@ -13,7 +13,7 @@ public class ItemCowSheepPlacer extends ItemsBase
 
 	public ItemCowSheepPlacer(int var1)
 	{
-		super(var1);
+		super(var1, "");
 	}
 
 

@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 public abstract class ContainerBase extends BlocksBase implements ITileEntityProvider
 {
+	
     protected ContainerBase(int par1, Material par2Material)
     {
         super(par1, par2Material);

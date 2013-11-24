@@ -1,9 +1,11 @@
 package com.MixedCraft.helper;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.biome.BiomeGenBase;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.entity.*;
@@ -28,7 +30,6 @@ public class MobRegistry {
 		EntityRegistry.registerModEntity(EntityDroid.class, "Droid", 6, MixedCraft.instance, 80, 3, true);
 		//EntityRegistry.registerModEntity(EntityShip.class, "EntitySpaceship", 7, MixedCraft.instance, 80, 3, true);
 		//EntityRegistry.registerModEntity(EntityBomb.class, "EntityBomb", 8, MixedCraft.instance, 80, 3, true);
-
 	}
 
 

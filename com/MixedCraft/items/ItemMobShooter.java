@@ -24,7 +24,7 @@ public class ItemMobShooter extends ItemsBase {
 	private Icon chargedIcon;
 
 	public ItemMobShooter(int id) {
-		super(id);
+		super(id, "");
 		setMaxStackSize(1);
 		setUnlocalizedName("Wand");
 	}

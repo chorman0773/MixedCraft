@@ -9,15 +9,16 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.MixedCraft.blocks.*;
 import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
+import com.MixedCraft.handler.HelperHandler;
 import com.MixedCraft.helper.BlocksBase;
 import com.MixedCraft.helper.ConfigHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class BlockHelper {
+public class BlockHelper extends HelperHandler{
 
-	public static ConfigHelper x;
+
 
 	public static final Block Extractor = new BlockDNAExtractor(x.ExtractorID).setUnlocalizedName("Extractor").setHardness(2.0F);
 	public static final Block Mixer = new BlockDNAMixer(x.MixerID).setUnlocalizedName("Mixer").setHardness(2.0F);
@@ -55,48 +56,49 @@ public class BlockHelper {
 
     public static final Block ChocolateCake = new BlockChocolateCake(x.ChocolateCakeBlockID).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("ChocolateCake").setTextureName("ChocolateCake");
     public static final Block ChocolateCrop = new BlockChocolateCrop(x.ChocolateCropBlockID).setUnlocalizedName("ChocolateCrop").setTextureName("ChocolateCrop");
-
-    //public static final Block Bomb = new BlockBomb(x.BombBlockID).setUnlocalizedName("Bomb");
-    //public static final Block Machine = new BlockMachine(x.MachineBlockID);
     
     public static final Block GoldFurnaceOff = new GoldFurnace(x.GoldFurnaceID, false).setUnlocalizedName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
     public static final Block GoldFurnaceOn = new GoldFurnace(x.GoldFurnaceOnID, true).setUnlocalizedName("GoldFurnace").setCreativeTab(null);
 
     public static final PoisionOre poisonOre = (PoisionOre)new PoisionOre(x.poisonOreID).setUnlocalizedName("PoisionOre").setTextureName("MixedCraft:PoisonOre");
     
-    //public static final Block DoubleFurnace = new BlockDoubleFurnace(x.DoubleFurnaceID, false).setUnlocalizedName("DoubleFurnace");
-    //public static final Block DoubleFurnaceOn = new BlockDoubleFurnace(x.DoubleFurnaceID, true).setUnlocalizedName("DoubleFurnace");
+    public static final Block DoubleFurnace = new BlockDoubleFurnace(x.DoubleFurnaceOffID, false).setUnlocalizedName("DoubleFurnace").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block DoubleFurnaceOn = new BlockDoubleFurnace(x.DoubleFurnaceOnID, true).setUnlocalizedName("DoubleFurnace");
+    
+    //public static final Block Flower1 = new BlockMixedFlower(x.Flower1ID, "Flower1");
     
 	public static void addNames(){  
-		
-		addName("GoldFurnace", "Gold Furnace");
-		addName("House1", EnumChatFormatting.DARK_GREEN + "Auto House: 1");
-		addName("DiamondFurnaceOn", "Diamond Furnace");
-		addName("DiamondFurnaceOff", "Diamond Furnace");
-		addName("Table", "Table");
-		addName("GoldDoor", "Gold Door");
-		addName("IronFurnaceOn", "Iron Furnace");
-		addName("IronFurnaceOff", "Iron Furnace");
-		addName("Disasembler", "Dissasembler");
-		addName("CowSheepWool", "COWSHEEP Wool");
-		addName("SolarPanel", "Solar Panel");
-		addName("Extractor", "DNA Extractor");
-		addName("Mixer", "DNA Mixer");
-		addName("Assembler", "Mob Assembler");
-		addName("CopperOre", "Copper Ore");
-		addName("Craft", "Big Crafting Table");
-		addName("TinOre", "Tin Ore");
-		addName("CopperBlock", "Copper Block");
-		addName("TinBlock", "Tin Block");
-		addName("SilverOre", "Silver Ore");
-		addName("SilverBlock", "Silver Block");	 
-		addName("FlyLightGrass", "Flylight Grass");
-		addName("FlyLightDirt", "Flylight Dirt");
-		addName("Flashing", "Colourful Block");
-		addName("FlyLightOre", "Flylight Ore");
-		addName("FlyLightPortal", "Flylight Portal");
-		addName("FlyLightStone", "Flylight Stone");
-		addName("SlowSand", "Sink Sand");
+		addBlock(DoubleFurnace, "Double Furnace");
+		addBlock(DoubleFurnaceOn, "DoubleFurnace On");
+		addBlock(GoldFurnaceOn, "Gold Furnace On");
+		addBlock(GoldFurnaceOff, "Gold Furnace");
+		addBlock(House1, EnumChatFormatting.DARK_GREEN + "Auto House: 1");
+		addBlock(DiamondFurnaceOn, "Diamond Furnace On");
+		addBlock(DiamondFurnaceOff, "Diamond Furnace");
+		addBlock(Table, "Table");
+		addBlock(GoldDoor, "Gold Door");
+		addBlock(IronFurnaceOn, "Iron Furnace On");
+		addBlock(IronFurnaceOff, "Iron Furnace");
+		addBlock(Disasembler, "Dissasembler");
+		addBlock(CowSheepWool, "COWSHEEP Wool");
+		addBlock(SolarPanel, "Solar Panel");
+		addBlock(Extractor, "DNA Extractor");
+		addBlock(Mixer, "DNA Mixer");
+		addBlock(Assembler, "Mob Assembler");
+		addBlock(CopperOre, "Copper Ore");
+		addBlock(BigCrafting, "Big Crafting Table");
+		addBlock(TinOre, "Tin Ore");
+		addBlock(CopperBlock, "Copper Block");
+		addBlock(TinBlock, "Tin Block");
+		addBlock(SilverOre, "Silver Ore");
+		addBlock(SilverBlock, "Silver Block");	 
+		addBlock(FlyLightGrass, "Flylight Grass");
+		addBlock(FlyLightDirt, "Flylight Dirt");
+		addBlock(Test, "Colourful Block");
+		addBlock(FlyLightOre, "Flylight Ore");
+		addBlock(FlyLightPortal, "Flylight Portal");
+		addBlock(FlyLightStone, "Flylight Stone");
+		addBlock(SlowSand, "Sink Sand");
 	}
 
 	public static void addName(String par1, String name)

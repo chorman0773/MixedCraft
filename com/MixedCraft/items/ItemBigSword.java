@@ -10,6 +10,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import com.MixedCraft.EnumColourHandler;
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.items.tools.SwordBase;
 
 import cpw.mods.fml.relauncher.Side;
@@ -21,6 +22,7 @@ public class ItemBigSword extends SwordBase{
 		super(ID, par3enum);
 		setUnlocalizedName(name);
 		registerTexture(name);
+		setCreativeTab(MixedCraft.ToolTab);
 	}
 	
 	@Override
@@ -47,7 +49,7 @@ public class ItemBigSword extends SwordBase{
 	    @SideOnly(Side.CLIENT)
 	    public void addInformation(ItemStack itemstack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	    {
-	        par3List.add(itemstack.getMaxDamage() - itemstack.getItemDamage() + "Uses Remaining");
+	        par3List.add(itemstack.getMaxDamage() - itemstack.getItemDamage() + " Uses Remaining");
 	    }
 	
 }

@@ -1,7 +1,5 @@
 package com.MixedCraft.helper;
 
-
-
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -21,10 +19,11 @@ public class ItemsBase extends Item {
     private String iconPath;
 
 
-    public ItemsBase(int par1) {
-        super(par1);
+    public ItemsBase(int ID, String texture) {
+        super(ID);
+        registerTextures(texture);
+        setUnlocalizedName(texture);
         this.setCreativeTab(MixedCraft.MiscTab);
-
     }
     
     public Item registerTextures(String texture) {
@@ -32,7 +31,6 @@ public class ItemsBase extends Item {
         return this;
     }
     
-
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister icon) {

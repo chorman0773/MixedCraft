@@ -32,13 +32,13 @@ public class Achievements extends HelperHandler{
 		GameRegistry.registerPickupHandler(new PickupHandler());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 		
-		addAchievementName("Extractor", "Craft Extractor!");
+		addAchievementName("Extractor", "Ready To Extract!");
 		addAchievementDesc("Extractor", "Just Craft An Extractor!");
 		
-		addAchievementName("Mixer", "Craft Mixer!");
+		addAchievementName("Mixer", "Ready To Mix!");
 		addAchievementDesc("Mixer", "Just Craft A Mixer!");
 		
-		addAchievementName("Assembler", "Craft Assembler!");
+		addAchievementName("Assembler", "Ready To Assemble!");
 		addAchievementDesc("Assembler", "Just Craft A Mob Assembler!");
 		
 		addAchievementName("CopperOre", "Mine Copper!");

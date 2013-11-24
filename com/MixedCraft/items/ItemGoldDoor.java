@@ -16,7 +16,7 @@ public class ItemGoldDoor extends ItemsBase
 
     public ItemGoldDoor(int par1, Material par2Material)
     {
-        super(par1);
+        super(par1, "");
         this.doorMaterial = par2Material;
         this.maxStackSize = 1;
     }

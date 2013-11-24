@@ -28,8 +28,8 @@ public class GuiSpiderDNA extends GuiBaseDNA{
 		
 		this.fontRenderer.drawString("Spider", 40 + 16, 20 + 71, 0xFFFFFF);
 
-		this.fontRenderer.drawString("A monster that be angry at you during", 1 - 10, 20 + 129, 0xFFFFFF);
-		this.fontRenderer.drawString("the night and passive during the day.", 1 - 10, 20 + 139, 0xFFFFFF);
+		this.fontRenderer.drawString("A monster that is passive at you during", 1 - 10, 20 + 129, 0xFFFFFF);
+		this.fontRenderer.drawString("the night and angry during the day.", 1 - 10, 20 + 139, 0xFFFFFF);
 
 	}
 }

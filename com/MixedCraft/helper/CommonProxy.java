@@ -32,24 +32,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-public class CommonProxy extends HelperHandler
-{
-	public void registerRenderInformation()
-	{        
+public class CommonProxy extends HelperHandler {
+	
+	public void registerRenderInformation() {        
 
 	}    
-	
-	public void soundInit(){
-		
-	}
 
-	public static void Arrow(){
+	public void Arrow() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLightningArrow.class, new RenderLightningArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTNTArrow.class, new RenderTNTArrow());
 	}
 
-	public void preInit(FMLPreInitializationEvent event)
-	{         
+	public void preInit(FMLPreInitializationEvent event) {         
 
 		ConfigHelper.initConfig(event);
 
@@ -67,6 +61,8 @@ public class CommonProxy extends HelperHandler
 		MinecraftForge.EVENT_BUS.register(new ExplosiveArrowHitHandler());
 		tickRegistry();
 		registerTileEntity();
+		GameRegistry.registerPlayerTracker(new ManaHelper());
+		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 	}
 
 	public void registerTileEntity(){
@@ -77,7 +73,6 @@ public class CommonProxy extends HelperHandler
 		GameRegistry.registerTileEntity(TileEntityDNAAssembler.class, "TileEntity Assember");
 		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
-
 	}
 
 	public void init(FMLInitializationEvent event)

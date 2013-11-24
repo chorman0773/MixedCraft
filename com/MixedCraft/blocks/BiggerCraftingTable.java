@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.BlocksBase;
+import com.MixedCraft.helper.GuiHandler;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,7 +44,7 @@ public class BiggerCraftingTable extends BlocksBase{
 	{
 		if (!player.isSneaking())
 		{
-			player.openGui(MixedCraft.instance, 1, var1, var2, var3, var4);
+			player.openGui(MixedCraft.instance, GuiHandler.craftingTable, var1, var2, var3, var4);
 			return true;
 		}
 		else

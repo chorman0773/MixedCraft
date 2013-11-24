@@ -14,6 +14,7 @@ public class RecipeRemover {
 	
     public static void init() { 	
         RecipeHelper.init();
+        removeRecipes(Item.bow);
     }
     
     public static void removeRecipes(Item removeThis)

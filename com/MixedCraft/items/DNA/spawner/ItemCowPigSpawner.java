@@ -12,7 +12,7 @@ public class ItemCowPigSpawner extends ItemsBase
 
 	public ItemCowPigSpawner(int var1)
 	{
-		super(var1);
+		super(var1, "");
 	}
 
 

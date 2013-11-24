@@ -22,9 +22,11 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
     /** BlockID of the block the seeds can be planted on. */
     private int soilBlockID;
 
-    public ItemModSeeds(int par1, int par2, int par3)
+    public ItemModSeeds(int par1, int par2, int par3, String par4)
     {
-        super(par1);
+        super(par1, par4);
+        registerTextures(par4);
+        setUnlocalizedName(par4);
         this.blockType = par2;
         this.soilBlockID = par3;
         this.setCreativeTab(MixedCraft.MiscTab);

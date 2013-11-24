@@ -21,7 +21,7 @@ public class ItemLightningRod extends ItemsBase{
 
 
 	public ItemLightningRod(int par1){
-		super(par1);
+		super(par1, "");
 		setMaxStackSize(1);
 	}
 

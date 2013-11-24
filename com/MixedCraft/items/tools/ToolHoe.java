@@ -2,6 +2,8 @@ package com.MixedCraft.items.tools;
 
 import java.util.List;
 
+import com.MixedCraft.MixedCraft;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
@@ -13,8 +15,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ToolHoe extends HoeBase {
     private final EnumToolMaterial field_40439_b;
 
-	public ToolHoe(int par1, EnumToolMaterial par3enum) {
+	public ToolHoe(int par1, EnumToolMaterial par3enum, String par2) {
 		super(par1, par3enum);
+        registerItemTexture(par2);
+        setUnlocalizedName(par2);
+        setCreativeTab(MixedCraft.ToolTab);
         this.field_40439_b = par3enum;
 
 	}

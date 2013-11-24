@@ -27,7 +27,7 @@ public class LightningBow extends ItemsBase
 
 	public LightningBow(int par1)
 	{
-		super(par1);
+		super(par1, "");
 		this.maxStackSize = 1;
 		this.setMaxDamage(500);
 	}
@@ -191,11 +191,9 @@ public class LightningBow extends ItemsBase
 		return EnumAction.bow;
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, player
-	 */
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
 	{
+
 		ArrowNockEvent event = new ArrowNockEvent(player, par1ItemStack);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.isCanceled())
@@ -211,9 +209,6 @@ public class LightningBow extends ItemsBase
 		return par1ItemStack;
 	}
 
-	/**
-	 * Return the enchantability factor of the item, most of the time is based on material.
-	 */
 	public int getItemEnchantability()
 	{
 		return 1;

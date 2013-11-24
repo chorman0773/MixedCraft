@@ -17,7 +17,7 @@ public class ItemCowZombiePlacer extends ItemsBase
 
 	public ItemCowZombiePlacer(int var1)
 	{
-		super(var1);
+		super(var1, "");
 	}
 
 

@@ -12,15 +12,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMixedBase extends ItemsBase{
 
-	private String[] descriptors;
+	private String[] description;
 	
 	  public ItemMixedBase(int par1) {
-		super(par1);
+		super(par1, "MixedDNAKey");
 		
 	}
 	  
 	  public ItemMixedBase setDescription(String[] desc) {
-	        descriptors = desc;
+		  description = desc;
 	        return this;
 	    }
 	
@@ -28,7 +28,7 @@ public class ItemMixedBase extends ItemsBase{
 	    @SideOnly(Side.CLIENT)
 	    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	    {
-	        for (String desc : descriptors) {
+	        for (String desc : description) {
 	            par3List.add(desc);
 	        }
 	    }

@@ -1,6 +1,7 @@
 package com.MixedCraft;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 
 import com.MixedCraft.gui.BlockTab;
@@ -37,7 +38,13 @@ public class MixedCraft extends HelperHandler{
 	
 	public static CommonProxy proxy; 
 
-	public static final CreativeTabs DNATab = new DNATab("DNA");
+	public static final CreativeTabs DNATab = new DNATab("DNA"){
+		public ItemStack getIconItemStack() { 
+			return new ItemStack(ItemHelper.CowDNADrive);
+
+			}
+	};
+	
 	public static final CreativeTabs MixedDNATab = new MixedTab("MixedDNA");
 	public static final CreativeTabs SpawnerTab = new SpawnerTab("Spawner");
 	public static final CreativeTabs BlockTab = new BlockTab("Block");
@@ -63,6 +70,7 @@ public class MixedCraft extends HelperHandler{
 	public void preInit(FMLPreInitializationEvent event)
 	{	    
 		proxy.preInit(event);
+		proxy.registerRenderInformation();
 	}
 
 	@EventHandler

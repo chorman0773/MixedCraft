@@ -16,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -29,10 +30,14 @@ public class ToolShickaxe extends ItemTool
     private String iconPath;
     protected EnumToolMaterial theToolMaterial;
 
-    public ToolShickaxe(int par1, EnumToolMaterial par2EnumToolMaterial)
+    public ToolShickaxe(int par1, EnumToolMaterial par2EnumToolMaterial, String par2)
     {
         super(par1, 1, par2EnumToolMaterial, blocksEffectiveAgainst);
+        setCreativeTab(MixedCraft.ToolTab);
+        registerShickaxeTextures(par2);
+        setUnlocalizedName(par2);
         this.theToolMaterial = par2EnumToolMaterial;
+        setCreativeTab(MixedCraft.ToolTab);
         GameRegistry.registerItem(this, "Shickaxe");
     }
 

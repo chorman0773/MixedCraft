@@ -1,6 +1,7 @@
 package com.MixedCraft.recipes;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -12,17 +13,20 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeHelper {
 
+	 
+	 static ItemStack SilverShickaxe = new ItemStack(ItemHelper.SilverShickaxe);
+	 
 	public static void init(){
 		Shaped();
 		Shapeless();
 		Smelting();
 		BigShapedCrafting();
 		BigShapelessCrafting();
-
-        RecipeRemover.removeRecipes(Item.bow);
 	}
-
+	
 	public static void Shaped(){
+		
+		SilverShickaxe.addEnchantment(Enchantment.fortune, 10);
 		
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.FlashDrive, 1), new Object[] {" TT", "ICT", "II ", 'T', ItemHelper.TinIngot,'C', ItemHelper.CopperIngot, 'I', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(BlockHelper.SolarPanel, 1), new Object[] {"TCT", "IRI", "III", 'T', ItemHelper.TinIngot,'C', ItemHelper.CopperIngot, 'I', Block.blockIron, 'R', Item.redstone});
@@ -112,13 +116,7 @@ public class RecipeHelper {
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.CopperIngot, 9), new Object[] {BlockHelper.CopperBlock});
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.SilverIngot, 9), new Object[] {BlockHelper.SilverBlock});
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.TinIngot, 9), new Object[] {BlockHelper.TinBlock});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.SilverShickaxe, 1), new Object[] {ItemHelper.SilverAxe, ItemHelper.SilverHoe, ItemHelper.SilverPickaxe, ItemHelper.SilverShovel, ItemHelper.SilverSword ,Block.blockDiamond});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(BlockHelper.Test, 32), new Object[] {Item.diamond});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(Item.diamond, 9), new Object[] {Block.blockDiamond});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(Item.ingotIron, 9), new Object[] {Block.blockIron});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(Item.ingotGold, 9), new Object[] {Block.blockGold});
-		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(Item.emerald, 9), new Object[] {Block.blockEmerald});
-
+		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.SilverShickaxe, 1), new Object[] {ItemHelper.SilverAxe, ItemHelper.SilverHoe, ItemHelper.SilverPickaxe, ItemHelper.SilverShovel, ItemHelper.SilverSword, Block.blockDiamond});
 	}
 
 	public static void Shapeless(){

@@ -27,7 +27,7 @@ public class ItemTNTBow extends ItemsBase
 
 	public ItemTNTBow(int par1)
 	{
-		super(par1);
+		super(par1, "");
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 	}

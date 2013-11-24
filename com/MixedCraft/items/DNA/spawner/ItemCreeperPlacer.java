@@ -15,7 +15,7 @@ public class ItemCreeperPlacer extends ItemsBase
 
 	public ItemCreeperPlacer(int var1)
 	{
-		super(var1);
+		super(var1, "");
 	}
 
 
