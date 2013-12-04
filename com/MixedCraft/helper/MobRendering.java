@@ -1,6 +1,7 @@
 package com.MixedCraft.helper;
 
 import net.minecraft.client.model.*;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.MixedCraft.*;
@@ -24,6 +25,7 @@ public class MobRendering {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCowSheep.class, new RenderCowSheep(new ModelSheep2(), new ModelSheep1(), 0.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCowEnderman.class, new RenderCowEnderman());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCowZombie.class, new RenderCowZombie());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCompanion.class, new RenderTameable());
 
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityDroid.class, new RenderDroid(new ModelDroid()));

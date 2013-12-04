@@ -1,5 +1,7 @@
 package com.MixedCraft.items;
 
+import com.MixedCraft.helper.ManaHelper;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
 import net.minecraft.item.Item;
@@ -43,7 +45,7 @@ public class WandOfHarming extends ItemBaseWand {
 
 		ItemStack hp = new ItemStack(Item.potion, 5);
 		hp.setItemDamage(5149388);
-		if (!world.isRemote)
+		if (!world.isRemote && ManaHelper.useBar(playerEntity, 40))
 		{
 			world.spawnEntityInWorld(new EntityPotion(world, playerEntity, hp));
 		}

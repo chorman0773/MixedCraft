@@ -26,6 +26,7 @@ public class MobRegistry {
 		ModMobRegistry.registerEntity(EntityCowSheep.class, x.GREEN + "Cow: Sheep");
 		ModMobRegistry.registerEntity(EntityCowEnderman.class, x.DARK_RED + "Cow: Enderman");
 		ModMobRegistry.registerEntity(EntityCowZombie.class, x.DARK_RED + "Cow: Zombie");
+		ModMobRegistry.registerEntity(EntityCompanion.class, "Companion");
 		
 		EntityRegistry.registerModEntity(EntityDroid.class, "Droid", 6, MixedCraft.instance, 80, 3, true);
 		//EntityRegistry.registerModEntity(EntityShip.class, "EntitySpaceship", 7, MixedCraft.instance, 80, 3, true);

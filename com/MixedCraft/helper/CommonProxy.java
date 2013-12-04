@@ -58,7 +58,7 @@ public class CommonProxy extends HelperHandler {
 		MobRendering.init();
 		MobRegistry.init();
 		DimensionHelper.init();
-		MinecraftForge.EVENT_BUS.register(new ExplosiveArrowHitHandler());
+		//MinecraftForge.EVENT_BUS.register(new ExplosiveArrowHitHandler());
 		tickRegistry();
 		registerTileEntity();
 		GameRegistry.registerPlayerTracker(new ManaHelper());

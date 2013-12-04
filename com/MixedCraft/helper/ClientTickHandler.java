@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.EnumSet;
 
 
+
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.multiplayer.*;
@@ -15,6 +16,8 @@ import net.minecraft.world.*;
 
 import org.lwjgl.opengl.GL11;
 
+import com.MixedCraft.entity.EntityCompanion;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -24,7 +27,9 @@ public class ClientTickHandler implements ITickHandler
 	private static boolean initialized = false;
 
 	Minecraft mc = Minecraft.getMinecraft();
-	World world = FMLClientHandler.instance().getClient().theWorld;
+	
+	
+	
 	
 	@Override
 	public void tickStart(EnumSet var1, Object ... mc) {
@@ -33,10 +38,14 @@ public class ClientTickHandler implements ITickHandler
 	@Override
 	public void tickEnd(EnumSet var1, Object ... mc) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-
+		World world = FMLClientHandler.instance().getClient().theWorld;
 		if (!var1.equals(EnumSet.of(TickType.RENDER)) && var1.equals(EnumSet.of(TickType.CLIENT)) && FMLClientHandler.instance().getClient().currentScreen == null && !initialized) {
 			initialized = true;
 			FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(EnumChatFormatting.GREEN + "Welcome " + player.username);
+			EntityCompanion entity = new EntityCompanion(world, player.username);
+			entity.setCanPickUpLoot(true);
+			entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0F, 0F);
+			world.spawnEntityInWorld(entity);
 		}
 		else if (var1.equals(EnumSet.of(TickType.RENDER))) {
 			onRenderTick();
@@ -56,16 +65,11 @@ public class ClientTickHandler implements ITickHandler
 	}
 	
 	public void onRenderTick() {
-
-		//Minecraft mc = Minecraft.getMinecraft();
-		GuiIngame gig = mc.ingameGUI;
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		//World world = FMLClientHandler.instance().getClient().theWorld;
 		if(mc.currentScreen == null) {
+			GuiIngame gig = mc.ingameGUI;
+			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		int var29;
-		int var19;
 		int var26;
-		int var47;
 		ScaledResolution scaledresolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 		int i = scaledresolution.getScaledWidth();
 		int k = scaledresolution.getScaledHeight();

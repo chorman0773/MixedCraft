@@ -1,5 +1,8 @@
 package com.MixedCraft.items;
 
+import com.MixedCraft.helper.ManaHelper;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,15 +58,17 @@ public class WandOfHarvesting extends ItemBaseWand {
 	
 	protected void harvestBlock(World w, int x, int y, int z){
 		if(isHarvestable(w,x,y,z)){
-			//w.setBlockToAir(x, y, z);
 			w.destroyBlock(x, y, z, true);
 		}
 	}
 	
 	protected boolean isHarvestable(World w, int x, int y, int z){
 		Material mat = w.getBlockMaterial(x, y, z);
+
 		return mat == Material.cactus || mat == Material.leaves 
 				|| mat == Material.plants || mat == Material.pumpkin || mat == Material.vine
-				|| mat == Material.web || mat == Material.dragonEgg || mat == Material.wood;
+				|| mat == Material.web || mat == Material.dragonEgg || mat == Material.wood
+				|| mat == Material.sand || mat == Material.cloth || mat == Material.rock
+				|| mat == Material.iron || mat == Material.grass || mat == Material.ground;
 	}
 }

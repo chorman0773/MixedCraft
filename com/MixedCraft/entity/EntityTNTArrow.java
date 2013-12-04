@@ -7,6 +7,7 @@ import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -35,7 +36,7 @@ public class EntityTNTArrow extends Entity implements IProjectile
     private int inTile;
     private int inData;
     private boolean inGround;
-
+    private float size = 3.0F;
     /** 1 if the player can pick up the arrow */
     public int canBePickedUp;
 
@@ -46,7 +47,7 @@ public class EntityTNTArrow extends Entity implements IProjectile
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 2.0D;
+    private double damage = 4.0D;
 
     /** The amount of knockback an arrow applies when it hits a mob. */
     private int knockbackStrength;
@@ -363,7 +364,8 @@ public class EntityTNTArrow extends Entity implements IProjectile
                         }
 
                         this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-
+                        worldObj.createExplosion(this, posX, posY, posZ, size, false);
+                        this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
                         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
                         {
                             this.setDead();
@@ -394,6 +396,8 @@ public class EntityTNTArrow extends Entity implements IProjectile
                     this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
                     this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
                     this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+                    worldObj.createExplosion(this, posX, posY, posZ, size, false);
+                    this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
                     this.inGround = true;
                     this.arrowShake = 7;
                     this.setIsCritical(false);
