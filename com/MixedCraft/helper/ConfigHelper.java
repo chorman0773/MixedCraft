@@ -45,7 +45,6 @@ public class ConfigHelper {
 	public static int PigZombieMixedDriveID;
 	public static int PigEndermanMixedDriveID;
 	public static int PigSheepMixedDriveID;
-	public static int PigPigMixedDriveID;
 	public static int PigSlimeMixedDriveID;
 	public static int PigBlazeMixedDriveID;
 	public static int PigSpiderMixedDriveID;
@@ -122,20 +121,19 @@ public class ConfigHelper {
 	public static int DisasemblerID;
 	public static int IronFurnaceID;
 	public static int IronFurnaceOnID;
-	public static int Diamond;
 	public static int GoldDoorID;
 	public static int TableID;
 	public static int DiamondFurnaceOnID;
 	public static int DiamondFurnaceOffID;
-	public static int BluestoneWireBlockID;
+	public static int ColourID;
 	public static int BluestoneOreGlowingID;
 	public static int BluestoneOreID;
 	public static int BlueRepeaterID;
 	public static int BlueRepeaterOnID;
-	public static int BlueComparatorID;
+	public static int FlylightPortalID;
 	public static int BlueComparatorOnID;
 	public static int BlueTorchID;
-	public static int BlueTorchOnID;
+	public static int SlowSandID;
 	public static int BluestoneBlockID;
 	public static int House1ID;
 	public static int HugeChestID;
@@ -147,13 +145,15 @@ public class ConfigHelper {
 	public static int CardID, WandID, DroidID;
 	public static int GoldFurnaceID;
 	public static int GoldFurnaceOnID;
-	public static int poisonOreID;
 	public static int DoubleFurnaceOffID;
 	public static int DoubleFurnaceOnID;
 	public static int WandDeathID, WandFireID, WandGrowthID, WandHarvestID, WandHealingID, WandIceID, WandMissileID, WandMiningID, WandTeleportID
 	, WandHarmingID;
 	
-	public static int id = 1500;
+	public static int Flower1, Flower2, FlylightLog, FlylightLeaves, SugarCane, Grass, Fern, Sapling, ItemCane, ModWater, Vine;
+	public static int Iron, Coal, Redstone, Emerald, Diamond, Lapis, Gold;
+	
+	public static int id = 3000;
 
 	static FMLPreInitializationEvent Event;
 
@@ -166,8 +166,6 @@ public class ConfigHelper {
 	}
 
 	static void blocks(){
-		poisonOreID = addBlock("Poision Ore");
-
 		ExtractorID = addBlock("extractor");
 		MixerID = addBlock("mixer");
 		AssemblerID = addBlock("assembler");
@@ -187,16 +185,15 @@ public class ConfigHelper {
 		TableID = addBlock("Table");
 		DiamondFurnaceOffID = addBlock("DiamondFurnace");
 		DiamondFurnaceOnID = addBlock("DiamondFurnaceOn");
-
-		BluestoneWireBlockID = addBlock("BluestoneWireBlock");
+		ColourID = addBlock("Colourfull block");
 		BluestoneOreID = addBlock("BluestoneOre");
 		BluestoneOreGlowingID = addBlock("BluestoneOreGlowing");
 		BlueRepeaterID = addBlock("BlueRepeater");
 		BlueRepeaterOnID = addBlock("BlueRepeaterOn");
-		BlueComparatorID = addBlock("BlueComparator");
+		FlylightPortalID = addBlock("FlyLight Portal");
 		BlueComparatorOnID = addBlock("BlueComparatorOn");
 		BlueTorchID = addBlock("BlueTorch");
-		BlueTorchOnID = addBlock("BlueTorchOn");
+		SlowSandID = addBlock("Sink Sand");
 		BluestoneBlockID = addBlock("BluestoneBlock");
 		House1ID = addBlock("House1");
 		HugeChestID = addBlock("HugeChest");
@@ -207,6 +204,23 @@ public class ConfigHelper {
 		GoldFurnaceOnID = addBlock("Gold Furnace On");
 		DoubleFurnaceOffID = addBlock("DoubleFurnace");
 		DoubleFurnaceOnID = addBlock("DoubleFurnaceOn");
+		Flower1 = addBlock("Flower 1");
+		Flower2 = addBlock("Flower 2");
+		FlylightLog = addBlock("Flylight Log");
+		FlylightLeaves = addBlock("Flylight Leaves");
+		SugarCane = addBlock("S+Sugar Cane");
+		Grass = addBlock("Grass");
+		Fern = addBlock("Fern");
+		Sapling = addBlock("Sapling");
+		ModWater = addBlock("Flylight Water");
+		Vine = addBlock("Flylight Vine");
+		Iron = addBlock("Flylight Iron Ore");
+		Coal = addBlock("Flylight Coal Ore");
+		Redstone = addBlock("Flylight Redstone Ore");
+		Emerald = addBlock("Flylight Emerald Ore");
+		Diamond = addBlock("Flylight Diamond Ore");
+		Lapis = addBlock("Flylight Lapis Ore");
+		Gold = addBlock("Flylight Gold Ore");
 	}
 
 	static void items(){
@@ -227,8 +241,8 @@ public class ConfigHelper {
 		BlazeDNADriveID = addItem("BlazeDNADrive");
 		WitherSDNADriveID = addItem("WitherSDNADrive");
 		WitherDNADriveID = addItem("WitherDNADrive");
-
 		CowPigMixedDriveID = addItem("CowPigMixedDrive");
+		CowSheepMixedDriveID = addItem("Cow Sheep");
 		CowChickenMixedDriveID = addItem("CowChickenMixedDrive");
 		CowCreeperMixedDriveID = addItem("CowCreeperMixedDrive");
 		CowEndermanMixedDriveID = addItem("CowEndermanMixedDrive");
@@ -242,10 +256,10 @@ public class ConfigHelper {
 		CowSquidMixedDriveID = addItem("CowSquidMixedDrive");
 		CowWitherMixedDriveID = addItem("CowSquidMixedDrive");
 		CowWitherSMixedDriveID = addItem("CowWitherSMixedDrive");
-
 		PigChickenMixedDriveID = addItem("PigChickenMixedDrive");
 		PigCreeperMixedDriveID = addItem("CowCreeperMixedDrive");
 		PigEndermanMixedDriveID = addItem("PigEndermanMixedDrive");
+		PigSheepMixedDriveID = addItem("Pig Sheep");
 		PigZombieMixedDriveID = addItem("PigZombieMixedDrive");
 		PigSlimeMixedDriveID = addItem("PigSlimeMixedDrive");
 		PigBlazeMixedDriveID = addItem("PigBlazeMixedDrive");
@@ -256,7 +270,6 @@ public class ConfigHelper {
 		PigSquidMixedDriveID = addItem("PigSquidMixedDrive");
 		PigWitherMixedDriveID = addItem("PigWitherMixedDrive");
 		PigWitherSMixedDriveID = addItem("PigWitherSMixedDrive");
-
 		CowPigSpawnerID = addItem("CowPigSpawner");
 		CowSheepSpawnerID = addItem("CowSheepSpawner");
 		CowChickenSpawnerID = addItem("CowChickenSpawner");
@@ -272,7 +285,6 @@ public class ConfigHelper {
 		CowSquidSpawnerID = addItem("CowSquidSpawner");
 		CowWitherSpawnerID = addItem("CowWitherSpawner");
 		CowWitherSSpawnerID = addItem("CowWitherSSpawner");
-
 		CopperIngotID = addItem("CopperIngot");
 		TinIngotID = addItem("TinIngot");
 		SilverIngotID = addItem("SilverIngot");
@@ -281,7 +293,6 @@ public class ConfigHelper {
 		GoldDoorItemID = addItem("GoldDoorItem");
 		StructureBuilderID = addItem("StructureBuilder");
 		LightningRodID = addItem("LightningRod");
-
 		SilverSwordID = addItem("SilverSword");
 		SilverHoeID = addItem("SilverHoe");
 		SilverShovelID = addItem("SilverShovel");
@@ -293,20 +304,15 @@ public class ConfigHelper {
 		GoldBigSwordID = addItem("GoldBigSword");
 		WoodBigSwordID = addItem("WoodBigSword");
 		StoneBigSwordID = addItem("StoneBigSword");
-
 		FlameSwordID = addItem("FlameSwordID");
-
 		ItemBlueComparatorID = addItem("ItemBlueComparator");
 		ItemBluestoneID = addItem("ItemBluestone");
 		ItemBluestoneRepeaterID = addItem("ItemBluestoneRepeater");
 		ChocolateBeanID = addItem("ChocolateBeanID");
-
 		LightningBowID = addItem("LightningBow");
 		LightningArrowID = addItem("LightningArrow");
-
 		TNTBowID = addItem("TNTBow");
 		TNTArrowID = addItem("TNTArrow");
-
 		DroidID = addItem("Droid Item");
 		WandID = addItem("Wand");
 		WandDeathID = addItem("Wand Of Death");
@@ -319,23 +325,29 @@ public class ConfigHelper {
 		WandMiningID = addItem("Wand Of Mining");
 		WandTeleportID = addItem("Wand Of Teleport");
 		WandHarmingID = addItem("Wand Of Harming");
+		ItemCane = addItem("Flylight Sugar Cane Item");
 	}
+	static int item;
+	static int block;
 
 	public static int addItem(String name){
-		File file = new File(Event.getModConfigurationDirectory(), "MixedCraft Items.cfg");
+		File file = new File(Event.getModConfigurationDirectory(), "MixedCraft.cfg");
 		Configuration config = new Configuration(file);
 		config.load();
-		config.getItem(name, id++).getInt();
+		item = config.getItem(name, id++).getInt();
 		config.save();
-		return id++;
+		return item++;
 	}
-
+	
+	public static int Flylight;
+	
 	public static int addBlock(String Name){
-		File file = new File(Event.getModConfigurationDirectory(), "MixedCraft Blocks.cfg");
+		File file = new File(Event.getModConfigurationDirectory(), "MixedCraft.cfg");
 		Configuration config = new Configuration(file);
 		config.load();
-		config.getBlock(Name, id++).getInt();
+		block = config.getBlock(Name, id++).getInt();
+		Flylight = config.get("Dimension", "Flylight", 15).getInt();
 		config.save();
-		return id++;
+		return block++;
 	}
 }

@@ -25,8 +25,8 @@ public class ContainerDNAMixer extends Container
     public ContainerDNAMixer(InventoryPlayer var1, TileEntityDNAMixer var2)
     { 
         this.furnace = var2;
-        this.addSlotToContainer(new Slot(var2, 0, 38, 18));
-        this.addSlotToContainer(new Slot(var2, 1, 38, 54));
+        this.addSlotToContainer(new Slot(var2, 0, 70, 18));
+        this.addSlotToContainer(new Slot(var2, 1, 70, 54));
         this.addSlotToContainer(new SlotFurnace(var1.player, var2, 2, 116 + 4, 36));
         int var3;
 

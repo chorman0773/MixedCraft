@@ -28,7 +28,7 @@ public class GuiPigDNA extends GuiBaseDNA{
 		
 		this.fontRenderer.drawString("Pig", 40 + 16, 20 + 71, 0xFFFFFF);
 
-		this.fontRenderer.drawString("A wandering animal that grazes trough", 1 - 10, 20 + 129, 0xFFFFFF);
+		this.fontRenderer.drawString("A wandering animal that grazes through", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRenderer.drawString("the grass. This animal has four legs.", 1 - 10, 20 + 139, 0xFFFFFF);
 		this.fontRenderer.drawString("This animal is used for pork.", 1 - 10, 20 + 149, 0xFFFFFF);
 

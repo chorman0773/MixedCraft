@@ -16,7 +16,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 	{
 		switch(world.provider.dimensionId)
 		{
-		case - 1: generateNether(world, random, chunkX * 16, chunkZ * 16);
+		case -1: generateNether(world, random, chunkX * 16, chunkZ * 16);
 		case 0: generateSurface(world, random, chunkX * 16, chunkZ * 16);
 		case 1: generateEnd(world, random, chunkX * 16, chunkZ * 16);
 		}

@@ -27,8 +27,8 @@ public class ContainerDNAExtractor extends Container
         this.furnace = var2;
         int var3;
         int var5 = 0;
-        this.addSlotToContainer(new Slot(var2, 0, 38, 18));
-        this.addSlotToContainer(new Slot(var2, 1, 38, 54));
+        this.addSlotToContainer(new Slot(var2, 0, 70, 18));
+        this.addSlotToContainer(new Slot(var2, 1, 70, 54));
         this.addSlotToContainer(new SlotFurnace(var1.player, var2, 2, 116 + 4, 36));
 
         for (var3 = 0; var3 < 3; ++var3)

@@ -42,10 +42,10 @@ public class ClientTickHandler implements ITickHandler
 		if (!var1.equals(EnumSet.of(TickType.RENDER)) && var1.equals(EnumSet.of(TickType.CLIENT)) && FMLClientHandler.instance().getClient().currentScreen == null && !initialized) {
 			initialized = true;
 			FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(EnumChatFormatting.GREEN + "Welcome " + player.username);
-			EntityCompanion entity = new EntityCompanion(world, player.username);
-			entity.setCanPickUpLoot(true);
-			entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0F, 0F);
-			world.spawnEntityInWorld(entity);
+			//EntityCompanion entity = new EntityCompanion(world, player.username);
+			//entity.setCanPickUpLoot(true);
+			//entity.setLocationAndAngles(player.posX, player.posY, player.posZ, 0F, 0F);
+			//world.spawnEntityInWorld(entity);
 		}
 		else if (var1.equals(EnumSet.of(TickType.RENDER))) {
 			onRenderTick();
@@ -66,6 +66,7 @@ public class ClientTickHandler implements ITickHandler
 	
 	public void onRenderTick() {
 		if(mc.currentScreen == null) {
+			String s = "MANA BAR";
 			GuiIngame gig = mc.ingameGUI;
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		int var29;

@@ -28,7 +28,7 @@ public abstract class ItemBaseWand extends ItemsBase {
 
 	@Override public boolean getIsRepairable(ItemStack stack, ItemStack mat)
 	{
-		return mat.itemID == Item.ingotGold.itemID || mat.itemID == Item.diamond.itemID;
+		return mat.itemID == Item.ingotGold.itemID;
 	}
 	
 	public boolean isOutOfCharge(ItemStack stack){

@@ -32,11 +32,6 @@ public class RenderCowZombie extends RenderLiving
 		return EntityResourceLocation.CowZombie;
 	}
 
-	protected ResourceLocation func_110775_a(Entity par1Entity)
-	{
-		return this.getEntityTexture((EntityMob)par1Entity);
-	}
-
 	protected void renderLabel(EntityMob entityLiving, double par2, double par4, double par6)
 	{
 		int distanceToEntity = 32;

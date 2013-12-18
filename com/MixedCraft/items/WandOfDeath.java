@@ -57,7 +57,7 @@ public class WandOfDeath extends ItemBaseWand {
 
 		playSound("mob.endermen.portal",world,playerEntity);
 
-		if (!world.isRemote && ManaHelper.useBar(playerEntity, 200))
+		if (!world.isRemote && ManaHelper.useBar(playerEntity, 100))
 		{
 			double vecX = (double)(-MathHelper.sin(playerEntity.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(playerEntity.rotationPitch / 180.0F * (float)Math.PI));
 			double vecY = (double)(-MathHelper.sin(playerEntity.rotationPitch / 180.0F * (float)Math.PI));
@@ -71,11 +71,13 @@ public class WandOfDeath extends ItemBaseWand {
 		return srcItemStack;
 	}
 
-	@Override public int getUseCost(){
+	@Override 
+	public int getUseCost(){
 		return 1;
 	}
 
-	@Override  public int getBaseRepairCost(){
+	@Override 
+	public int getBaseRepairCost(){
 		return 20;
 	}
 }

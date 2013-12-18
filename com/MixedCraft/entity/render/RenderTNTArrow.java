@@ -84,11 +84,6 @@ public class RenderTNTArrow extends Render
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return field_110780_a;
 	}
-    
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.getEntityTexture((EntityTNTArrow)par1Entity);
-    }
 
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then

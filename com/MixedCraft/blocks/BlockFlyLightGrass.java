@@ -4,6 +4,8 @@ import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.helper.BlocksBase;
@@ -44,6 +46,12 @@ public class BlockFlyLightGrass extends BlocksBase
                 }
             }
         }
+    }
+    
+    @Override
+    public boolean canSustainPlant(World world, int x, int y, int z,
+    		ForgeDirection direction, IPlantable plant) {
+    	return true;
     }
 
     /**

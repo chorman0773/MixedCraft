@@ -48,7 +48,7 @@ public class MixerRecipes
         this.addSmelting(ItemHelper.WitherDNADrive.itemID, new ItemStack(ItemHelper.CowWitherMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.WitherSDNADrive.itemID, new ItemStack(ItemHelper.CowWitherSMixedDrive), 0.0F);
 
-        this.addSmelting(ItemHelper.ChickenDNADrive.itemID, new ItemStack(ItemHelper.PigChickenMixedDrive), 0.0F);
+        /*this.addSmelting(ItemHelper.ChickenDNADrive.itemID, new ItemStack(ItemHelper.PigChickenMixedDrive), 0.0F);
         //this.addSmelting(ItemHelper.CowDNADrive.itemID, new ItemStack(ItemHelper.Cow), 0.0F);
         this.addSmelting(ItemHelper.CreeperDNADrive.itemID, new ItemStack(ItemHelper.PigCreeperMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.SheepDNADrive.itemID, new ItemStack(ItemHelper.PigSheepMixedDrive), 0.0F);
@@ -62,7 +62,7 @@ public class MixerRecipes
         this.addSmelting(ItemHelper.SkeletonDNADrive.itemID, new ItemStack(ItemHelper.PigSkeletonMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.SquidDNADrive.itemID, new ItemStack(ItemHelper.PigSquidMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.WitherDNADrive.itemID, new ItemStack(ItemHelper.PigWitherMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.WitherSDNADrive.itemID, new ItemStack(ItemHelper.PigWitherSMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.WitherSDNADrive.itemID, new ItemStack(ItemHelper.PigWitherSMixedDrive), 0.0F);*/
         
         
     }

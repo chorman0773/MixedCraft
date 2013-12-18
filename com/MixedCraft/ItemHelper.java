@@ -122,7 +122,7 @@ public class ItemHelper extends HelperHandler{
     public static final Item ChocolateBean = new ItemModSeeds(x.ChocolateBeanID, BlockHelper.ChocolateCrop.blockID, Block.tilledField.blockID, "ChocolateBean");
 	public static final Item Droid = new ItemDroid(x.DroidID);
 	public static final Item Wand = new ItemMobShooter(x.WandID);
-	public static final Item Test = new ItemHouse(4235);
+	//public static final Item Test = new ItemHouse(4235);
 	
 	public static final Item wandDeath = new WandOfDeath(x.WandDeathID, "wandDeath");
 	public static final Item wandFire = new WandOfFire(x.WandFireID, "wandFire");
@@ -136,6 +136,7 @@ public class ItemHelper extends HelperHandler{
 	public static final Item wandHarming = new WandOfHarming(x.WandHarmingID, "wandHarm");
 	
 	public static void addNames(){
+		addItem(Droid, "Droid");
 		addItem(wandHarming, "Wand Of Harming");
 		addItem(wandDeath, "Wand Of Death");
 		addItem(wandFire, "Wand Of Fire");
@@ -189,5 +190,7 @@ public class ItemHelper extends HelperHandler{
 		addItem(SilverAxe, "Silver Axe");
 
 		addItem(Wand, "Wand");
+		
+		addAlotItem("MixedDNAKey", "Mixed DNA Key");
 	}
 }

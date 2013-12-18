@@ -18,7 +18,7 @@ public class RenderDroid extends Render{
 	public RenderDroid(ModelDroid droid){
 		model = droid;
 		shadowSize = 0.5F;
-		
+
 	}
 
 
@@ -30,7 +30,8 @@ public class RenderDroid extends Render{
 		GL11.glScalef(-1F, -1F, 1F);
 
 		bindEntityTexture(droid);
-		model.render(droid.getCoreRotation(), droid.getPanelRotation(), droid.getOuterPanelRotation(), droid.getHelmetPosition(), droid.getRedColour(), droid.getGreenColour(), droid.getBlueColour(), 0.0625F);
+		model.render(droid.getCoreRotation(), droid.getPanelRotation(), droid.getOuterPanelRotation(), 
+		droid.getHelmetPosition(), droid.getRedColour(), droid.getGreenColour(), droid.getBlueColour(), 0.0625F);
 
 		GL11.glPopMatrix();
 	}

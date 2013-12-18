@@ -17,7 +17,6 @@ import com.MixedCraft.handler.EntityResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class RenderCowCreeper extends RenderLiving
 {
 	private static final ResourceLocation field_110831_a = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
@@ -172,11 +171,6 @@ public class RenderCowCreeper extends RenderLiving
 	protected int inheritRenderPass(EntityLivingBase par1EntityLivingBase, int par2, float par3)
 	{
 		return this.func_77061_b((EntityCowCreeper)par1EntityLivingBase, par2, par3);
-	}
-
-	protected ResourceLocation func_110775_a(Entity par1Entity)
-	{
-		return this.getEntityTexture((EntityCowCreeper)par1Entity);
 	}
 
 	protected void renderLabel(EntityCowCreeper entityLiving, double par2, double par4, double par6)

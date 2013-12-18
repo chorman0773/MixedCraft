@@ -12,9 +12,6 @@ import com.MixedCraft.helper.RecipeRemover;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeHelper {
-
-	 
-	 static ItemStack SilverShickaxe = new ItemStack(ItemHelper.SilverShickaxe);
 	 
 	public static void init(){
 		Shaped();
@@ -24,10 +21,11 @@ public class RecipeHelper {
 		BigShapelessCrafting();
 	}
 	
+	static ItemStack s;
+	static ItemStack b;
+	
 	public static void Shaped(){
-		
-		SilverShickaxe.addEnchantment(Enchantment.fortune, 10);
-		
+				
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.FlashDrive, 1), new Object[] {" TT", "ICT", "II ", 'T', ItemHelper.TinIngot,'C', ItemHelper.CopperIngot, 'I', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(BlockHelper.SolarPanel, 1), new Object[] {"TCT", "IRI", "III", 'T', ItemHelper.TinIngot,'C', ItemHelper.CopperIngot, 'I', Block.blockIron, 'R', Item.redstone});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.GoldHandsaw, 1), new Object[] {"SSS", "GGS", "   ", 'S', Item.stick, 'G', Item.ingotGold});
@@ -60,6 +58,25 @@ public class RecipeHelper {
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.StoneBigSword, 1), new Object[] {" DD", "DDD", "SD ", 'S', Item.stick, 'D', Block.cobblestone});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.WoodBigSword, 1), new Object[] {" DD", "DDD", "SD ", 'S', Item.stick, 'D', Block.planks});
 
+		s = new ItemStack(Item.skull);
+		s.setItemDamage(1);
+		
+		b = new ItemStack(Item.dyePowder);
+		b.setItemDamage(15);
+		
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandDeath, 1), new Object[] {"S", "I", "I", 'S', s, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandFire, 1), new Object[] {"S", "I", "I", 'S', Item.blazeRod, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandGrowth, 1), new Object[] {"S", "I", "I", 'S', b, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandHarming, 1), new Object[] {"S", "I", "I", 'S', Item.redstone, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandHarvest, 1), new Object[] {"S", "I", "I", 'S', Item.hoeDiamond, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandHealing, 1), new Object[] {"S", "I", "I", 'S', Item.ghastTear, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandIce, 1), new Object[] {"S", "I", "I", 'S', Block.ice, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandMissile, 1), new Object[] {"S", "B", "I", 'S', Item.arrow, 'B', Item.bow, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandMining, 1), new Object[] {"S", "I", "I", 'S', Item.pickaxeDiamond, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandTeleport, 1), new Object[] {"S", "I", "I", 'S', Item.eyeOfEnder, 'I', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.Wand, 1), new Object[] {"S", "G", "I", 'S', Item.feather, 'I', Block.blockDiamond, 'G', Block.blockGold});
+		GameRegistry.addRecipe(new ItemStack(Block.furnaceIdle, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
+		GameRegistry.addRecipe(new ItemStack(Item.stick, 16), new Object[] {"L", "L", 'L', BlockHelper.FlylightLog});
 	}
 
 	public static void BigShapedCrafting(){
@@ -109,10 +126,23 @@ public class RecipeHelper {
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(BlockHelper.IronFurnaceOff, 1), new Object[] {"III", "I I", "III", 'I', Item.ingotIron});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(BlockHelper.DiamondFurnaceOff, 1), new Object[] {"III", "I I", "III", 'I', Item.diamond});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.GoldDoor, 1), new Object[] {"II", "II", "II", 'I', Item.ingotGold});
+	
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandDeath, 1), new Object[] {"S", "I", "I", 'S', new ItemStack(Item.skull.itemID, 1, 1), 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandFire, 1), new Object[] {"S", "I", "I", 'S', Item.blazeRod, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandGrowth, 1), new Object[] {"S", "I", "I", 'S', new ItemStack(Item.dyePowder, 1, 15), 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandHarming, 1), new Object[] {"S", "I", "I", 'S', Item.redstone, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandHarvest, 1), new Object[] {"S", "I", "I", 'S', Item.hoeDiamond, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandHealing, 1), new Object[] {"S", "I", "I", 'S', Item.ghastTear, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandIce, 1), new Object[] {"S", "I", "I", 'S', Block.ice, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandMissile, 1), new Object[] {"S", "B", "I", 'S', Item.arrow, 'B', Item.bow, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandMining, 1), new Object[] {"S", "I", "I", 'S', Item.pickaxeDiamond, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandTeleport, 1), new Object[] {"S", "I", "I", 'S', Item.eyeOfEnder, 'I', Block.blockGold});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Block.furnaceIdle, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Item.stick, 16), new Object[] {"L", "L", 'L', BlockHelper.FlylightLog});
 	}
 
 	public static void BigShapelessCrafting(){
-		
+		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(Block.ice, 1), new Object[] {Item.bucketWater, Item.bucketWater, Item.bucketWater, Item.bucketWater});
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.CopperIngot, 9), new Object[] {BlockHelper.CopperBlock});
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.SilverIngot, 9), new Object[] {BlockHelper.SilverBlock});
 		CraftingBigManager.getInstance().addShapelessRecipe(new ItemStack(ItemHelper.TinIngot, 9), new Object[] {BlockHelper.TinBlock});
@@ -120,7 +150,7 @@ public class RecipeHelper {
 	}
 
 	public static void Shapeless(){
-		
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.ice, 1), new Object[] {Item.bucketWater, Item.bucketWater, Item.bucketWater, Item.bucketWater});
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHelper.CopperIngot, 9), new Object[] {BlockHelper.CopperBlock});
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHelper.TinIngot, 9), new Object[] {BlockHelper.TinBlock});
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHelper.SilverIngot, 9), new Object[] {BlockHelper.SilverBlock});
@@ -135,7 +165,8 @@ public class RecipeHelper {
 		GameRegistry.addSmelting(BlockHelper.TinOre.blockID, new ItemStack(ItemHelper.TinIngot, 1), 0);
 		GameRegistry.addSmelting(BlockHelper.CopperOre.blockID, new ItemStack(ItemHelper.CopperIngot, 1), 0);
 		GameRegistry.addSmelting(Item.rottenFlesh.itemID, new ItemStack(Item.leather, 1), 0);
-
+		GameRegistry.addSmelting(BlockHelper.Iron.blockID, new ItemStack(Item.ingotIron, 1), 0);
+		GameRegistry.addSmelting(BlockHelper.FlylightLog.blockID, new ItemStack(Item.coal, 1), 0);
 	}
 
 }

@@ -15,7 +15,6 @@ import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class RenderChickenCow extends RenderLiving
 {
 	
@@ -56,11 +55,6 @@ public class RenderChickenCow extends RenderLiving
     public void renderPlayer(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderChicken((EntityChickenCow)par1EntityLivingBase, par2, par4, par6, par8, par9);
-    }
-
-    protected ResourceLocation func_110775_a(Entity par1Entity)
-    {
-        return this.getEntityTexture((EntityChickenCow)par1Entity);
     }
 
     /**

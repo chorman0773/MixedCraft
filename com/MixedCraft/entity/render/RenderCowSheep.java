@@ -53,11 +53,6 @@ public class RenderCowSheep extends RenderLiving
 		 return this.setWoolColorAndRender((EntityCowSheep)par1EntityLivingBase, par2, par3);
 	 }
 
-	 protected ResourceLocation func_110775_a(Entity par1Entity)
-	 {
-		 return this.getEntityTexture((EntityCowSheep)par1Entity);
-	 }
-
 	 protected void renderLabel(EntityCowSheep entityLiving, double par2, double par4, double par6)
 	 {
 		 int distanceToEntity = 32;

@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.MixedCraft.blocks.container.ContainerDNAAssembler;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
+import com.MixedCraft.handler.GuiResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -16,7 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiMobAssembler extends GuiContainer{
-    private static final ResourceLocation field_110410_t = new ResourceLocation("MixedCraft:/textures/gui/Assembler.png");
 
     private TileEntityDNAAssembler furnaceInventory;
 
@@ -39,7 +39,7 @@ public class GuiMobAssembler extends GuiContainer{
 
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(field_110410_t);
+		this.mc.getTextureManager().bindTexture(GuiResourceLocation.Assembler);
 		
 		this.xSize = 176;
 		this.ySize = 197;

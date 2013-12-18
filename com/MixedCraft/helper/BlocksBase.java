@@ -30,6 +30,7 @@ public class BlocksBase extends Block {
         super(blockID, material);
         this.setCreativeTab(MixedCraft.BlockTab);
         GameRegistry.registerBlock(this);
+        setHardness(2.0F);
     }
     
 	public void addName(String name)

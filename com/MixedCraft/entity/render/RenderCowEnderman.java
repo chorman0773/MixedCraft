@@ -151,11 +151,6 @@ public class RenderCowEnderman extends RenderLiving
 		this.renderEnderman((EntityCowEnderman)par1EntityLivingBase, par2, par4, par6, par8, par9);
 	}
 
-	protected ResourceLocation func_110775_a(Entity par1Entity)
-	{
-		return this.getEntityTexture((EntityCowEnderman)par1Entity);
-	}
-
 	/**
 	 * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
 	 * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
