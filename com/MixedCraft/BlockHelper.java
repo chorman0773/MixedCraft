@@ -33,7 +33,7 @@ public class BlockHelper extends HelperHandler{
 	public static final Block SilverOre = new ModBlock(x.SilverOreID).registerTexture("SilverOre").setUnlocalizedName("SilverOre").setHardness(7.0F);	
 	public static final BlockSolarPanel SolarPanel = (BlockSolarPanel) new BlockSolarPanel(x.SolarPanelID).setUnlocalizedName("SolarPanel").setHardness(2.0F).setHardness(7.0F).setStepSound(Block.soundMetalFootstep);
 	public static final Block CowSheepWool = new ModBlock(x.CowSheepWoolID).registerTexture("CowSheepWool").setUnlocalizedName("CowSheepWool").setHardness(0.2F).setStepSound(Block.soundClothFootstep);
-	//public static final Block Disasembler = new Disasembler(x.DisasemblerID).setUnlocalizedName("Disasembler").setCreativeTab(MixedCraft.BlockTab);	
+	//public static final Block Disassembler = new Disassembler(x.DisasemblerID).setUnlocalizedName("Disasembler").setCreativeTab(MixedCraft.BlockTab);	
 	public static final Block IronFurnaceOff = (new BlockIronFurnace(x.IronFurnaceID, false)).setHardness(3.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("IronFurnaceOff").setCreativeTab(MixedCraft.BlockTab);
 	public static final Block IronFurnaceOn = (new BlockIronFurnace(x.IronFurnaceOnID, true)).setHardness(3.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("IronFurnaceOn").setLightValue(0.875F);
 	public static final Block GoldDoor = new BlockGoldDoor(x.GoldDoorID, Material.wood).setHardness(3.5F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("GoldDoor").setCreativeTab(null);
@@ -108,7 +108,7 @@ public class BlockHelper extends HelperHandler{
 		addBlock(GoldDoor, "Gold Door");
 		addBlock(IronFurnaceOn, "Iron Furnace On");
 		addBlock(IronFurnaceOff, "Iron Furnace");
-		//addBlock(Disasembler, "Dissasembler");
+		//addBlock(Disassembler, "Disassembler");
 		addBlock(CowSheepWool, "COWSHEEP Wool");
 		addBlock(SolarPanel, "Solar Panel");
 		addBlock(Extractor, "DNA Extractor");

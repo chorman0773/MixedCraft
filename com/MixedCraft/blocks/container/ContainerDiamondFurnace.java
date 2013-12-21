@@ -27,11 +27,11 @@ public class ContainerDiamondFurnace extends Container
         this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 28, 17));
         this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 28, 53));
         this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 2, 139, 35));
-        int i;
+        int i, j;
 
         for (i = 0; i < 3; ++i)
         {
-            for (int j = 0; j < 9; ++j)
+            for (j = 0; j < 9; ++j)
             {
                 this.addSlotToContainer(new Slot(par1InventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
