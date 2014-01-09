@@ -148,7 +148,7 @@ public class ConfigHelper {
 	public static int DoubleFurnaceOffID;
 	public static int DoubleFurnaceOnID;
 	public static int WandDeathID, WandFireID, WandGrowthID, WandHarvestID, WandHealingID, WandIceID, WandMissileID, WandMiningID, WandTeleportID
-	, WandHarmingID;
+	, WandHarmingID, TorchBowID;
 	
 	public static int Flower1, Flower2, FlylightLog, FlylightLeaves, SugarCane, Grass, Fern, Sapling, ItemCane, ModWater, Vine;
 	public static int Iron, Coal, Redstone, Emerald, Diamond, Lapis, Gold;
@@ -166,6 +166,8 @@ public class ConfigHelper {
 	}
 
 	static void blocks(){
+		ModWater = addTerrainBlock("Flylight", "Flylight Water");
+		
 		ExtractorID = addBlock("extractor");
 		MixerID = addBlock("mixer");
 		AssemblerID = addBlock("assembler");
@@ -212,7 +214,6 @@ public class ConfigHelper {
 		Grass = addBlock("Grass");
 		Fern = addBlock("Fern");
 		Sapling = addBlock("Sapling");
-		ModWater = addBlock("Flylight Water");
 		Vine = addBlock("Flylight Vine");
 		Iron = addBlock("Flylight Iron Ore");
 		Coal = addBlock("Flylight Coal Ore");
@@ -326,6 +327,7 @@ public class ConfigHelper {
 		WandTeleportID = addItem("Wand Of Teleport");
 		WandHarmingID = addItem("Wand Of Harming");
 		ItemCane = addItem("Flylight Sugar Cane Item");
+		TorchBowID = addItem("Torch Bow");
 	}
 	static int item;
 	static int block;
@@ -347,6 +349,15 @@ public class ConfigHelper {
 		config.load();
 		block = config.getBlock(Name, id++).getInt();
 		Flylight = config.get("Dimension", "Flylight", 15).getInt();
+		config.save();
+		return block++;
+	}
+	
+	public static int addTerrainBlock(String Cat, String Name){
+		File file = new File(Event.getModConfigurationDirectory(), "MixedCraft.cfg");
+		Configuration config = new Configuration(file);
+		config.load();
+		block = config.getTerrainBlock(Cat, Name, id++, "").getInt();
 		config.save();
 		return block++;
 	}

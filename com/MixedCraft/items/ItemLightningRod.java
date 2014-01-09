@@ -19,14 +19,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemLightningRod extends ItemsBase{
 
-
 	public ItemLightningRod(int par1){
 		super(par1, "");
 		setMaxStackSize(1);
+		setMaxDamage(100);
 	}
 
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
-	{
+	@Override
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer entityplayer) {
 
 		float f = 1.0F;
 		float f1 = entityplayer.prevRotationPitch + (entityplayer.rotationPitch - entityplayer.prevRotationPitch) * f;
@@ -46,19 +46,17 @@ public class ItemLightningRod extends ItemsBase{
 		Vec3 vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
 		MovingObjectPosition movingobjectposition = world.rayTraceBlocks_do_do(vec3d, vec3d1, false, true);
 
-		if (movingobjectposition == null)
-		{
-			return itemstack;
+		if (movingobjectposition == null) {
+			return item;
 		}
 
-		if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE)
-		{
+		if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
 			int i = movingobjectposition.blockX;
 			int j = movingobjectposition.blockY;
 			int k = movingobjectposition.blockZ;
 			world.spawnEntityInWorld(new EntityLightningBolt(world, i, j, k));
-
+			item.damageItem(1, entityplayer);
 		}
-		return itemstack;
+		return item;
 	}
 }

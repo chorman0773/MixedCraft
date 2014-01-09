@@ -535,7 +535,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			var17.generate(this.worldObj, this.rand, var19, var21, var20);
 		}
 		
-		if (rand.nextInt(8) == 0) {
+		/*if (rand.nextInt(8) == 0) {
 			var18 = var4 + rand.nextInt(16) + 8;
 			var19 = rand.nextInt(128);
 			var20 = var4 + rand.nextInt(16) + 8;
@@ -543,7 +543,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			if (var19 < 63 || rand.nextInt(10) == 0) {
 				(new WorldGenLakes(BlockHelper.Water.blockID)).generate(worldObj, rand, var18, var19, var20);
 			}
-		}
+		}*/
 
 		int xMin = var2 << 4;
 		int zMin = var3 << 4;

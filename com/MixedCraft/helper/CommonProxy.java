@@ -2,28 +2,16 @@ package com.MixedCraft.helper;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.MixedCraft.Achievements;
-import com.MixedCraft.BlockHelper;
-import com.MixedCraft.Event;
-import com.MixedCraft.ItemHelper;
-import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
-import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
-import com.MixedCraft.blocks.tileEntity.TileEntityDNAMixer;
-import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
-import com.MixedCraft.blocks.tileEntity.TileEntityGoldFurnace;
-import com.MixedCraft.blocks.tileEntity.TileEntityIronFurnace;
-import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
-import com.MixedCraft.dimension.DimensionHelper;
-import com.MixedCraft.gen.WorldGenMixedMinable;
-import com.MixedCraft.handler.EntityLivingHandler;
-import com.MixedCraft.handler.HelperHandler;
-import com.MixedCraft.handler.MixedCraftTickHandler;
+import com.MixedCraft.*;
+import com.MixedCraft.Cape.*;
+import com.MixedCraft.blocks.tileEntity.*;
+import com.MixedCraft.dimension.*;
+import com.MixedCraft.gen.*;
+import com.MixedCraft.handler.*;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.relauncher.*;
 
 public class CommonProxy extends HelperHandler {
 	
@@ -54,6 +42,8 @@ public class CommonProxy extends HelperHandler {
 		GameRegistry.registerTileEntity(TileEntityDNAAssembler.class, "TileEntity Assember");
 		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
+		GameRegistry.registerTileEntity(TileEntityPowerFurnace.class, "TileEntity SolarPPanel");
+
 	}
 
 	public void init(FMLInitializationEvent event) {     
@@ -63,6 +53,7 @@ public class CommonProxy extends HelperHandler {
 
 	public static void tickRegistry() {
 		TickRegistry.registerTickHandler(new MixedCraftTickHandler(), Side.CLIENT);
+		TickRegistry.registerTickHandler(new DevCapesTickHandler(), Side.CLIENT);
 
 	}
 }

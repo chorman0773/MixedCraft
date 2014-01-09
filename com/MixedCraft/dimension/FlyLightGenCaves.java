@@ -136,7 +136,7 @@ public class FlyLightGenCaves extends MapGenBase
 
                                 if (var53 >= 0 && var53 < 128)
                                 {
-                                    if (var5[var51] == Block.waterMoving.blockID || var5[var51] == Block.waterStill.blockID)
+                                    if (var5[var51] == BlockHelper.Water.blockID || var5[var51] == BlockHelper.Water.blockID)
                                     {
                                         var49 = true;
                                     }

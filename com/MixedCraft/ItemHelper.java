@@ -135,7 +135,11 @@ public class ItemHelper extends HelperHandler{
 	public static final Item wandTeleport = new WandOfTeleportation(x.WandTeleportID, "wandTeleport");
 	public static final Item wandHarming = new WandOfHarming(x.WandHarmingID, "wandHarm");
 	
+	public static final Item TorchBow = new ItemTorchBow(x.TorchBowID);
+	
 	public static void addNames(){
+		addItem(TorchBow, "Torch Bow");
+		
 		addItem(Droid, "Droid");
 		addItem(wandHarming, "Wand Of Harming");
 		addItem(wandDeath, "Wand Of Death");

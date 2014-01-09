@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.MixedCraft.blocks.*;
 import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
@@ -79,7 +80,23 @@ public class BlockHelper extends HelperHandler{
     public static final Block Coal = new ModOre(x.Coal).registerTexture("Coal").setHardness(3.0F).setUnlocalizedName("Coal");
     public static final Block Emerald = new ModOre(x.Emerald).registerTexture("Emerald").setHardness(3.0F).setUnlocalizedName("Emerald"); 
     
+    public static final Block PoweredFurnace = new BlockPoweredFurnace(x.id++, false);
+    public static final Block PoweredFurnaceOn = new BlockPoweredFurnace(x.id++, true);
+    
 	public static void addNames(){
+		OreDictionary.registerOre("oreCopper", CopperOre);
+		OreDictionary.registerOre("oreTin", TinOre);
+		OreDictionary.registerOre("oreSilver", SilverOre);
+		OreDictionary.registerOre("oreFlyIron", Iron);
+		OreDictionary.registerOre("oreFlyGold", Gold);
+		OreDictionary.registerOre("oreFlyLapis", Lapis);
+		OreDictionary.registerOre("oreFlyRedstone", Redstone);
+		OreDictionary.registerOre("oreFlyDiamond", Diamond);
+		OreDictionary.registerOre("oreFlyCoal", Coal);
+		OreDictionary.registerOre("oreFlyEmerald", Emerald);
+
+		addBlock(PoweredFurnace, "Powered Furnace");
+		addBlock(PoweredFurnaceOn, "Powered Furnace On");
 		addBlock(Iron, "Flylight Iron Ore");
 		addBlock(Gold, "Flylight Gold Ore");
 		addBlock(Lapis, "Flylight Lapis Ore");
