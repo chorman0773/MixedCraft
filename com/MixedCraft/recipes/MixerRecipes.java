@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.MixedCraft.ItemHelper;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,38 +32,38 @@ public class MixerRecipes
 
     private MixerRecipes()
     {
-        this.addSmelting(ItemHelper.ChickenDNADrive.itemID, new ItemStack(ItemHelper.CowChickenMixedDrive), 0.0F);
-        //this.addSmelting(ItemHelper.CowDNADrive.itemID, new ItemStack(ItemHelper.Cow), 0.0F);
-        this.addSmelting(ItemHelper.CreeperDNADrive.itemID, new ItemStack(ItemHelper.CowCreeperMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.PigDNADrive.itemID, new ItemStack(ItemHelper.CowPigMixedDrive), 0.0F); 
-        this.addSmelting(ItemHelper.SheepDNADrive.itemID, new ItemStack(ItemHelper.CowSheepMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.EndermanDNADrive.itemID, new ItemStack(ItemHelper.CowEndermanMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.ZombieDNADrive.itemID, new ItemStack(ItemHelper.CowZombieMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SlimeDNADrive.itemID, new ItemStack(ItemHelper.CowSlimeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.BlazeDNADrive.itemID, new ItemStack(ItemHelper.CowBlazeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SpiderDNADrive.itemID, new ItemStack(ItemHelper.CowSpiderMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.GhastDNADrive.itemID, new ItemStack(ItemHelper.CowGhastMixedDrive), 0.0F);
-        //this.addSmelting(ItemHelper.MagmaCubeDNADrive.itemID, new ItemStack(ItemHelper.CowMagmaCubeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SkeletonDNADrive.itemID, new ItemStack(ItemHelper.CowSkeletonMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SquidDNADrive.itemID, new ItemStack(ItemHelper.CowSquidMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.WitherDNADrive.itemID, new ItemStack(ItemHelper.CowWitherMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.WitherSDNADrive.itemID, new ItemStack(ItemHelper.CowWitherSMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.ChickenDNADrive, new ItemStack(ItemHelper.CowChickenMixedDrive), 0.0F);
+        //this.addSmelting(ItemHelper.CowDNADrive, new ItemStack(ItemHelper.Cow), 0.0F);
+        this.addSmelting(ItemHelper.CreeperDNADrive, new ItemStack(ItemHelper.CowCreeperMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.PigDNADrive, new ItemStack(ItemHelper.CowPigMixedDrive), 0.0F); 
+        this.addSmelting(ItemHelper.SheepDNADrive, new ItemStack(ItemHelper.CowSheepMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.EndermanDNADrive, new ItemStack(ItemHelper.CowEndermanMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.ZombieDNADrive, new ItemStack(ItemHelper.CowZombieMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SlimeDNADrive, new ItemStack(ItemHelper.CowSlimeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.BlazeDNADrive, new ItemStack(ItemHelper.CowBlazeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SpiderDNADrive, new ItemStack(ItemHelper.CowSpiderMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.GhastDNADrive, new ItemStack(ItemHelper.CowGhastMixedDrive), 0.0F);
+        //this.addSmelting(ItemHelper.MagmaCubeDNADrive, new ItemStack(ItemHelper.CowMagmaCubeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SkeletonDNADrive, new ItemStack(ItemHelper.CowSkeletonMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SquidDNADrive, new ItemStack(ItemHelper.CowSquidMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.WitherDNADrive, new ItemStack(ItemHelper.CowWitherMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.WitherSDNADrive, new ItemStack(ItemHelper.CowWitherSMixedDrive), 0.0F);
 
-        /*this.addSmelting(ItemHelper.ChickenDNADrive.itemID, new ItemStack(ItemHelper.PigChickenMixedDrive), 0.0F);
-        //this.addSmelting(ItemHelper.CowDNADrive.itemID, new ItemStack(ItemHelper.Cow), 0.0F);
-        this.addSmelting(ItemHelper.CreeperDNADrive.itemID, new ItemStack(ItemHelper.PigCreeperMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SheepDNADrive.itemID, new ItemStack(ItemHelper.PigSheepMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.EndermanDNADrive.itemID, new ItemStack(ItemHelper.PigEndermanMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.ZombieDNADrive.itemID, new ItemStack(ItemHelper.PigZombieMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SlimeDNADrive.itemID, new ItemStack(ItemHelper.PigSlimeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.BlazeDNADrive.itemID, new ItemStack(ItemHelper.PigBlazeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SpiderDNADrive.itemID, new ItemStack(ItemHelper.PigSpiderMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.GhastDNADrive.itemID, new ItemStack(ItemHelper.PigGhastMixedDrive), 0.0F);
-        //this.addSmelting(ItemHelper.MagmaCubeDNADrive.itemID, new ItemStack(ItemHelper.PigMagmaCubeMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SkeletonDNADrive.itemID, new ItemStack(ItemHelper.PigSkeletonMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.SquidDNADrive.itemID, new ItemStack(ItemHelper.PigSquidMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.WitherDNADrive.itemID, new ItemStack(ItemHelper.PigWitherMixedDrive), 0.0F);
-        this.addSmelting(ItemHelper.WitherSDNADrive.itemID, new ItemStack(ItemHelper.PigWitherSMixedDrive), 0.0F);*/
+        /*this.addSmelting(ItemHelper.ChickenDNADrive, new ItemStack(ItemHelper.PigChickenMixedDrive), 0.0F);
+        //this.addSmelting(ItemHelper.CowDNADrive, new ItemStack(ItemHelper.Cow), 0.0F);
+        this.addSmelting(ItemHelper.CreeperDNADrive, new ItemStack(ItemHelper.PigCreeperMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SheepDNADrive, new ItemStack(ItemHelper.PigSheepMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.EndermanDNADrive, new ItemStack(ItemHelper.PigEndermanMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.ZombieDNADrive, new ItemStack(ItemHelper.PigZombieMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SlimeDNADrive, new ItemStack(ItemHelper.PigSlimeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.BlazeDNADrive, new ItemStack(ItemHelper.PigBlazeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SpiderDNADrive, new ItemStack(ItemHelper.PigSpiderMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.GhastDNADrive, new ItemStack(ItemHelper.PigGhastMixedDrive), 0.0F);
+        //this.addSmelting(ItemHelper.MagmaCubeDNADrive, new ItemStack(ItemHelper.PigMagmaCubeMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SkeletonDNADrive, new ItemStack(ItemHelper.PigSkeletonMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.SquidDNADrive, new ItemStack(ItemHelper.PigSquidMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.WitherDNADrive, new ItemStack(ItemHelper.PigWitherMixedDrive), 0.0F);
+        this.addSmelting(ItemHelper.WitherSDNADrive, new ItemStack(ItemHelper.PigWitherSMixedDrive), 0.0F);*/
         
         
     }
@@ -70,11 +71,9 @@ public class MixerRecipes
     /**
      * Adds a smelting recipe.
      */
-    public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
-    {
-        this.smeltingList.put(Integer.valueOf(par1), par2ItemStack);
-        this.experienceList.put(Integer.valueOf(par2ItemStack.itemID), Float.valueOf(par3));
-    }
+    public static void addSmelting(Item input, ItemStack output, float XP) {
+		GameRegistry.addSmelting(input, output, XP);
+	}
 
     public Map getSmeltingList()
     {
@@ -101,12 +100,12 @@ public class MixerRecipes
         {
             return null;
         }
-        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item.itemID, item.getItemDamage()));
+        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item, item.getItemDamage()));
         if (ret != null) 
         {
             return ret;
         }
-        return (ItemStack)smeltingList.get(Integer.valueOf(item.itemID));
+        return (ItemStack)smeltingList.get(item);
     }
 
     /**
@@ -119,13 +118,13 @@ public class MixerRecipes
             return 0;
         }
         float ret = item.getItem().getSmeltingExperience(item);
-        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item.itemID, item.getItemDamage())))
+        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item, item.getItemDamage())))
         {
-            ret = metaExperience.get(Arrays.asList(item.itemID, item.getItemDamage()));
+            ret = metaExperience.get(Arrays.asList(item, item.getItemDamage()));
         }
-        if (ret < 0 && experienceList.containsKey(item.itemID))
+        if (ret < 0 && experienceList.containsKey(item))
         {
-            ret = ((Float)experienceList.get(item.itemID)).floatValue();
+            ret = ((Float)experienceList.get(item)).floatValue();
         }
         return (ret < 0 ? 0 : ret);
     }
