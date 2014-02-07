@@ -16,7 +16,7 @@ public class BlockSinkSand extends BlockSand{
 	public BlockSinkSand(int id) {
 		super(id, Material.sand);
         this.setCreativeTab(MixedCraft.BlockTab);
-        GameRegistry.registerBlock(this);
+       
 	}
 	
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)

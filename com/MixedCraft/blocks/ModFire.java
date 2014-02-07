@@ -11,9 +11,9 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
@@ -36,13 +36,13 @@ public class ModFire extends BlocksBase
      */
     private int[] abilityToCatchFire = new int[256];
     @SideOnly(Side.CLIENT)
-    private Icon[] iconArray;
+    private IIcon[] IIconArray;
 
-    public ModFire(int par1)
+    public ModFire()
     {
-        super(par1, Material.fire);
+        super(Material.fire);
         this.setTickRandomly(true);
-        GameRegistry.registerBlock(this);
+       
     }
 
     /**
@@ -53,21 +53,21 @@ public class ModFire extends BlocksBase
     {
         abilityToCatchFire = Block.blockFlammability;
         chanceToEncourageFire = Block.blockFireSpreadSpeed;
-        this.setBurnRate(Block.planks.blockID, 5, 20);
-        this.setBurnRate(Block.woodDoubleSlab.blockID, 5, 20);
-        this.setBurnRate(Block.woodSingleSlab.blockID, 5, 20);
-        this.setBurnRate(Block.fence.blockID, 5, 20);
-        this.setBurnRate(Block.stairsWoodOak.blockID, 5, 20);
-        this.setBurnRate(Block.stairsWoodBirch.blockID, 5, 20);
-        this.setBurnRate(Block.stairsWoodSpruce.blockID, 5, 20);
-        this.setBurnRate(Block.stairsWoodJungle.blockID, 5, 20);
-        this.setBurnRate(Block.wood.blockID, 5, 5);
-        this.setBurnRate(Block.leaves.blockID, 30, 60);
-        this.setBurnRate(Block.bookShelf.blockID, 30, 20);
-        this.setBurnRate(Block.tnt.blockID, 15, 100);
-        this.setBurnRate(Block.tallGrass.blockID, 60, 100);
-        this.setBurnRate(Block.cloth.blockID, 30, 60);
-        this.setBurnRate(Block.vine.blockID, 15, 100);
+        this.setBurnRate(Block.planks, 5, 20);
+        this.setBurnRate(Block.woodDoubleSlab, 5, 20);
+        this.setBurnRate(Block.woodSingleSlab, 5, 20);
+        this.setBurnRate(Block.fence, 5, 20);
+        this.setBurnRate(Block.stairsWoodOak, 5, 20);
+        this.setBurnRate(Block.stairsWoodBirch, 5, 20);
+        this.setBurnRate(Block.stairsWoodSpruce, 5, 20);
+        this.setBurnRate(Block.stairsWoodJungle, 5, 20);
+        this.setBurnRate(Block.wood, 5, 5);
+        this.setBurnRate(Block.leaves, 30, 60);
+        this.setBurnRate(Block.bookShelf, 30, 20);
+        this.setBurnRate(Block.tnt, 15, 100);
+        this.setBurnRate(Block.tallGrass, 60, 100);
+        this.setBurnRate(Block.cloth, 30, 60);
+        this.setBurnRate(Block.vine, 15, 100);
     }
 
     /**
@@ -150,7 +150,7 @@ public class ModFire extends BlocksBase
                     par1World.setBlockMetadataWithNotify(par2, par3, par4, l + par5Random.nextInt(3) / 2, 4);
                 }
 
-                par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate(par1World) + par5Random.nextInt(10));
+                par1World.scheduleBlockUpdate(par2, par3, par4, this, this.tickRate(par1World) + par5Random.nextInt(10));
 
                 if (!flag && !this.canNeighborBurn(par1World, par2, par3, par4))
                 {
@@ -215,7 +215,7 @@ public class ModFire extends BlocksBase
                                                 k2 = 15;
                                             }
 
-                                            par1World.setBlock(i1, k1, j1, this.blockID, k2, 3);
+                                            par1World.setBlock(i1, k1, j1, this, k2, 3);
                                         }
                                     }
                                 }
@@ -249,7 +249,7 @@ public class ModFire extends BlocksBase
 
         if (par6Random.nextInt(par5) < j1)
         {
-            boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt.blockID;
+            boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt;
 
             if (par6Random.nextInt(par7 + 10) < 5 && !par1World.canLightningStrikeAt(par2, par3, par4))
             {
@@ -260,7 +260,7 @@ public class ModFire extends BlocksBase
                     k1 = 15;
                 }
 
-                par1World.setBlock(par2, par3, par4, this.blockID, k1, 3);
+                par1World.setBlock(par2, par3, par4, this, k1, 3);
             }
             else
             {
@@ -365,7 +365,7 @@ public class ModFire extends BlocksBase
      */
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
-        //if (par1World.provider.dimensionId > 0 || par1World.getBlockId(par2, par3 - 1, par4) != Block.glowStone.blockID || !BlockHelper.FlyLightPortal.tryToCreatePortal(par1World, par2, par3, par4))
+        //if (par1World.provider.dimensionId > 0 || par1World.getBlockId(par2, par3 - 1, par4) != Block.glowStone || !BlockHelper.FlyLightPortal.tryToCreatePortal(par1World, par2, par3, par4))
         {
             if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !this.canNeighborBurn(par1World, par2, par3, par4))
             {
@@ -373,7 +373,7 @@ public class ModFire extends BlocksBase
             }
             else
             {
-                par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate(par1World) + par1World.rand.nextInt(10));
+                par1World.scheduleBlockUpdate(par2, par3, par4, this, this.tickRate(par1World) + par1World.rand.nextInt(10));
             }
         }
     }
@@ -467,18 +467,18 @@ public class ModFire extends BlocksBase
     @SideOnly(Side.CLIENT)
 
     /**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+     * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
+     * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.iconArray = new Icon[] {par1IconRegister.registerIcon("fire" + "_layer_0"), par1IconRegister.registerIcon("fire" + "_layer_1")};
+        this.IIconArray = new IIcon[] {par1IIconRegister.registerIcon("fire" + "_layer_0"), par1IIconRegister.registerIcon("fire" + "_layer_1")};
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon func_94438_c(int par1)
+    public IIcon func_94438_c()
     {
-        return this.iconArray[par1];
+        return this.IIconArray[par1];
     }
 
     @SideOnly(Side.CLIENT)
@@ -486,9 +486,9 @@ public class ModFire extends BlocksBase
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
-        return this.iconArray[0];
+        return this.IIconArray[0];
     }
     
     /**

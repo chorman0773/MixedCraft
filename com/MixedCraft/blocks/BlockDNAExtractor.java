@@ -23,8 +23,8 @@ public class BlockDNAExtractor extends ContainerBase {
 	
 	private static boolean keepFurnaceInventory = true;
 
-	public BlockDNAExtractor(int par1) {
-		super(par1, Material.wood);
+	public BlockDNAExtractor() {
+		super(Material.wood);
 		registerTexture("DNAExtractor_Side", "DNAExtractor_Top" , "DNAExtractor_Bottom");
 	}
 
@@ -60,11 +60,11 @@ public class BlockDNAExtractor extends ContainerBase {
 
 		if (par0)
 		{
-			par1World.setBlock(par2, par3, par4, BlockHelper.Extractor.blockID);
+			par1World.setBlock(par2, par3, par4, BlockHelper.Extractor);
 		}
 		else
 		{
-			par1World.setBlock(par2, par3, par4, BlockHelper.Extractor.blockID);
+			par1World.setBlock(par2, par3, par4, BlockHelper.Extractor);
 		}
 
 		keepFurnaceInventory = true;

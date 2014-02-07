@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -42,15 +42,15 @@ public class BlockIronFurnace extends BlockContainer
      */
     private static boolean keepIronFurnaceInventory;
     @SideOnly(Side.CLIENT)
-    private Icon IronFurnaceIconTop;
+    private IIcon IronFurnaceIIconTop;
     @SideOnly(Side.CLIENT)
-    private Icon IronFurnaceIconFront;
+    private IIcon IronFurnaceIIconFront;
 
     public BlockIronFurnace(int par1, boolean par2)
     {
-        super(par1, Material.rock);
+        super(Material.rock);
         this.isActive = par2;
-        GameRegistry.registerBlock(this);
+       
     }
 
     /**
@@ -58,7 +58,7 @@ public class BlockIronFurnace extends BlockContainer
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return BlockHelper.IronFurnaceOff.blockID;
+        return BlockHelper.IronFurnaceOff;
     }
 
     /**
@@ -112,22 +112,22 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.IronFurnaceIconTop : (par1 == 0 ? this.IronFurnaceIconTop : (par1 != par2 ? this.blockIcon : this.IronFurnaceIconFront));
+        return par1 == 1 ? this.IronFurnaceIIconTop : (par1 == 0 ? this.IronFurnaceIIconTop : (par1 != par2 ? this.blockIcon : this.IronFurnaceIIconFront));
     }
 
     @SideOnly(Side.CLIENT)
 
     /**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+     * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
+     * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:IronFurnace");
-        this.IronFurnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "MixedCraft:IronFurnaceFront_On" : "MixedCraft:IronFurnaceFront_Off");
-        this.IronFurnaceIconTop = par1IconRegister.registerIcon("MixedCraft:IronFurnace");
+        this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:IronFurnace");
+        this.IronFurnaceIIconFront = par1IIconRegister.registerIcon(this.isActive ? "MixedCraft:IronFurnaceFront_On" : "MixedCraft:IronFurnaceFront_Off");
+        this.IronFurnaceIIconTop = par1IIconRegister.registerIcon("MixedCraft:IronFurnace");
     }
 
     /**
@@ -157,11 +157,11 @@ public class BlockIronFurnace extends BlockContainer
 
         if (par0)
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.IronFurnaceOn.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.IronFurnaceOn);
         }
         else
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.IronFurnaceOff.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.IronFurnaceOff);
         }
 
         keepIronFurnaceInventory = true;
@@ -333,6 +333,6 @@ public class BlockIronFurnace extends BlockContainer
      */
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return BlockHelper.IronFurnaceOff.blockID;
+        return BlockHelper.IronFurnaceOff;
     }
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -20,9 +20,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class FlylightSugarCane extends BlocksBase implements IPlantable
 {
 	
-    public FlylightSugarCane(int par1)
+    public FlylightSugarCane()
     {
-        super(par1, Material.plants);
+        super(Material.plants);
         float f = 0.375F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
         this.setTickRandomly(true);
@@ -37,7 +37,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
         {
             int l;
 
-            for (l = 1; par1World.getBlockId(par2, par3 - l, par4) == this.blockID; ++l)
+            for (l = 1; par1World.getBlockId(par2, par3 - l, par4) == this; ++l)
             {
                 ;
             }
@@ -48,7 +48,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
 
                 if (i1 == 15)
                 {
-                    par1World.setBlock(par2, par3 + 1, par4, this.blockID);
+                    par1World.setBlock(par2, par3 + 1, par4, this);
                     par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 4);
                 }
                 else

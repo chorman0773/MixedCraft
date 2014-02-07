@@ -8,7 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -17,7 +17,7 @@ public class BlockTable extends BlockContainer
     public BlockTable(int id)
     {
         super(id, Material.rock);
-        GameRegistry.registerBlock(this);
+       
     }
 
     public TileEntity createNewTileEntity(World var1)
@@ -44,8 +44,8 @@ public class BlockTable extends BlockContainer
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("planks_oak");
+        this.blockIcon = par1IIconRegister.registerIcon("planks_oak");
     }
 }

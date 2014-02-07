@@ -1,38 +1,38 @@
 package com.MixedCraft.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.MixedCraft.ItemHelper;
 import com.MixedCraft.helper.Utils;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockChocolateCrop extends BlockFlower
 {
     @SideOnly(Side.CLIENT)
-    private Icon[] iconArray;
+    private IIcon[] IIconArray;
 
-    public BlockChocolateCrop(int par1)
+    public BlockChocolateCrop()
     {
-        super(par1);
+        super(0);
         this.setTickRandomly(true);
         float f = 0.5F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
         this.setCreativeTab((CreativeTabs)null);
         this.setHardness(0.0F);
-        this.setStepSound(soundGrassFootstep);
+        this.setStepSound(soundTypeGrass);
         this.disableStats();
     }
 
@@ -42,7 +42,7 @@ public class BlockChocolateCrop extends BlockFlower
      */
     protected boolean canThisPlantGrowOnThisBlockID(int par1)
     {
-        return par1 == Block.tilledField.blockID;
+        return par1 == Block.tilledField;
     }
 
     /**
@@ -100,9 +100,9 @@ public class BlockChocolateCrop extends BlockFlower
         int i2 = par1World.getBlockId(par2 + 1, par3, par4 - 1);
         int j2 = par1World.getBlockId(par2 + 1, par3, par4 + 1);
         int k2 = par1World.getBlockId(par2 - 1, par3, par4 + 1);
-        boolean flag = j1 == this.blockID || k1 == this.blockID;
-        boolean flag1 = l == this.blockID || i1 == this.blockID;
-        boolean flag2 = l1 == this.blockID || i2 == this.blockID || j2 == this.blockID || k2 == this.blockID;
+        boolean flag = j1 == this || k1 == this;
+        boolean flag1 = l == this || i1 == this;
+        boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
 
         for (int l2 = par2 - 1; l2 <= par2 + 1; ++l2)
         {
@@ -139,14 +139,14 @@ public class BlockChocolateCrop extends BlockFlower
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
         if (par2 < 0 || par2 > 7)
         {
             par2 = 7;
         }
 
-        return this.iconArray[par2];
+        return this.IIconArray[par2];
     }
 
     protected int getSeedItem()
@@ -200,13 +200,13 @@ public class BlockChocolateCrop extends BlockFlower
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.iconArray = new Icon[8];
+        this.IIconArray = new IIcon[8];
 
-        for (int i = 0; i < this.iconArray.length; ++i)
+        for (int i = 0; i < this.IIconArray.length; ++i)
         {
-            this.iconArray[i] = par1IconRegister.registerIcon(Utils.MOD_ID + ":" + "ChocolateCrop_" + i);
+            this.IIconArray[i] = par1IIconRegister.registerIcon(Utils.MOD_ID + ":" + "ChocolateCrop_" + i);
         }
     }
 }

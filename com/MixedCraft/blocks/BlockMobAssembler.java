@@ -21,8 +21,8 @@ public class BlockMobAssembler extends ContainerBase {
 
     private static boolean keepFurnaceInventory = true;
     
-	public BlockMobAssembler(int par1) {
-		super(par1, Material.wood);
+	public BlockMobAssembler() {
+		super(Material.wood);
 		registerTexture("MobAssembler_Side", "MobAssembler_Top" , "MobAssembler_Bottom");
 		
 	}
@@ -59,11 +59,11 @@ public class BlockMobAssembler extends ContainerBase {
 
 	        if (par0)
 	        {
-	            par1World.setBlock(par2, par3, par4, BlockHelper.Assembler.blockID);
+	            par1World.setBlock(par2, par3, par4, BlockHelper.Assembler);
 	        }
 	        else
 	        {
-	            par1World.setBlock(par2, par3, par4, BlockHelper.Assembler.blockID);
+	            par1World.setBlock(par2, par3, par4, BlockHelper.Assembler);
 	        }
 
 	        keepFurnaceInventory = true;

@@ -10,12 +10,12 @@ import com.MixedCraft.helper.BlocksBase;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.IconFlipped;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.IIconFlipped;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
@@ -24,17 +24,17 @@ import net.minecraft.world.World;
 public class BlockGoldDoor extends BlocksBase
 {
     @SideOnly(Side.CLIENT)
-    private Icon[] field_111044_a;
+    private IIcon[] field_111044_a;
     @SideOnly(Side.CLIENT)
-    private Icon[] field_111043_b;
+    private IIcon[] field_111043_b;
 
-    public BlockGoldDoor(int par1, Material par2Material)
+    public BlockGoldDoor(int Material par2Material)
     {
         super(par1, par2Material);
         float f = 0.5F;
         float f1 = 1.0F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
-        GameRegistry.registerBlock(this);
+       
     }
 
     @SideOnly(Side.CLIENT)
@@ -42,7 +42,7 @@ public class BlockGoldDoor extends BlocksBase
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
         return this.field_111043_b[0];
     }
@@ -52,7 +52,7 @@ public class BlockGoldDoor extends BlocksBase
     /**
      * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
      */
-    public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    public IIcon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
         if (par5 != 1 && par5 != 0)
         {
@@ -117,17 +117,17 @@ public class BlockGoldDoor extends BlocksBase
     @SideOnly(Side.CLIENT)
 
     /**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
+     * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
+     * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.field_111044_a = new Icon[2];
-        this.field_111043_b = new Icon[2];
-        this.field_111044_a[0] = par1IconRegister.registerIcon("MixedCraft:GoldDoor_Top");
-        this.field_111043_b[0] = par1IconRegister.registerIcon("MixedCraft:GoldDoor_Bottom");
-        this.field_111044_a[1] = new IconFlipped(this.field_111044_a[0], true, false);
-        this.field_111043_b[1] = new IconFlipped(this.field_111043_b[0], true, false);
+        this.field_111044_a = new IIcon[2];
+        this.field_111043_b = new IIcon[2];
+        this.field_111044_a[0] = par1IIconRegister.registerIcon("MixedCraft:GoldDoor_Top");
+        this.field_111043_b[0] = par1IIconRegister.registerIcon("MixedCraft:GoldDoor_Bottom");
+        this.field_111044_a[1] = new IIconFlipped(this.field_111044_a[0], true, false);
+        this.field_111043_b[1] = new IIconFlipped(this.field_111043_b[0], true, false);
     }
 
     /**
@@ -203,7 +203,7 @@ public class BlockGoldDoor extends BlocksBase
         return (this.getFullMetadata(par1IBlockAccess, par2, par3, par4) & 4) != 0;
     }
 
-    private void setDoorRotation(int par1)
+    private void setDoorRotation()
     {
         float f = 0.1875F;
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
@@ -361,7 +361,7 @@ public class BlockGoldDoor extends BlocksBase
         {
             boolean flag = false;
 
-            if (par1World.getBlockId(par2, par3 + 1, par4) != this.blockID)
+            if (par1World.getBlockId(par2, par3 + 1, par4) != this)
             {
                 par1World.setBlockToAir(par2, par3, par4);
                 flag = true;
@@ -372,7 +372,7 @@ public class BlockGoldDoor extends BlocksBase
                 par1World.setBlockToAir(par2, par3, par4);
                 flag = true;
 
-                if (par1World.getBlockId(par2, par3 + 1, par4) == this.blockID)
+                if (par1World.getBlockId(par2, par3 + 1, par4) == this)
                 {
                     par1World.setBlockToAir(par2, par3 + 1, par4);
                 }
@@ -389,7 +389,7 @@ public class BlockGoldDoor extends BlocksBase
             {
                 boolean flag1 = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
 
-                if ((flag1 || par5 > 0 && Block.blocksList[par5].canProvidePower()) && par5 != this.blockID)
+                if ((flag1 || par5 > 0 && Block.blocksList[par5].canProvidePower()) && par5 != this)
                 {
                     this.onPoweredBlockChange(par1World, par2, par3, par4, flag1);
                 }
@@ -397,12 +397,12 @@ public class BlockGoldDoor extends BlocksBase
         }
         else
         {
-            if (par1World.getBlockId(par2, par3 - 1, par4) != this.blockID)
+            if (par1World.getBlockId(par2, par3 - 1, par4) != this)
             {
                 par1World.setBlockToAir(par2, par3, par4);
             }
 
-            if (par5 > 0 && par5 != this.blockID)
+            if (par5 > 0 && par5 != this)
             {
                 this.onNeighborBlockChange(par1World, par2, par3 - 1, par4, par5);
             }
@@ -484,7 +484,7 @@ public class BlockGoldDoor extends BlocksBase
      */
     public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer)
     {
-        if (par6EntityPlayer.capabilities.isCreativeMode && (par5 & 8) != 0 && par1World.getBlockId(par2, par3 - 1, par4) == this.blockID)
+        if (par6EntityPlayer.capabilities.isCreativeMode && (par5 & 8) != 0 && par1World.getBlockId(par2, par3 - 1, par4) == this)
         {
             par1World.setBlockToAir(par2, par3 - 1, par4);
         }

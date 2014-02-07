@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -35,20 +35,20 @@ public class GoldFurnace extends BlockContainer
 
     private static boolean keepGoldFurnaceInventory;
     @SideOnly(Side.CLIENT)
-    private Icon GoldFurnaceIconTop;
+    private IIcon GoldFurnaceIIconTop;
     @SideOnly(Side.CLIENT)
-    private Icon GoldFurnaceIconFront;
+    private IIcon GoldFurnaceIIconFront;
 
     public GoldFurnace(int par1, boolean par2)
     {
-        super(par1, Material.rock);
+        super(Material.rock);
         this.isActive = par2;
-        GameRegistry.registerBlock(this);
+       
     }
 
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return BlockHelper.GoldFurnaceOff.blockID;
+        return BlockHelper.GoldFurnaceOff;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
@@ -92,17 +92,17 @@ public class GoldFurnace extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.GoldFurnaceIconTop : (par1 == 0 ? this.GoldFurnaceIconTop : (par1 != par2 ? this.blockIcon : this.GoldFurnaceIconFront));
+        return par1 == 1 ? this.GoldFurnaceIIconTop : (par1 == 0 ? this.GoldFurnaceIIconTop : (par1 != par2 ? this.blockIcon : this.GoldFurnaceIIconFront));
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:GoldFurnace");
-        this.GoldFurnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "MixedCraft:GoldFurnaceFront_On" : "MixedCraft:GoldFurnaceFront_Off");
-        this.GoldFurnaceIconTop = par1IconRegister.registerIcon("MixedCraft:GoldFurnace");
+        this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:GoldFurnace");
+        this.GoldFurnaceIIconFront = par1IIconRegister.registerIcon(this.isActive ? "MixedCraft:GoldFurnaceFront_On" : "MixedCraft:GoldFurnaceFront_Off");
+        this.GoldFurnaceIIconTop = par1IIconRegister.registerIcon("MixedCraft:GoldFurnace");
     }
 
 
@@ -127,11 +127,11 @@ public class GoldFurnace extends BlockContainer
 
         if (par0)
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.GoldFurnaceOn.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.GoldFurnaceOn);
         }
         else
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.GoldFurnaceOff.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.GoldFurnaceOff);
         }
 
         keepGoldFurnaceInventory = false;
@@ -280,6 +280,6 @@ public class GoldFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return BlockHelper.GoldFurnaceOff.blockID;
+        return BlockHelper.GoldFurnaceOff;
     }
 }

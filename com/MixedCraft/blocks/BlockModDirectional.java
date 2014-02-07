@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 
 public abstract class BlockModDirectional extends BlocksBase
 {
-    protected BlockModDirectional(int par1, Material par2Material)
+    protected BlockModDirectional(int Material par2Material)
     {
         super(par1, par2Material);
     }

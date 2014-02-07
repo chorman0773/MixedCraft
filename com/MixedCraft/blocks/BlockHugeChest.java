@@ -7,7 +7,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,11 +35,11 @@ public class BlockHugeChest extends BlockContainer
 
     public int isTrapped;
     
-    public BlockHugeChest(int par1)
+    public BlockHugeChest()
     {
-        super(par1, Material.wood);
+        super(Material.wood);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-        GameRegistry.registerBlock(this);
+       
     }
 
     /**
@@ -64,19 +64,19 @@ public class BlockHugeChest extends BlockContainer
      */
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        if (par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == this.blockID)
+        if (par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0F, 0.9375F, 0.875F, 0.9375F);
         }
-        else if (par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this.blockID)
+        else if (par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 1.0F);
         }
-        else if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == this.blockID)
+        else if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == this)
         {
             this.setBlockBounds(0.0F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         }
-        else if (par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == this.blockID)
+        else if (par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 1.0F, 0.875F, 0.9375F);
         }
@@ -98,22 +98,22 @@ public class BlockHugeChest extends BlockContainer
         int j1 = par1World.getBlockId(par2 - 1, par3, par4);
         int k1 = par1World.getBlockId(par2 + 1, par3, par4);
 
-        if (l == this.blockID)
+        if (l == this)
         {
             this.unifyAdjacentChests(par1World, par2, par3, par4 - 1);
         }
 
-        if (i1 == this.blockID)
+        if (i1 == this)
         {
             this.unifyAdjacentChests(par1World, par2, par3, par4 + 1);
         }
 
-        if (j1 == this.blockID)
+        if (j1 == this)
         {
             this.unifyAdjacentChests(par1World, par2 - 1, par3, par4);
         }
 
-        if (k1 == this.blockID)
+        if (k1 == this)
         {
             this.unifyAdjacentChests(par1World, par2 + 1, par3, par4);
         }
@@ -151,15 +151,15 @@ public class BlockHugeChest extends BlockContainer
             b0 = 4;
         }
 
-        if (l != this.blockID && i1 != this.blockID && j1 != this.blockID && k1 != this.blockID)
+        if (l != this && i1 != this && j1 != this && k1 != this)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
         }
         else
         {
-            if ((l == this.blockID || i1 == this.blockID) && (b0 == 4 || b0 == 5))
+            if ((l == this || i1 == this) && (b0 == 4 || b0 == 5))
             {
-                if (l == this.blockID)
+                if (l == this)
                 {
                     par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, b0, 3);
                 }
@@ -171,9 +171,9 @@ public class BlockHugeChest extends BlockContainer
                 par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
             }
 
-            if ((j1 == this.blockID || k1 == this.blockID) && (b0 == 2 || b0 == 3))
+            if ((j1 == this || k1 == this) && (b0 == 2 || b0 == 3))
             {
-                if (j1 == this.blockID)
+                if (j1 == this)
                 {
                     par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, b0, 3);
                 }
@@ -210,9 +210,9 @@ public class BlockHugeChest extends BlockContainer
             byte b0;
             int j2;
 
-            if (l != this.blockID && i1 != this.blockID)
+            if (l != this && i1 != this)
             {
-                if (j1 != this.blockID && k1 != this.blockID)
+                if (j1 != this && k1 != this)
                 {
                     b0 = 3;
 
@@ -238,12 +238,12 @@ public class BlockHugeChest extends BlockContainer
                 }
                 else
                 {
-                    l1 = par1World.getBlockId(j1 == this.blockID ? par2 - 1 : par2 + 1, par3, par4 - 1);
-                    i2 = par1World.getBlockId(j1 == this.blockID ? par2 - 1 : par2 + 1, par3, par4 + 1);
+                    l1 = par1World.getBlockId(j1 == this ? par2 - 1 : par2 + 1, par3, par4 - 1);
+                    i2 = par1World.getBlockId(j1 == this ? par2 - 1 : par2 + 1, par3, par4 + 1);
                     b0 = 3;
                     flag1 = true;
 
-                    if (j1 == this.blockID)
+                    if (j1 == this)
                     {
                         j2 = par1World.getBlockMetadata(par2 - 1, par3, par4);
                     }
@@ -270,12 +270,12 @@ public class BlockHugeChest extends BlockContainer
             }
             else
             {
-                l1 = par1World.getBlockId(par2 - 1, par3, l == this.blockID ? par4 - 1 : par4 + 1);
-                i2 = par1World.getBlockId(par2 + 1, par3, l == this.blockID ? par4 - 1 : par4 + 1);
+                l1 = par1World.getBlockId(par2 - 1, par3, l == this ? par4 - 1 : par4 + 1);
+                i2 = par1World.getBlockId(par2 + 1, par3, l == this ? par4 - 1 : par4 + 1);
                 b0 = 5;
                 flag1 = true;
 
-                if (l == this.blockID)
+                if (l == this)
                 {
                     j2 = par1World.getBlockMetadata(par2, par3, par4 - 1);
                 }
@@ -311,22 +311,22 @@ public class BlockHugeChest extends BlockContainer
     {
         int l = 0;
 
-        if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)
+        if (par1World.getBlockId(par2 - 1, par3, par4) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+        if (par1World.getBlockId(par2 + 1, par3, par4) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID)
+        if (par1World.getBlockId(par2, par3, par4 - 1) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)
+        if (par1World.getBlockId(par2, par3, par4 + 1) == this)
         {
             ++l;
         }
@@ -339,7 +339,7 @@ public class BlockHugeChest extends BlockContainer
      */
     private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4)
     {
-        return par1World.getBlockId(par2, par3, par4) != this.blockID ? false : (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID ? true : (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID ? true : (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID ? true : par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)));
+        return par1World.getBlockId(par2, par3, par4) != this ? false : (par1World.getBlockId(par2 - 1, par3, par4) == this ? true : (par1World.getBlockId(par2 + 1, par3, par4) == this ? true : (par1World.getBlockId(par2, par3, par4 - 1) == this ? true : par1World.getBlockId(par2, par3, par4 + 1) == this)));
     }
 
     /**
@@ -443,22 +443,22 @@ public class BlockHugeChest extends BlockContainer
         }
         else
         {
-            if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)
+            if (par1World.getBlockId(par2 - 1, par3, par4) == this)
             {
                 object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory)object);
             }
 
-            if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+            if (par1World.getBlockId(par2 + 1, par3, par4) == this)
             {
                 object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getBlockTileEntity(par2 + 1, par3, par4));
             }
 
-            if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID)
+            if (par1World.getBlockId(par2, par3, par4 - 1) == this)
             {
                 object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory)object);
             }
 
-            if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)
+            if (par1World.getBlockId(par2, par3, par4 + 1) == this)
             {
                 object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4 + 1));
             }
@@ -479,8 +479,8 @@ public class BlockHugeChest extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("diamond_block");
+        this.blockIcon = par1IIconRegister.registerIcon("diamond_block");
     }
 }

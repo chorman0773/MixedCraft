@@ -11,11 +11,11 @@ import com.MixedCraft.helper.ContainerBase;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDaylightDetector;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
@@ -24,11 +24,11 @@ import net.minecraft.world.World;
 public class BlockSolarPanel extends ContainerBase
 {
 
-    public BlockSolarPanel(int par1)
+    public BlockSolarPanel()
     {
-        super(par1, Material.wood);
+        super(Material.wood);
         this.setCreativeTab(MixedCraft.BlockTab);
-        GameRegistry.registerBlock(this);
+       
         registerTexture("SolarPanel_Side", "SolarPanel_Top", "SolarPanel_Bottom");
         }
 

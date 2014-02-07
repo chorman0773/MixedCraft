@@ -14,9 +14,9 @@ public class BlockFlyLightGrass extends BlocksBase
 {
 
 
-    public BlockFlyLightGrass(int par1)
+    public BlockFlyLightGrass()
     {
-        super(par1, Material.grass);
+        super(Material.grass);
         this.setTickRandomly(true);
         this.registerTexture("FlyLightGrass_Side", "FlyLightGrass_Top", "FlyLightGrass_Bottom");
     }
@@ -28,7 +28,7 @@ public class BlockFlyLightGrass extends BlocksBase
         {
             if (par1World.getBlockLightValue(par2, par3 + 1, par4) < 4 && par1World.getBlockLightOpacity(par2, par3 + 1, par4) > 2)
             {
-                par1World.setBlock(par2, par3, par4, BlockHelper.FlyLightDirt.blockID);
+                par1World.setBlock(par2, par3, par4, BlockHelper.FlyLightDirt);
             }
             else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
             {
@@ -39,9 +39,9 @@ public class BlockFlyLightGrass extends BlocksBase
                     int k1 = par4 + par5Random.nextInt(3) - 1;
                     int l1 = par1World.getBlockId(i1, j1 + 1, k1);
 
-                    if (par1World.getBlockId(i1, j1, k1) == BlockHelper.FlyLightDirt.blockID && par1World.getBlockLightValue(i1, j1 + 1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (par1World.getBlockId(i1, j1, k1) == BlockHelper.FlyLightDirt && par1World.getBlockLightValue(i1, j1 + 1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
-                        par1World.setBlock(i1, j1, k1, BlockHelper.FlyLightGrass.blockID);
+                        par1World.setBlock(i1, j1, k1, BlockHelper.FlyLightGrass);
                     }
                 }
             }
