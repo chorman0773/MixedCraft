@@ -1,7 +1,6 @@
 package com.MixedCraft.recipes.modded;
 
-import com.MixedCraft.recipes.BigShapedRecipes;
-
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,11 +8,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.MapData;
 
+import com.MixedCraft.recipes.BigShapedRecipes;
+
 public class RecipesMapExtending extends BigShapedRecipes
 {
     public RecipesMapExtending()
     {
-        super(3, 3, new ItemStack[] {new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.map, 0, 32767), new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.paper), new ItemStack(Item.paper)}, new ItemStack(Item.emptyMap, 0, 0));
+        super(3, 3, new ItemStack[] {new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.map, 0, 32767), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper), new ItemStack(Items.paper)}, new ItemStack(Items.map, 0, 0));
     }
 
     /**
@@ -33,7 +34,7 @@ public class RecipesMapExtending extends BigShapedRecipes
             {
                 ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(i);
 
-                if (itemstack1 != null && itemstack1.itemID == Item.map.itemID)
+                if (itemstack1 != null && itemstack1.itemID == Items.map)
                 {
                     itemstack = itemstack1;
                 }
@@ -45,7 +46,7 @@ public class RecipesMapExtending extends BigShapedRecipes
             }
             else
             {
-                MapData mapdata = Item.map.getMapData(itemstack, par2World);
+                MapData mapdata = Items.map.getMapData(itemstack, par2World);
                 return mapdata == null ? false : mapdata.scale < 4;
             }
         }
@@ -62,7 +63,7 @@ public class RecipesMapExtending extends BigShapedRecipes
         {
             ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(i);
 
-            if (itemstack1 != null && itemstack1.itemID == Item.map.itemID)
+            if (itemstack1 != null && itemstack1.itemID == Items.map)
             {
                 itemstack = itemstack1;
             }
