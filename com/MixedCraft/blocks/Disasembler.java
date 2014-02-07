@@ -2,10 +2,10 @@ package com.MixedCraft.blocks;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.MixedCraft.MixedCraft;
@@ -17,12 +17,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Disasembler extends BlockContainer
 {
-	private Icon[] texture;
+	private IIcon[] texture;
 
-	public Disasembler(int par1) 
+	public Disasembler() 
 	{
-		super(par1, Material.rock);	
-        GameRegistry.registerBlock(this);
+		super(Material.rock);	
+       
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class Disasembler extends BlockContainer
   }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:Disasembler");
+        this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:Disasembler");
     }
 }

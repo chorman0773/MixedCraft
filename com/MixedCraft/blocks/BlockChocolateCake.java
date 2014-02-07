@@ -9,30 +9,30 @@ import com.MixedCraft.ItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockChocolateCake extends Block
 {
     @SideOnly(Side.CLIENT)
-    private Icon cakeTopIcon;
+    private IIcon cakeTopIIcon;
     @SideOnly(Side.CLIENT)
-    private Icon cakeBottomIcon;
+    private IIcon cakeBottomIIcon;
     @SideOnly(Side.CLIENT)
-    private Icon field_94382_c;
+    private IIcon field_94382_c;
 
-    public BlockChocolateCake(int par1)
+    public BlockChocolateCake()
     {
-        super(par1, Material.cake);
+        super(Material.cake);
         this.setTickRandomly(true);
-        GameRegistry.registerBlock(this);
+       
     }
 
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
@@ -76,18 +76,18 @@ public class BlockChocolateCake extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.cakeTopIcon : (par1 == 0 ? this.cakeBottomIcon : (par2 > 0 && par1 == 4 ? this.field_94382_c : this.blockIcon));
+        return par1 == 1 ? this.cakeTopIIcon : (par1 == 0 ? this.cakeBottomIIcon : (par2 > 0 && par1 == 4 ? this.field_94382_c : this.blockIcon));
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Side");
-        this.field_94382_c = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Inner");
-        this.cakeTopIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Top");
-        this.cakeBottomIcon = par1IconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Bottom");
+        this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Side");
+        this.field_94382_c = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Inner");
+        this.cakeTopIIcon = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Top");
+        this.cakeBottomIIcon = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Bottom");
     }
 
     public boolean isOpaqueCube()

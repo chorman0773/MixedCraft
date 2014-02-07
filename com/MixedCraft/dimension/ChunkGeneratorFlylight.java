@@ -74,13 +74,13 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
-		this.coalGen = new WorldGenMinable(BlockHelper.Coal.blockID, 16, BlockHelper.FlyLightStone.blockID);
-		this.ironGen = new WorldGenMinable(BlockHelper.Iron.blockID, 8, BlockHelper.FlyLightStone.blockID);
-		this.goldGen = new WorldGenMinable(BlockHelper.Gold.blockID, 8, BlockHelper.FlyLightStone.blockID);
-		this.redstoneGen = new WorldGenMinable(BlockHelper.Redstone.blockID, 7, BlockHelper.FlyLightStone.blockID);
-		this.diamondGen = new WorldGenMinable(BlockHelper.Diamond.blockID, 7, BlockHelper.FlyLightStone.blockID);
-		this.lapisGen = new WorldGenMinable(BlockHelper.Lapis.blockID, 6, BlockHelper.FlyLightStone.blockID);
-		this.emeraldGen = new WorldGenMinable(BlockHelper.Emerald.blockID, 1, BlockHelper.FlyLightStone.blockID);
+		this.coalGen = new WorldGenMinable(BlockHelper.Coal, 16, BlockHelper.FlyLightStone);
+		this.ironGen = new WorldGenMinable(BlockHelper.Iron, 8, BlockHelper.FlyLightStone);
+		this.goldGen = new WorldGenMinable(BlockHelper.Gold, 8, BlockHelper.FlyLightStone);
+		this.redstoneGen = new WorldGenMinable(BlockHelper.Redstone, 7, BlockHelper.FlyLightStone);
+		this.diamondGen = new WorldGenMinable(BlockHelper.Diamond, 7, BlockHelper.FlyLightStone);
+		this.lapisGen = new WorldGenMinable(BlockHelper.Lapis, 6, BlockHelper.FlyLightStone);
+		this.emeraldGen = new WorldGenMinable(BlockHelper.Emerald, 1, BlockHelper.FlyLightStone);
 	}
 
 	public void generateTerrain(int var1, int var2, byte[] var3)
@@ -131,11 +131,11 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 							{
 								if ((var49 += var47) > 0.0D)
 								{
-									var3[var43 += var44] = (byte)BlockHelper.FlyLightStone.blockID;
+									var3[var43 += var44] = BlockHelper.FlyLightStone;
 								}
 								else if (var12 * 8 + var31 < var6)
 								{
-									var3[var43 += var44] = (byte)Block.waterMoving.blockID;
+									var3[var43 += var44] = Block.waterMoving;
 								}
 								else
 								{
@@ -180,7 +180,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						var3[var17] = (byte)Block.bedrock.blockID;
+						var3[var17] = (byte)Block.bedrock;
 					}
 					else
 					{
@@ -190,14 +190,14 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 						{
 							var13 = -1;
 						}
-						else if (var18 != Block.stone.blockID)
+						else if (var18 != Block.stone)
 						{
 							if (var13 == -1)
 							{
 								if (var12 <= 0)
 								{
 									var14 = 0;
-									var15 = (byte)BlockHelper.FlyLightStone.blockID;
+									var15 = (byte)BlockHelper.FlyLightStone;
 								}
 								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
@@ -207,7 +207,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 
 								if (var16 < var5 && var14 == 0)
 								{
-									var14 = (byte)Block.waterMoving.blockID;
+									var14 = (byte)Block.waterMoving;
 								}
 
 								var13 = var12;
@@ -226,10 +226,10 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 								--var13;
 								var3[var17] = var15;
 
-								if (var13 == 0 && var15 == Block.sand.blockID)
+								if (var13 == 0 && var15 == Block.sand)
 								{
 									var13 = this.rand.nextInt(4);
-									var15 = (byte)Block.sandStone.blockID;
+									var15 = (byte)Block.sandStone;
 								}
 							}
 						}
@@ -262,7 +262,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
 		this.caveGenerator.generate(this, this.worldObj, var1, var2, var3);
 		this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
-		Chunk var4 = new Chunk(this.worldObj, var3, var1, var2);
+		Chunk var4 = new Chunk(this.worldObj, var1, var2);
 		byte[] var5 = var4.getBiomeArray();
 
 		for (int var6 = 0; var6 < var5.length; ++var6)
@@ -458,7 +458,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			var12 = var4 + this.rand.nextInt(16);
 			var13 = this.rand.nextInt(300);
 			var14 = var5 + this.rand.nextInt(16);
-			(new WorldGenMinable(BlockHelper.FlyLightOre.blockID, 6, BlockHelper.FlyLightStone.blockID)).generate(worldObj, rand, var12, var13, var14);
+			(new WorldGenMinable(BlockHelper.FlyLightOre, 6, BlockHelper.FlyLightStone)).generate(worldObj, rand, var12, var13, var14);
 		}
 		
 		int k, l, i1, j;
@@ -468,7 +468,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
             k = var4+ this.rand.nextInt(16) + 8;
             l = this.rand.nextInt(this.rand.nextInt(120) + 8);
             i1 = var5 + this.rand.nextInt(16) + 8;
-            (new WorldGenLiquids(BlockHelper.Water.blockID)).generate(worldObj, rand, k, l, i1);
+            (new WorldGenLiquids(BlockHelper.Water)).generate(worldObj, rand, k, l, i1);
         }
         
 		for(j = 0; j < 13; j++){
@@ -541,7 +541,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			var20 = var4 + rand.nextInt(16) + 8;
 
 			if (var19 < 63 || rand.nextInt(10) == 0) {
-				(new WorldGenLakes(BlockHelper.Water.blockID)).generate(worldObj, rand, var18, var19, var20);
+				(new WorldGenLakes(BlockHelper.Water)).generate(worldObj, rand, var18, var19, var20);
 			}
 		}*/
 
@@ -563,7 +563,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			if ((worldObj.isAirBlock(x, y, z) || BlockHelper.Flower1.canBlockStay(worldObj, x, y, z))) {
 				if (rand.nextInt(50) > 1)
 					continue;
-				worldObj.setBlock(x, y, z, BlockHelper.Flower1.blockID, 0, 0);
+				worldObj.setBlock(x, y, z, BlockHelper.Flower1, 0, 0);
 			}
 		}
 
@@ -572,7 +572,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 				if (rand.nextInt(50) > 1)
 					continue;
 
-				worldObj.setBlock(x, y, z, BlockHelper.Flower2.blockID, 0, 0);
+				worldObj.setBlock(x, y, z, BlockHelper.Flower2, 0, 0);
 			}
 		}
 
@@ -582,7 +582,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 				if (rand.nextInt(50) > 1)
 					continue;
 
-				worldObj.setBlock(x, y, z, BlockHelper.FlylightGrass.blockID, 0, 0);
+				worldObj.setBlock(x, y, z, BlockHelper.FlylightGrass, 0, 0);
 			}
 		}
 
@@ -591,7 +591,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 				if (rand.nextInt(50) > 1)
 					continue;
 
-				worldObj.setBlock(x, y, z, BlockHelper.FlylightFern.blockID, 0, 0);
+				worldObj.setBlock(x, y, z, BlockHelper.FlylightFern, 0, 0);
 			}
 		}
 

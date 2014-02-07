@@ -47,13 +47,13 @@ public class FlylightSapling extends BlockMixedFlower {
 			}
 		}
 		if (!((WorldGenerator) (obj)).generate(world, random, i, j, k)) {
-			world.setBlock(i, j, k, this.blockID, l, 4);
+			world.setBlock(i, j, k, this, l, 4);
 			;
 		}
 	}
 
 	public int idDropped(int i, Random random) {
-		return this.blockID;
+		return this;
 	}
 
 	public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par2, float par3, float par4, float par5) {

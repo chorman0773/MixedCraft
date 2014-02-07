@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import com.MixedCraft.BlockHelper;
@@ -34,20 +34,20 @@ public class BlockDiamondFurnace extends BlockContainer
 
     private static boolean keepDiamondFurnaceInventory;
     @SideOnly(Side.CLIENT)
-    private Icon DiamondFurnaceIconTop;
+    private IIcon DiamondFurnaceIIconTop;
     @SideOnly(Side.CLIENT)
-    private Icon DiamondFurnaceIconFront;
+    private IIcon DiamondFurnaceIIconFront;
 
     public BlockDiamondFurnace(int par1, boolean par2)
     {
-        super(par1, Material.rock);
+        super(Material.rock);
         this.isActive = par2;
-        GameRegistry.registerBlock(this);
+       
     }
 
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return BlockHelper.DiamondFurnaceOff.blockID;
+        return BlockHelper.DiamondFurnaceOff;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
@@ -91,17 +91,17 @@ public class BlockDiamondFurnace extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.DiamondFurnaceIconTop : (par1 == 0 ? this.DiamondFurnaceIconTop : (par1 != par2 ? this.blockIcon : this.DiamondFurnaceIconFront));
+        return par1 == 1 ? this.DiamondFurnaceIIconTop : (par1 == 0 ? this.DiamondFurnaceIIconTop : (par1 != par2 ? this.blockIcon : this.DiamondFurnaceIIconFront));
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IIconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("MixedCraft:DiamondFurnace");
-        this.DiamondFurnaceIconFront = par1IconRegister.registerIcon(this.isActive ? "MixedCraft:DiamondFurnaceFront_On" : "MixedCraft:DiamondFurnaceFront_Off");
-        this.DiamondFurnaceIconTop = par1IconRegister.registerIcon("MixedCraft:DiamondFurnace");
+        this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:DiamondFurnace");
+        this.DiamondFurnaceIIconFront = par1IIconRegister.registerIcon(this.isActive ? "MixedCraft:DiamondFurnaceFront_On" : "MixedCraft:DiamondFurnaceFront_Off");
+        this.DiamondFurnaceIIconTop = par1IIconRegister.registerIcon("MixedCraft:DiamondFurnace");
     }
 
 
@@ -121,16 +121,16 @@ public class BlockDiamondFurnace extends BlockContainer
     public static void updateDiamondFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
     {
         int l = par1World.getBlockMetadata(par2, par3, par4);
-        TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
         keepDiamondFurnaceInventory = true;
 
         if (par0)
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.DiamondFurnaceOn.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.DiamondFurnaceOn);
         }
         else
         {
-            par1World.setBlock(par2, par3, par4, BlockHelper.DiamondFurnaceOff.blockID);
+            par1World.setBlock(par2, par3, par4, BlockHelper.DiamondFurnaceOff);
         }
 
         keepDiamondFurnaceInventory = false;
@@ -139,7 +139,7 @@ public class BlockDiamondFurnace extends BlockContainer
         if (tileentity != null)
         {
             tileentity.validate();
-            par1World.setBlockTileEntity(par2, par3, par4, tileentity);
+            par1World.setTileEntity(par2, par3, par4, tileentity);
         }
     }
 
@@ -211,7 +211,7 @@ public class BlockDiamondFurnace extends BlockContainer
 
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityDiamondFurnace)par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
+            ((TileEntityDiamondFurnace)par1World.getTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
         }
     }
 
@@ -219,7 +219,7 @@ public class BlockDiamondFurnace extends BlockContainer
     {
         if (!keepDiamondFurnaceInventory)
         {
-            TileEntityDiamondFurnace tileentityDiamondFurnace = (TileEntityDiamondFurnace)par1World.getBlockTileEntity(par2, par3, par4);
+            TileEntityDiamondFurnace tileentityDiamondFurnace = (TileEntityDiamondFurnace)par1World.getTileEntity(par2, par3, par4);
 
             if (tileentityDiamondFurnace != null)
             {
@@ -273,12 +273,12 @@ public class BlockDiamondFurnace extends BlockContainer
 
     public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
     {
-        return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
+        return Container.calcRedstoneFromInventory((IInventory)par1World.getTileEntity(par2, par3, par4));
     }
 
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return BlockHelper.DiamondFurnaceOff.blockID;
+        return BlockHelper.DiamondFurnaceOff;
     }
 }

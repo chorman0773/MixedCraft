@@ -5,7 +5,7 @@ import com.MixedCraft.helper.Utils;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 
 public class BlockMixedFlower extends BlockFlower {
 
@@ -20,8 +20,8 @@ public class BlockMixedFlower extends BlockFlower {
 	
 	
 	@Override
-	public void registerIcons(IconRegister icon) {
-		blockIcon = icon.registerIcon(Utils.MOD_ID + ":" + Name);
+	public void registerIcons(IIconRegister IIcon) {
+		blockIcon = IIcon.registerIcon(Utils.MOD_ID + ":" + Name);
 	}
 
 }

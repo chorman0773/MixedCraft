@@ -4,11 +4,11 @@ import java.util.Random;
 
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.MixedCraft.ItemHelper;
@@ -29,12 +29,12 @@ public class BlockHouse1 extends BlocksBase
 		this.setCreativeTab(MixedCraft.BlockTab);
 		GameRegistry.registerBlock(this);
 	}
-	public void registerIcons(IconRegister var1)
+	public void registerIcons(IIconRegister var1)
 	{
 		this.blockIcon = var1.registerIcon("MixedCraft:House1");
 	}
 
-	public Icon getBlockTextureFromSideAndMetadata(int var1, int var2)
+	public IIcon getBlockTextureFromSideAndMetadata(int var1, int var2)
 	{
 		return this.blockIcon;
 	}
@@ -66,7 +66,7 @@ public class BlockHouse1 extends BlocksBase
 		House1 treehouse = new House1();
 		if (!treehouse.generate(world, rand, i, j, k))
 		{
-			world.setBlock(i, j, k, this.blockID);
+			world.setBlock(i, j, k, this);
 		}
 	}
 }

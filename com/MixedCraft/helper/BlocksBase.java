@@ -4,39 +4,31 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 
-import com.MixedCraft.BlockHelper;
 import com.MixedCraft.MixedCraft;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlocksBase extends Block {
-    protected Icon tileSide;
+    protected IIcon tileSide;
     protected String tileSideName;
-    protected Icon tileTop;
+    protected IIcon tileTop;
     protected String tileTopName;
-    protected Icon tileBottom;
+    protected IIcon tileBottom;
     protected String tileBottomName;
     protected boolean enableStats = true;
 
 
 
-    public BlocksBase(int blockID, Material material) {
-        super(blockID, material);
+    public BlocksBase(Material material) {
+        super(material);
         this.setCreativeTab(MixedCraft.BlockTab);
-        GameRegistry.registerBlock(this);
         setHardness(2.0F);
     }
-    
-	public void addName(String name)
-	{
-		LanguageRegistry.instance().addStringLocalization("tile." + name + ".name", name);
-	}
     
     public boolean getEnableStats()
     {
@@ -66,7 +58,7 @@ public class BlocksBase extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerBlockIcons(IIconRegister icon) {
         tileSide = icon.registerIcon(Utils.MOD_ID +":" + tileSideName);
         tileTop = icon.registerIcon(Utils.MOD_ID +":" + tileTopName);
         tileBottom = icon.registerIcon(Utils.MOD_ID +":" + tileBottomName);
@@ -74,14 +66,16 @@ public class BlocksBase extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta) {
+    public IIcon getIcon(int side, int meta) {
         return side == 1 ? tileTop : side == 0 ? tileBottom : tileSide;
     }
 
     @Override
-    public int idDropped(int par1, Random par2Random, int par3) {
-        return blockID;
+    public Item getItemDropped(int par1, Random par2Random, int par3) {
+        return Item.getItemFromBlock(this);
     }
+    
+    
 
     @Override
     public int quantityDropped(int meta, int fortune, Random random) {

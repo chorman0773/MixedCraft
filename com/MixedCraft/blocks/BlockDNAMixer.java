@@ -22,8 +22,8 @@ public class BlockDNAMixer extends ContainerBase {
 
     private static boolean keepFurnaceInventory = true;
     
-	public BlockDNAMixer(int par1) {
-		super(par1, Material.wood);
+	public BlockDNAMixer() {
+		super(Material.wood);
 		registerTexture("DNAMixer_Side", "DNAMixer_Top" , "DNAMixer_Bottom");
 	}
 
@@ -59,11 +59,11 @@ public class BlockDNAMixer extends ContainerBase {
 
 	        if (par0)
 	        {
-	            par1World.setBlock(par2, par3, par4, BlockHelper.Mixer.blockID);
+	            par1World.setBlock(par2, par3, par4, BlockHelper.Mixer);
 	        }
 	        else
 	        {
-	            par1World.setBlock(par2, par3, par4, BlockHelper.Mixer.blockID);
+	            par1World.setBlock(par2, par3, par4, BlockHelper.Mixer);
 	        }
 
 	        keepFurnaceInventory = true;

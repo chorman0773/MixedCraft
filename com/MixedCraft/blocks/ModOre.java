@@ -20,35 +20,35 @@ public class ModOre extends ModBlock{
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-		if(blockID == BlockHelper.Coal.blockID){
+		if(blockID == BlockHelper.Coal){
 			return Item.coal.itemID;
 		}
-		if(blockID == BlockHelper.Diamond.blockID){
+		if(blockID == BlockHelper.Diamond){
 			 return Item.diamond.itemID;
 		}
-		if(blockID == BlockHelper.Lapis.blockID){
+		if(blockID == BlockHelper.Lapis){
 			 return Item.dyePowder.itemID;
 		}
-		if(blockID == BlockHelper.Emerald.blockID){
+		if(blockID == BlockHelper.Emerald){
 			 return Item.emerald.itemID;
 		}
-		if(blockID == BlockHelper.Iron.blockID){
+		if(blockID == BlockHelper.Iron){
 			 return blockID;
 		}
-		if(blockID == BlockHelper.Gold.blockID){
+		if(blockID == BlockHelper.Gold){
 			return blockID;
 		}
-		if(blockID == BlockHelper.Redstone.blockID){
+		if(blockID == BlockHelper.Redstone){
 			 return Item.redstone.itemID;
 		}
 		return 0;
 	}
 
 	public int quantityDropped(Random par1Random) {
-		if(blockID == BlockHelper.Lapis.blockID){
-			return blockID == BlockHelper.Lapis.blockID ? 4 + par1Random.nextInt(5) : 1;
+		if(blockID == BlockHelper.Lapis){
+			return blockID == BlockHelper.Lapis ? 4 + par1Random.nextInt(5) : 1;
 		}
-		if(blockID == BlockHelper.Redstone.blockID){
+		if(blockID == BlockHelper.Redstone){
 			return 4 + par1Random.nextInt(2);
 		}
 		return 1;
@@ -57,23 +57,23 @@ public class ModOre extends ModBlock{
 	 @Override
 	    public int getExpDrop(World par1World, int par5, int par7)
 	    {
-	        if (this.idDropped(par5, par1World.rand, par7) != this.blockID)
+	        if (this.idDropped(par5, par1World.rand, par7) != this)
 	        {
 	            int j1 = 0;
 
-	            if (this.blockID == BlockHelper.Coal.blockID)
+	            if (this == BlockHelper.Coal)
 	            {
 	                j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 0, 2);
 	            }
-	            else if (this.blockID == BlockHelper.Diamond.blockID)
+	            else if (this == BlockHelper.Diamond)
 	            {
 	                j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
 	            }
-	            else if (this.blockID == BlockHelper.Emerald.blockID)
+	            else if (this == BlockHelper.Emerald)
 	            {
 	                j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
 	            }
-	            else if (this.blockID == BlockHelper.Lapis.blockID)
+	            else if (this == BlockHelper.Lapis)
 	            {
 	                j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
 	            }
@@ -85,7 +85,7 @@ public class ModOre extends ModBlock{
     
     public int quantityDroppedWithBonus(int par1, Random par2Random)
     {
-        if (par1 > 0 && this.blockID != this.idDropped(0, par2Random, par1))
+        if (par1 > 0 && this != this.idDropped(0, par2Random, par1))
         {
             int j = par2Random.nextInt(par1 + 2) - 1;
 
@@ -102,8 +102,8 @@ public class ModOre extends ModBlock{
         }
     }
     
-    public int damageDropped(int par1)
+    public int damageDropped()
     {
-        return this.blockID == BlockHelper.Lapis.blockID ? 4 : 0;
+        return this == BlockHelper.Lapis ? 4 : 0;
     }
 }

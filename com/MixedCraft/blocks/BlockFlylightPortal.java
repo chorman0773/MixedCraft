@@ -24,14 +24,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockFlylightPortal extends BreakableBase
 {
 
-    public BlockFlylightPortal(int par1)
+    public BlockFlylightPortal()
     {
         super(par1, "Flylight", Material.portal, false);
         this.setTickRandomly(true);
         this.setHardness(-1.0F);
         this.setStepSound(soundGlassFootstep);
         this.setLightValue(0.75F);
-        GameRegistry.registerBlock(this);
+       
         setCreativeTab(MixedCraft.BlockTab);
     }
 
@@ -76,7 +76,7 @@ public class BlockFlylightPortal extends BreakableBase
     {
         float f;
         float f1;
-        if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) != this.blockID && par1IBlockAccess.getBlockId(par2 + 1, par3, par4) != this.blockID)
+        if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) != this && par1IBlockAccess.getBlockId(par2 + 1, par3, par4) != this)
         {
             f = 0.125F;
             f1 = 0.5F;
@@ -113,11 +113,11 @@ public class BlockFlylightPortal extends BreakableBase
     {
         byte b0 = 0;
         byte b1 = 0;
-        if (par1World.getBlockId(par2 - 1, par3, par4) == BlockHelper.FlyLightStone.blockID || par1World.getBlockId(par2 + 1, par3, par4) == BlockHelper.FlyLightStone.blockID)
+        if (par1World.getBlockId(par2 - 1, par3, par4) == BlockHelper.FlyLightStone || par1World.getBlockId(par2 + 1, par3, par4) == BlockHelper.FlyLightStone)
         {
             b0 = 1;
         }
-        if (par1World.getBlockId(par2, par3, par4 - 1) == BlockHelper.FlyLightStone.blockID || par1World.getBlockId(par2, par3, par4 + 1) == BlockHelper.FlyLightStone.blockID)
+        if (par1World.getBlockId(par2, par3, par4 - 1) == BlockHelper.FlyLightStone || par1World.getBlockId(par2, par3, par4 + 1) == BlockHelper.FlyLightStone)
         {
             b1 = 1;
         }
@@ -142,10 +142,10 @@ public class BlockFlylightPortal extends BreakableBase
                         int j1 = par1World.getBlockId(par2 + b0 * l, par3 + i1, par4 + b1 * l);
                         if (flag)
                         {
-                            if (j1 != BlockHelper.FlyLightStone.blockID)
+                            if (j1 != BlockHelper.FlyLightStone)
                                 return false;
                         }
-                        else if (j1 != 0 && j1 != BlockHelper.ModFire.blockID)
+                        else if (j1 != 0 && j1 != BlockHelper.ModFire)
                             return false;
                     }
                 }
@@ -154,7 +154,7 @@ public class BlockFlylightPortal extends BreakableBase
             {
                 for (i1 = 0; i1 < 3; ++i1)
                 {
-                    par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, BlockHelper.FlyLightPortal.blockID, 0, 2);
+                    par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, BlockHelper.FlyLightPortal, 0, 2);
                 }
             }
             return true;
@@ -169,38 +169,38 @@ public class BlockFlylightPortal extends BreakableBase
     {
         byte b0 = 0;
         byte b1 = 1;
-        if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+        if (par1World.getBlockId(par2 - 1, par3, par4) == this || par1World.getBlockId(par2 + 1, par3, par4) == this)
         {
             b0 = 1;
             b1 = 0;
         }
         int i1;
-        for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == this.blockID; --i1)
+        for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == this; --i1)
         {
             ;
         }
-        if (par1World.getBlockId(par2, i1 - 1, par4) != BlockHelper.FlyLightStone.blockID)
+        if (par1World.getBlockId(par2, i1 - 1, par4) != BlockHelper.FlyLightStone)
         {
             par1World.setBlockToAir(par2, par3, par4);
         }
         else
         {
             int j1;
-            for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == this.blockID; ++j1)
+            for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == this; ++j1)
             {
                 ;
             }
-            if (j1 == 3 && par1World.getBlockId(par2, i1 + j1, par4) == BlockHelper.FlyLightStone.blockID)
+            if (j1 == 3 && par1World.getBlockId(par2, i1 + j1, par4) == BlockHelper.FlyLightStone)
             {
-                boolean flag = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
-                boolean flag1 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
+                boolean flag = par1World.getBlockId(par2 - 1, par3, par4) == this || par1World.getBlockId(par2 + 1, par3, par4) == this;
+                boolean flag1 = par1World.getBlockId(par2, par3, par4 - 1) == this || par1World.getBlockId(par2, par3, par4 + 1) == this;
                 if (flag && flag1)
                 {
                     par1World.setBlockToAir(par2, par3, par4);
                 }
                 else
                 {
-                    if ((par1World.getBlockId(par2 + b0, par3, par4 + b1) != BlockHelper.FlyLightStone.blockID || par1World.getBlockId(par2 - b0, par3, par4 - b1) != this.blockID) && (par1World.getBlockId(par2 - b0, par3, par4 - b1) != BlockHelper.FlyLightStone.blockID || par1World.getBlockId(par2 + b0, par3, par4 + b1) != this.blockID))
+                    if ((par1World.getBlockId(par2 + b0, par3, par4 + b1) != BlockHelper.FlyLightStone || par1World.getBlockId(par2 - b0, par3, par4 - b1) != this) && (par1World.getBlockId(par2 - b0, par3, par4 - b1) != BlockHelper.FlyLightStone || par1World.getBlockId(par2 + b0, par3, par4 + b1) != this))
                     {
                         par1World.setBlockToAir(par2, par3, par4);
                     }
@@ -220,14 +220,14 @@ public class BlockFlylightPortal extends BreakableBase
      */
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        if (par1IBlockAccess.getBlockId(par2, par3, par4) == this.blockID)
+        if (par1IBlockAccess.getBlockId(par2, par3, par4) == this)
             return false;
         else
         {
-            boolean flag = par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == this.blockID && par1IBlockAccess.getBlockId(par2 - 2, par3, par4) != this.blockID;
-            boolean flag1 = par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == this.blockID && par1IBlockAccess.getBlockId(par2 + 2, par3, par4) != this.blockID;
-            boolean flag2 = par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == this.blockID && par1IBlockAccess.getBlockId(par2, par3, par4 - 2) != this.blockID;
-            boolean flag3 = par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this.blockID && par1IBlockAccess.getBlockId(par2, par3, par4 + 2) != this.blockID;
+            boolean flag = par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == this && par1IBlockAccess.getBlockId(par2 - 2, par3, par4) != this;
+            boolean flag1 = par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == this && par1IBlockAccess.getBlockId(par2 + 2, par3, par4) != this;
+            boolean flag2 = par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == this && par1IBlockAccess.getBlockId(par2, par3, par4 - 2) != this;
+            boolean flag3 = par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this && par1IBlockAccess.getBlockId(par2, par3, par4 + 2) != this;
             boolean flag4 = flag || flag1;
             boolean flag5 = flag2 || flag3;
             return flag4 && par5 == 4 ? true : (flag4 && par5 == 5 ? true : (flag5 && par5 == 2 ? true : flag5 && par5 == 3));
@@ -295,7 +295,7 @@ public class BlockFlylightPortal extends BreakableBase
             var15 = (var5.nextFloat() - 0.5D) * 0.5D;
             var17 = (var5.nextFloat() - 0.5D) * 0.5D;
 
-            if (var1.getBlockId(var2 - 1, var3, var4) != this.blockID && var1.getBlockId(var2 + 1, var3, var4) != this.blockID)
+            if (var1.getBlockId(var2 - 1, var3, var4) != this && var1.getBlockId(var2 + 1, var3, var4) != this)
             {
                 var7 = var2 + 0.5D + 0.25D * var19;
                 var13 = var5.nextFloat() * 2.0F * var19;
@@ -312,6 +312,6 @@ public class BlockFlylightPortal extends BreakableBase
     @SideOnly(Side.CLIENT) 
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-        return BlockHelper.FlyLightPortal.blockID;
+        return BlockHelper.FlyLightPortal;
     }
 }
