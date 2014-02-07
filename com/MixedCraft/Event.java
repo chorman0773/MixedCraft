@@ -1,20 +1,19 @@
 package com.MixedCraft;
 
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
 import com.MixedCraft.blocks.FlylightSapling;
 
-public class Event
-{
-	private int BlockID;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
+public class Event {	
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void bonemealUsed(BonemealEvent event)
 	{
-		if(event.world.getBlockId(event.X, event.Y, event.Z) == BlockHelper.FlylightSapling.blockID)
+		if(event.world.getBlock(event.x, event.y, event.z) == BlockHelper.FlylightSapling)
 		{
-			((FlylightSapling)BlockHelper.FlylightSapling).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+			((FlylightSapling)BlockHelper.FlylightSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 	}
 }
