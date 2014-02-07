@@ -1,4 +1,4 @@
-package com.MixedCraft.recipes;
+/*package com.MixedCraft.recipes;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -48,3 +48,4 @@ public class RecipesDisasembler
 			return 0;
 	}
 }
+*/
