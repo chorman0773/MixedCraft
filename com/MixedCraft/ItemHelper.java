@@ -3,12 +3,9 @@ package com.MixedCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.EnumHelper;
 
 import com.MixedCraft.armor.*;
 import com.MixedCraft.entity.EntityCowZombie;

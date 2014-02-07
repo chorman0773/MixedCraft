@@ -18,7 +18,6 @@ import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 
 @Mod(modid = Utils.MOD_ID, name = Utils.MOD_NAME, version = Utils.MOD_VERSION)
-@NetworkMod(channels = { Utils.MOD_ID }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
 public class MixedCraft extends HelperHandler{
 
 	@Instance(Utils.MOD_ID)
@@ -31,33 +30,33 @@ public class MixedCraft extends HelperHandler{
 	public static Fluid Mod = new ModFluid("Fluid");
 	
 	public static final CreativeTabs DNATab = new CreativeTabs("DNA"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(ItemHelper.CowDNADrive);
+		public Item getTabIconItem() { 
+			return ItemHelper.CowDNADrive;
 		}
 	};
 	public static final CreativeTabs MixedDNATab = new CreativeTabs("MixedDNA"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(ItemHelper.CowBlazeMixedDrive);
+		public Item getTabIconItem() { 
+			return ItemHelper.CowBlazeMixedDrive;
 		}
 	};
 	public static final CreativeTabs SpawnerTab = new CreativeTabs("Spawner"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(ItemHelper.CowChickenSpawner);
+		public Item getTabIconItem() { 
+			return ItemHelper.CowChickenSpawner;
 		}
 	};
 	public static final CreativeTabs BlockTab = new CreativeTabs("Block"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(BlockHelper.Extractor);
+		public Item getTabIconItem() { 
+			return Item.getItemFromBlock(BlockHelper.Extractor);
 		}
 	};
 	public static final CreativeTabs ToolTab = new CreativeTabs("Tool"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(ItemHelper.SilverPickaxe);
+		public Item getTabIconItem() { 
+			return ItemHelper.SilverPickaxe;
 		}
 	};
 	public static final CreativeTabs MiscTab = new CreativeTabs("Misc"){
-		public ItemStack getIconItemStack() { 
-			return new ItemStack(ItemHelper.SilverIngot);
+		public Item getTabIconItem() { 
+			return ItemHelper.SilverIngot;
 		}
 	};
 
