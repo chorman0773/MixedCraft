@@ -2,7 +2,9 @@ package com.MixedCraft.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -10,14 +12,12 @@ import net.minecraft.world.World;
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.helper.ItemsBase;
 
-public class ItemGoldDoor extends ItemsBase
-{
+public class ItemGoldDoor extends ItemsBase {
     private Material doorMaterial;
 
-    public ItemGoldDoor(int par1, Material par2Material)
-    {
-        super(par1, "");
-        this.doorMaterial = par2Material;
+    public ItemGoldDoor(Material m) {
+    	super("");
+        this.doorMaterial = m;
         this.maxStackSize = 1;
     }
 
@@ -66,35 +66,35 @@ public class ItemGoldDoor extends ItemsBase
         }
     }
 
-    public static void placeDoorBlock(World par0World, int par1, int par2, int par3, int par4, Block par5Block)
+    public static void placeDoorBlock(World p_150924_0_, int p_150924_1_, int p_150924_2_, int p_150924_3_, int p_150924_4_, Block p_150924_5_)
     {
         byte b0 = 0;
         byte b1 = 0;
 
-        if (par4 == 0)
+        if (p_150924_4_ == 0)
         {
             b1 = 1;
         }
 
-        if (par4 == 1)
+        if (p_150924_4_ == 1)
         {
             b0 = -1;
         }
 
-        if (par4 == 2)
+        if (p_150924_4_ == 2)
         {
             b1 = -1;
         }
 
-        if (par4 == 3)
+        if (p_150924_4_ == 3)
         {
             b0 = 1;
         }
 
-        int i1 = (par0World.isBlockNormalCube(par1 - b0, par2, par3 - b1) ? 1 : 0) + (par0World.isBlockNormalCube(par1 - b0, par2 + 1, par3 - b1) ? 1 : 0);
-        int j1 = (par0World.isBlockNormalCube(par1 + b0, par2, par3 + b1) ? 1 : 0) + (par0World.isBlockNormalCube(par1 + b0, par2 + 1, par3 + b1) ? 1 : 0);
-        boolean flag = par0World.getBlockId(par1 - b0, par2, par3 - b1) == par5Block.blockID || par0World.getBlockId(par1 - b0, par2 + 1, par3 - b1) == par5Block.blockID;
-        boolean flag1 = par0World.getBlockId(par1 + b0, par2, par3 + b1) == par5Block.blockID || par0World.getBlockId(par1 + b0, par2 + 1, par3 + b1) == par5Block.blockID;
+        int i1 = (p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1).isNormalCube() ? 1 : 0) + (p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1).isNormalCube() ? 1 : 0);
+        int j1 = (p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1).isNormalCube() ? 1 : 0) + (p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1).isNormalCube() ? 1 : 0);
+        boolean flag = p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1) == p_150924_5_ || p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1) == p_150924_5_;
+        boolean flag1 = p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1) == p_150924_5_ || p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1) == p_150924_5_;
         boolean flag2 = false;
 
         if (flag && !flag1)
@@ -106,9 +106,9 @@ public class ItemGoldDoor extends ItemsBase
             flag2 = true;
         }
 
-        par0World.setBlock(par1, par2, par3, par5Block.blockID, par4, 2);
-        par0World.setBlock(par1, par2 + 1, par3, par5Block.blockID, 8 | (flag2 ? 1 : 0), 2);
-        par0World.notifyBlocksOfNeighborChange(par1, par2, par3, par5Block.blockID);
-        par0World.notifyBlocksOfNeighborChange(par1, par2 + 1, par3, par5Block.blockID);
+        p_150924_0_.setBlock(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_, p_150924_4_, 2);
+        p_150924_0_.setBlock(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_, 8 | (flag2 ? 1 : 0), 2);
+        p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_);
+        p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_);
     }
 }

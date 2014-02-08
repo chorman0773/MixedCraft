@@ -12,17 +12,17 @@ public class WandOfIce extends ItemBaseWand {
 	
 	public static int defaultCharges = 100;
 	
-	public WandOfIce(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfIce(String par2) {
+		super(par2);
         this.setMaxDamage(defaultCharges + 1);
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}
 
-	@Override
+	@Override 
 	public int getBaseRepairCost() {
 		return 5;
 	}
@@ -55,12 +55,12 @@ public class WandOfIce extends ItemBaseWand {
 	}
 	
 	protected int freezeBlock(World w, int x, int y, int z){
-		int targetID = w.getBlockId(x, y, z);
-		if(targetID == Block.waterStill.blockID || targetID == Block.waterMoving.blockID){
-			w.setBlock(x, y, z, Block.ice.blockID);
+		int target = w.getBlock(x, y, z);
+		if(target == Block.waterStill.block || target == Block.waterMoving.block){
+			w.setBlock(x, y, z, Block.ice.block);
 			return 1;
-		} else if(targetID == Block.lavaMoving.blockID || targetID == Block.lavaStill.blockID){
-			w.setBlock(x, y, z, Block.cobblestone.blockID);
+		} else if(target == Block.lavaMoving.block || target == Block.lavaStill.block){
+			w.setBlock(x, y, z, Block.cobblestone.block);
 			return 1;
 		}
 		return 0;

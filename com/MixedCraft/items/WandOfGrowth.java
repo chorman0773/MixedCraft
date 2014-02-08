@@ -16,17 +16,17 @@ public class WandOfGrowth extends ItemBaseWand {
 	
 	public static int defaultCharges = 100;
 	
-	public WandOfGrowth(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfGrowth(String par2) {
+		super(par2);
         this.setMaxDamage(defaultCharges + 1);
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}
 
-	@Override
+	@Override 
 	public int getBaseRepairCost() {
 		return 7;
 	}
@@ -53,36 +53,36 @@ public class WandOfGrowth extends ItemBaseWand {
 	
 	protected boolean growBlock(EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ){
 
-		int targetID = world.getBlockId(targetX, targetY, targetZ);
+		int target = world.getBlock(targetX, targetY, targetZ);
 		ItemStack fauxItemStack = new ItemStack(Item.dyePowder);
 		
-		if(targetID == Block.cactus.blockID && ManaHelper.useBar(playerEntity, 10)){
+		if(target == Block.cactus.block && ManaHelper.useBar(playerEntity, 10)){
 
 			int y = targetY+1;
-			while(world.getBlockId(targetX, y, targetZ) == Block.cactus.blockID){
+			while(world.getBlock(targetX, y, targetZ) == Block.cactus.block){
 				y++;
 			}
-			if(world.getBlockId(targetX, y, targetZ) == 0){
+			if(world.getBlock(targetX, y, targetZ) == 0){
 
-				world.setBlock(targetX, y, targetZ, Block.cactus.blockID);
+				world.setBlock(targetX, y, targetZ, Block.cactus.block);
 			}
 			return true;
-		} else if(targetID == Block.reed.blockID && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Block.reed.block && ManaHelper.useBar(playerEntity, 10)){
 
 			int y = targetY+1;
-			while(world.getBlockId(targetX, y, targetZ) == Block.reed.blockID){
+			while(world.getBlock(targetX, y, targetZ) == Block.reed.block){
 				y++;
 			}
-			if(world.getBlockId(targetX, y, targetZ) == 0){
+			if(world.getBlock(targetX, y, targetZ) == 0){
 
-				world.setBlock(targetX, y, targetZ, Block.reed.blockID);
+				world.setBlock(targetX, y, targetZ, Block.reed.block);
 			}
 			return true;
-		} else if(targetID == Block.cobblestone.blockID && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Block.cobblestone.block && ManaHelper.useBar(playerEntity, 10)){
 
-			world.setBlock(targetX, targetY, targetZ, Block.cobblestoneMossy.blockID);
+			world.setBlock(targetX, targetY, targetZ, Block.cobblestoneMossy.block);
 			return true;
-		} else if(targetID == Block.stoneBrick.blockID && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Block.stoneBrick.block && ManaHelper.useBar(playerEntity, 10)){
 			if( world.getBlockMetadata(targetX, targetY, targetZ) == 0){
 
 				world.setBlockMetadataWithNotify(targetX, targetY, targetZ, 1, 3);

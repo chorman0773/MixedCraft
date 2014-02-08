@@ -1,13 +1,12 @@
 package com.MixedCraft.items;
 
-import com.MixedCraft.helper.ManaHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityPotion;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
+
+import com.MixedCraft.helper.ManaHelper;
 
 public class WandOfHarming extends ItemBaseWand {
 
@@ -15,17 +14,17 @@ public class WandOfHarming extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfHarming(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfHarming(String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}
 
-	@Override
+	@Override 
 	public int getBaseRepairCost() {
 		return 15;
 	}
@@ -43,7 +42,7 @@ public class WandOfHarming extends ItemBaseWand {
 		}
 		playSound("random.pop", world, playerEntity);
 
-		ItemStack hp = new ItemStack(Item.potion, 5);
+		ItemStack hp = new ItemStack(Items.potionitem, 5);
 		hp.setItemDamage(5149388);
 		if (!world.isRemote && ManaHelper.useBar(playerEntity, 40))
 		{

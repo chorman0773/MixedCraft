@@ -14,32 +14,30 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDNABase extends ItemsBase{
 
-	  private String[] descriptors;
-	  private int GuiID;
-	  
-	  public ItemDNABase(int ID, int GuiID){
-		  super(ID, "DNAKey");
-		  this.GuiID = GuiID;
-	  }
-	  
-	  public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
-	    {
-	            var3.openGui(MixedCraft.instance, GuiID, var2, 0, 0, 0);
-	            return var1;
-	    }
-	  
-	    public ItemDNABase setDescriptors(String[] descs) {
-	        descriptors = descs;
-	        return this;
-	    }
-	
-	    @Override
-	    @SideOnly(Side.CLIENT)
-	    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-	    {
-	        for (String desc : descriptors) {
-	            par3List.add(desc);
-	        }
-	    }
-	    
+	private String[] descriptors;
+	private int Gui;
+
+	public ItemDNABase(int Gui){
+		super("DNAKey");
+		this.Gui = Gui;
+	}
+
+	public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3) {
+		var3.openGui(MixedCraft.instance, Gui, var2, 0, 0, 0);
+		return var1;
+	}
+
+	public ItemDNABase setDescriptors(String[] descs) {
+		descriptors = descs;
+		return this;
+	}
+
+	@Override 
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+		for (String desc : descriptors) {
+			par3List.add(desc);
+		}
+	}
+
 }

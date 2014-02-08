@@ -1,6 +1,6 @@
 package com.MixedCraft.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumMovingObjectType;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -46,9 +46,9 @@ public class ItemTNTBow extends ItemsBase
 		}
 		j = event.charge;
 
-		boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
+		boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effect, par1ItemStack) > 0;
 
-		if (flag || player.inventory.hasItem(ItemHelper.TNTArrow.itemID))
+		if (flag || player.inventory.hasItem(ItemHelper.TNTArrow))
 		{
 			float f = (float)j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
@@ -89,21 +89,21 @@ public class ItemTNTBow extends ItemsBase
 				entityarrow.setIsCritical(true);
 			}
 
-			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effect, par1ItemStack);
 
 			if (k > 0)
 			{
 				entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
 			}
 
-			int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+			int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effect, par1ItemStack);
 
 			if (l > 0)
 			{
 				entityarrow.setKnockbackStrength(l);
 			}
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effect, par1ItemStack) > 0)
 			{
 				entityarrow.setFire(200);
 			}
@@ -117,7 +117,7 @@ public class ItemTNTBow extends ItemsBase
 			}
 			else
 			{
-				player.inventory.consumeInventoryItem(ItemHelper.TNTArrow.itemID);
+				player.inventory.consumeInventoryItem(ItemHelper.TNTArrow);
 			}
 
 				par2World.spawnEntityInWorld(entityarrow);
@@ -159,7 +159,7 @@ public class ItemTNTBow extends ItemsBase
 			return event.result;
 		}
 
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(ItemHelper.TNTArrow.itemID))
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(ItemHelper.TNTArrow))
 		{
 			player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}
@@ -175,19 +175,19 @@ public class ItemTNTBow extends ItemsBase
 		return 1;
 	}
 
-	private Icon[] Texture = new Icon[4];
+	private IIcon[] Texture = new IIcon[4];
 
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister IIconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
+		itemIcon = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
 		for (int N = 0; N < 4; N++)
 		{
-			this.Texture[N] = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
+			this.Texture[N] = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
 
 		}
 	}
 
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		if(player.getItemInUse() == null) return this.itemIcon;
 

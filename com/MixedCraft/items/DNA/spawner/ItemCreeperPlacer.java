@@ -15,7 +15,7 @@ public class ItemCreeperPlacer extends ItemsBase
 
 	public ItemCreeperPlacer(int var1)
 	{
-		super(var1, "");
+		super("");
 	}
 
 
@@ -34,7 +34,7 @@ public class ItemCreeperPlacer extends ItemsBase
 		}
 		if(par3World.isRemote)
 			--par1ItemStack.stackSize;
-		par2EntityPlayer.inventory.consumeInventoryItem(this.itemID);
+		par2EntityPlayer.inventory.consumeInventoryItem(this);
 
 		return true;
 	}

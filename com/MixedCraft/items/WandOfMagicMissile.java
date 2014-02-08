@@ -12,8 +12,8 @@ public class WandOfMagicMissile extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfMagicMissile(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfMagicMissile(String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
@@ -26,7 +26,7 @@ public class WandOfMagicMissile extends ItemBaseWand {
 		return srcItemStack;
 	}
 
-	@Override
+	@Override 
 	public boolean onItemUse(ItemStack srcItemStack, EntityPlayer playerEntity, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10){
 		return super.onItemUse(srcItemStack, playerEntity, world, par4, par5, par6, par7, par8, par9, par10);
 	}
@@ -58,7 +58,7 @@ public class WandOfMagicMissile extends ItemBaseWand {
 		return srcItemStack;
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}

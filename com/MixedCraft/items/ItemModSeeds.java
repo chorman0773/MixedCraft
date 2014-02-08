@@ -19,8 +19,8 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
      */
     private int blockType;
 
-    /** BlockID of the block the seeds can be planted on. */
-    private int soilBlockID;
+    /** Block of the block the seeds can be planted on. */
+    private int soilBlock;
 
     public ItemModSeeds(int par1, int par2, int par3, String par4)
     {
@@ -28,7 +28,7 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
         registerTextures(par4);
         setUnlocalizedName(par4);
         this.blockType = par2;
-        this.soilBlockID = par3;
+        this.soilBlock = par3;
         this.setCreativeTab(MixedCraft.MiscTab);
     }
 
@@ -44,7 +44,7 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
         }
         else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
         {
-            int i1 = par3World.getBlockId(par4, par5, par6);
+            int i1 = par3World.getBlock(par4, par5, par6);
             Block soil = Block.blocksList[i1];
 
             if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
@@ -64,19 +64,19 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
         }
     }
 
-    @Override
+    @Override 
     public EnumPlantType getPlantType(World world, int x, int y, int z)
     {
-        return (blockType == Block.netherStalk.blockID ? EnumPlantType.Nether : EnumPlantType.Crop);
+        return (blockType == Block.netherStalk.block ? EnumPlantType.Nether : EnumPlantType.Crop);
     }
 
-    @Override
-    public int getPlantID(World world, int x, int y, int z)
+    @Override 
+    public int getPlant(World world, int x, int y, int z)
     {
         return blockType;
     }
 
-    @Override
+    @Override 
     public int getPlantMetadata(World world, int x, int y, int z)
     {
         return 0;

@@ -2,13 +2,12 @@ package com.MixedCraft.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.MixedCraft.entity.EntityDroid;
@@ -21,17 +20,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemMobShooter extends ItemsBase {
 
 	@SideOnly(Side.CLIENT)
-	private Icon chargedIcon;
+	private IIcon chargedIIcon;
 
-	public ItemMobShooter(int id) {
-		super(id, "");
+	public ItemMobShooter() {
+		super("");
 		setMaxStackSize(1);
 		setUnlocalizedName("Wand");
 	}
 	
-
-	
-	@Override
+	@Override 
 	public boolean itemInteractionForEntity(ItemStack itemstack, EntityPlayer player, EntityLivingBase target) {
 		if (!target.worldObj.isRemote) {
 			target.motionY = 2;
@@ -49,15 +46,15 @@ public class ItemMobShooter extends ItemsBase {
 	}
 	
 	
-	@Override
+	@Override 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register) {
+	public void registerIcons(IIconRegister register) {
 		itemIcon = register.registerIcon(Utils.MOD_ID + ":" + "Wand");
-		chargedIcon = register.registerIcon(Utils.MOD_ID  + ":" + "WandCharged");
+		chargedIIcon = register.registerIcon(Utils.MOD_ID  + ":" + "WandCharged");
 	}
 	
 
-	@Override
+	@Override 
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List info, boolean useExtraInformation) {
 		info.add("Used " + itemstack.getItemDamage() + " times");
@@ -67,11 +64,11 @@ public class ItemMobShooter extends ItemsBase {
 		}
 	}
 	
-	@Override
+	@Override 
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int dmg) {
+	public IIcon getIconFromDamage(int dmg) {
 		if (isCharged(dmg)) {
-			return chargedIcon;
+			return chargedIIcon;
 		}else{
 			return itemIcon;
 		}
@@ -81,8 +78,8 @@ public class ItemMobShooter extends ItemsBase {
 		return dmg >= 10;
 	}
 	
-	@Override
-	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+	@Override 
+	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int se, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote && player.isSneaking()) {
 			EntityDroid ship = new EntityDroid(world);
 			

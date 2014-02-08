@@ -1,29 +1,30 @@
 package com.MixedCraft.helper;
 
+import javax.swing.Icon;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BreakableBase extends BlockBreakable
-{
+public class BreakableBase extends BlockBreakable {
     private boolean localFlag;
     private String breakableBlockIcon;
-    protected Icon tileSide;
+    protected IIcon tileSide;
     protected String tileSideName;
-    protected Icon tileTop;
+    protected IIcon tileTop;
     protected String tileTopName;
-    protected Icon tileBottom;
+    protected IIcon tileBottom;
     protected String tileBottomName;
 
 
-    protected BreakableBase(int par1, String par2Str, Material par3Material, boolean par4)
+    protected BreakableBase(String par2Str, Material par3Material, boolean par4)
     {
-        super(par1, par2Str, par3Material, par4);
+        super(par2Str, par3Material, par4);
         this.localFlag = par4;
         this.breakableBlockIcon = par2Str;
     }
@@ -41,7 +42,7 @@ public class BreakableBase extends BlockBreakable
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerBlockIcons(IIconRegister icon) {
         tileSide = icon.registerIcon(Utils.MOD_ID + ":" + tileSideName);
         tileTop = icon.registerIcon(Utils.MOD_ID + ":" + tileTopName); 
         tileBottom = icon.registerIcon(Utils.MOD_ID + ":" + tileBottomName);
@@ -49,7 +50,7 @@ public class BreakableBase extends BlockBreakable
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta) {
+    public IIcon getIcon(int side, int meta) {
         return side == 1 ? tileTop : side == 0 ? tileBottom : tileSide;
     }
 
@@ -63,7 +64,7 @@ public class BreakableBase extends BlockBreakable
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        int i1 = par1IBlockAccess.getBlockId(par2, par3, par4);
-        return !this.localFlag && i1 == this.blockID ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+        Block i1 = par1IBlockAccess.getBlock(par2, par3, par4);
+        return !this.localFlag && i1 == this ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
     }
 }

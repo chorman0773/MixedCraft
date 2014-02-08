@@ -6,5 +6,5 @@ public class ItemInfo {
 	
 	public static final String[] CARD_NAMES = {"Arrow Card", "Border Card", "Cross Card"};
 	
-	public static final String[] CARD_ICONS = {"card_arrow", "card_box", "card_cross"};
+	public static final String[] CARD_IIconS = {"card_arrow", "card_box", "card_cross"};
 }

@@ -11,35 +11,35 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemHouse extends ItemsBase
 {
 
-	public ItemHouse(int id) {
-		super(id, "");
+	public ItemHouse() {
+		super("");
 		registerTextures("House");
 		setUnlocalizedName("House");
 	}
 
-
-    @SuppressWarnings("unused")
+/*
+	@SuppressWarnings("unused")
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World var1, int x, int y, int z, int par7, float par8, float par9, float par10)
- {
-          if(!var1.isRemote)
-          {
-                 int direction = MathHelper.floor_double((double)(par2EntityPlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-                
-                 if(direction == 1 || direction == 3)
-                 {
-                        for(int par1 = 1; par1 < 5; par1++)
-                        {
-                               for (int par2 = -1; par2 < 2; par2++)
-                               {
-                                     if(var1.getBlockId(x, y + par1, z + par2) != 0)
-                                     {
-                                            par2EntityPlayer.addChatMessage("Cant place the house");
-                                            return false;
-                                            
-                                            
-                                     }
-                               }
-                        }
+	{
+		if(!var1.isRemote)
+		{
+			int direction = MathHelper.floor_double((double)(par2EntityPlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+
+			if(direction == 1 || direction == 3)
+			{
+				for(int par1 = 1; par1 < 5; par1++)
+				{
+					for (int par2 = -1; par2 < 2; par2++)
+					{
+						if(var1.getBlock(x, y + par1, z + par2) != 0)
+						{
+							par2EntityPlayer.addChatMessage("Cant place the house");
+							return false;
+
+
+						}
+					}
+				}
 
 				var1.setBlock(x+0, y+0, z+-1, 5);
 				var1.setBlock(x+0, y+0, z+-2, 5);
@@ -173,7 +173,7 @@ public class ItemHouse extends ItemsBase
 				{
 					for (int par2 = -1; par2 < par2; par2++)
 					{
-						if(var1.getBlockId(x + par1, y + par2, z) != 0);
+						if(var1.getBlock(x + par1, y + par2, z) != 0);
 						{
 							par2EntityPlayer.addChatMessage("Cant place the house");
 							return false;
@@ -185,5 +185,5 @@ public class ItemHouse extends ItemsBase
 		}else{
 			return false;
 		}
-	}
+	}*/
 }

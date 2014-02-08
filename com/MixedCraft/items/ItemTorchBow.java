@@ -1,13 +1,13 @@
 package com.MixedCraft.items;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -45,7 +45,7 @@ public class ItemTorchBow extends ItemsBase
 
 		boolean flag = player.capabilities.isCreativeMode;
 
-		if (flag || player.inventory.hasItem(Block.torchWood.blockID)) {
+		if (flag || player.inventory.hasItem(Block.torchWood.block)) {
 
 			float f10 = 1.0F;
 
@@ -54,7 +54,7 @@ public class ItemTorchBow extends ItemsBase
 			par1ItemStack.damageItem(1, player);
 			par2World.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f10 * 0.5F);
 
-			player.inventory.consumeInventoryItem(Block.torchWood.blockID);
+			player.inventory.consumeInventoryItem(Block.torchWood.block);
 			par2World.spawnEntityInWorld(entityarrow);
 		}
 	}
@@ -83,7 +83,7 @@ public class ItemTorchBow extends ItemsBase
 			return event.result;
 		}
 
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Block.torchWood.blockID))
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Block.torchWood.block))
 		{
 			player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}
@@ -99,19 +99,19 @@ public class ItemTorchBow extends ItemsBase
 		return 1;
 	}
 
-	private Icon[] Texture = new Icon[4];
+	private IIcon[] Texture = new IIcon[4];
 
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister IIconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
+		itemIcon = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
 		for (int N = 0; N < 4; N++)
 		{
-			this.Texture[N] = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
+			this.Texture[N] = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
 
 		}
 	}
 
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		if(player.getItemInUse() == null) return this.itemIcon;
 

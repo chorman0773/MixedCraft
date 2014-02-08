@@ -1,17 +1,13 @@
 package com.MixedCraft.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumMovingObjectType;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,7 +23,7 @@ public class LightningBow extends ItemsBase
 
 	public LightningBow(int par1)
 	{
-		super(par1, "");
+		super("");
 		this.maxStackSize = 1;
 		this.setMaxDamage(500);
 	}
@@ -73,7 +69,7 @@ public class LightningBow extends ItemsBase
 
 		boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-		if (flag || player.inventory.hasItem(ItemHelper.LightningArrow.itemID))
+		if (flag || player.inventory.hasItem(ItemHelper.LightningArrow))
 		{
 			float f = (float)j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
@@ -146,7 +142,7 @@ public class LightningBow extends ItemsBase
 			}
 			else
 			{
-				player.inventory.consumeInventoryItem(ItemHelper.LightningArrow.itemID);
+				player.inventory.consumeInventoryItem(ItemHelper.LightningArrow);
 			}
 
 			/*if(movingobjectposition == null)
@@ -201,7 +197,7 @@ public class LightningBow extends ItemsBase
 			return event.result;
 		}
 
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(ItemHelper.LightningArrow.itemID))
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(ItemHelper.LightningArrow))
 		{
 			player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}
@@ -214,19 +210,19 @@ public class LightningBow extends ItemsBase
 		return 1;
 	}
 
-	private Icon[] Texture = new Icon[4];
+	private IIcon[] Texture = new IIcon[4];
 
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister IIconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
+		itemIcon = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_0");
 		for (int N = 0; N < 4; N++)
 		{
-			this.Texture[N] = iconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
+			this.Texture[N] = IIconRegister.registerIcon("MixedCraft:" + this.getUnlocalizedName().substring(5) + "_" + N);
 
 		}
 	}
 
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		if(player.getItemInUse() == null) return this.itemIcon;
 

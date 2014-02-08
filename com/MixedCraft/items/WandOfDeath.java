@@ -15,8 +15,8 @@ public class WandOfDeath extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfDeath(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfDeath(String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
@@ -36,12 +36,12 @@ public class WandOfDeath extends ItemBaseWand {
 		return super.onItemUse(srcItemStack, playerEntity, world, par4, par5, par6, par7, par8, par9, par10);
 	}
 
-	@Override
+	@Override 
 	public void onPlayerStoppedUsing (ItemStack srcItemStack, World world, EntityPlayer playerEntity, int timeRemain){
 		super.onPlayerStoppedUsing(srcItemStack, world, playerEntity, timeRemain);
 	}
 
-	@Override
+	@Override 
 	public ItemStack onEaten (ItemStack srcItemStack, World world, EntityPlayer playerEntity)
 	{ 
 

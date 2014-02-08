@@ -14,9 +14,9 @@ public class ItemCowEndermanPlacer extends ItemsBase
 {
 	private World worldObj;
 
-	public ItemCowEndermanPlacer(int var1)
+	public ItemCowEndermanPlacer()
 	{
-		super(var1, "");
+		super("");
 	}
 
 
@@ -35,7 +35,7 @@ public class ItemCowEndermanPlacer extends ItemsBase
 		}
 		if(par3World.isRemote)
 			--par1ItemStack.stackSize;
-		par2EntityPlayer.inventory.consumeInventoryItem(this.itemID);
+		par2EntityPlayer.inventory.consumeInventoryItem(this);
 
 		return true;
 	}

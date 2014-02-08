@@ -15,9 +15,9 @@ public class ItemCowZombiePlacer extends ItemsBase
 {
 	private World worldObj;
 
-	public ItemCowZombiePlacer(int var1)
+	public ItemCowZombiePlacer()
 	{
-		super(var1, "");
+		super("");
 	}
 
 
@@ -36,7 +36,7 @@ public class ItemCowZombiePlacer extends ItemsBase
 		}
 		if(par3World.isRemote)
 			--par1ItemStack.stackSize;
-		par2EntityPlayer.inventory.consumeInventoryItem(this.itemID);
+		par2EntityPlayer.inventory.consumeInventoryItem(this);
 
 		return true;
 	}

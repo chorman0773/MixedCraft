@@ -11,9 +11,9 @@ public class ItemCowSheepPlacer extends ItemsBase
 {
 	private World worldObj;
 
-	public ItemCowSheepPlacer(int var1)
+	public ItemCowSheepPlacer()
 	{
-		super(var1, "");
+		super("");
 	}
 
 
@@ -32,7 +32,7 @@ public class ItemCowSheepPlacer extends ItemsBase
 		}
 		if(par3World.isRemote)
 			--par1ItemStack.stackSize;
-		par2EntityPlayer.inventory.consumeInventoryItem(this.itemID);
+		par2EntityPlayer.inventory.consumeInventoryItem(this);
 
 		return true;
 	}

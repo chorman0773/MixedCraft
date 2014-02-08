@@ -1,13 +1,10 @@
 package com.MixedCraft.items;
 
-import com.MixedCraft.helper.ManaHelper;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -15,22 +12,22 @@ public class WandOfMining extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfMining(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfMining(int String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}
 
-	@Override
+	@Override 
 	public int getBaseRepairCost() {
 		return 5;
 	}
 
-	@Override
+	@Override 
 	public boolean onItemUse(ItemStack srcItemStack, EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ, int par7, float par8, float par9, float par10) {
 		if (!playerEntity.capabilities.isCreativeMode) {
 			if (isOutOfCharge(srcItemStack)) {
@@ -61,15 +58,15 @@ public class WandOfMining extends ItemBaseWand {
 	}
 
 	protected boolean mineBlock(EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ) {
-		int targetID = world.getBlockId(targetX, targetY, targetZ);
-		if (targetID == Block.bedrock.blockID) {
+		Block target = world.getBlock(targetX, targetY, targetZ);
+		if (target == Blocks.bedrock) {
 			return false;
 		}
 		int targetMeta = world.getBlockMetadata(targetX, targetY, targetZ);
-		Block target;
+		Block target2;
 
-		if (targetID > 0) {
-			target = Block.blocksList[targetID];
+		if (target > 0) {
+			target = Block.blocksList[target];
 		} else {
 			return false;
 		}

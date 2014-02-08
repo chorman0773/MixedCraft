@@ -12,9 +12,9 @@ public class ItemCowChickenSpawner extends ItemsBase
 {
 	private World worldObj;
 
-	public ItemCowChickenSpawner(int var1)
+	public ItemCowChickenSpawner()
 	{
-		super(var1, "");
+		super("");
 	}
 
 
@@ -33,7 +33,7 @@ public class ItemCowChickenSpawner extends ItemsBase
 		}
 		if(par3World.isRemote)
 			--par1ItemStack.stackSize;
-		par2EntityPlayer.inventory.consumeInventoryItem(this.itemID);
+		par2EntityPlayer.inventory.consumeInventoryItem(this);
 
 		return true;
 	}

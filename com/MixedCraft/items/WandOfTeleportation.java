@@ -14,8 +14,8 @@ public class WandOfTeleportation extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfTeleportation(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfTeleportation(String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 

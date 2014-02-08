@@ -14,17 +14,17 @@ public class WandOfFire extends ItemBaseWand  {
 
 	public static int defaultCharges = 64;
 
-	public WandOfFire(int itemID, String par2) {
-		super(itemID, par2);
+	public WandOfFire(String par2) {
+		super(par2);
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
-	@Override
+	@Override 
 	public int getUseCost() {
 		return 1;
 	}
 
-	@Override
+	@Override 
 	public int getBaseRepairCost() {
 		return 10;
 	}

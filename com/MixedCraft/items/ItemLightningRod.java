@@ -2,20 +2,20 @@ package com.MixedCraft.items;
 
 import com.MixedCraft.helper.ItemsBase;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumMovingObjectType;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.relauncher.Se;
+import cpw.mods.fml.relauncher.SeOnly;
 
 public class ItemLightningRod extends ItemsBase{
 
@@ -25,7 +25,7 @@ public class ItemLightningRod extends ItemsBase{
 		setMaxDamage(100);
 	}
 
-	@Override
+	@Override 
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer entityplayer) {
 
 		float f = 1.0F;
