@@ -2,6 +2,7 @@ package com.MixedCraft.recipes;
 
 import com.MixedCraft.ItemHelper;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -11,20 +12,20 @@ public class InputFurnaceRecipes
     {
     }
 
-    public static ItemStack getSmeltingResult(int i, int j)
+    public static ItemStack getSmeltingResult(Item i, Item j)
     {
         return getOutput(i, j);
     }
 
-    private static ItemStack getOutput(int i, int j)
+    private static ItemStack getOutput(Item i, Item j)
     {
-        if (i == Item.coal.itemID && j == Item.ingotIron.itemID || i == Item.ingotIron.itemID && j == Item.coal.itemID)
+        if (i == Items.coal && j == Items.iron_ingot || i == Items.iron_ingot && j == Items.coal)
         {
-            return new ItemStack(Item.ingotGold, 1);
+            return new ItemStack(Items.gold_ingot, 1);
         }
-        if (i == ItemHelper.GoldHandsaw.itemID && j == ItemHelper.DiamondHandsaw.itemID || i == ItemHelper.DiamondHandsaw.itemID && j == ItemHelper.GoldHandsaw.itemID)
+        if (i == ItemHelper.GoldHandsaw && j == ItemHelper.DiamondHandsaw || i == ItemHelper.DiamondHandsaw && j == ItemHelper.GoldHandsaw)
         {
-            return new ItemStack(Item.ingotGold, 1);
+            return new ItemStack(Items.gold_ingot, 1);
         }
 		return null;
     }
