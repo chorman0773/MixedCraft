@@ -61,8 +61,8 @@ public class BlockHelper extends HelperHandler{
     public static final Block GoldFurnaceOff = new GoldFurnace(false).setBlockName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
     public static final Block GoldFurnaceOn = new GoldFurnacex.GoldFurnaceOnID, true).setBlockName("GoldFurnace").setCreativeTab(null);
     
-    public static final Block Flower1 = new ModFlower("FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block Flower2 = new ModFlower("FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block Flower1 = new ModFlower(0, "FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block Flower2 = new ModFlower(0, "FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightLog = new ModLog("FlyLight").setBlockName("Log").setHardness(1.5F).setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightLeaves = new ModLeaves("FlyLight").setHardness(0.4F).setBlockName("Leaves").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightFern = new ModTallGrass("FlyLightFern").setBlockName("Fern").setCreativeTab(MixedCraft.BlockTab);

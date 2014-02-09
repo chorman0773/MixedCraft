@@ -6,8 +6,8 @@ import com.MixedCraft.helper.BlocksBase;
 
 public class ModBlock extends BlocksBase{
 
-	public ModBlock(int blockID) {
-		super(blockID, Material.rock);
+	public ModBlock() {
+		super(Material.rock);
 		
 	}
 

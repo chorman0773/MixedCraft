@@ -1,23 +1,16 @@
 package com.MixedCraft.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.IPlantable;
 
-import com.MixedCraft.helper.BlocksBase;
+import com.MixedCraft.MixedCraft;
 
-public class ModDirt extends BlocksBase{
+public class ModDirt extends Block {
 
-    public ModDirt(int blockID) 
-    {
-        super(blockID, Material.ground);
-    }
-
-    @Override
-    public boolean canSustainPlant(World world, int x, int y, int z,
-    		ForgeDirection direction, IPlantable plant) {
-    	return true;
+    public ModDirt() {
+        super(Material.ground);
+        setCreativeTab(MixedCraft.BlockTab);
+        setStepSound(Block.soundTypeGravel);
     }
 
     
