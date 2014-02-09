@@ -1,25 +1,24 @@
 package com.MixedCraft.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
-
-import com.MixedCraft.ItemHelper;
-import com.MixedCraft.helper.BlocksBase;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.IIconFlipped;
+import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.MixedCraft.ItemHelper;
+import com.MixedCraft.helper.BlocksBase;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGoldDoor extends BlocksBase
 {
@@ -28,9 +27,9 @@ public class BlockGoldDoor extends BlocksBase
     @SideOnly(Side.CLIENT)
     private IIcon[] field_111043_b;
 
-    public BlockGoldDoor(int Material par2Material)
+    public BlockGoldDoor(Material par2Material)
     {
-        super(par1, par2Material);
+        super(par2Material);
         float f = 0.5F;
         float f1 = 1.0F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
@@ -126,8 +125,8 @@ public class BlockGoldDoor extends BlocksBase
         this.field_111043_b = new IIcon[2];
         this.field_111044_a[0] = par1IIconRegister.registerIcon("MixedCraft:GoldDoor_Top");
         this.field_111043_b[0] = par1IIconRegister.registerIcon("MixedCraft:GoldDoor_Bottom");
-        this.field_111044_a[1] = new IIconFlipped(this.field_111044_a[0], true, false);
-        this.field_111043_b[1] = new IIconFlipped(this.field_111043_b[0], true, false);
+        this.field_111044_a[1] = new IconFlipped(this.field_111044_a[0], true, false);
+        this.field_111043_b[1] = new IconFlipped(this.field_111043_b[0], true, false);
     }
 
     /**

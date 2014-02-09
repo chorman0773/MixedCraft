@@ -13,19 +13,16 @@ import net.minecraft.world.World;
 
 public class BlockSinkSand extends BlockSand{
 
-	public BlockSinkSand(int id) {
-		super(id, Material.sand);
+	public BlockSinkSand() {
+		super();
         this.setCreativeTab(MixedCraft.BlockTab);
-       
 	}
 	
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
-    {
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
         return null;
     }
     
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-    {
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
         par5Entity.setInWeb();
     }
 }

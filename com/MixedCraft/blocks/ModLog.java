@@ -1,26 +1,27 @@
 package com.MixedCraft.blocks;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.MixedCraft.helper.BlocksBase;
 
 public class ModLog extends BlocksBase{
 
-	public ModLog(int blockID, String par2) {
-		super(blockID, Material.wood);
-		setStepSound(soundWoodFootstep);
-		setUnlocalizedName(par2);
+	public ModLog(String par2) {
+		super(Material.wood);
+		setStepSound(soundTypeWood);
+		setBlockName(par2);
 		this.registerTexture(par2 + "Log_Side", par2 + "Log_Top", par2 + "Log_Top");
 	}
 
 	@Override
-	public boolean isWood(World world, int x, int y, int z) {
+	public boolean isWood(IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
 
 	@Override
-	public boolean canSustainLeaves(World world, int x, int y, int z) {
+	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
 

@@ -88,7 +88,7 @@ public class ItemHelper extends HelperHandler{
 	//public static final Item CowWitherSpawner = new ItemCowWitherPlacer(x.CowWitherSpawnerID).registerTextures("CowWitherSpawner").setUnlocalizedName("CowWitherSpawn").setCreativeTab(MixedCraft.SpawnerTab);
 	//public static final Item CowWitherSSpawner = new ItemCowWitherSPlacer(x.CowWitherSSpawnerID).registerTextures("CowWitherSSpawner").setUnlocalizedName("CowWitherSSpawn").setCreativeTab(MixedCraft.SpawnerTab);
 
-	public static final Item CopperIngot = new ItemsBase"CopperIngot").setCreativeTab(MixedCraft.MiscTab);
+	public static final Item CopperIngot = new ItemsBase("CopperIngot").setCreativeTab(MixedCraft.MiscTab);
 	public static final Item TinIngot = new ItemsBase("TinIngot").setCreativeTab(MixedCraft.MiscTab);
 	public static final Item SilverIngot = new ItemsBase("SilverIngot").setCreativeTab(MixedCraft.MiscTab);
 	public static final Item GoldHandsaw = new ItemsBase("GoldHandsaw").setCreativeTab(MixedCraft.MiscTab);

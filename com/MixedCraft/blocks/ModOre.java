@@ -12,9 +12,9 @@ import com.MixedCraft.BlockHelper;
 
 public class ModOre extends ModBlock{
 
-	public ModOre(int blockID) {
-		super(blockID);
-		setLightValue(0.6F);
+	public ModOre() {
+		super();
+		setLightLevel(0.6F);
 	}
 
 	@Override

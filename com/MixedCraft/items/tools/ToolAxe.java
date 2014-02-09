@@ -2,21 +2,21 @@ package com.MixedCraft.items.tools;
 
 import java.util.List;
 
-import com.MixedCraft.MixedCraft;
-
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+
+import com.MixedCraft.MixedCraft;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolAxe extends AxeBase {
-    private final EnumToolMaterial field_40439_b;
+	
+    private final ToolMaterial field_40439_b;
 
-	public ToolAxe(int par1, EnumToolMaterial par3enum, String par2) {
-		super(par1, par3enum);
+	public ToolAxe(ToolMaterial par3enum, String par2) {
+		super(par3enum);
         this.field_40439_b = par3enum;
         registerItemTexture(par2);
         setUnlocalizedName(par2);

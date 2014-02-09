@@ -1,7 +1,6 @@
 package com.MixedCraft.items.tools;
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 
@@ -15,8 +14,8 @@ public class PickaxeBase extends ItemPickaxe{
 	
 	private String iconPath;
     
-	public PickaxeBase(int par1, EnumToolMaterial par3ENUM){
-		super(par1, par3ENUM);
+	public PickaxeBase(ToolMaterial par3ENUM){
+		super(par3ENUM);
 		setMaxStackSize(1);
         this.setCreativeTab(MixedCraft.ToolTab);
 	}
@@ -28,7 +27,7 @@ public class PickaxeBase extends ItemPickaxe{
     
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerIcons(IIconRegister icon) {
         itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 }

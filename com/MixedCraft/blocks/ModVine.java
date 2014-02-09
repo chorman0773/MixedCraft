@@ -20,16 +20,16 @@ import com.MixedCraft.helper.Utils;
 public class ModVine extends Block implements IShearable
 {
 	String Name;
-	public ModVine(int par1, String name)
+	public ModVine(String name)
 	{
 		super(Material.vine);
 		Name = name;
-		setUnlocalizedName(name);
+		setBlockName(name);
 		this.setTickRandomly(true);
 	}
 
 	@Override
-	public void registerIcons(IIconRegister IIcon) {
+	public void registerBlockIcons(IIconRegister IIcon) {
 		blockIcon = IIcon.registerIcon(Utils.MOD_ID + ":" + Name + "Vine");
 	}
 	

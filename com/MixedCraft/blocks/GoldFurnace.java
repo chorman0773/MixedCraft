@@ -39,7 +39,7 @@ public class GoldFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon GoldFurnaceIIconFront;
 
-    public GoldFurnace(int par1, boolean par2)
+    public GoldFurnace(boolean par2)
     {
         super(Material.rock);
         this.isActive = par2;

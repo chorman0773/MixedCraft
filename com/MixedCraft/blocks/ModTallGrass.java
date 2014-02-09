@@ -10,12 +10,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
 
-public class ModTallGrass extends ModFlower implements IShearable
-{
+public class ModTallGrass extends ModFlower implements IShearable {
 
-    public ModTallGrass(int par1, String s)
+    public ModTallGrass(String s)
     {
-        super(par1, s);
+        super(0, s);
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }

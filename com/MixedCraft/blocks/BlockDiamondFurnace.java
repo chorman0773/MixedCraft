@@ -38,7 +38,7 @@ public class BlockDiamondFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon DiamondFurnaceIIconFront;
 
-    public BlockDiamondFurnace(int par1, boolean par2)
+    public BlockDiamondFurnace(boolean par2)
     {
         super(Material.rock);
         this.isActive = par2;

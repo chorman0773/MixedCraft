@@ -13,7 +13,7 @@ public class ItemCreeperPlacer extends ItemsBase
 {
 	private World worldObj;
 
-	public ItemCreeperPlacer(int var1)
+	public ItemCreeperPlacer()
 	{
 		super("");
 	}

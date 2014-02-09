@@ -8,9 +8,9 @@ import net.minecraft.world.World;
 public class ModLeaves extends LeavesBase
 {
 	int[] adjacentTreeBlocks;
-	public ModLeaves(int par1, String par2)
+	public ModLeaves(String par2)
 	{
-		super(par1, true);
+		super(true);
 		this.setTickRandomly(true);
 		this.registerTexture(par2 + "Leaves");
 	}

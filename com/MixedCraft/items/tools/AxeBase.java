@@ -1,8 +1,7 @@
 package com.MixedCraft.items.tools;
 
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 
@@ -16,8 +15,8 @@ public class AxeBase extends ItemAxe{
 	
 	private String iconPath;
     
-	public AxeBase(int par1, EnumToolMaterial par3ENUM){
-		super(par1, par3ENUM);
+	public AxeBase(ToolMaterial par3ENUM){
+		super(par3ENUM);
 		setMaxStackSize(1);
         this.setCreativeTab(MixedCraft.ToolTab);
 	}
@@ -29,7 +28,7 @@ public class AxeBase extends ItemAxe{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerIcons(IIconRegister icon) {
         itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 }

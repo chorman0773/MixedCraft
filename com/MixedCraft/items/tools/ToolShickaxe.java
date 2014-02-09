@@ -4,21 +4,20 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.Event;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
 
+import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,11 +27,11 @@ public class ToolShickaxe extends ItemTool
     private static Block[] blocksEffectiveAgainst = Block.blocksList;
     private int weaponDamage;
     private String iconPath;
-    protected EnumToolMaterial theToolMaterial;
+    protected ToolMaterial theToolMaterial;
 
-    public ToolShickaxe(int par1, EnumToolMaterial par2EnumToolMaterial, String par2)
+    public ToolShickaxe(ToolMaterial par2EnumToolMaterial, String par2)
     {
-        super(par1, 1, par2EnumToolMaterial, blocksEffectiveAgainst);
+        super(1, par2EnumToolMaterial, blocksEffectiveAgainst);
         setCreativeTab(MixedCraft.ToolTab);
         registerShickaxeTextures(par2);
         setUnlocalizedName(par2);
@@ -48,7 +47,7 @@ public class ToolShickaxe extends ItemTool
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerIcons(IIconRegister icon) {
         itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 
@@ -82,7 +81,7 @@ public class ToolShickaxe extends ItemTool
             }
             else
             {
-                int var12 = var3.getBlockId(var4, var5, var6);
+                int var12 = var3.getBlock(var4, var5, var6);
                 int var13 = var3.getBlockId(var4, var5 + 1, var6);
 
                 if ((var7 == 0 || var13 != 0 || var12 != Block.grass.blockID) && var12 != Block.dirt.blockID)

@@ -46,7 +46,7 @@ public class BlockIronFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon IronFurnaceIIconFront;
 
-    public BlockIronFurnace(int par1, boolean par2)
+    public BlockIronFurnace(boolean par2)
     {
         super(Material.rock);
         this.isActive = par2;

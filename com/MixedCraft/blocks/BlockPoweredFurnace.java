@@ -46,16 +46,16 @@ public class BlockPoweredFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon PowerFurnaceIIconFront;
 
-    public BlockPoweredFurnace(int par1, boolean par2)
+    public BlockPoweredFurnace(boolean par2)
     {
         super(Material.rock);
         this.isActive = par2;
         if(!par2){
         	setCreativeTab(MixedCraft.BlockTab);
-        	setUnlocalizedName("Power Furnace");
+        	setBlockName("Power Furnace");
         }else{
         	setCreativeTab(null);
-        	setUnlocalizedName("Power Furnace On");
+        	setBlockName("Power Furnace On");
         }
     }
     

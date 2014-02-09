@@ -59,7 +59,7 @@ public class BlockHelper extends HelperHandler{
     public static final Block ChocolateCrop = new BlockChocolateCrop().setBlockName("ChocolateCrop").setBlockTextureName("ChocolateCrop");
     
     public static final Block GoldFurnaceOff = new GoldFurnace(false).setBlockName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block GoldFurnaceOn = new GoldFurnacex.GoldFurnaceOnID, true).setBlockName("GoldFurnace").setCreativeTab(null);
+    public static final Block GoldFurnaceOn = new GoldFurnace(true).setBlockName("GoldFurnace").setCreativeTab(null);
     
     public static final Block Flower1 = new ModFlower(0, "FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
     public static final Block Flower2 = new ModFlower(0, "FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);

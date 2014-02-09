@@ -1,7 +1,6 @@
 package com.MixedCraft.items.tools;
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSpade;
 
@@ -16,8 +15,8 @@ public class ShovelBase extends ItemSpade{
 	
 	private String iconPath;
     
-	public ShovelBase(int par1, EnumToolMaterial par3ENUM){
-		super(par1, par3ENUM);
+	public ShovelBase(ToolMaterial par3ENUM){
+		super(par3ENUM);
 		setMaxStackSize(1);
         this.setCreativeTab(MixedCraft.ToolTab);
 	}
@@ -29,7 +28,7 @@ public class ShovelBase extends ItemSpade{
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister icon) {
+    public void registerIcons(IIconRegister icon) {
         itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
     }
 }
