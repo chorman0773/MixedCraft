@@ -6,6 +6,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkPosition;
@@ -14,14 +15,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderServer;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,7 +26,6 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.gen.WorldGenFlylightTree;
-import com.MixedCraft.gen.WorldGenModReed;
 
 public class ChunkGeneratorFlylight implements IChunkProvider
 {
@@ -135,7 +131,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 								}
 								else if (var12 * 8 + var31 < var6)
 								{
-									var3[var43 += var44] = Block.waterMoving;
+									var3[var43 += var44] = Blocks.flowing_water;
 								}
 								else
 								{
@@ -168,11 +164,11 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
 				BiomeGenBase var10 = var4[var9 + var8 * 16];
-				float var11 = var10.getFloatTemperature();
+				float var11 = var10.getFloatTemperature(var9, var9, var9);
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				byte var14 = var10.topBlock;
-				byte var15 = var10.fillerBlock;
+				Block var14 = var10.topBlock;
+				Block var15 = var10.fillerBlock;
 
 				for (int var16 = 127; var16 >= 0; --var16)
 				{
@@ -180,7 +176,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						var3[var17] = (byte)Block.bedrock;
+						var3[var17] = (byte)Blocks.bedrock;
 					}
 					else
 					{
@@ -190,7 +186,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 						{
 							var13 = -1;
 						}
-						else if (var18 != Block.stone)
+						else if (var18 != Blocks.stone)
 						{
 							if (var13 == -1)
 							{

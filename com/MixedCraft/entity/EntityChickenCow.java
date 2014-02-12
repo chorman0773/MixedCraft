@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
@@ -38,7 +39,7 @@ public class EntityChickenCow extends EntityAnimal
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
         this.tasks.addTask(2, new EntityAIMate(this, f));
-        this.tasks.addTask(3, new EntityAITempt(this, 0.25F, Item.seeds.itemID, false));
+        this.tasks.addTask(3, new EntityAITempt(this, 0.25F, Items.wheat_seeds, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 0.28F));
         this.tasks.addTask(5, new EntityAIWander(this, f));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -56,8 +57,8 @@ public class EntityChickenCow extends EntityAnimal
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(4.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(4.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
     /**
@@ -98,7 +99,7 @@ public class EntityChickenCow extends EntityAnimal
         if (!this.isChild() && !this.worldObj.isRemote && --this.timeUntilNextEgg <= 0)
         {
             this.playSound("mob.chicken.plop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-            this.dropItem(Item.egg.itemID, 1);
+            this.dropItem(Items.egg, 1);
             this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
         }
     }
@@ -143,9 +144,9 @@ public class EntityChickenCow extends EntityAnimal
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.feather.itemID;
+        return Items.feather;
     }
 
     /**
@@ -158,16 +159,16 @@ public class EntityChickenCow extends EntityAnimal
 
         for (int k = 0; k < j; ++k)
         {
-            this.dropItem(Item.feather.itemID, 1);
+            this.dropItem(Items.feather, 1);
         }
 
         if (this.isBurning())
         {
-            this.dropItem(Item.chickenCooked.itemID, 1);
+            this.dropItem(Items.cooked_chicken, 1);
         }
         else
         {
-            this.dropItem(Item.chickenRaw.itemID, 1);
+            this.dropItem(Items.chicken, 1);
         }
     }
 

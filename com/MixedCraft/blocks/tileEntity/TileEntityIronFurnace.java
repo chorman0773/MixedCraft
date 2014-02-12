@@ -1,13 +1,10 @@
 package com.MixedCraft.blocks.tileEntity;
 
-import com.MixedCraft.blocks.BlockIronFurnace;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,8 +16,12 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ForgeDummyContainer;
+
+import com.MixedCraft.blocks.BlockIronFurnace;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
 {
@@ -157,7 +158,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 0);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
@@ -284,7 +285,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
                         }
                     }
                 }
@@ -378,24 +379,24 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
         }
         else
         {
-            int i = par0ItemStack.getItem().itemID;
+            Item i = par0ItemStack.getItem();
             Item item = par0ItemStack.getItem();
 
             if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
             {
                 Block block = Block.blocksList[i];
 
-                if (block == Block.woodSingleSlab)
+                if (block == Blocks.wooden_slab)
                 {
                     return 150;
                 }
 
-                if (block.blockMaterial == Material.wood)
+                if (block.getMaterial() == Material.wood)
                 {
                     return 300;
                 }
 
-                if (block == Block.coalBlock)
+                if (block == Blocks.coal_block)
                 {
                     return 16000;
                 }
@@ -403,12 +404,12 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-            if (i == Item.stick.itemID) return 100;
-            if (i == Item.coal.itemID) return 1600;
-            if (i == Item.bucketLava.itemID) return 20000;
-            if (i == Block.sapling.blockID) return 100;
-            if (i == Item.blazeRod.itemID) return 2400;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (i == Items.stick) return 100;
+            if (i == Items.coal) return 1600;
+            if (i == Items.lava_bucket) return 20000;
+            if (i == Blocks.sapling) return 100;
+            if (i == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
@@ -426,12 +427,8 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
      */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
-
-    public void openChest() {}
-
-    public void closeChest() {}
 
     /**
      * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
@@ -465,6 +462,26 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
      */
     public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
     {
-        return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+        return par3 != 0 || par1 != 1 || par2ItemStack == new ItemStack (Items.bucket);
     }
+
+	@Override
+	public String getInventoryName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openInventory() {
+	}
+
+	@Override
+	public void closeInventory() {
+	}
 }

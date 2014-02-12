@@ -1,7 +1,8 @@
 package com.MixedCraft.blocks.tileEntity;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -146,7 +147,7 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 0);
 		this.slots = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
@@ -204,7 +205,7 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		for(int i = 0; i < oreNames.length; i++){
     			if(oreNames[i].contains("ore")){
 	    			if(OreDictionary.getOres(oreNames[i]) != null){
-	    				if(OreDictionary.getOres(oreNames[i]).get(0).itemID == itemstack.itemID){
+	    				if(OreDictionary.getOres(oreNames[i]).get(0) == itemstack){
 	    					//this.maceratingSpeed = 50;
 	    					return true;      
 	    				}
@@ -267,7 +268,7 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 					this.slots[1].stackSize--;
 
 					if (this.slots[1].stackSize == 0){
-						this.slots[1] = this.slots[1].getItem().getContainerItemStack(slots[1]);
+						this.slots[1] = this.slots[1].getItem().getContainerItem(slots[1]);
 					}
 				}                
 			}
@@ -340,10 +341,10 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		if (par0ItemStack == null){
 			return 0;
 		}else{
-			int i = par0ItemStack.getItem().itemID;
+			Item i = par0ItemStack.getItem();
 
-			if(i == Item.redstone.itemID) return 20;
-			if(i == Block.blockRedstone.blockID) return 100;
+			if(i == Items.redstone) return 20;
+			if(i == Blocks.redstone_block) return 100;
 			return 0;
 		}
 	}
@@ -355,12 +356,8 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}	
-
-	public void openChest() {}
-
-	public void closeChest() {}
 
 	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
 	{
@@ -379,6 +376,26 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+		return par3 != 0 || par1 != 1 || par2ItemStack == new ItemStack (Items.bucket);
+	}
+
+	@Override
+	public String getInventoryName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openInventory() {
+	}
+
+	@Override
+	public void closeInventory() {
 	}
 }
