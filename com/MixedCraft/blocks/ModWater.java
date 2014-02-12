@@ -19,7 +19,7 @@ public class ModWater extends BlockFluidClassic{
 	
 	public ModWater() {
 		super(MixedCraft.Mod, Material.water);
-		MixedCraft.Mod.setBlockID(id);
+		MixedCraft.Mod.setBlock(this);
 	}
 
 	@Override
