@@ -6,6 +6,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
@@ -51,17 +52,15 @@ public class ModTallGrass extends ModFlower implements IShearable {
         return ret;
     }
 
-    @Override
-    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
-    {
-        return true;
-    }
+	@Override
+	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z) {
+		return true;
+	}
 
-    @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
-    {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+	@Override
+	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune) {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z)));
         return ret;
-    }
+	}
 }

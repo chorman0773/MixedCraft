@@ -23,13 +23,13 @@ public class BlockHouse1 extends BlocksBase
 	private Random rand;
 	private EntityPlayer entityplayer;
 
-	public BlockHouse1(int i)
+	public BlockHouse1()
 	{
-		super(i, Material.wood);
+		super(Material.wood);
 		this.setCreativeTab(MixedCraft.BlockTab);
 		GameRegistry.registerBlock(this);
 	}
-	public void registerIcons(IIconRegister var1)
+	public void registerBlockIcons(IIconRegister var1)
 	{
 		this.blockIcon = var1.registerIcon("MixedCraft:House1");
 	}

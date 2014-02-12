@@ -1,49 +1,41 @@
 package com.MixedCraft.helper;
 
-import com.MixedCraft.MixedCraft;
-
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import com.MixedCraft.MixedCraft;
+
 public abstract class ContainerBase extends BlocksBase implements ITileEntityProvider
 {
-	
-    protected ContainerBase(int par1, Material par2Material)
+
+    protected ContainerBase(Material p_i45386_1_)
     {
-        super(par1, par2Material);
-        this.isBlockContainer = true;
+        super(p_i45386_1_);
         this.setCreativeTab(MixedCraft.BlockTab);
-        GameRegistry.registerBlock(this);
+        this.isBlockContainer = true;
     }
 
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
-    public void onBlockAdded(World par1World, int par2, int par3, int par4)
+    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
     {
-        super.onBlockAdded(par1World, par2, par3, par4);
+        super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
     }
 
-    /**
-     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
-     */
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
-        par1World.removeBlockTileEntity(par2, par3, par4);
+        super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
+        p_149749_1_.removeTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
     }
 
-    /**
-     * Called when the block receives a BlockEvent - see World.addBlockEvent. By default, passes it on to the tile
-     * entity at this location. Args: world, x, y, z, blockID, EventID, event parameter
-     */
-    public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public boolean onBlockEventReceived(World p_149696_1_, int p_149696_2_, int p_149696_3_, int p_149696_4_, int p_149696_5_, int p_149696_6_)
     {
-        super.onBlockEventReceived(par1World, par2, par3, par4, par5, par6);
-        TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
-        return tileentity != null ? tileentity.receiveClientEvent(par5, par6) : false;
+        super.onBlockEventReceived(p_149696_1_, p_149696_2_, p_149696_3_, p_149696_4_, p_149696_5_, p_149696_6_);
+        TileEntity tileentity = p_149696_1_.getTileEntity(p_149696_2_, p_149696_3_, p_149696_4_);
+        return tileentity != null ? tileentity.receiveClientEvent(p_149696_5_, p_149696_6_) : false;
     }
 }

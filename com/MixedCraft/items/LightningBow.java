@@ -21,7 +21,7 @@ import com.MixedCraft.helper.ItemsBase;
 public class LightningBow extends ItemsBase
 {
 
-	public LightningBow(int par1)
+	public LightningBow()
 	{
 		super("");
 		this.maxStackSize = 1;

@@ -28,7 +28,7 @@ public class BiggerCraftingTable extends BlocksBase{
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIIcon(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 1 ? this.workbenchIIconTop : (par1 == 0 ? Blocks.planks.getBlockTextureFromSide(par1) : (par1 != 2 && par1 != 4 ? this.blockIcon : this.workbenchIIconFront));
 	}

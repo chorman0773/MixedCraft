@@ -2,20 +2,17 @@ package com.MixedCraft.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-import com.MixedCraft.ItemHelper;
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.entity.EntityTorch;
 import com.MixedCraft.helper.ItemsBase;
@@ -23,8 +20,8 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemTorchBow extends ItemsBase
 {
 
-	public ItemTorchBow(int par1) {
-		super(par1, "");
+	public ItemTorchBow() {
+		super("");
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 		setUnlocalizedName("TorchBow");
@@ -45,7 +42,7 @@ public class ItemTorchBow extends ItemsBase
 
 		boolean flag = player.capabilities.isCreativeMode;
 
-		if (flag || player.inventory.hasItem(Block.torchWood.block)) {
+		if (flag || player.inventory.hasItem(Item.getItemFromBlock(Blocks.torch))) {
 
 			float f10 = 1.0F;
 
@@ -54,7 +51,7 @@ public class ItemTorchBow extends ItemsBase
 			par1ItemStack.damageItem(1, player);
 			par2World.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f10 * 0.5F);
 
-			player.inventory.consumeInventoryItem(Block.torchWood.block);
+			player.inventory.consumeInventoryItem(Item.getItemFromBlock(Blocks.torch));
 			par2World.spawnEntityInWorld(entityarrow);
 		}
 	}
@@ -83,7 +80,7 @@ public class ItemTorchBow extends ItemsBase
 			return event.result;
 		}
 
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Block.torchWood.block))
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.getItemFromBlock(Blocks.torch)))
 		{
 			player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}
@@ -111,7 +108,7 @@ public class ItemTorchBow extends ItemsBase
 		}
 	}
 
-	public IIcon getIIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		if(player.getItemInUse() == null) return this.itemIcon;
 

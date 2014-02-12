@@ -41,7 +41,7 @@ public class BlockGoldDoor extends BlocksBase
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public IIcon getIIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return this.field_111043_b[0];
     }
@@ -119,7 +119,7 @@ public class BlockGoldDoor extends BlocksBase
      * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
      * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.field_111044_a = new IIcon[2];
         this.field_111043_b = new IIcon[2];
@@ -202,7 +202,7 @@ public class BlockGoldDoor extends BlocksBase
         return (this.getFullMetadata(par1IBlockAccess, par2, par3, par4) & 4) != 0;
     }
 
-    private void setDoorRotation()
+    private void setDoorRotation(int par1)
     {
         float f = 0.1875F;
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
@@ -352,7 +352,7 @@ public class BlockGoldDoor extends BlocksBase
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor blockID
      */
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5)
     {
         int i1 = par1World.getBlockMetadata(par2, par3, par4);
 
@@ -360,18 +360,18 @@ public class BlockGoldDoor extends BlocksBase
         {
             boolean flag = false;
 
-            if (par1World.getBlockId(par2, par3 + 1, par4) != this)
+            if (par1World.getBlock(par2, par3 + 1, par4) != this)
             {
                 par1World.setBlockToAir(par2, par3, par4);
                 flag = true;
             }
 
-            if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4))
+            if (!par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4))
             {
                 par1World.setBlockToAir(par2, par3, par4);
                 flag = true;
 
-                if (par1World.getBlockId(par2, par3 + 1, par4) == this)
+                if (par1World.getBlock(par2, par3 + 1, par4) == this)
                 {
                     par1World.setBlockToAir(par2, par3 + 1, par4);
                 }
@@ -388,15 +388,15 @@ public class BlockGoldDoor extends BlocksBase
             {
                 boolean flag1 = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
 
-                if ((flag1 || par5 > 0 && Block.blocksList[par5].canProvidePower()) && par5 != this)
+                if ((flag1 || par5 > 0 && par1World.getBlock(par2, par3, par4).canProvidePower()) && par5 != this)
                 {
                     this.onPoweredBlockChange(par1World, par2, par3, par4, flag1);
-                }
+                }BlockDoor
             }
         }
         else
         {
-            if (par1World.getBlockId(par2, par3 - 1, par4) != this)
+            if (par1World.getBlock(par2, par3 - 1, par4) != this)
             {
                 par1World.setBlockToAir(par2, par3, par4);
             }
@@ -473,7 +473,7 @@ public class BlockGoldDoor extends BlocksBase
     /**
      * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
      */
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public Item getItem(World par1World, int par2, int par3, int par4)
     {
         return this.blockMaterial == Material.iron ? ItemHelper.GoldDoor.itemID : ItemHelper.GoldDoor.itemID;
     }
@@ -483,7 +483,7 @@ public class BlockGoldDoor extends BlocksBase
      */
     public void onBlockHarvested(World par1World, int par2, int par3, int par4, int par5, EntityPlayer par6EntityPlayer)
     {
-        if (par6EntityPlayer.capabilities.isCreativeMode && (par5 & 8) != 0 && par1World.getBlockId(par2, par3 - 1, par4) == this)
+        if (par6EntityPlayer.capabilities.isCreativeMode && (par5 & 8) != 0 && par1World.getBlock(par2, par3 - 1, par4) == this)
         {
             par1World.setBlockToAir(par2, par3 - 1, par4);
         }

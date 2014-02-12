@@ -3,15 +3,11 @@ package com.MixedCraft.items;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,9 +21,9 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemTNTBow extends ItemsBase
 {
 
-	public ItemTNTBow(int par1)
+	public ItemTNTBow()
 	{
-		super(par1, "");
+		super("");
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 	}
@@ -46,7 +42,7 @@ public class ItemTNTBow extends ItemsBase
 		}
 		j = event.charge;
 
-		boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effect, par1ItemStack) > 0;
+		boolean flag = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
 		if (flag || player.inventory.hasItem(ItemHelper.TNTArrow))
 		{
@@ -89,21 +85,21 @@ public class ItemTNTBow extends ItemsBase
 				entityarrow.setIsCritical(true);
 			}
 
-			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effect, par1ItemStack);
+			int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
 
 			if (k > 0)
 			{
 				entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
 			}
 
-			int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effect, par1ItemStack);
+			int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
 
 			if (l > 0)
 			{
 				entityarrow.setKnockbackStrength(l);
 			}
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effect, par1ItemStack) > 0)
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
 			{
 				entityarrow.setFire(200);
 			}

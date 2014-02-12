@@ -40,7 +40,7 @@ public class BlockMobAssembler extends ContainerBase {
 	        }
 	        else
 	        {
-	        	TileEntityDNAAssembler var10 = (TileEntityDNAAssembler)par1World.getBlockTileEntity(par2, par3, par4);
+	        	TileEntityDNAAssembler var10 = (TileEntityDNAAssembler)par1World.getTileEntity(par2, par3, par4);
 	        	
 	            if (var10 != null)
 	            {
@@ -54,7 +54,7 @@ public class BlockMobAssembler extends ContainerBase {
 	    public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	    {
 	        int var5 = par1World.getBlockMetadata(par2, par3, par4);
-	        TileEntity var6 = par1World.getBlockTileEntity(par2, par3, par4);
+	        TileEntity var6 = par1World.getTileEntity(par2, par3, par4);
 	        keepFurnaceInventory = true;
 
 	        if (par0)
@@ -72,7 +72,7 @@ public class BlockMobAssembler extends ContainerBase {
 	        if (var6 != null)
 	        {
 	            var6.validate();
-	            par1World.setBlockTileEntity(par2, par3, par4, var6);
+	            par1World.setTileEntity(par2, par3, par4, var6);
 	        }
 	    }
 
@@ -80,7 +80,7 @@ public class BlockMobAssembler extends ContainerBase {
 	    {
 	        if (!keepFurnaceInventory)
 	        {
-	        	TileEntityDNAAssembler var7 = (TileEntityDNAAssembler)par1World.getBlockTileEntity(par2, par3, par4);
+	        	TileEntityDNAAssembler var7 = (TileEntityDNAAssembler)par1World.getTileEntity(par2, par3, par4);
 
 	            if (var7 != null)
 	            {

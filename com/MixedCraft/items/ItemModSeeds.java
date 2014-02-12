@@ -3,39 +3,28 @@ package com.MixedCraft.items;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
-import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.ItemsBase;
 
-public class ItemModSeeds extends ItemsBase implements IPlantable
-{
-    /**
-     * The type of block this seed turns into (wheat or pumpkin stems for instance)
-     */
-    private int blockType;
+public class ItemModSeeds extends ItemsBase implements IPlantable {
+	
+    private Block field_150925_a;
+    private Block soilBlockID;
 
-    /** Block of the block the seeds can be planted on. */
-    private int soilBlock;
-
-    public ItemModSeeds(int par1, int par2, int par3, String par4)
-    {
-        super(par1, par4);
-        registerTextures(par4);
-        setUnlocalizedName(par4);
-        this.blockType = par2;
-        this.soilBlock = par3;
-        this.setCreativeTab(MixedCraft.MiscTab);
+    public ItemModSeeds(Block p_i45352_1_, Block p_i45352_2_, String name) {
+    	super(name);
+        this.field_150925_a = p_i45352_1_;
+        this.soilBlockID = p_i45352_2_;
+        this.setCreativeTab(CreativeTabs.tabMaterials);
     }
 
-    /**
-     * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-     */
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
         if (par7 != 1)
@@ -44,12 +33,9 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
         }
         else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
         {
-            int i1 = par3World.getBlock(par4, par5, par6);
-            Block soil = Block.blocksList[i1];
-
-            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
+            if (par3World.getBlock(par4, par5, par6).canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
             {
-                par3World.setBlock(par4, par5 + 1, par6, this.blockType);
+                par3World.setBlock(par4, par5 + 1, par6, this.field_150925_a);
                 --par1ItemStack.stackSize;
                 return true;
             }
@@ -64,20 +50,20 @@ public class ItemModSeeds extends ItemsBase implements IPlantable
         }
     }
 
-    @Override 
-    public EnumPlantType getPlantType(World world, int x, int y, int z)
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
     {
-        return (blockType == Block.netherStalk.block ? EnumPlantType.Nether : EnumPlantType.Crop);
+        return field_150925_a == Blocks.nether_wart ? EnumPlantType.Nether : EnumPlantType.Crop;
     }
 
-    @Override 
-    public int getPlant(World world, int x, int y, int z)
+    @Override
+    public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-        return blockType;
+        return field_150925_a;
     }
 
-    @Override 
-    public int getPlantMetadata(World world, int x, int y, int z)
+    @Override
+    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
     {
         return 0;
     }

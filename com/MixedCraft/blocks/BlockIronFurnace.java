@@ -77,28 +77,28 @@ public class BlockIronFurnace extends BlockContainer
     {
         if (!par1World.isRemote)
         {
-            int l = par1World.getBlockId(par2, par3, par4 - 1);
-            int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-            int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-            int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+            int l = par1World.getBlock(par2, par3, par4 - 1);
+            int i1 = par1World.getBlock(par2, par3, par4 + 1);
+            int j1 = par1World.getBlock(par2 - 1, par3, par4);
+            int k1 = par1World.getBlock(par2 + 1, par3, par4);
             byte b0 = 3;
 
-            if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
+            if (Block.func_149730_j[l] && !Block.func_149730_j[i1])
             {
                 b0 = 3;
             }
 
-            if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
+            if (Block.func_149730_j[i1] && !Block.func_149730_j[l])
             {
                 b0 = 2;
             }
 
-            if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
+            if (Block.func_149730_j[j1] && !Block.func_149730_j[k1])
             {
                 b0 = 5;
             }
 
-            if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
+            if (Block.func_149730_j[k1] && !Block.func_149730_j[j1])
             {
                 b0 = 4;
             }
@@ -112,7 +112,7 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public IIcon getIIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return par1 == 1 ? this.IronFurnaceIIconTop : (par1 == 0 ? this.IronFurnaceIIconTop : (par1 != par2 ? this.blockIcon : this.IronFurnaceIIconFront));
     }
@@ -123,7 +123,7 @@ public class BlockIronFurnace extends BlockContainer
      * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
      * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:IronFurnace");
         this.IronFurnaceIIconFront = par1IIconRegister.registerIcon(this.isActive ? "MixedCraft:IronFurnaceFront_On" : "MixedCraft:IronFurnaceFront_Off");
@@ -152,7 +152,7 @@ public class BlockIronFurnace extends BlockContainer
     public static void updateIronFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
     {
         int l = par1World.getBlockMetadata(par2, par3, par4);
-        TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
         keepIronFurnaceInventory = true;
 
         if (par0)
@@ -170,7 +170,7 @@ public class BlockIronFurnace extends BlockContainer
         if (tileentity != null)
         {
             tileentity.validate();
-            par1World.setBlockTileEntity(par2, par3, par4, tileentity);
+            par1World.setTileEntity(par2, par3, par4, tileentity);
         }
     }
 
@@ -250,7 +250,7 @@ public class BlockIronFurnace extends BlockContainer
 
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityIronFurnace)par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
+            ((TileEntityIronFurnace)par1World.getTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
         }
     }
 
@@ -261,7 +261,7 @@ public class BlockIronFurnace extends BlockContainer
     {
         if (!keepIronFurnaceInventory)
         {
-            TileEntityIronFurnace tileentityIronFurnace = (TileEntityIronFurnace)par1World.getBlockTileEntity(par2, par3, par4);
+            TileEntityIronFurnace tileentityIronFurnace = (TileEntityIronFurnace)par1World.getTileEntity(par2, par3, par4);
 
             if (tileentityIronFurnace != null)
             {
@@ -323,7 +323,7 @@ public class BlockIronFurnace extends BlockContainer
      */
     public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
     {
-        return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
+        return Container.calcRedstoneFromInventory((IInventory)par1World.getTileEntity(par2, par3, par4));
     }
 
     @SideOnly(Side.CLIENT)
@@ -331,7 +331,7 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
      */
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public Item getItem(World par1World, int par2, int par3, int par4)
     {
         return BlockHelper.IronFurnaceOff;
     }

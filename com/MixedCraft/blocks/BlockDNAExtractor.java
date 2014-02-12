@@ -2,6 +2,7 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +29,7 @@ public class BlockDNAExtractor extends ContainerBase {
 		registerTexture("DNAExtractor_Side", "DNAExtractor_Top" , "DNAExtractor_Bottom");
 	}
 
-	public TileEntity createNewTileEntity(World var1)
+	public TileEntity createNewTileEntity(World var1, int idk) 
 	{
 		return new TileEntityDNAExtractor();
 	}
@@ -41,7 +42,7 @@ public class BlockDNAExtractor extends ContainerBase {
 		}
 		else
 		{
-			TileEntityDNAExtractor var10 = (TileEntityDNAExtractor)world.getBlockTileEntity(x, y, z);
+			TileEntityDNAExtractor var10 = (TileEntityDNAExtractor)world.getTileEntity(x, y, z);
 
 			if (var10 != null)
 			{
@@ -55,7 +56,7 @@ public class BlockDNAExtractor extends ContainerBase {
 	public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	{
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
-		TileEntity var6 = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity var6 = par1World.getTileEntity(par2, par3, par4);
 		keepFurnaceInventory = true;
 
 		if (par0)
@@ -73,15 +74,15 @@ public class BlockDNAExtractor extends ContainerBase {
 		if (var6 != null)
 		{
 			var6.validate();
-			par1World.setBlockTileEntity(par2, par3, par4, var6);
+			par1World.setTileEntity(par2, par3, par4, var6);
 		}
 	}
 
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	{
 		if (!keepFurnaceInventory)
 		{
-			TileEntityDNAExtractor var7 = (TileEntityDNAExtractor)par1World.getBlockTileEntity(par2, par3, par4);
+			TileEntityDNAExtractor var7 = (TileEntityDNAExtractor)par1World.getTileEntity(par2, par3, par4);
 
 			if (var7 != null)
 			{
@@ -105,7 +106,7 @@ public class BlockDNAExtractor extends ContainerBase {
 							}
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+							EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
 
 							if (var9.hasTagCompound())
 							{

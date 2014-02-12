@@ -1,26 +1,20 @@
 package com.MixedCraft.items;
 
-import com.MixedCraft.helper.ItemsBase;
-
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.util.EnumMovingObjectType;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Se;
-import cpw.mods.fml.relauncher.SeOnly;
+
+import com.MixedCraft.helper.ItemsBase;
 
 public class ItemLightningRod extends ItemsBase{
 
-	public ItemLightningRod(int par1){
-		super(par1, "");
+	public ItemLightningRod(){
+		super("");
 		setMaxStackSize(1);
 		setMaxDamage(100);
 	}
@@ -44,13 +38,13 @@ public class ItemLightningRod extends ItemsBase{
 		float f9 = f3 * f5;
 		double d3 = 5000D;
 		Vec3 vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
-		MovingObjectPosition movingobjectposition = world.rayTraceBlocks_do_do(vec3d, vec3d1, false, true);
+		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3d, vec3d1, false);
 
 		if (movingobjectposition == null) {
 			return item;
 		}
 
-		if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
+		if (movingobjectposition.typeOfHit == MovingObjectType.BLOCK) {
 			int i = movingobjectposition.blockX;
 			int j = movingobjectposition.blockY;
 			int k = movingobjectposition.blockZ;

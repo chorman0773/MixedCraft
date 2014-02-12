@@ -29,7 +29,7 @@ public class LeavesBase extends BlockLeavesBase
      */
     public boolean graphicsLevel;
 
-    public LeavesBase(int par1, boolean graphicsLevel)
+    public LeavesBase(boolean graphicsLevel)
     {
         super(Material.leaves, graphicsLevel);
        
@@ -49,7 +49,7 @@ public class LeavesBase extends BlockLeavesBase
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister IIcon) {
+    public void registerBlockIcons(IIconRegister IIcon) {
         tileSide = IIcon.registerIcon(Utils.MOD_ID + ":" + tileSideName);
         tileTop = IIcon.registerIcon(Utils.MOD_ID + ":" + tileTopName);
         tileBottom = IIcon.registerIcon(Utils.MOD_ID + ":" + tileBottomName);
@@ -57,7 +57,7 @@ public class LeavesBase extends BlockLeavesBase
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIIcon(int side, int meta) {
+    public IIcon getIcon(int side, int meta) {
         return side == 1 ? tileTop : side == 0 ? tileBottom : tileSide;
     }
 
@@ -80,7 +80,7 @@ public class LeavesBase extends BlockLeavesBase
      */
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        int i1 = par1IBlockAccess.getBlockId(par2, par3, par4);
+        Block i1 = par1IBlockAccess.getBlock(par2, par3, par4);
         return !this.graphicsLevel && i1 == this ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
     }
 }

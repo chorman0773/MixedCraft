@@ -1,6 +1,7 @@
 package com.MixedCraft.blocks;
 
-import net.minecraft.block.BlockStationary;
+import net.minecraft.block.BlockStaticLiquid;
+import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;

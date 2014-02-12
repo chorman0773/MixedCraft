@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
@@ -36,13 +39,9 @@ public class BlockChocolateCrop extends BlockFlower
         this.disableStats();
     }
 
-    /**
-     * Gets passed in the blockID of the block below and supposed to return true if its allowed to grow on the type of
-     * blockID passed in. Args: blockID
-     */
-    protected boolean canThisPlantGrowOnThisBlockID(int par1)
+    protected boolean canPlaceBlockOn(Block par1)
     {
-        return par1 == Block.tilledField;
+        return par1 == Blocks.farmland;
     }
 
     /**
@@ -92,36 +91,35 @@ public class BlockChocolateCrop extends BlockFlower
     private float getGrowthRate(World par1World, int par2, int par3, int par4)
     {
         float f = 1.0F;
-        int l = par1World.getBlockId(par2, par3, par4 - 1);
-        int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-        int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-        int k1 = par1World.getBlockId(par2 + 1, par3, par4);
-        int l1 = par1World.getBlockId(par2 - 1, par3, par4 - 1);
-        int i2 = par1World.getBlockId(par2 + 1, par3, par4 - 1);
-        int j2 = par1World.getBlockId(par2 + 1, par3, par4 + 1);
-        int k2 = par1World.getBlockId(par2 - 1, par3, par4 + 1);
-        boolean flag = j1 == this || k1 == this;
-        boolean flag1 = l == this || i1 == this;
-        boolean flag2 = l1 == this || i2 == this || j2 == this || k2 == this;
+        Block block = par1World.getBlock(par2, par3, par4 - 1);
+        Block block1 = par1World.getBlock(par2, par3, par4 + 1);
+        Block block2 = par1World.getBlock(par2 - 1, par3, par4);
+        Block block3 = par1World.getBlock(par2 + 1, par3, par4);
+        Block block4 = par1World.getBlock(par2 - 1, par3, par4 - 1);
+        Block block5 = par1World.getBlock(par2 + 1, par3, par4 - 1);
+        Block block6 = par1World.getBlock(par2 + 1, par3, par4 + 1);
+        Block block7 = par1World.getBlock(par2 - 1, par3, par4 + 1);
+        boolean flag = block2 == this || block3 == this;
+        boolean flag1 = block == this || block1 == this;
+        boolean flag2 = block4 == this || block5 == this || block6 == this || block7 == this;
 
-        for (int l2 = par2 - 1; l2 <= par2 + 1; ++l2)
+        for (int l = par2 - 1; l <= par2 + 1; ++l)
         {
-            for (int i3 = par4 - 1; i3 <= par4 + 1; ++i3)
+            for (int i1 = par4 - 1; i1 <= par4 + 1; ++i1)
             {
-                int j3 = par1World.getBlockId(l2, par3 - 1, i3);
                 float f1 = 0.0F;
 
-                if (blocksList[j3] != null && blocksList[j3].canSustainPlant(par1World, l2, par3 - 1, i3, ForgeDirection.UP, this))
+                if (par1World.getBlock(l, par3 - 1, i1).canSustainPlant(par1World, l, par3 - 1, i1, ForgeDirection.UP, this))
                 {
                     f1 = 1.0F;
 
-                    if (blocksList[j3].isFertile(par1World, l2, par3 - 1, i3))
+                    if (par1World.getBlock(l, par3 - 1, i1).isFertile(par1World, l, par3 - 1, i1))
                     {
                         f1 = 3.0F;
                     }
                 }
 
-                if (l2 != par2 || i3 != par4)
+                if (l != par2 || i1 != par4)
                 {
                     f1 /= 4.0F;
                 }
@@ -139,7 +137,7 @@ public class BlockChocolateCrop extends BlockFlower
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         if (par2 < 0 || par2 > 7)
         {
@@ -149,14 +147,12 @@ public class BlockChocolateCrop extends BlockFlower
         return this.IIconArray[par2];
     }
 
-    protected int getSeedItem()
-    {
-        return ItemHelper.ChocolateBean.itemID;
+    protected Item getSeedItem() {
+        return ItemHelper.ChocolateBean;
     }
 
-    protected int getCropItem()
-    {
-    	return ItemHelper.ChocolateBean.itemID;
+    protected Item getCropItem() {
+    	return ItemHelper.ChocolateBean;
     }
 
     public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
@@ -165,9 +161,9 @@ public class BlockChocolateCrop extends BlockFlower
     }
 
     @Override 
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
-        ArrayList<ItemStack> ret = super.getBlockDropped(world, x, y, z, metadata, fortune);
+        ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
 
         if (metadata >= 7)
         {
@@ -183,7 +179,7 @@ public class BlockChocolateCrop extends BlockFlower
         return ret;
     }
 
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item getItemDropped(int par1, Random par2Random, int par3)
     {
         return par1 == 7 ? this.getCropItem() : this.getSeedItem();
     }
@@ -194,13 +190,13 @@ public class BlockChocolateCrop extends BlockFlower
     }
 
     @SideOnly(Side.CLIENT)
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public Item getItem(World par1World, int par2, int par3, int par4)
     {
         return this.getSeedItem();
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.IIconArray = new IIcon[8];
 

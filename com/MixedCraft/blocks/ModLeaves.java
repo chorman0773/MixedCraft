@@ -3,6 +3,7 @@ package com.MixedCraft.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class ModLeaves extends LeavesBase
@@ -33,11 +34,11 @@ public class ModLeaves extends LeavesBase
 				{
 					for (int i2 = -b0; i2 <= b0; ++i2)
 					{
-						int j2 = par1World.getBlockId(par2 + k1, par3 + l1, par4 + i2);
+						Block j2 = par1World.getBlock(par2 + k1, par3 + l1, par4 + i2);
 
-						if (Block.blocksList[j2] != null)
+						if (par1World.getBlock(par2, par3, par4) != null)
 						{
-							Block.blocksList[j2].beginLeavesDecay(par1World, par2 + k1, par3 + l1, par4 + i2);
+							par1World.getBlock(par2, par3, par4).beginLeavesDecay(par1World, par2 + k1, par3 + l1, par4 + i2);
 						}
 					}
 				}
@@ -78,9 +79,8 @@ public class ModLeaves extends LeavesBase
 						{
 							for (j2 = -b0; j2 <= b0; ++j2)
 							{
-								k2 = par1World.getBlockId(par2 + l1, par3 + i2, par4 + j2);
 
-								Block block = Block.blocksList[k2];
+								Block block = par1World.getBlock(par2 + l1, par3 + i2, par4 + j2);
 
 								if (block != null && block.canSustainLeaves(par1World, par2 + l1, par3 + i2, par4 + j2))
 								{
@@ -171,7 +171,7 @@ public class ModLeaves extends LeavesBase
 	}
 
 	@Override
-	public boolean isLeaves(World world, int x, int y, int z)
+	public boolean isLeaves(IBlockAccess world, int x, int y, int z)
 	{
 		return true;
 	}

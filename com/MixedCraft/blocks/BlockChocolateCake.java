@@ -76,13 +76,13 @@ public class BlockChocolateCake extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return par1 == 1 ? this.cakeTopIIcon : (par1 == 0 ? this.cakeBottomIIcon : (par2 > 0 && par1 == 4 ? this.field_94382_c : this.blockIcon));
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Side");
         this.field_94382_c = par1IIconRegister.registerIcon("MixedCraft:" + "ChocolateCake" + "_Inner");
@@ -140,7 +140,7 @@ public class BlockChocolateCake extends Block
 
     public boolean canBlockStay(World par1World, int par2, int par3, int par4)
     {
-        return par1World.getBlockMaterial(par2, par3 - 1, par4).isSolid();
+        return par1World.getBlock(par2, par3 - 1, par4).getMaterial().isSolid();
     }
 
     public int quantityDropped(Random par1Random)
@@ -148,14 +148,14 @@ public class BlockChocolateCake extends Block
         return 0;
     }
 
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item getItemDropped(int par1, Random par2Random, int par3)
     {
-        return 0;
+        return null;
     }
 
     @SideOnly(Side.CLIENT)
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public Item getItem(World par1World, int par2, int par3, int par4)
     {
-        return ItemHelper.ChocalateCake.itemID;
+        return ItemHelper.ChocalateCake;
     }
 }

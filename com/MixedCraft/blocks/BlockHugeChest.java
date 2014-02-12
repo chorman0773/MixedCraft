@@ -64,19 +64,19 @@ public class BlockHugeChest extends BlockContainer
      */
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        if (par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == this)
+        if (par1IBlockAccess.getBlock(par2, par3, par4 - 1) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0F, 0.9375F, 0.875F, 0.9375F);
         }
-        else if (par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this)
+        else if (par1IBlockAccess.getBlock(par2, par3, par4 + 1) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 1.0F);
         }
-        else if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == this)
+        else if (par1IBlockAccess.getBlock(par2 - 1, par3, par4) == this)
         {
             this.setBlockBounds(0.0F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         }
-        else if (par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == this)
+        else if (par1IBlockAccess.getBlock(par2 + 1, par3, par4) == this)
         {
             this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 1.0F, 0.875F, 0.9375F);
         }
@@ -93,10 +93,10 @@ public class BlockHugeChest extends BlockContainer
     {
         super.onBlockAdded(par1World, par2, par3, par4);
         this.unifyAdjacentChests(par1World, par2, par3, par4);
-        int l = par1World.getBlockId(par2, par3, par4 - 1);
-        int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-        int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-        int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+        int l = par1World.getBlock(par2, par3, par4 - 1);
+        int i1 = par1World.getBlock(par2, par3, par4 + 1);
+        int j1 = par1World.getBlock(par2 - 1, par3, par4);
+        int k1 = par1World.getBlock(par2 + 1, par3, par4);
 
         if (l == this)
         {
@@ -124,10 +124,10 @@ public class BlockHugeChest extends BlockContainer
      */
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
     {
-        int l = par1World.getBlockId(par2, par3, par4 - 1);
-        int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-        int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-        int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+        int l = par1World.getBlock(par2, par3, par4 - 1);
+        int i1 = par1World.getBlock(par2, par3, par4 + 1);
+        int j1 = par1World.getBlock(par2 - 1, par3, par4);
+        int k1 = par1World.getBlock(par2 + 1, par3, par4);
         byte b0 = 0;
         int l1 = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
@@ -188,7 +188,7 @@ public class BlockHugeChest extends BlockContainer
 
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4)).setChestGuiName(par6ItemStack.getDisplayName());
+            ((TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4)).setChestGuiName(par6ItemStack.getDisplayName());
         }
     }
 
@@ -199,10 +199,10 @@ public class BlockHugeChest extends BlockContainer
     {
         if (!par1World.isRemote)
         {
-            int l = par1World.getBlockId(par2, par3, par4 - 1);
-            int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-            int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-            int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+            int l = par1World.getBlock(par2, par3, par4 - 1);
+            int i1 = par1World.getBlock(par2, par3, par4 + 1);
+            int j1 = par1World.getBlock(par2 - 1, par3, par4);
+            int k1 = par1World.getBlock(par2 + 1, par3, par4);
             boolean flag = true;
             int l1;
             int i2;
@@ -216,30 +216,30 @@ public class BlockHugeChest extends BlockContainer
                 {
                     b0 = 3;
 
-                    if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
+                    if (Block.func_149730_j[l] && !Block.func_149730_j[i1])
                     {
                         b0 = 3;
                     }
 
-                    if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
+                    if (Block.func_149730_j[i1] && !Block.func_149730_j[l])
                     {
                         b0 = 2;
                     }
 
-                    if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
+                    if (Block.func_149730_j[j1] && !Block.func_149730_j[k1])
                     {
                         b0 = 5;
                     }
 
-                    if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
+                    if (Block.func_149730_j[k1] && !Block.func_149730_j[j1])
                     {
                         b0 = 4;
                     }
                 }
                 else
                 {
-                    l1 = par1World.getBlockId(j1 == this ? par2 - 1 : par2 + 1, par3, par4 - 1);
-                    i2 = par1World.getBlockId(j1 == this ? par2 - 1 : par2 + 1, par3, par4 + 1);
+                    l1 = par1World.getBlock(j1 == this ? par2 - 1 : par2 + 1, par3, par4 - 1);
+                    i2 = par1World.getBlock(j1 == this ? par2 - 1 : par2 + 1, par3, par4 + 1);
                     b0 = 3;
                     flag1 = true;
 
@@ -257,12 +257,12 @@ public class BlockHugeChest extends BlockContainer
                         b0 = 2;
                     }
 
-                    if ((Block.opaqueCubeLookup[l] || Block.opaqueCubeLookup[l1]) && !Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[i2])
+                    if ((Block.func_149730_j[l] || Block.func_149730_j[l1]) && !Block.func_149730_j[i1] && !Block.func_149730_j[i2])
                     {
                         b0 = 3;
                     }
 
-                    if ((Block.opaqueCubeLookup[i1] || Block.opaqueCubeLookup[i2]) && !Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[l1])
+                    if ((Block.func_149730_j[i1] || Block.func_149730_j[i2]) && !Block.func_149730_j[l] && !Block.func_149730_j[l1])
                     {
                         b0 = 2;
                     }
@@ -270,8 +270,8 @@ public class BlockHugeChest extends BlockContainer
             }
             else
             {
-                l1 = par1World.getBlockId(par2 - 1, par3, l == this ? par4 - 1 : par4 + 1);
-                i2 = par1World.getBlockId(par2 + 1, par3, l == this ? par4 - 1 : par4 + 1);
+                l1 = par1World.getBlock(par2 - 1, par3, l == this ? par4 - 1 : par4 + 1);
+                i2 = par1World.getBlock(par2 + 1, par3, l == this ? par4 - 1 : par4 + 1);
                 b0 = 5;
                 flag1 = true;
 
@@ -289,12 +289,12 @@ public class BlockHugeChest extends BlockContainer
                     b0 = 4;
                 }
 
-                if ((Block.opaqueCubeLookup[j1] || Block.opaqueCubeLookup[l1]) && !Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[i2])
+                if ((Block.func_149730_j[j1] || Block.func_149730_j[l1]) && !Block.func_149730_j[k1] && !Block.func_149730_j[i2])
                 {
                     b0 = 5;
                 }
 
-                if ((Block.opaqueCubeLookup[k1] || Block.opaqueCubeLookup[i2]) && !Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[l1])
+                if ((Block.func_149730_j[k1] || Block.func_149730_j[i2]) && !Block.func_149730_j[j1] && !Block.func_149730_j[l1])
                 {
                     b0 = 4;
                 }
@@ -311,22 +311,22 @@ public class BlockHugeChest extends BlockContainer
     {
         int l = 0;
 
-        if (par1World.getBlockId(par2 - 1, par3, par4) == this)
+        if (par1World.getBlock(par2 - 1, par3, par4) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2 + 1, par3, par4) == this)
+        if (par1World.getBlock(par2 + 1, par3, par4) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 - 1) == this)
+        if (par1World.getBlock(par2, par3, par4 - 1) == this)
         {
             ++l;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 + 1) == this)
+        if (par1World.getBlock(par2, par3, par4 + 1) == this)
         {
             ++l;
         }
@@ -339,7 +339,7 @@ public class BlockHugeChest extends BlockContainer
      */
     private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4)
     {
-        return par1World.getBlockId(par2, par3, par4) != this ? false : (par1World.getBlockId(par2 - 1, par3, par4) == this ? true : (par1World.getBlockId(par2 + 1, par3, par4) == this ? true : (par1World.getBlockId(par2, par3, par4 - 1) == this ? true : par1World.getBlockId(par2, par3, par4 + 1) == this)));
+        return par1World.getBlock(par2, par3, par4) != this ? false : (par1World.getBlock(par2 - 1, par3, par4) == this ? true : (par1World.getBlock(par2 + 1, par3, par4) == this ? true : (par1World.getBlock(par2, par3, par4 - 1) == this ? true : par1World.getBlock(par2, par3, par4 + 1) == this)));
     }
 
     /**
@@ -349,7 +349,7 @@ public class BlockHugeChest extends BlockContainer
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
     {
         super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
-        TileEntityHugeChest TileEntityHugeChest = (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityHugeChest TileEntityHugeChest = (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4);
 
         if (TileEntityHugeChest != null)
         {
@@ -362,7 +362,7 @@ public class BlockHugeChest extends BlockContainer
      */
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
-        TileEntityHugeChest TileEntityHugeChest = (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityHugeChest TileEntityHugeChest = (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4);
 
         if (TileEntityHugeChest != null)
         {
@@ -414,7 +414,7 @@ public class BlockHugeChest extends BlockContainer
         }
         else
         {
-        	TileEntityHugeChest var10 = (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4);
+        	TileEntityHugeChest var10 = (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4);
         	
             if (var10 != null)
             {
@@ -431,7 +431,7 @@ public class BlockHugeChest extends BlockContainer
      */
     public IInventory getInventory(World par1World, int par2, int par3, int par4)
     {
-        Object object = (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4);
+        Object object = (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4);
 
         if (object == null)
         {
@@ -443,24 +443,24 @@ public class BlockHugeChest extends BlockContainer
         }
         else
         {
-            if (par1World.getBlockId(par2 - 1, par3, par4) == this)
+            if (par1World.getBlock(par2 - 1, par3, par4) == this)
             {
-                object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory)object);
+                object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getTileEntity(par2 - 1, par3, par4), (IInventory)object);
             }
 
-            if (par1World.getBlockId(par2 + 1, par3, par4) == this)
+            if (par1World.getBlock(par2 + 1, par3, par4) == this)
             {
-                object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getBlockTileEntity(par2 + 1, par3, par4));
+                object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getTileEntity(par2 + 1, par3, par4));
             }
 
-            if (par1World.getBlockId(par2, par3, par4 - 1) == this)
+            if (par1World.getBlock(par2, par3, par4 - 1) == this)
             {
-                object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory)object);
+                object = new InventoryLargeChest("container.chestDouble", (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4 - 1), (IInventory)object);
             }
 
-            if (par1World.getBlockId(par2, par3, par4 + 1) == this)
+            if (par1World.getBlock(par2, par3, par4 + 1) == this)
             {
-                object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getBlockTileEntity(par2, par3, par4 + 1));
+                object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityHugeChest)par1World.getTileEntity(par2, par3, par4 + 1));
             }
 
             return (IInventory)object;
@@ -479,7 +479,7 @@ public class BlockHugeChest extends BlockContainer
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.blockIcon = par1IIconRegister.registerIcon("diamond_block");
     }

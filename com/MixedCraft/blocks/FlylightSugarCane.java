@@ -37,7 +37,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
         {
             int l;
 
-            for (l = 1; par1World.getBlockId(par2, par3 - l, par4) == this; ++l)
+            for (l = 1; par1World.getBlock(par2, par3 - l, par4) == this; ++l)
             {
                 ;
             }
@@ -64,7 +64,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
      */
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-        Block block = Block.blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
+        Block block = Block.blocksList[par1World.getBlock(par2, par3 - 1, par4)];
         return (block != null && block.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
     }
 
@@ -144,7 +144,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
     /**
      * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
      */
-    public int idPicked(World par1World, int par2, int par3, int par4)
+    public Item getItem(World par1World, int par2, int par3, int par4)
     {
         return Item.reed.itemID;
     }

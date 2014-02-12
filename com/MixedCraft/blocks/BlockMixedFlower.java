@@ -20,7 +20,7 @@ public class BlockMixedFlower extends BlockFlower {
 	
 	
 	@Override
-	public void registerIcons(IIconRegister IIcon) {
+	public void registerBlockIcons(IIconRegister IIcon) {
 		blockIcon = IIcon.registerIcon(Utils.MOD_ID + ":" + Name);
 	}
 

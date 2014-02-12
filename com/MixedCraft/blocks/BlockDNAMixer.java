@@ -2,6 +2,7 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,7 @@ public class BlockDNAMixer extends ContainerBase {
 		registerTexture("DNAMixer_Side", "DNAMixer_Top" , "DNAMixer_Bottom");
 	}
 
-	    public TileEntity createNewTileEntity(World var1)
+	    public TileEntity createNewTileEntity(World var1, int IDK)
 	    {
 	        return new TileEntityDNAMixer();
 	    }
@@ -40,7 +41,7 @@ public class BlockDNAMixer extends ContainerBase {
 	        }
 	        else
 	        {
-	        	TileEntityDNAMixer var10 = (TileEntityDNAMixer)par1World.getBlockTileEntity(par2, par3, par4);
+	        	TileEntityDNAMixer var10 = (TileEntityDNAMixer)par1World.getTileEntity(par2, par3, par4);
 	        	
 	            if (var10 != null)
 	            {
@@ -54,7 +55,7 @@ public class BlockDNAMixer extends ContainerBase {
 	    public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
 	    {
 	        int var5 = par1World.getBlockMetadata(par2, par3, par4);
-	        TileEntity var6 = par1World.getBlockTileEntity(par2, par3, par4);
+	        TileEntity var6 = par1World.getTileEntity(par2, par3, par4);
 	        keepFurnaceInventory = true;
 
 	        if (par0)
@@ -72,15 +73,15 @@ public class BlockDNAMixer extends ContainerBase {
 	        if (var6 != null)
 	        {
 	            var6.validate();
-	            par1World.setBlockTileEntity(par2, par3, par4, var6);
+	            par1World.setTileEntity(par2, par3, par4, var6);
 	        }
 	    }
 
-	    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	    {
 	        if (!keepFurnaceInventory)
 	        {
-	        	TileEntityDNAMixer var7 = (TileEntityDNAMixer)par1World.getBlockTileEntity(par2, par3, par4);
+	        	TileEntityDNAMixer var7 = (TileEntityDNAMixer)par1World.getTileEntity(par2, par3, par4);
 
 	            if (var7 != null)
 	            {
@@ -104,7 +105,7 @@ public class BlockDNAMixer extends ContainerBase {
 	                            }
 
 	                            var9.stackSize -= var13;
-	                            EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+	                            EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
 
 	                            if (var9.hasTagCompound())
 	                            {

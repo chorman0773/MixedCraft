@@ -11,15 +11,15 @@ import net.minecraftforge.common.AchievementPage;
 
 public class Achievements extends HelperHandler{
 
-	public static final Achievement CopperOre = new Achievement(90, "CopperOre", 0, 1, BlockHelper.CopperOre, null).registerAchievement(); 
-	public static final Achievement TinOre = new Achievement(91, "TinOre", 4, 1, BlockHelper.TinOre, null).registerAchievement(); 
+	public static final Achievement CopperOre = new Achievement("CopperOre", "CopperOre", 0, 1, BlockHelper.CopperOre, null).registerStat(); 
+	public static final Achievement TinOre = new Achievement("TinOre", "TinOre", 4, 1, BlockHelper.TinOre, null).registerStat(); 
 
-	public static final Achievement Copper = new Achievement(92, "Copper", 0, 3, ItemHelper.CopperIngot, CopperOre).registerAchievement(); 
-	public static final Achievement Tin = new Achievement(93, "Tin", 4, 3, ItemHelper.TinIngot, TinOre).registerAchievement(); 
+	public static final Achievement Copper = new Achievement("Copper", "Copper", 0, 3, ItemHelper.CopperIngot, CopperOre).registerStat(); 
+	public static final Achievement Tin = new Achievement("Tin", "Tin", 4, 3, ItemHelper.TinIngot, TinOre).registerStat(); 
 
-	public static final Achievement Extractor = new Achievement(94, "Extractor", 0, 5, BlockHelper.Extractor, Copper).registerAchievement(); 
-	public static final Achievement Mixer = new Achievement(95, "Mixer", 1, 6, BlockHelper.Mixer, Extractor).registerAchievement(); 
-	public static final Achievement Assembler = new Achievement(96, "Assembler", 2, 7, BlockHelper.Assembler, Mixer).registerAchievement(); 
+	public static final Achievement Extractor = new Achievement("Extractor", "Extractor", 0, 5, BlockHelper.Extractor, Copper).registerStat().setSpecial(); 
+	public static final Achievement Mixer = new Achievement("Mixer", "Mixer", 1, 6, BlockHelper.Mixer, Extractor).registerStat().setSpecial(); 
+	public static final Achievement Assembler = new Achievement("Assembler", "Assembler", 2, 7, BlockHelper.Assembler, Mixer).registerStat().setSpecial(); 
 
 
 
@@ -29,8 +29,8 @@ public class Achievements extends HelperHandler{
 	public static void init(){
 		AchievementPage.registerAchievementPage(MixedPage);
 
-		GameRegistry.registerPickupHandler(new PickupHandler());
-		GameRegistry.registerCraftingHandler(new CraftingHandler());
+		//GameRegistry.registerPickupHandler(new PickupHandler());
+		//GameRegistry.registerCraftingHandler(new CraftingHandler());
 		
 		addAchievementName("Extractor", "Ready To Extract!");
 		addAchievementDesc("Extractor", "Just Craft An Extractor!");

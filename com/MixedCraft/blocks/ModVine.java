@@ -124,7 +124,7 @@ public class ModVine extends Block implements IShearable
 			var13 = true;
 		}
 
-		if (!var13 && this.canBePlacedOn(par1IBlockAccess.getBlockId(par2, par3 + 1, par4)))
+		if (!var13 && this.canBePlacedOn(par1IBlockAccess.getBlock(par2, par3 + 1, par4)))
 		{
 			var8 = Math.min(var8, 0.9375F);
 			var11 = 1.0F;
@@ -154,15 +154,15 @@ public class ModVine extends Block implements IShearable
 		switch (par5)
 		{
 		case 1:
-			return this.canBePlacedOn(par1World.getBlockId(par2, par3 + 1, par4));
+			return this.canBePlacedOn(par1World.getBlock(par2, par3 + 1, par4));
 		case 2:
-			return this.canBePlacedOn(par1World.getBlockId(par2, par3, par4 + 1));
+			return this.canBePlacedOn(par1World.getBlock(par2, par3, par4 + 1));
 		case 3:
-			return this.canBePlacedOn(par1World.getBlockId(par2, par3, par4 - 1));
+			return this.canBePlacedOn(par1World.getBlock(par2, par3, par4 - 1));
 		case 4:
-			return this.canBePlacedOn(par1World.getBlockId(par2 + 1, par3, par4));
+			return this.canBePlacedOn(par1World.getBlock(par2 + 1, par3, par4));
 		case 5:
-			return this.canBePlacedOn(par1World.getBlockId(par2 - 1, par3, par4));
+			return this.canBePlacedOn(par1World.getBlock(par2 - 1, par3, par4));
 		default:
 			return false;
 		}
@@ -198,14 +198,14 @@ public class ModVine extends Block implements IShearable
 			{
 				int var8 = 1 << var7;
 
-				if ((var5 & var8) != 0 && !this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var7], par3, par4 + Direction.offsetZ[var7])) && (par1World.getBlockId(par2, par3 + 1, par4) != this || (par1World.getBlockMetadata(par2, par3 + 1, par4) & var8) == 0))
+				if ((var5 & var8) != 0 && !this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var7], par3, par4 + Direction.offsetZ[var7])) && (par1World.getBlock(par2, par3 + 1, par4) != this || (par1World.getBlockMetadata(par2, par3 + 1, par4) & var8) == 0))
 				{
 					var6 &= ~var8;
 				}
 			}
 		}
 
-		if (var6 == 0 && !this.canBePlacedOn(par1World.getBlockId(par2, par3 + 1, par4)))
+		if (var6 == 0 && !this.canBePlacedOn(par1World.getBlock(par2, par3 + 1, par4)))
 		{
 			return false;
 		}
@@ -254,7 +254,7 @@ public class ModVine extends Block implements IShearable
 					{
 						for (var11 = par3 - 1; var11 <= par3 + 1; ++var11)
 						{
-							if (par1World.getBlockId(var9, var11, var10) == this)
+							if (par1World.getBlock(var9, var11, var10) == this)
 							{
 								--var7;
 
@@ -287,7 +287,7 @@ public class ModVine extends Block implements IShearable
 				{
 					for (var13 = 0; var13 <= 3; ++var13)
 					{
-						if (!this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var13], par3 + 1, par4 + Direction.offsetZ[var13])))
+						if (!this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var13], par3 + 1, par4 + Direction.offsetZ[var13])))
 						{
 							var12 &= ~(1 << var13);
 						}
@@ -310,7 +310,7 @@ public class ModVine extends Block implements IShearable
 						return;
 					}
 
-					var12 = par1World.getBlockId(par2 + Direction.offsetX[var11], par3, par4 + Direction.offsetZ[var11]);
+					var12 = par1World.getBlock(par2 + Direction.offsetX[var11], par3, par4 + Direction.offsetZ[var11]);
 
 					if (var12 != 0 && Block.blocksList[var12] != null)
 					{
@@ -324,23 +324,23 @@ public class ModVine extends Block implements IShearable
 						var13 = var11 + 1 & 3;
 						var14 = var11 + 3 & 3;
 
-						if ((var9 & 1 << var13) != 0 && this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var11] + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var13])))
+						if ((var9 & 1 << var13) != 0 && this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var13])))
 						{
 							par1World.setBlock(par2 + Direction.offsetX[var11], par3, par4 + Direction.offsetZ[var11], this, 1 << var13, 3);
 						}
-						else if ((var9 & 1 << var14) != 0 && this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var11] + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var14])))
+						else if ((var9 & 1 << var14) != 0 && this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var14])))
 						{
 							par1World.setBlock(par2 + Direction.offsetX[var11], par3, par4 + Direction.offsetZ[var11], this, 1 << var14, 3);
 						}
-						else if ((var9 & 1 << var13) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var13]) && this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var13])))
+						else if ((var9 & 1 << var13) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var13]) && this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var13])))
 						{
 							par1World.setBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var13], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var13], this, 1 << (var11 + 2 & 3), 3);
 						}
-						else if ((var9 & 1 << var14) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var14]) && this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var14])))
+						else if ((var9 & 1 << var14) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var14]) && this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var14])))
 						{
 							par1World.setBlock(par2 + Direction.offsetX[var11] + Direction.offsetX[var14], par3, par4 + Direction.offsetZ[var11] + Direction.offsetZ[var14], this, 1 << (var11 + 2 & 3), 3);
 						}
-						else if (this.canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[var11], par3 + 1, par4 + Direction.offsetZ[var11])))
+						else if (this.canBePlacedOn(par1World.getBlock(par2 + Direction.offsetX[var11], par3 + 1, par4 + Direction.offsetZ[var11])))
 						{
 							par1World.setBlock(par2 + Direction.offsetX[var11], par3, par4 + Direction.offsetZ[var11], this, 0, 3);
 						}
@@ -348,7 +348,7 @@ public class ModVine extends Block implements IShearable
 				}
 				else if (par3 > 1)
 				{
-					var12 = par1World.getBlockId(par2, par3 - 1, par4);
+					var12 = par1World.getBlock(par2, par3 - 1, par4);
 
 					if (var12 == 0)
 					{

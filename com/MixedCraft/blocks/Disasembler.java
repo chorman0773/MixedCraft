@@ -32,7 +32,7 @@ public class Disasembler extends BlockContainer
 	}
 	
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int i, float a, float b, float c){
-		TileEntity te = world.getBlockTileEntity(x, y, z);
+		TileEntity te = world.getTileEntity(x, y, z);
 		
 		if(te == null || player.isSneaking()){
 			
@@ -45,7 +45,7 @@ public class Disasembler extends BlockContainer
   }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:Disasembler");
     }

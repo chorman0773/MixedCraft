@@ -129,7 +129,7 @@ public class ModFire extends BlocksBase
     {
         if (par1World.getGameRules().getGameRuleBooleanValue("doFireTick"))
         {
-            Block base = Block.blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
+            Block base = Block.blocksList[par1World.getBlock(par2, par3 - 1, par4)];
             boolean flag = (base != null && base.isFireSource(par1World, par2, par3 - 1, par4, par1World.getBlockMetadata(par2, par3 - 1, par4), UP));
 
             if (!this.canPlaceBlockAt(par1World, par2, par3, par4))
@@ -241,7 +241,7 @@ public class ModFire extends BlocksBase
     private void tryToCatchBlockOnFire(World par1World, int par2, int par3, int par4, int par5, Random par6Random, int par7, ForgeDirection face)
     {
         int j1 = 0;
-        Block block = Block.blocksList[par1World.getBlockId(par2, par3, par4)];
+        Block block = Block.blocksList[par1World.getBlock(par2, par3, par4)];
         if (block != null)
         {
             j1 = block.getFlammability(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), face);
@@ -249,7 +249,7 @@ public class ModFire extends BlocksBase
 
         if (par6Random.nextInt(par5) < j1)
         {
-            boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt;
+            boolean flag = par1World.getBlock(par2, par3, par4) == Block.tnt;
 
             if (par6Random.nextInt(par7 + 10) < 5 && !par1World.canLightningStrikeAt(par2, par3, par4))
             {
@@ -365,7 +365,7 @@ public class ModFire extends BlocksBase
      */
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
-        //if (par1World.provider.dimensionId > 0 || par1World.getBlockId(par2, par3 - 1, par4) != Block.glowStone || !BlockHelper.FlyLightPortal.tryToCreatePortal(par1World, par2, par3, par4))
+        //if (par1World.provider.dimensionId > 0 || par1World.getBlock(par2, par3 - 1, par4) != Block.glowStone || !BlockHelper.FlyLightPortal.tryToCreatePortal(par1World, par2, par3, par4))
         {
             if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !this.canNeighborBurn(par1World, par2, par3, par4))
             {
@@ -470,7 +470,7 @@ public class ModFire extends BlocksBase
      * When this method is called, your block should register all the IIcons it needs with the given IIconRegister. This
      * is the only chance you get to register IIcons.
      */
-    public void registerIcons(IIconRegister par1IIconRegister)
+    public void registerBlockIcons(IIconRegister par1IIconRegister)
     {
         this.IIconArray = new IIcon[] {par1IIconRegister.registerIcon("fire" + "_layer_0"), par1IIconRegister.registerIcon("fire" + "_layer_1")};
     }
@@ -486,7 +486,7 @@ public class ModFire extends BlocksBase
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public IIcon getIIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return this.IIconArray[0];
     }
@@ -503,7 +503,7 @@ public class ModFire extends BlocksBase
      */
     public boolean canBlockCatchFire(IBlockAccess world, int x, int y, int z, ForgeDirection face)
     {
-        Block block = Block.blocksList[world.getBlockId(x, y, z)];
+        Block block = Block.blocksList[world.getBlock(x, y, z)];
         if (block != null)
         {
             return block.isFlammable(world, x, y, z, world.getBlockMetadata(x, y, z), face);
@@ -525,7 +525,7 @@ public class ModFire extends BlocksBase
     public int getChanceToEncourageFire(World world, int x, int y, int z, int oldChance, ForgeDirection face)
     {
         int newChance = 0;
-        Block block = Block.blocksList[world.getBlockId(x, y, z)];
+        Block block = Block.blocksList[world.getBlock(x, y, z)];
         if (block != null)
         {
             newChance = block.getFireSpreadSpeed(world, x, y, z, world.getBlockMetadata(x, y, z), face);

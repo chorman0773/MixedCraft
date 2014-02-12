@@ -3,9 +3,11 @@ package com.MixedCraft.blocks;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.helper.BlocksBase;
@@ -37,9 +39,8 @@ public class BlockFlyLightGrass extends BlocksBase
                     int i1 = par2 + par5Random.nextInt(3) - 1;
                     int j1 = par3 + par5Random.nextInt(5) - 3;
                     int k1 = par4 + par5Random.nextInt(3) - 1;
-                    int l1 = par1World.getBlockId(i1, j1 + 1, k1);
 
-                    if (par1World.getBlockId(i1, j1, k1) == BlockHelper.FlyLightDirt && par1World.getBlockLightValue(i1, j1 + 1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (par1World.getBlock(i1, j1, k1) == BlockHelper.FlyLightDirt && par1World.getBlockLightValue(i1, j1 + 1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
                         par1World.setBlock(i1, j1, k1, BlockHelper.FlyLightGrass);
                     }
@@ -49,8 +50,7 @@ public class BlockFlyLightGrass extends BlocksBase
     }
     
     @Override
-    public boolean canSustainPlant(World world, int x, int y, int z,
-    		ForgeDirection direction, IPlantable plant) {
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant) {
     	return true;
     }
 
@@ -58,8 +58,9 @@ public class BlockFlyLightGrass extends BlocksBase
      * Returns the ID of the items to drop on destruction.
      */
     @Override
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item getItemDropped(int par1, Random par2Random, int par3)
     {
-        return BlockHelper.FlyLightDirt.idDropped(0, par2Random, par3);
+        return BlockHelper.FlyLightDirt.getItemDropped(par1, par2Random, par3);
     }
+    
 }
