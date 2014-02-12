@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
@@ -388,10 +389,10 @@ public class BlockGoldDoor extends BlocksBase
             {
                 boolean flag1 = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
 
-                if ((flag1 || par5 > 0 && par1World.getBlock(par2, par3, par4).canProvidePower()) && par5 != this)
+                if ((flag1 || par1World.getBlock(par2, par3, par4).canProvidePower()) && par5 != this)
                 {
                     this.onPoweredBlockChange(par1World, par2, par3, par4, flag1);
-                }BlockDoor
+                }
             }
         }
         else
@@ -401,7 +402,7 @@ public class BlockGoldDoor extends BlocksBase
                 par1World.setBlockToAir(par2, par3, par4);
             }
 
-            if (par5 > 0 && par5 != this)
+            if (par5 != this)
             {
                 this.onNeighborBlockChange(par1World, par2, par3 - 1, par4, par5);
             }
@@ -411,9 +412,9 @@ public class BlockGoldDoor extends BlocksBase
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item idDropped(Block par1, Random par2Random, int par3)
     {
-        return (par1 & 8) != 0 ? 0 : (this.blockMaterial == Material.iron ? ItemHelper.GoldDoor.itemID : ItemHelper.GoldDoor.itemID);
+        return this.blockMaterial == Material.iron ? ItemHelper.GoldDoor : ItemHelper.GoldDoor;
     }
 
     /**
@@ -431,7 +432,7 @@ public class BlockGoldDoor extends BlocksBase
      */
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-        return par3 >= 255 ? false : par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && super.canPlaceBlockAt(par1World, par2, par3, par4) && super.canPlaceBlockAt(par1World, par2, par3 + 1, par4);
+        return par3 >= 255 ? false : par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4) && super.canPlaceBlockAt(par1World, par2, par3, par4) && super.canPlaceBlockAt(par1World, par2, par3 + 1, par4);
     }
 
     /**
@@ -475,7 +476,7 @@ public class BlockGoldDoor extends BlocksBase
      */
     public Item getItem(World par1World, int par2, int par3, int par4)
     {
-        return this.blockMaterial == Material.iron ? ItemHelper.GoldDoor.itemID : ItemHelper.GoldDoor.itemID;
+        return this.blockMaterial == Material.iron ? ItemHelper.GoldDoor : ItemHelper.GoldDoor;
     }
 
     /**

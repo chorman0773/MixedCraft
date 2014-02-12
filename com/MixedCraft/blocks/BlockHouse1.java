@@ -2,7 +2,6 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +11,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.MixedCraft.ItemHelper;
+import com.MixedCraft.MixedAPI;
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.gen.House1;
 import com.MixedCraft.helper.BlocksBase;
@@ -22,12 +22,13 @@ public class BlockHouse1 extends BlocksBase
 {
 	private Random rand;
 	private EntityPlayer entityplayer;
+	private String register;
 
 	public BlockHouse1()
 	{
 		super(Material.wood);
 		this.setCreativeTab(MixedCraft.BlockTab);
-		GameRegistry.registerBlock(this);
+		GameRegistry.registerBlock(this, getUnlocalizedName());
 	}
 	public void registerBlockIcons(IIconRegister var1)
 	{
@@ -46,23 +47,22 @@ public class BlockHouse1 extends BlocksBase
 		{
 			return false;
 		}
-		
-		if(entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().itemID == ItemHelper.CopperIngot.itemID)
+		ItemStack copper = new ItemStack(ItemHelper.CopperIngot, 1);
+		if(entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem() == copper);
 		{
 			this.genTreeHouse(world, rand, i, j, k);
 			if(!world.isRemote)
 			{
-				entityplayer.addChatMessage(EnumChatFormatting.GREEN + "Building a house!");
+				entityplayer.addChatMessage(MixedAPI.addChatMessage(EnumChatFormatting.GREEN + "Building a house!"));
 			}
 			equipped.stackSize--;
 			return true;
 		}
-		return false;
 	}
 
 	public void genTreeHouse(World world, Random rand, int i, int j, int k)
 	{
-		world.setBlock(i, j, k, 0);
+		world.setBlock(i, j, k, null, 0, k);
 		House1 treehouse = new House1();
 		if (!treehouse.generate(world, rand, i, j, k))
 		{
