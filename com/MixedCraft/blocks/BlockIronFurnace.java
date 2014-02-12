@@ -11,6 +11,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -56,9 +57,9 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item getItemDropped(int par1, Random par2Random, int par3)
     {
-        return BlockHelper.IronFurnaceOff;
+        return Item.getItemFromBlock(BlockHelper.IronFurnaceOff);
     }
 
     /**
@@ -74,38 +75,38 @@ public class BlockIronFurnace extends BlockContainer
      * set a blocks direction
      */
     private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-    {
-        if (!par1World.isRemote)
-        {
-            int l = par1World.getBlock(par2, par3, par4 - 1);
-            int i1 = par1World.getBlock(par2, par3, par4 + 1);
-            int j1 = par1World.getBlock(par2 - 1, par3, par4);
-            int k1 = par1World.getBlock(par2 + 1, par3, par4);
-            byte b0 = 3;
+	{
+		if (!par1World.isRemote)
+		{
+			Block block = par1World.getBlock(par2, par3, par4 - 1);
+            Block block1 = par1World.getBlock(par2, par3, par4 + 1);
+            Block block2 = par1World.getBlock(par2 - 1, par3, par4);
+            Block block3 = par1World.getBlock(par2 + 1, par3, par4);
+			byte b0 = 3;
 
-            if (Block.func_149730_j[l] && !Block.func_149730_j[i1])
+			if (block.func_149730_j() && !block1.func_149730_j())
             {
                 b0 = 3;
             }
 
-            if (Block.func_149730_j[i1] && !Block.func_149730_j[l])
+            if (block1.func_149730_j() && !block.func_149730_j())
             {
                 b0 = 2;
             }
 
-            if (Block.func_149730_j[j1] && !Block.func_149730_j[k1])
+            if (block2.func_149730_j() && !block3.func_149730_j())
             {
                 b0 = 5;
             }
 
-            if (Block.func_149730_j[k1] && !Block.func_149730_j[j1])
+            if (block3.func_149730_j() && !block2.func_149730_j())
             {
                 b0 = 4;
             }
 
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
-        }
-    }
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 2);
+		}
+	}
 
     @SideOnly(Side.CLIENT)
 
@@ -216,8 +217,7 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
-    public TileEntity createNewTileEntity(World par1World)
-    {
+    public TileEntity createNewTileEntity(World par1World, int i) {
         return new TileEntityIronFurnace();
     }
 
@@ -257,7 +257,7 @@ public class BlockIronFurnace extends BlockContainer
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
     {
         if (!keepIronFurnaceInventory)
         {
@@ -285,7 +285,7 @@ public class BlockIronFurnace extends BlockContainer
                             }
 
                             itemstack.stackSize -= k1;
-                            EntityItem entityitem = new EntityItem(par1World, (double)((float)par2 + f), (double)((float)par3 + f1), (double)((float)par4 + f2), new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+                            EntityItem entityitem = new EntityItem(par1World, (double)((float)par2 + f), (double)((float)par3 + f1), (double)((float)par4 + f2), new ItemStack(itemstack.getItem(), k1, itemstack.getItemDamage()));
 
                             if (itemstack.hasTagCompound())
                             {
@@ -301,7 +301,7 @@ public class BlockIronFurnace extends BlockContainer
                     }
                 }
 
-                par1World.func_96440_m(par2, par3, par4, par5);
+                par1World.func_147453_f(par2, par3, par4, par5);
             }
         }
 
@@ -333,6 +333,6 @@ public class BlockIronFurnace extends BlockContainer
      */
     public Item getItem(World par1World, int par2, int par3, int par4)
     {
-        return BlockHelper.IronFurnaceOff;
+        return Item.getItemFromBlock(BlockHelper.IronFurnaceOff);
     }
 }

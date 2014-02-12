@@ -44,7 +44,7 @@ public class TileEntityBomb extends TileEntity {
 		if (worldObj.isAirBlock(x, y, z)) {
 			//worldObj.setBlock(x, y, z, BlockHelper.Bomb.blockID);
 			
-			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
+			TileEntity tile = worldObj.getTileEntity(x, y, z);
 			
 			if (tile != null && tile instanceof TileEntityBomb) {
 				TileEntityBomb bomb = (TileEntityBomb)tile;

@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraftforge.common.ForgeDirection;
 
 import com.MixedCraft.ItemHelper;
 import com.MixedCraft.blocks.BlockMobAssembler;
@@ -130,12 +129,12 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+        NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
-            NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+            NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
             byte var5 = var4.getByte("Slot");
 
             if (var5 >= 0 && var5 < this.furnaceItemStacks.length)
@@ -247,7 +246,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
                         }
                     }
                 }
@@ -278,7 +277,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
 
         if (var2)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
     }
 
@@ -354,14 +353,14 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
         }
         else
         {
-            int var1 = par0ItemStack.getItem().itemID;
+            Item var1 = par0ItemStack.getItem();
 
-            if (var1 == ItemHelper.CowChickenMixedDrive.itemID || 
-            		var1 == ItemHelper.CowPigMixedDrive.itemID ||
-            		var1 == ItemHelper.CowSheepMixedDrive.itemID ||
-            		var1 == ItemHelper.CowCreeperMixedDrive.itemID ||
-            		var1 == ItemHelper.CowEndermanSpawner.itemID ||
-            		var1 == ItemHelper.CowZombieSpawner.itemID)
+            if (var1 == ItemHelper.CowChickenMixedDrive || 
+            		var1 == ItemHelper.CowPigMixedDrive ||
+            		var1 == ItemHelper.CowSheepMixedDrive ||
+            		var1 == ItemHelper.CowCreeperMixedDrive ||
+            		var1 == ItemHelper.CowEndermanSpawner ||
+            		var1 == ItemHelper.CowZombieSpawner)
             {
                 return 270;
             }
@@ -383,7 +382,7 @@ public class TileEntityDNAAssembler extends TileEntityFurnace implements IInvent
      */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
     public void openChest() {}

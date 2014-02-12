@@ -70,7 +70,7 @@ public class BlockHelper extends HelperHandler{
     public static final Block FlylightCane = new FlylightSugarCane().registerTexture("FlyLightSugarCane").setBlockName("Cane").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightSapling = new FlylightSapling("FlylightSapling").setBlockName("Sapling").setCreativeTab(MixedCraft.BlockTab);
     public static final Block Water = new ModWater().setBlockName("Water").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block Vine = new ModVine("Flylight").setBlockName("Vine").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block Vine = new ModVine().registerTexture("FlylightVine").setBlockName("Vine").setCreativeTab(MixedCraft.BlockTab);
     
     public static final Block Iron = new ModOre().registerTexture("Iron").setHardness(3.0F).setBlockName("Iron");
     public static final Block Gold = new ModOre().registerTexture("Gold").setHardness(3.0F).setBlockName("Gold");

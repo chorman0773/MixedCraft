@@ -1,13 +1,10 @@
 package com.MixedCraft.blocks.tileEntity;
 
-import com.MixedCraft.blocks.BlockDiamondFurnace;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,8 +16,12 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.ForgeDummyContainer;
+
+import com.MixedCraft.blocks.BlockDiamondFurnace;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityDiamondFurnace extends TileEntity implements ISidedInventory
 {
@@ -120,12 +121,12 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
             byte b0 = nbttagcompound1.getByte("Slot");
 
             if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
@@ -223,7 +224,7 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
                         }
                     }
                 }
@@ -254,7 +255,7 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
         if (flag1)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
     }
 
@@ -307,24 +308,24 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
         }
         else
         {
-            int i = par0ItemStack.getItem().itemID;
+            Item i = par0ItemStack.getItem();
             Item item = par0ItemStack.getItem();
 
-            if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
+            if (par0ItemStack.getItem() instanceof ItemBlock && Block.getBlockFromItem(item) != null)
             {
-                Block block = Block.blocksList[i];
+                Block block = Block.getBlockFromItem(item);
 
-                if (block == Block.woodSingleSlab)
+                if (block == Blocks.wooden_slab)
                 {
                     return 150;
                 }
 
-                if (block.blockMaterial == Material.wood)
+                if (block.getMaterial() == Material.wood)
                 {
                     return 300;
                 }
 
-                if (block == Block.coalBlock)
+                if (block == Blocks.coal_block)
                 {
                     return 16000;
                 }
@@ -332,12 +333,11 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-            if (i == Item.stick.itemID) return 100;
-            if (i == Item.coal.itemID) return 1600;
-            if (i == Item.bucketLava.itemID) return 20000;
-            if (i == Block.sapling.blockID) return 100;
-            if (i == Item.blazeRod.itemID) return 2400;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (i == Items.stick) return 100;
+            if (i == Items.coal) return 1600;
+            if (i == Items.lava_bucket) return 20000;
+            if (i == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
@@ -349,7 +349,7 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
     public void openChest() {}
@@ -373,6 +373,22 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
 
     public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
     {
-        return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+        return par3 != 0 || par1 != 1 || par2ItemStack.getItem() == Items.bucket;
     }
+
+	@Override
+	public String getInventoryName() {
+		return "Diamond Furnace";
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		return true;
+	}
+
+	@Override
+	public void openInventory() { }
+
+	@Override
+	public void closeInventory() { }
 }

@@ -3,6 +3,7 @@ package com.MixedCraft.blocks.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
@@ -64,7 +65,7 @@ public class ContainerBigCrafting extends Container
 
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
 	{
-	         return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != BlockHelper.BigCrafting.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+	         return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != BlockHelper.BigCrafting ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
 	}
 
     public void onContainerClosed(EntityPlayer par1EntityPlayer)
@@ -79,7 +80,7 @@ public class ContainerBigCrafting extends Container
 
                 if (itemstack != null)
                 {
-                    par1EntityPlayer.dropPlayerItem(itemstack);
+                    par1EntityPlayer.dropPlayerItemWithRandomChoice(itemstack, false);
                 }
             }
         }

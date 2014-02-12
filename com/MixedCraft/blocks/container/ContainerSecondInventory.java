@@ -80,7 +80,7 @@ public class ContainerSecondInventory extends Container
 
             if (itemstack != null)
             {
-                par1EntityPlayer.dropPlayerItem(itemstack);
+                par1EntityPlayer.dropPlayerItemWithRandomChoice(itemstack, false);
             }
         }
 

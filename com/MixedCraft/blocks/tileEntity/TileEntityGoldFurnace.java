@@ -119,12 +119,12 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
             byte b0 = nbttagcompound1.getByte("Slot");
 
             if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
@@ -222,7 +222,7 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
 
                         if (this.furnaceItemStacks[1].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItemStack(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[1] = this.furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
                         }
                     }
                 }
@@ -253,7 +253,7 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
 
         if (flag1)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
     }
 
@@ -306,7 +306,7 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
         }
         else
         {
-            int i = par0ItemStack.getItem().itemID;
+            int i = par0ItemStack.getItem();
             Item item = par0ItemStack.getItem();
 
             if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)

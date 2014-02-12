@@ -1,19 +1,10 @@
 package com.MixedCraft.dimension;
 
-import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.LAKE;
-import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SAND;
-
-import java.util.Random;
-
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.SpawnListEntry;
-import net.minecraft.world.gen.feature.WorldGenLiquids;
-import net.minecraftforge.event.terraingen.TerrainGen;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.gen.WorldGenModReed;
@@ -26,8 +17,8 @@ public class BiomeGenFlylight extends BiomeGenBase{
 	public BiomeGenFlylight() {
 		super(DimensionHelper.FlyLightID);		 
 		setBiomeName("Flylight");
-		topBlock = (byte)BlockHelper.FlyLightGrass.blockID;
-		fillerBlock = (byte)BlockHelper.FlyLightDirt.blockID;
+		topBlock = BlockHelper.FlyLightGrass;
+		fillerBlock = BlockHelper.FlyLightDirt;
 		spawnableCreatureList.clear();
 		spawnableMonsterList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 3, 2, 6));
