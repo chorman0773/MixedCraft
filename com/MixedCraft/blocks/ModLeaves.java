@@ -3,6 +3,7 @@ package com.MixedCraft.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -17,8 +18,8 @@ public class ModLeaves extends LeavesBase
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3){
-		return 0; 	
+	public Item getItemDropped(int par1, Random par2Random, int par3){
+		return null; 	
 	}
 
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)

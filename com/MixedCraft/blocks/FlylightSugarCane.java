@@ -4,13 +4,14 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.MixedCraft.helper.BlocksBase;
 
@@ -64,7 +65,7 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
      */
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-        Block block = Block.blocksList[par1World.getBlock(par2, par3 - 1, par4)];
+        Block block = par1World.getBlock(par2, par3 - 1, par4);
         return (block != null && block.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
     }
 
@@ -72,21 +73,9 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor blockID
      */
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5)
     {
-        this.checkBlockCoordValid(par1World, par2, par3, par4);
-    }
-
-    /**
-     * Checks if current block pos is valid, if not, breaks the block as dropable item. Used for reed and cactus.
-     */
-    protected final void checkBlockCoordValid(World par1World, int par2, int par3, int par4)
-    {
-        if (!this.canBlockStay(par1World, par2, par3, par4))
-        {
-            this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-            par1World.setBlockToAir(par2, par3, par4);
-        }
+        this.canPlaceBlockAt(par1World, par2, par3, par4);
     }
 
     /**
@@ -109,9 +98,9 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3)
+    public Item getItemDropped(int par1, Random par2Random, int par3)
     {
-        return Item.reed.itemID;
+        return Items.reeds;
     }
 
     /**
@@ -146,23 +135,23 @@ public class FlylightSugarCane extends BlocksBase implements IPlantable
      */
     public Item getItem(World par1World, int par2, int par3, int par4)
     {
-        return Item.reed.itemID;
+        return Items.reeds;
     }
 
     @Override
-    public EnumPlantType getPlantType(World world, int x, int y, int z)
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
     {
         return EnumPlantType.Beach;
     }
 
     @Override
-    public int getPlantID(World world, int x, int y, int z)
+    public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-        return blockID;
+        return this;
     }
 
     @Override
-    public int getPlantMetadata(World world, int x, int y, int z)
+    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
     {
         return world.getBlockMetadata(x, y, z);
     }

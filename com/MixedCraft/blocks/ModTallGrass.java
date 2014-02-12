@@ -3,6 +3,8 @@ package com.MixedCraft.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.minecraft.block.BlockDoublePlant;
+import net.minecraft.block.BlockTallGrass;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -20,11 +22,6 @@ public class ModTallGrass extends ModFlower implements IShearable {
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }
 
-    public int idDropped(int par1, Random par2Random, int par3)
-    {
-        return -1;
-    }
-
     public int quantityDroppedWithBonus(int par1, Random par2Random)
     {
         return 1 + par2Random.nextInt(par1 * 2 + 1);
@@ -36,7 +33,7 @@ public class ModTallGrass extends ModFlower implements IShearable {
     }
 
     @Override
-    public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int meta, int fortune)
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         if (world.rand.nextInt(8) != 0)

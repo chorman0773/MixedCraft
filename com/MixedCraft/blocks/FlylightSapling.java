@@ -34,7 +34,7 @@ public class FlylightSapling extends BlockMixedFlower {
 
 	public void growTree(World world, int i, int j, int k, Random random) {
 		int l = world.getBlockMetadata(i, j, k) & 3;
-		world.setBlock(i, j, k, 0);
+		world.setBlock(i, j, k, null);
 		Object obj = null;
 		if (l == 1) {
 			obj = new WorldGenFlylightTree(true);
@@ -52,19 +52,10 @@ public class FlylightSapling extends BlockMixedFlower {
 		}
 	}
 
-	public int idDropped(int i, Random random) {
-		return this;
-	}
-
 	public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par2, float par3, float par4, float par5) {
 		ItemStack equipped = entityplayer.getCurrentEquippedItem();
 		if (equipped == null) {
 			return false;
-		}
-		if(equipped.getItem() == Item.dyePowder && Item.dyePowder.itemID == 16)
-		{
-			growTree(world, i, j, k, world.rand);
-			equipped.stackSize -= 1;
 		}
 		return false;
 	}

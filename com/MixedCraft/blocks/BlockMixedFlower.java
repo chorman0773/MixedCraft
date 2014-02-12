@@ -11,10 +11,10 @@ public class BlockMixedFlower extends BlockFlower {
 
 	String Name;
 	
-	public BlockMixedFlower(int par1, String par2) {
-		super(par1);
+	public BlockMixedFlower(String par2) {
+		super(0);
 		Name = par2;
-		setUnlocalizedName(Name);
+		setBlockName(Name);
 	}
 	
 	

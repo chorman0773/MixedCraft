@@ -2,6 +2,7 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,7 @@ public class BlockMobAssembler extends ContainerBase {
 		
 	}
 
-	    public TileEntity createNewTileEntity(World var1)
+	    public TileEntity createNewTileEntity(World var1, int IDK)
 	    {
 	        return new TileEntityDNAAssembler();
 	    }
@@ -76,7 +77,7 @@ public class BlockMobAssembler extends ContainerBase {
 	        }
 	    }
 
-	    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	    {
 	        if (!keepFurnaceInventory)
 	        {
@@ -104,7 +105,7 @@ public class BlockMobAssembler extends ContainerBase {
 	                            }
 
 	                            var9.stackSize -= var13;
-	                            EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+	                            EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
 
 	                            if (var9.hasTagCompound())
 	                            {

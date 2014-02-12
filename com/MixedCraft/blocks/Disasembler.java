@@ -15,19 +15,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Disasembler extends BlockContainer
-{
+public class Disasembler extends BlockContainer {
 	private IIcon[] texture;
 
-	public Disasembler() 
-	{
+	public Disasembler()  {
 		super(Material.rock);	
-       
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) 
-	{
+	public TileEntity createNewTileEntity(World world, int idk) {
 		return new TileEntityDisasembler();
 	}
 	
@@ -35,7 +31,6 @@ public class Disasembler extends BlockContainer
 		TileEntity te = world.getTileEntity(x, y, z);
 		
 		if(te == null || player.isSneaking()){
-			
 			return false;
 		}
 		
@@ -45,8 +40,7 @@ public class Disasembler extends BlockContainer
   }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IIconRegister)
-    {
+    public void registerBlockIcons(IIconRegister par1IIconRegister) {
         this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:Disasembler");
     }
 }

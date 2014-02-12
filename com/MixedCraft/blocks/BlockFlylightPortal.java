@@ -3,7 +3,6 @@ package com.MixedCraft.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,6 +17,7 @@ import net.minecraft.world.World;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.MixedCraft;
+import com.MixedCraft.helper.BreakableBase;
 import com.MixedCraft.helper.ConfigHelper;
 import com.MixedCraft.helper.Utils;
 
@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFlylightPortal extends BlockBreakable
+public class BlockFlylightPortal extends BreakableBase
 {
 	public static final int[][] field_150001_a = new int[][] {new int[0], {3, 1}, {2, 0}};
 
