@@ -93,8 +93,8 @@ public class EntityCompanion extends EntityMob{
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.40000001192092896D);
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10000000000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.40000001192092896D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10000000000.0D);
 	}
 	
 	/*@Override

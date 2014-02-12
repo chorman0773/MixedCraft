@@ -1,5 +1,6 @@
 package com.MixedCraft.entity;
 
+import scala.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
@@ -19,6 +20,7 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -42,7 +44,7 @@ public class EntityCowCreeper extends EntityCreature
         this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.tasks.addTask(7, new EntityAITempt(this, 0.3F, Item.gunpowder.itemID, false));
+        this.tasks.addTask(7, new EntityAITempt(this, 0.3F, Items.gunpowder, false));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
     }
@@ -50,7 +52,7 @@ public class EntityCowCreeper extends EntityCreature
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
     public boolean isAIEnabled()
@@ -170,7 +172,33 @@ public class EntityCowCreeper extends EntityCreature
 
         if (par1DamageSource.getEntity() instanceof EntitySkeleton)
         {
-            int i = Item.record13.itemID + this.rand.nextInt(Item.recordWait.itemID - Item.record13.itemID + 1);
+        	int drop = rand.nextInt(12);
+        	Item i = null;
+        	if (drop == 0) {
+        		i = Items.record_11;
+        	}if (drop == 1) {
+        		i = Items.record_13;
+        	}if (drop == 2) {
+        		i = Items.record_wait;
+        	}if (drop == 3) {
+        		i = Items.record_cat;
+        	}if (drop == 4) {
+        		i = Items.record_blocks;
+        	}if (drop == 5) {
+        		i = Items.record_chirp;
+        	}if (drop == 6) {
+        		i = Items.record_far;
+        	}if (drop == 7) {
+        		i = Items.record_mall;
+        	}if (drop == 8) {
+        		i = Items.record_mellohi;
+        	}if (drop == 9) {
+        		i = Items.record_stal;
+        	}if (drop == 10) {
+        		i = Items.record_strad;
+        	}if (drop == 11) {
+        		i = Items.record_ward;
+        	}
             this.dropItem(i, 1);
         }
     }
@@ -191,9 +219,9 @@ public class EntityCowCreeper extends EntityCreature
         return ((float)this.lastActiveTime + (float)(this.timeSinceIgnited - this.lastActiveTime) * par1) / (float)(this.fuseTime - 2);
     }
 
-    protected int getDropItemId()
+    protected Item getDropItemId()
     {
-        return Item.gunpowder.itemID;
+        return Items.gunpowder;
     }
 
     public int getCreeperState()
