@@ -33,8 +33,8 @@ public class GuiMobAssembler extends GuiContainer{
 	
 	   protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	    {
-	        this.fontRenderer.drawString("Mob Assembler", 50, 6, 0xFFFFFF);
-	        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 90 - 10, 4210752);
+	        this.fontRendererObj.drawString("Mob Assembler", 50, 6, 0xFFFFFF);
+	        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 90 - 10, 4210752);
 	    }
 
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {

@@ -20,17 +20,17 @@ public class GuiZombieDNA extends GuiBaseDNA{
 	
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("ZOMBIE", 40 + 12, 20 - 33, 0xFFFFFF);
+		this.fontRendererObj.drawString("ZOMBIE", 40 + 12, 20 - 33, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
+		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
 
-		this.fontRenderer.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
+		this.fontRendererObj.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Zombie", 40 + 16, 20 + 71, 0xFFFFFF);
+		this.fontRendererObj.drawString("Zombie", 40 + 16, 20 + 71, 0xFFFFFF);
 
-		this.fontRenderer.drawString("A mob that is keen on killing you.", 1 - 10, 20 + 129, 0xFFFFFF);
-		this.fontRenderer.drawString("It also picks up items that are on", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRenderer.drawString("left laying around.", 1 - 10, 20 + 149, 0xFFFFFF);
+		this.fontRendererObj.drawString("A mob that is keen on killing you.", 1 - 10, 20 + 129, 0xFFFFFF);
+		this.fontRendererObj.drawString("It also picks up items that are on", 1 - 10, 20 + 139, 0xFFFFFF);
+		this.fontRendererObj.drawString("left laying around.", 1 - 10, 20 + 149, 0xFFFFFF);
 		
 	}
 }

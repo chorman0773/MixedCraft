@@ -7,17 +7,17 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import com.MixedCraft.blocks.container.ContainerDoubleFurnace;
-import com.MixedCraft.blocks.tileEntity.TileEntityDoubleFurnace;
+import com.MixedCraft.blocks.container.ContainerDiamondFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
 
 public class GuiDoubleFurnace extends GuiContainer
 {
 	private ResourceLocation tif = new ResourceLocation("textures/inputfurnace/textures/gui/tifGUI.png");
-	private TileEntityDoubleFurnace inputFurnaceInventory;
+	private TileEntityDiamondFurnace inputFurnaceInventory;
 
-	public GuiDoubleFurnace(InventoryPlayer inventoryplayer, TileEntityDoubleFurnace tileentityInputFurnace)
+	public GuiDoubleFurnace(InventoryPlayer inventoryplayer, TileEntityDiamondFurnace tileentityInputFurnace)
 	{
-		super(new ContainerDoubleFurnace(inventoryplayer, tileentityInputFurnace));
+		super(new ContainerDiamondFurnace(inventoryplayer, tileentityInputFurnace));
 		inputFurnaceInventory = tileentityInputFurnace;
 	}
 	/**
@@ -25,8 +25,8 @@ public class GuiDoubleFurnace extends GuiContainer
 	 */
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		fontRenderer.drawString(StatCollector.translateToLocal("Dual Input Furnace"), 40, 6, 0x404040);
-		fontRenderer.drawString(StatCollector.translateToLocal("Inventory"), 8, (ySize - 96) + 2, 0x404040);
+		fontRendererObj.drawString(StatCollector.translateToLocal("Dual Input Furnace"), 40, 6, 0x404040);
+		fontRendererObj.drawString(StatCollector.translateToLocal("Inventory"), 8, (ySize - 96) + 2, 0x404040);
 	}
 	/**
 	 * Draw the background layer for the GuiContainer (everything behind the items)

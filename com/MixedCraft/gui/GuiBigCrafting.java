@@ -21,8 +21,8 @@ public class GuiBigCrafting extends GuiContainer
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("Big Crafting Table", 40 + 5, - 10 - 10, 4210752);
-		this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 50 + 14, this.ySize - 96 - 10 - 19, 4210752);
+		this.fontRendererObj.drawString("Big Crafting Table", 40 + 5, - 10 - 10, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 50 + 14, this.ySize - 96 - 10 - 19, 4210752);
 	}
 
 

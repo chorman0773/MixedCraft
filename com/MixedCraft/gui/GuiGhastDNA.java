@@ -20,17 +20,17 @@ public class GuiGhastDNA extends GuiBaseDNA{
 	
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("GHAST", 40 + 12, 20 - 33, 0xFFFFFF);
+		this.fontRendererObj.drawString("GHAST", 40 + 12, 20 - 33, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
+		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
 
-		this.fontRenderer.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
+		this.fontRendererObj.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Ghast", 40 + 16, 20 + 71, 0xFFFFFF);
+		this.fontRendererObj.drawString("Ghast", 40 + 16, 20 + 71, 0xFFFFFF);
 
-		this.fontRenderer.drawString("A large creature thats in the", 1 - 10, 20 + 129, 0xFFFFFF);
-		this.fontRenderer.drawString("Nether and fires charges at you", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRenderer.drawString("on sight.", 1 - 10, 20 + 149, 0xFFFFFF);
+		this.fontRendererObj.drawString("A large creature thats in the", 1 - 10, 20 + 129, 0xFFFFFF);
+		this.fontRendererObj.drawString("Nether and fires charges at you", 1 - 10, 20 + 139, 0xFFFFFF);
+		this.fontRendererObj.drawString("on sight.", 1 - 10, 20 + 149, 0xFFFFFF);
 		
 	}
 }

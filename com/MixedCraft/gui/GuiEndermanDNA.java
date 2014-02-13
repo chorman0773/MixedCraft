@@ -20,17 +20,17 @@ public class GuiEndermanDNA extends GuiBaseDNA{
 	
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("ENDERMAN", 40 + 12, 20 - 33, 0xFFFFFF);
+		this.fontRendererObj.drawString("ENDERMAN", 40 + 12, 20 - 33, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
+		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
 
-		this.fontRenderer.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
+		this.fontRendererObj.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
 		
-		this.fontRenderer.drawString("Enderman", 40 + 16, 20 + 71, 0xFFFFFF);
+		this.fontRendererObj.drawString("Enderman", 40 + 16, 20 + 71, 0xFFFFFF);
 
-		this.fontRenderer.drawString("A tall black figure that likes to", 1 - 10, 20 + 129, 0xFFFFFF);
-		this.fontRenderer.drawString("teleport and gets aggresive when", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRenderer.drawString("looked at.", 1 - 10, 20 + 149, 0xFFFFFF);
+		this.fontRendererObj.drawString("A tall black figure that likes to", 1 - 10, 20 + 129, 0xFFFFFF);
+		this.fontRendererObj.drawString("teleport and gets aggresive when", 1 - 10, 20 + 139, 0xFFFFFF);
+		this.fontRendererObj.drawString("looked at.", 1 - 10, 20 + 149, 0xFFFFFF);
 		
 	}
 }

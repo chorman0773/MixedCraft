@@ -27,8 +27,8 @@ public class GuiDisasembler extends GuiContainer
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("Dissasembler", 10, 0, 4210752);
-		this.fontRenderer.drawString("Inventory", 10, this.ySize - 96 - 7, 4210752);
+		this.fontRendererObj.drawString("Dissasembler", 10, 0, 4210752);
+		this.fontRendererObj.drawString("Inventory", 10, this.ySize - 96 - 7, 4210752);
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ public class GuiDisasembler extends GuiContainer
 		if(item != null)
 		{
 			s = item.getDisplayName();
-			this.drawString(fontRenderer, s, width / 2 - 20, 62, Color.cyan.getRGB());
+			this.drawString(fontRendererObj, s, width / 2 - 20, 62, Color.cyan.getRGB());
 		}		
 	}
     
@@ -64,7 +64,7 @@ public class GuiDisasembler extends GuiContainer
     
     protected void keyTyped(char par1, int par2)
     {
-        if (par2 == 1 || par2 == mc.gameSettings.keyBindInventory.keyCode)
+        if (par2 == 1 || par2 == mc.gameSettings.keyBindInventory.getKeyCode())
         {
             mc.thePlayer.closeScreen();
         }

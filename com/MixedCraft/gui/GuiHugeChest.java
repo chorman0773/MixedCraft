@@ -2,14 +2,10 @@ package com.MixedCraft.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-
-import org.lwjgl.opengl.GL11;
-
-import com.MixedCraft.blocks.container.ContainerBigCrafting;
-import com.MixedCraft.blocks.container.ContainerHugeChest;
 
 public class GuiHugeChest extends GuiContainer
 {
@@ -17,13 +13,13 @@ public class GuiHugeChest extends GuiContainer
 
 	public GuiHugeChest(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
 	{
-		super(new ContainerHugeChest(par1InventoryPlayer, par1InventoryPlayer));
+		super(new ContainerChest(par1InventoryPlayer, par1InventoryPlayer));
 	}
 
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
-		this.fontRenderer.drawString("Huge Chest", 40 + 5, - 10 - 10, 4210752);
-		this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 50 + 14, this.ySize - 96 - 10 - 19, 4210752);
+		this.fontRendererObj.drawString("Huge Chest", 40 + 5, - 10 - 10, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 50 + 14, this.ySize - 96 - 10 - 19, 4210752);
 	}
 
 
