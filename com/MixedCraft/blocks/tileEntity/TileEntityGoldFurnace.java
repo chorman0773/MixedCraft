@@ -311,9 +311,9 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
             Item i = par0ItemStack.getItem();
             Item item = par0ItemStack.getItem();
 
-            if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
+            if (par0ItemStack.getItem() instanceof ItemBlock && Block.getBlockFromItem(item) != null)
             {
-                Block block = Block.blocksList[i];
+                Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab)
                 {
@@ -337,7 +337,7 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
             if (i == Items.stick) return 100;
             if (i == Items.coal) return 1600;
             if (i == Items.lava_bucket) return 20000;
-            if (i == Blocks.sapling) return 100;
+            if (i == Item.getItemFromBlock(Blocks.sapling)) return 100;
             if (i == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
@@ -375,21 +375,17 @@ public class TileEntityGoldFurnace extends TileEntity implements ISidedInventory
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Gold Furnace";
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
-	public void openInventory() {
-	}
+	public void openInventory() { }
 
 	@Override
-	public void closeInventory() {
-	}
+	public void closeInventory() { }
 }

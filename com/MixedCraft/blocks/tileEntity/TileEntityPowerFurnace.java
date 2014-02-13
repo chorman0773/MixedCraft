@@ -147,12 +147,12 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 0);
+		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
 		this.slots = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < this.slots.length)
@@ -297,7 +297,7 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 
 		if (flag1){
-			this.onInventoryChanged();
+			this.markDirty();
 		}
 	}
 
@@ -344,7 +344,7 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 			Item i = par0ItemStack.getItem();
 
 			if(i == Items.redstone) return 20;
-			if(i == Blocks.redstone_block) return 100;
+			if(i == Item.getItemFromBlock(Blocks.redstone_block)) return 100;
 			return 0;
 		}
 	}
@@ -376,26 +376,22 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return par3 != 0 || par1 != 1 || par2ItemStack == new ItemStack (Items.bucket);
+		return par3 != 0 || par1 != 1 || par2ItemStack == new ItemStack(Items.bucket);
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Powered Furnace";
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
-	public void openInventory() {
-	}
+	public void openInventory() { }
 
 	@Override
-	public void closeInventory() {
-	}
+	public void closeInventory() { }
 }

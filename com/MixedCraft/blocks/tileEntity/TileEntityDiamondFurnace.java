@@ -337,6 +337,7 @@ public class TileEntityDiamondFurnace extends TileEntity implements ISidedInvent
             if (i == Items.stick) return 100;
             if (i == Items.coal) return 1600;
             if (i == Items.lava_bucket) return 20000;
+            if (i == Item.getItemFromBlock(Blocks.sapling)) return 100;
             if (i == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }

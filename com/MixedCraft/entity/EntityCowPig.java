@@ -13,6 +13,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,8 +35,8 @@ public class EntityCowPig extends EntityAnimal
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
         this.tasks.addTask(2, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.34F));
         this.tasks.addTask(3, new EntityAIMate(this, f));
-        this.tasks.addTask(4, new EntityAITempt(this, 0.3F, Item.carrotOnAStick.itemID, false));
-        this.tasks.addTask(4, new EntityAITempt(this, 0.3F, Item.carrot.itemID, false));
+        this.tasks.addTask(4, new EntityAITempt(this, 0.3F, Items.carrot_on_a_stick, false));
+        this.tasks.addTask(4, new EntityAITempt(this, 0.3F, Items.carrot, false));
         this.tasks.addTask(5, new EntityAIFollowParent(this, 0.28F));
         this.tasks.addTask(6, new EntityAIWander(this, f));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -53,8 +54,8 @@ public class EntityCowPig extends EntityAnimal
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
     protected void updateAITasks()
@@ -69,7 +70,7 @@ public class EntityCowPig extends EntityAnimal
     public boolean canBeSteered()
     {
         ItemStack itemstack = ((EntityPlayer)this.riddenByEntity).getHeldItem();
-        return itemstack != null && itemstack.itemID == Item.carrotOnAStick.itemID;
+        return itemstack != null && itemstack.getItem() == Items.carrot_on_a_stick;
     }
 
     protected void entityInit()
@@ -151,9 +152,9 @@ public class EntityCowPig extends EntityAnimal
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItem()
     {
-        return this.isBurning() ? Item.porkCooked.itemID : Item.porkRaw.itemID;
+        return this.isBurning() ? Items.cooked_porkchop : Items.porkchop;
     }
 
     /**
@@ -168,11 +169,11 @@ public class EntityCowPig extends EntityAnimal
         {
             if (this.isBurning())
             {
-                this.dropItem(Item.porkCooked.itemID, 1);
+                this.dropItem(Items.porkchop.itemID, 1);
             }
             else
             {
-                this.dropItem(Item.porkRaw.itemID, 1);
+                this.dropItem(Items.porkRaw.itemID, 1);
             }
         }
 
@@ -232,7 +233,7 @@ public class EntityCowPig extends EntityAnimal
      */
     public boolean isBreedingItem(ItemStack par1ItemStack)
     {
-        return par1ItemStack != null && par1ItemStack.itemID == Item.carrot.itemID;
+        return par1ItemStack != null && par1ItemStack.getItem() == Items.carrot;
     }
 
     /**

@@ -27,7 +27,7 @@ public class WorldGenModReed extends WorldGenerator
                 {
                     if (BlockHelper.FlylightCane.canBlockStay(par1World, i1, j1 + i2, k1))
                     {
-                        par1World.setBlock(i1, j1 + i2, k1, BlockHelper.FlylightCane.blockID, 0, 2);
+                        par1World.setBlock(i1, j1 + i2, k1, BlockHelper.FlylightCane, 0, 2);
                     }
                 }
             }

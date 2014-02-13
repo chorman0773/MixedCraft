@@ -158,12 +158,12 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 0);
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", 10);
         this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
             byte b0 = nbttagcompound1.getByte("Slot");
 
             if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
@@ -316,7 +316,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
 
         if (flag1)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
     }
 
@@ -382,9 +382,9 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
             Item i = par0ItemStack.getItem();
             Item item = par0ItemStack.getItem();
 
-            if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
+            if (par0ItemStack.getItem() instanceof ItemBlock && Block.getBlockFromItem(item) != null)
             {
-                Block block = Block.blocksList[i];
+                Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab)
                 {
@@ -408,7 +408,7 @@ public class TileEntityIronFurnace extends TileEntity implements ISidedInventory
             if (i == Items.stick) return 100;
             if (i == Items.coal) return 1600;
             if (i == Items.lava_bucket) return 20000;
-            if (i == Blocks.sapling) return 100;
+            if (i == Item.getItemFromBlock(Blocks.sapling)) return 100;
             if (i == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }

@@ -5,10 +5,11 @@ import java.util.UUID;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeInstance;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -45,9 +46,9 @@ public class EntityCowEnderman extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(7.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0D);
     }
 
     protected void entityInit()
@@ -120,7 +121,7 @@ public class EntityCowEnderman extends EntityMob
     {
         ItemStack itemstack = par1EntityPlayer.inventory.armorInventory[3];
 
-        if (itemstack != null && itemstack.itemID == Block.pumpkin.blockID)
+        if (itemstack != null && itemstack.getItem() == Item.getItemFromBlock(Blocks.pumpkin))
         {
             return false;
         }
@@ -148,7 +149,7 @@ public class EntityCowEnderman extends EntityMob
 
         if (this.field_110194_bu != this.entityToAttack)
         {
-            AttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            IAttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
             attributeinstance.removeModifier(attackingSpeedBoostModifier);
 
             if (this.entityToAttack != null)
@@ -164,7 +165,7 @@ public class EntityCowEnderman extends EntityMob
         {
             int j;
             int k;
-            int l;
+            Block l;
 
             if (this.getCarried() == 0)
             {
@@ -173,11 +174,11 @@ public class EntityCowEnderman extends EntityMob
                     i = MathHelper.floor_double(this.posX - 2.0D + this.rand.nextDouble() * 4.0D);
                     j = MathHelper.floor_double(this.posY + this.rand.nextDouble() * 3.0D);
                     k = MathHelper.floor_double(this.posZ - 2.0D + this.rand.nextDouble() * 4.0D);
-                    l = this.worldObj.getBlockId(i, j, k);
+                    l = this.worldObj.getBlock(i, j, k);
 
                     if (carriableBlocks[l])
                     {
-                        this.setCarried(this.worldObj.getBlockId(i, j, k));
+                        this.setCarried(this.worldObj.getBlock(i, j, k));
                         this.setCarryingData(this.worldObj.getBlockMetadata(i, j, k));
                         this.worldObj.setBlock(i, j, k, 0);
                     }
@@ -188,8 +189,8 @@ public class EntityCowEnderman extends EntityMob
                 i = MathHelper.floor_double(this.posX - 1.0D + this.rand.nextDouble() * 2.0D);
                 j = MathHelper.floor_double(this.posY + this.rand.nextDouble() * 2.0D);
                 k = MathHelper.floor_double(this.posZ - 1.0D + this.rand.nextDouble() * 2.0D);
-                l = this.worldObj.getBlockId(i, j, k);
-                int i1 = this.worldObj.getBlockId(i, j - 1, k);
+                l = this.worldObj.getBlock(i, j, k);
+                int i1 = this.worldObj.getBlock(i, j - 1, k);
 
                 if (l == 0 && i1 > 0 && Block.blocksList[i1].renderAsNormalBlock())
                 {
@@ -318,7 +319,7 @@ public class EntityCowEnderman extends EntityMob
 
             while (!flag1 && j > 0)
             {
-                l = this.worldObj.getBlockId(i, j - 1, k);
+                l = this.worldObj.getBlock(i, j - 1, k);
 
                 if (l != 0 && Block.blocksList[l].blockMaterial.blocksMovement())
                 {
@@ -423,7 +424,7 @@ public class EntityCowEnderman extends EntityMob
     /**
      * Set the id of the block an enderman carries
      */
-    public void setCarried(int par1)
+    public void setCarried(Block par1)
     {
         this.dataWatcher.updateObject(16, Byte.valueOf((byte)(par1 & 255)));
     }
