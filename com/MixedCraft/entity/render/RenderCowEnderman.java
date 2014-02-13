@@ -3,8 +3,10 @@ package com.MixedCraft.entity.render;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelEnderman;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.entity.RenderEnderman;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -43,7 +45,7 @@ public class RenderCowEnderman extends RenderLiving
 	 */
 	public void renderEnderman(EntityCowEnderman par1EntityCowEnderman, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.endermanModel.isCarrying = par1EntityCowEnderman.getCarried() > 0;
+		this.endermanModel.isCarrying = par1EntityCowEnderman.func_146080_bZ().getMaterial() != Material.air;
 		this.endermanModel.isAttacking = par1EntityCowEnderman.isScreaming();
 
 		if (par1EntityCowEnderman.isScreaming())
@@ -53,7 +55,7 @@ public class RenderCowEnderman extends RenderLiving
 			par6 += this.rnd.nextGaussian() * d3;
 		}
 
-		super.doRenderLiving(par1EntityCowEnderman, par2, par4, par6, par8, par9);
+		super.doRender(par1EntityCowEnderman, par2, par4, par6, par8, par9);
 	}
 
 	protected ResourceLocation getEntityTexture(Entity entity){
@@ -67,7 +69,7 @@ public class RenderCowEnderman extends RenderLiving
 	{
 		super.renderEquippedItems(par1EntityCowEnderman, par2);
 
-		if (par1EntityCowEnderman.getCarried() > 0)
+		if (par1EntityCowEnderman.func_146080_bZ().getMaterial() != Material.air)
 		{
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPushMatrix();
@@ -84,7 +86,7 @@ public class RenderCowEnderman extends RenderLiving
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			this.bindTexture(TextureMap.locationBlocksTexture);
-			this.renderBlocks.renderBlockAsItem(Block.blocksList[par1EntityCowEnderman.getCarried()], par1EntityCowEnderman.getCarryingData(), 1.0F);
+			this.field_147909_c.renderBlockAsItem(par1EntityCowEnderman.func_146080_bZ(), par1EntityCowEnderman.getCarryingData(), 1.0F);
 			GL11.glPopMatrix();
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		}
@@ -128,7 +130,7 @@ public class RenderCowEnderman extends RenderLiving
 		}
 	}
 */
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.renderEnderman((EntityCowEnderman)par1EntityLiving, par2, par4, par6, par8, par9);
 	}
@@ -165,7 +167,7 @@ public class RenderCowEnderman extends RenderLiving
 	protected void renderLabel(EntityCowEnderman entityLiving, double par2, double par4, double par6)
 	{
 		int distanceToEntity = 32;
-		this.renderLivingLabel(entityLiving, MobNames.COWENDERMAN, par2, par4, par6, distanceToEntity);
+		//this.renderLivingLabel(entityLiving, MobNames.COWENDERMAN, par2, par4, par6, distanceToEntity);
 		par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	}
 

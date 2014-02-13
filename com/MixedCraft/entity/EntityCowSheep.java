@@ -3,10 +3,6 @@ package com.MixedCraft.entity;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.MixedCraft.BlockHelper;
-import com.MixedCraft.blocks.container.ContainerCowSheep;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIEatGrass;
@@ -20,14 +16,19 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+
+import com.MixedCraft.BlockHelper;
+import com.MixedCraft.blocks.container.ContainerCowSheep;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,7 +49,7 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
         this.tasks.addTask(2, new EntityAIMate(this, f));
-        this.tasks.addTask(3, new EntityAITempt(this, 0.25F, Item.wheat.itemID, false));
+        this.tasks.addTask(3, new EntityAITempt(this, 0.25F, Items.wheat, false));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 0.25F));
         this.tasks.addTask(5, this.aiEatGrass);
         this.tasks.addTask(6, new EntityAIWander(this, f));
@@ -62,7 +63,7 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
 
     protected void updateAITasks()
     {
-        this.CowSheepTimer = this.aiEatGrass.getEatGrassTick();
+        this.CowSheepTimer = this.aiEatGrass.func_151499_f();
         super.updateAITasks();
     }
     
@@ -79,8 +80,8 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.23000000417232513D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
     }
 
     protected void entityInit()
@@ -93,13 +94,13 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
     {
         if (!this.getSheared())
         {
-            this.entityDropItem(new ItemStack(BlockHelper.CowSheepWool.blockID, 1, this.getFleeceColor()), 0.0F);
+            this.entityDropItem(new ItemStack(BlockHelper.CowSheepWool, 1, this.getFleeceColor()), 0.0F);
         }
     }
 
-    protected int getDropItemId()
+    protected Item getDropItem()
     {
-        return BlockHelper.CowSheepWool.blockID;
+        return Item.getItemFromBlock(BlockHelper.CowSheepWool);
     }
 
     @SideOnly(Side.CLIENT)
@@ -266,29 +267,25 @@ public class EntityCowSheep extends EntityAnimal implements IShearable
     {
         return this.spawnBabyAnimal(par1EntityAgeable);
     }
-
-    @Override
-    public boolean isShearable(ItemStack item, World world, int X, int Y, int Z)
-    {
-        return !getSheared() && !isChild();
+    
+    protected boolean canDespawn() {
+        return false;
     }
-
-    @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int X, int Y, int Z, int fortune)
-    {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+    
+	@Override
+	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z) {
+		return !getSheared() && !isChild();
+	}
+	@Override
+	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune) {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         setSheared(true);
         int i = 1 + rand.nextInt(3);
         for (int j = 0; j < i; j++)
         {
-            ret.add(new ItemStack(BlockHelper.CowSheepWool.blockID, 1, getFleeceColor()));
+            ret.add(new ItemStack(BlockHelper.CowSheepWool, 1, getFleeceColor()));
         }
         this.worldObj.playSoundAtEntity(this, "mob.sheep.shear", 1.0F, 1.0F);
         return ret;
-    }
-    
-    protected boolean canDespawn()
-    {
-        return false;
-    }
+	}
 }

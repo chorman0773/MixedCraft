@@ -113,5 +113,4 @@ public class EntityDroid extends Entity{
 	public float getBlueColour() {
 		return b;
 	}
-
 }

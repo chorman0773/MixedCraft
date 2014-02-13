@@ -3,18 +3,18 @@ package com.MixedCraft.entity;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnchantmentThorns;
+import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet70GameEvent;
+import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -28,29 +28,35 @@ import com.MixedCraft.helper.MobRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityTNTArrow extends Entity implements IProjectile
+public class EntityTNTArrow extends EntityArrow
 {
-    private int xTile = -1;
-    private int yTile = -1;
-    private int zTile = -1;
-    private int inTile;
+    private int field_145791_d = -1;
+    private int field_145792_e = -1;
+    private int field_145789_f = -1;
+    private Block field_145790_g;
     private int inData;
     private boolean inGround;
-    private float size = 3.0F;
-    /** 1 if the player can pick up the arrow */
+    private int size = 2;
+    /**
+     * 1 if the player can pick up the arrow
+     */
     public int canBePickedUp;
-
-    /** Seems to be some sort of timer for animating an arrow. */
+    /**
+     * Seems to be some sort of timer for animating an arrow.
+     */
     public int arrowShake;
-
-    /** The owner of this arrow. */
+    /**
+     * The owner of this arrow.
+     */
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 4.0D;
-
-    /** The amount of knockback an arrow applies when it hits a mob. */
+    private double damage = 10.0D;
+    /**
+     * The amount of knockback an arrow applies when it hits a mob.
+     */
     private int knockbackStrength;
+    private static final String __OBFID = "CL_00001715";
 
     public EntityTNTArrow(World par1World)
     {
@@ -151,23 +157,21 @@ public class EntityTNTArrow extends Entity implements IProjectile
         this.ticksInGround = 0;
     }
 
-    @SideOnly(Side.CLIENT)
-
     /**
      * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
      * posY, posZ, yaw, pitch
      */
+    @SideOnly(Side.CLIENT)
     public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
     {
         this.setPosition(par1, par3, par5);
         this.setRotation(par7, par8);
     }
 
-    @SideOnly(Side.CLIENT)
-
     /**
      * Sets the velocity to the args. Args: x, y, z
      */
+    @SideOnly(Side.CLIENT)
     public void setVelocity(double par1, double par3, double par5)
     {
         this.motionX = par1;
@@ -200,12 +204,12 @@ public class EntityTNTArrow extends Entity implements IProjectile
             this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
         }
 
-        int i = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
+        Block block = this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-        if (i > 0)
+        if (block.getMaterial() != Material.air)
         {
-            Block.blocksList[i].setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
-            AxisAlignedBB axisalignedbb = Block.blocksList[i].getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
+            block.setBlockBoundsBasedOnState(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+            AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
             if (axisalignedbb != null && axisalignedbb.isVecInside(this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ)))
             {
@@ -220,10 +224,9 @@ public class EntityTNTArrow extends Entity implements IProjectile
 
         if (this.inGround)
         {
-            int j = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
-            int k = this.worldObj.getBlockMetadata(this.xTile, this.yTile, this.zTile);
+            int j = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-            if (j == this.inTile && k == this.inData)
+            if (block == this.field_145790_g && j == this.inData)
             {
                 ++this.ticksInGround;
 
@@ -245,36 +248,36 @@ public class EntityTNTArrow extends Entity implements IProjectile
         else
         {
             ++this.ticksInAir;
-            Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-            Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-            MovingObjectPosition movingobjectposition = this.worldObj.rayTraceBlocks_do_do(vec3, vec31, false, true);
-            vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-            vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+            Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec31, vec3, false, true, false);
+            vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+            vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
             if (movingobjectposition != null)
             {
-                vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+                vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
             }
 
             Entity entity = null;
             List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
             double d0 = 0.0D;
-            int l;
+            int i;
             float f1;
 
-            for (l = 0; l < list.size(); ++l)
+            for (i = 0; i < list.size(); ++i)
             {
-                Entity entity1 = (Entity)list.get(l);
+                Entity entity1 = (Entity)list.get(i);
 
                 if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5))
                 {
                     f1 = 0.3F;
                     AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand((double)f1, (double)f1, (double)f1);
-                    MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec3, vec31);
+                    MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec31, vec3);
 
                     if (movingobjectposition1 != null)
                     {
-                        double d1 = vec3.distanceTo(movingobjectposition1.hitVec);
+                        double d1 = vec31.distanceTo(movingobjectposition1.hitVec);
 
                         if (d1 < d0 || d0 == 0.0D)
                         {
@@ -301,18 +304,18 @@ public class EntityTNTArrow extends Entity implements IProjectile
             }
 
             float f2;
-            float f3;
+            float f4;
 
             if (movingobjectposition != null)
             {
                 if (movingobjectposition.entityHit != null)
                 {
                     f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-                    int i1 = MathHelper.ceiling_double_int((double)f2 * this.damage);
+                    int k = MathHelper.ceiling_double_int((double)f2 * this.damage);
 
                     if (this.getIsCritical())
                     {
-                        i1 += this.rand.nextInt(i1 / 2 + 2);
+                        k += this.rand.nextInt(k / 2 + 2);
                     }
 
                     DamageSource damagesource = null;
@@ -331,7 +334,7 @@ public class EntityTNTArrow extends Entity implements IProjectile
                         movingobjectposition.entityHit.setFire(5);
                     }
 
-                    if (movingobjectposition.entityHit.attackEntityFrom(damagesource, (float)i1))
+                    if (movingobjectposition.entityHit.attackEntityFrom(damagesource, (float)k))
                     {
                         if (movingobjectposition.entityHit instanceof EntityLivingBase)
                         {
@@ -344,28 +347,28 @@ public class EntityTNTArrow extends Entity implements IProjectile
 
                             if (this.knockbackStrength > 0)
                             {
-                                f3 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+                                f4 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
-                                if (f3 > 0.0F)
+                                if (f4 > 0.0F)
                                 {
-                                    movingobjectposition.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)f3, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)f3);
+                                    movingobjectposition.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4);
                                 }
                             }
 
-                            if (this.shootingEntity != null)
+                            if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase)
                             {
-                                EnchantmentThorns.func_92096_a(this.shootingEntity, entitylivingbase, this.rand);
+                                EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
+                                EnchantmentHelper.func_151385_b((EntityLivingBase)this.shootingEntity, entitylivingbase);
                             }
 
                             if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
                             {
-                                ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacketToPlayer(new Packet70GameEvent(6, 0));
+                                ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
                             }
                         }
 
                         this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
                         worldObj.createExplosion(this, posX, posY, posZ, size, false);
-                        this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
                         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
                         {
                             this.setDead();
@@ -383,11 +386,11 @@ public class EntityTNTArrow extends Entity implements IProjectile
                 }
                 else
                 {
-                    this.xTile = movingobjectposition.blockX;
-                    this.yTile = movingobjectposition.blockY;
-                    this.zTile = movingobjectposition.blockZ;
-                    this.inTile = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
-                    this.inData = this.worldObj.getBlockMetadata(this.xTile, this.yTile, this.zTile);
+                    this.field_145791_d = movingobjectposition.blockX;
+                    this.field_145792_e = movingobjectposition.blockY;
+                    this.field_145789_f = movingobjectposition.blockZ;
+                    this.field_145790_g = block;
+                    this.inData = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
                     this.motionX = (double)((float)(movingobjectposition.hitVec.xCoord - this.posX));
                     this.motionY = (double)((float)(movingobjectposition.hitVec.yCoord - this.posY));
                     this.motionZ = (double)((float)(movingobjectposition.hitVec.zCoord - this.posZ));
@@ -396,24 +399,22 @@ public class EntityTNTArrow extends Entity implements IProjectile
                     this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
                     this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
                     this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-                    worldObj.createExplosion(this, posX, posY, posZ, size, false);
-                    this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
                     this.inGround = true;
                     this.arrowShake = 7;
                     this.setIsCritical(false);
 
-                    if (this.inTile != 0)
+                    if (this.field_145790_g.getMaterial() != Material.air)
                     {
-                        Block.blocksList[this.inTile].onEntityCollidedWithBlock(this.worldObj, this.xTile, this.yTile, this.zTile, this);
+                        this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
                     }
                 }
             }
 
             if (this.getIsCritical())
             {
-                for (l = 0; l < 4; ++l)
+                for (i = 0; i < 4; ++i)
                 {
-                    this.worldObj.spawnParticle("crit", this.posX + this.motionX * (double)l / 4.0D, this.posY + this.motionY * (double)l / 4.0D, this.posZ + this.motionZ * (double)l / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
+                    this.worldObj.spawnParticle("crit", this.posX + this.motionX * (double)i / 4.0D, this.posY + this.motionY * (double)i / 4.0D, this.posZ + this.motionZ * (double)i / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
                 }
             }
 
@@ -445,26 +446,31 @@ public class EntityTNTArrow extends Entity implements IProjectile
 
             this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
             this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
-            float f4 = 0.99F;
+            float f3 = 0.99F;
             f1 = 0.05F;
 
             if (this.isInWater())
             {
-                for (int j1 = 0; j1 < 4; ++j1)
+                for (int l = 0; l < 4; ++l)
                 {
-                    f3 = 0.25F;
-                    this.worldObj.spawnParticle("bubble", this.posX - this.motionX * (double)f3, this.posY - this.motionY * (double)f3, this.posZ - this.motionZ * (double)f3, this.motionX, this.motionY, this.motionZ);
+                    f4 = 0.25F;
+                    this.worldObj.spawnParticle("bubble", this.posX - this.motionX * (double)f4, this.posY - this.motionY * (double)f4, this.posZ - this.motionZ * (double)f4, this.motionX, this.motionY, this.motionZ);
                 }
 
-                f4 = 0.8F;
+                f3 = 0.8F;
             }
 
-            this.motionX *= (double)f4;
-            this.motionY *= (double)f4;
-            this.motionZ *= (double)f4;
+            if (this.isWet())
+            {
+                this.extinguish();
+            }
+
+            this.motionX *= (double)f3;
+            this.motionY *= (double)f3;
+            this.motionZ *= (double)f3;
             this.motionY -= (double)f1;
             this.setPosition(this.posX, this.posY, this.posZ);
-            this.doBlockCollisions();
+            this.func_145775_I();
         }
     }
 
@@ -473,10 +479,11 @@ public class EntityTNTArrow extends Entity implements IProjectile
      */
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
-        par1NBTTagCompound.setShort("xTile", (short)this.xTile);
-        par1NBTTagCompound.setShort("yTile", (short)this.yTile);
-        par1NBTTagCompound.setShort("zTile", (short)this.zTile);
-        par1NBTTagCompound.setByte("inTile", (byte)this.inTile);
+        par1NBTTagCompound.setShort("xTile", (short)this.field_145791_d);
+        par1NBTTagCompound.setShort("yTile", (short)this.field_145792_e);
+        par1NBTTagCompound.setShort("zTile", (short)this.field_145789_f);
+        par1NBTTagCompound.setShort("life", (short)this.ticksInGround);
+        par1NBTTagCompound.setByte("inTile", (byte)Block.getIdFromBlock(this.field_145790_g));
         par1NBTTagCompound.setByte("inData", (byte)this.inData);
         par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
         par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
@@ -489,24 +496,25 @@ public class EntityTNTArrow extends Entity implements IProjectile
      */
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
     {
-        this.xTile = par1NBTTagCompound.getShort("xTile");
-        this.yTile = par1NBTTagCompound.getShort("yTile");
-        this.zTile = par1NBTTagCompound.getShort("zTile");
-        this.inTile = par1NBTTagCompound.getByte("inTile") & 255;
+        this.field_145791_d = par1NBTTagCompound.getShort("xTile");
+        this.field_145792_e = par1NBTTagCompound.getShort("yTile");
+        this.field_145789_f = par1NBTTagCompound.getShort("zTile");
+        this.ticksInGround = par1NBTTagCompound.getShort("life");
+        this.field_145790_g = Block.getBlockById(par1NBTTagCompound.getByte("inTile") & 255);
         this.inData = par1NBTTagCompound.getByte("inData") & 255;
         this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
         this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
 
-        if (par1NBTTagCompound.hasKey("damage"))
+        if (par1NBTTagCompound.hasKey("damage", 99))
         {
             this.damage = par1NBTTagCompound.getDouble("damage");
         }
 
-        if (par1NBTTagCompound.hasKey("pickup"))
+        if (par1NBTTagCompound.hasKey("pickup", 99))
         {
             this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
         }
-        else if (par1NBTTagCompound.hasKey("player"))
+        else if (par1NBTTagCompound.hasKey("player", 99))
         {
             this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
         }

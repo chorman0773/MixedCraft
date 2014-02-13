@@ -6,6 +6,8 @@ import com.MixedCraft.helper.PickupHandler;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 

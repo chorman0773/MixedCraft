@@ -52,7 +52,7 @@ public class EntityHarmlessEnderPearl extends EntityEnderPearl
             {
                 EntityPlayerMP entityplayermp = (EntityPlayerMP)this.getThrower();
 
-                if (!entityplayermp.playerNetServerHandler.connectionClosed && entityplayermp.worldObj == this.worldObj)
+                if (!entityplayermp.playerNetServerHandler.func_147362_b().isChannelOpen() && entityplayermp.worldObj == this.worldObj)
                 {
                     EnderTeleportEvent event = new EnderTeleportEvent(entityplayermp, this.posX, this.posY, this.posZ, 5.0F);
                     if (!MinecraftForge.EVENT_BUS.post(event))

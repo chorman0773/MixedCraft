@@ -1,9 +1,7 @@
 package com.MixedCraft.entity;
 
-import java.util.Calendar;
 import java.util.UUID;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -18,19 +16,19 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeInstance;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,7 +36,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EntityCowZombie extends EntityMob
 {
 
-	protected static final Attribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).func_111117_a("Spawn Reinforcements Chance");
+	protected static final IAttribute field_110186_bp = (new RangedAttribute("zombie.spawnReinforcements", 0.0D, 0.0D, 1.0D)).setDescription("Spawn Reinforcements Chance");
     private static final UUID babySpeedBoostUUID = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
     private static final AttributeModifier babySpeedBoostModifier = new AttributeModifier(babySpeedBoostUUID, "Baby speed boost", 0.5D, 1);
 
@@ -64,10 +62,10 @@ public class EntityCowZombie extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.23000000417232513D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
-        this.getAttributeMap().func_111150_b(field_110186_bp).setAttribute(this.rand.nextDouble() * 0.10000000149011612D);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
+        this.getAttributeMap().registerAttribute(field_110186_bp).setBaseValue(this.rand.nextDouble() * 0.10000000149011612D);
     }
 
     protected void entityInit()
@@ -118,7 +116,7 @@ public class EntityCowZombie extends EntityMob
 
         if (this.worldObj != null && !this.worldObj.isRemote)
         {
-            AttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
+            IAttributeInstance attributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
             attributeinstance.removeModifier(babySpeedBoostModifier);
 
             if (par1)
@@ -133,9 +131,9 @@ public class EntityCowZombie extends EntityMob
     {
         boolean flag = super.attackEntityAsMob(par1Entity);
 
-        if (flag && this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < (float)this.worldObj.difficultySetting * 0.3F)
+        if (flag && this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < (float)this.worldObj.difficultySetting.getDifficultyId() * 0.3F)
         {
-            par1Entity.setFire(2 * this.worldObj.difficultySetting);
+            par1Entity.setFire(2 * this.worldObj.difficultySetting.getDifficultyId());
         }
 
         return flag;
@@ -176,9 +174,9 @@ public class EntityCowZombie extends EntityMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItem()
     {
-        return Item.rottenFlesh.itemID;
+        return Items.rotten_flesh;
     }
 
     /**
@@ -194,13 +192,13 @@ public class EntityCowZombie extends EntityMob
         switch (this.rand.nextInt(3))
         {
             case 0:
-                this.dropItem(Item.ingotIron.itemID, 1);
+                this.dropItem(Items.iron_ingot, 1);
                 break;
             case 1:
-                this.dropItem(Item.carrot.itemID, 1);
+                this.dropItem(Items.carrot, 1);
                 break;
             case 2:
-                this.dropItem(Item.potato.itemID, 1);
+                this.dropItem(Items.potato, 1);
         }
     }
 
@@ -211,17 +209,17 @@ public class EntityCowZombie extends EntityMob
     {
         super.addRandomArmor();
 
-        if (this.rand.nextFloat() < (this.worldObj.difficultySetting == 3 ? 0.05F : 0.01F))
+        if (this.rand.nextFloat() < (this.worldObj.difficultySetting.getDifficultyId() == 3 ? 0.05F : 0.01F))
         {
             int i = this.rand.nextInt(3);
 
             if (i == 0)
             {
-                this.setCurrentItemOrArmor(0, new ItemStack(Item.swordIron));
+                this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));
             }
             else
             {
-                this.setCurrentItemOrArmor(0, new ItemStack(Item.shovelIron));
+                this.setCurrentItemOrArmor(0, new ItemStack(Items.iron_shovel));
             }
         }
     }
@@ -259,9 +257,9 @@ public class EntityCowZombie extends EntityMob
     {
         super.onKillEntity(par1EntityLiving);
 
-        if (this.worldObj.difficultySetting >= 2 && par1EntityLiving instanceof EntityVillager)
+        if (this.worldObj.difficultySetting.getDifficultyId() >= 2 && par1EntityLiving instanceof EntityVillager)
         {
-            if (this.worldObj.difficultySetting == 2 && this.rand.nextBoolean())
+            if (this.worldObj.difficultySetting.getDifficultyId() == 2 && this.rand.nextBoolean())
             {
                 return;
             }
@@ -288,7 +286,7 @@ public class EntityCowZombie extends EntityMob
     {
         this.getDataWatcher().updateObject(14, Byte.valueOf((byte)1));
         this.removePotionEffect(Potion.weakness.id);
-        this.addPotionEffect(new PotionEffect(Potion.damageBoost.id, par1, Math.min(this.worldObj.difficultySetting - 1, 0)));
+        this.addPotionEffect(new PotionEffect(Potion.damageBoost.id, par1, Math.min(this.worldObj.difficultySetting.getDifficultyId() - 1, 0)));
         this.worldObj.setEntityState(this, (byte)16);
     }
 

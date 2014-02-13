@@ -169,17 +169,17 @@ public class EntityCowPig extends EntityAnimal
         {
             if (this.isBurning())
             {
-                this.dropItem(Items.porkchop.itemID, 1);
+                this.dropItem(Items.cooked_porkchop, 1);
             }
             else
             {
-                this.dropItem(Items.porkRaw.itemID, 1);
+                this.dropItem(Items.porkchop, 1);
             }
         }
 
         if (this.getSaddled())
         {
-            this.dropItem(Item.saddle.itemID, 1);
+            this.dropItem(Items.saddle, 1);
         }
     }
 

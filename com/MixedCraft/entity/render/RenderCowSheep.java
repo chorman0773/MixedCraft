@@ -56,7 +56,7 @@ public class RenderCowSheep extends RenderLiving
 	 protected void renderLabel(EntityCowSheep entityLiving, double par2, double par4, double par6)
 	 {
 		 int distanceToEntity = 32;
-		 this.renderLivingLabel(entityLiving, MobNames.COWSHEEP, par2, par4, par6, distanceToEntity);
+		 //this.renderLivingLabel(entityLiving, MobNames.COWSHEEP, par2, par4, par6, distanceToEntity);
 		 par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	 }
 

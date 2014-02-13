@@ -1,6 +1,6 @@
 package com.MixedCraft.entity.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
@@ -35,7 +35,7 @@ public class ItemTableRenderer implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
         GL11.glPushMatrix();
         GL11.glScalef(1.0F, 1.0F, 1.0F);        
-        TileEntityRenderer.instance.renderTileEntityAt(new TileEntityTable(), 0.0D, 0.0D, 0.0D, 0.0F);
+        TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityTable(), 0.0D, 0.0D, 0.0D, 0.0F);
         GL11.glPopMatrix();
     }
 }

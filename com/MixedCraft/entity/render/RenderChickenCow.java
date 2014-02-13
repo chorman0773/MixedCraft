@@ -25,7 +25,7 @@ public class RenderChickenCow extends RenderLiving
 
     public void renderChicken(EntityChickenCow par1EntityChickenCow, double par2, double par4, double par6, float par8, float par9)
     {
-        super.doRenderLiving(par1EntityChickenCow, par2, par4, par6, par8, par9);
+        super.doRender(par1EntityChickenCow, par2, par4, par6, par8, par9);
     }
 
 	protected ResourceLocation getEntityTexture(Entity entity){
@@ -39,7 +39,7 @@ public class RenderChickenCow extends RenderLiving
         return (MathHelper.sin(f1) + 1.0F) * f2;
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderChicken((EntityChickenCow)par1EntityLiving, par2, par4, par6, par8, par9);
     }
@@ -71,7 +71,7 @@ public class RenderChickenCow extends RenderLiving
     protected void renderLabel(EntityChickenCow entityLiving, double par2, double par4, double par6)
 	{
 		int distanceToEntity = 32;
-		this.renderLivingLabel(entityLiving, MobNames.COWCHICKEN, par2, par4, par6, distanceToEntity);
+		//this.renderLivingLabel(entityLiving, MobNames.COWCHICKEN, par2, par4, par6, distanceToEntity);
 		par4 += (double)((float)this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par6);
 	}
 

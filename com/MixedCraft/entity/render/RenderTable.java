@@ -31,7 +31,7 @@ public class RenderTable extends TileEntitySpecialRenderer
     public void renderAModelAt(TileEntityTable tile, double x, double y, double z, float f)
     {
         int rotation = 0;
-        if(tile.worldObj != null)
+        if(tile.getWorldObj() != null)
         {
             rotation = tile.getBlockMetadata();
         }
