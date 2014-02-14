@@ -29,7 +29,7 @@ public class WandOfHarvesting extends ItemBaseWand {
 	public int getBaseRepairCost() {
 		return 5;
 	}
-
+/*
 	@Override 
 	public boolean onItemUse(ItemStack srcItemStack, EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ, int par7, float par8, float par9, float par10){
 		if(isHarvestable(world,targetX,targetY,targetZ)){
@@ -64,11 +64,10 @@ public class WandOfHarvesting extends ItemBaseWand {
 	
 	protected boolean isHarvestable(World w, int x, int y, int z){
 		Material mat = w.getBlockMaterial(x, y, z);
-
 		return mat == Material.cactus || mat == Material.leaves 
-				|| mat == Material.plants || mat == Material.pumpkin || mat == Material.vine
+				|| mat == Material.plants || mat == Material.gourd || mat == Material.vine
 				|| mat == Material.web || mat == Material.dragonEgg || mat == Material.wood
 				|| mat == Material.sand || mat == Material.cloth || mat == Material.rock
 				|| mat == Material.iron || mat == Material.grass || mat == Material.ground;
-	}
+	}*/
 }

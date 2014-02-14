@@ -1,14 +1,14 @@
 package com.MixedCraft.items;
 
-import com.MixedCraft.helper.ManaHelper;
-
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.MixedCraft.helper.ManaHelper;
 
 public class WandOfGrowth extends ItemBaseWand {
 
@@ -53,36 +53,36 @@ public class WandOfGrowth extends ItemBaseWand {
 	
 	protected boolean growBlock(EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ){
 
-		int target = world.getBlock(targetX, targetY, targetZ);
-		ItemStack fauxItemStack = new ItemStack(Item.dyePowder);
+		Block target = world.getBlock(targetX, targetY, targetZ);
+		ItemStack fauxItemStack = new ItemStack(Items.dye);
 		
-		if(target == Block.cactus.block && ManaHelper.useBar(playerEntity, 10)){
+		if(target == Blocks.cactus/* && ManaHelper.useBar(playerEntity, 10)*/){
 
 			int y = targetY+1;
-			while(world.getBlock(targetX, y, targetZ) == Block.cactus.block){
+			while(world.getBlock(targetX, y, targetZ) == Blocks.cactus){
 				y++;
 			}
-			if(world.getBlock(targetX, y, targetZ) == 0){
+			if(world.getBlock(targetX, y, targetZ) == null){
 
-				world.setBlock(targetX, y, targetZ, Block.cactus.block);
+				world.setBlock(targetX, y, targetZ, Blocks.cactus);
 			}
 			return true;
-		} else if(target == Block.reed.block && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Blocks.reeds/* && ManaHelper.useBar(playerEntity, 10)*/){
 
 			int y = targetY+1;
-			while(world.getBlock(targetX, y, targetZ) == Block.reed.block){
+			while(world.getBlock(targetX, y, targetZ) == Blocks.reeds){
 				y++;
 			}
-			if(world.getBlock(targetX, y, targetZ) == 0){
+			if(world.getBlock(targetX, y, targetZ) == null){
 
-				world.setBlock(targetX, y, targetZ, Block.reed.block);
+				world.setBlock(targetX, y, targetZ, Blocks.reeds);
 			}
 			return true;
-		} else if(target == Block.cobblestone.block && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Blocks.cobblestone/* && ManaHelper.useBar(playerEntity, 10)*/){
 
-			world.setBlock(targetX, targetY, targetZ, Block.cobblestoneMossy.block);
+			world.setBlock(targetX, targetY, targetZ, Blocks.mossy_cobblestone);
 			return true;
-		} else if(target == Block.stoneBrick.block && ManaHelper.useBar(playerEntity, 10)){
+		} else if(target == Blocks.stonebrick/* && ManaHelper.useBar(playerEntity, 10)*/){
 			if( world.getBlockMetadata(targetX, targetY, targetZ) == 0){
 
 				world.setBlockMetadataWithNotify(targetX, targetY, targetZ, 1, 3);

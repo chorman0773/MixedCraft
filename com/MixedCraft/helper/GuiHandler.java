@@ -19,47 +19,43 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int id, EntityPlayer player, World world,
 			int x, int y, int z) {
 
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity entity = world.getTileEntity(x, y, z);
 
 		if (entity instanceof TileEntityDNAExtractor) {
-			return new ContainerDNAExtractor(player.inventory, (TileEntityDNAExtractor) world.getBlockTileEntity(x, y, z));
+			return new ContainerDNAExtractor(player.inventory, (TileEntityDNAExtractor) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDNAMixer) {
-			return new ContainerDNAMixer(player.inventory, (TileEntityDNAMixer) world.getBlockTileEntity(x, y, z));
+			return new ContainerDNAMixer(player.inventory, (TileEntityDNAMixer) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDNAAssembler) {
-			return new ContainerDNAAssembler(player.inventory, (TileEntityDNAAssembler) world.getBlockTileEntity(x, y, z));
+			return new ContainerDNAAssembler(player.inventory, (TileEntityDNAAssembler) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDisasembler) {
-			return new ContainerDisasembler(player.inventory, (TileEntityDisasembler) world.getBlockTileEntity(x, y, z));
+			return new ContainerDisasembler(player.inventory, (TileEntityDisasembler) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityIronFurnace) {
-			return new ContainerIronFurnace(player.inventory, (TileEntityIronFurnace) world.getBlockTileEntity(x, y, z));
+			return new ContainerIronFurnace(player.inventory, (TileEntityIronFurnace) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDiamondFurnace) {
-			return new ContainerDiamondFurnace(player.inventory, (TileEntityDiamondFurnace) world.getBlockTileEntity(x, y, z));
+			return new ContainerDiamondFurnace(player.inventory, (TileEntityDiamondFurnace) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityGoldFurnace) {
-			return new ContainerGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
-		}
-
-		if (entity instanceof TileEntityDNAExtractor) {
-			return new ContainerDoubleFurnace(player.inventory, (TileEntityDoubleFurnace) world.getBlockTileEntity(x, y, z));
+			return new ContainerGoldFurnace(player.inventory, (TileEntityGoldFurnace) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityPowerFurnace) {
-			return new ContainerPowerFurnace(player.inventory, (TileEntityPowerFurnace) world.getBlockTileEntity(x, y, z));
+			return new ContainerPowerFurnace(player.inventory, (TileEntityPowerFurnace) world.getTileEntity(x, y, z));
 		}
 
 		switch (id) {
 
-		case 1: return id == craftingTable && world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new ContainerBigCrafting(player.inventory, world, x, y, z) : null;
+		case 1: return id == craftingTable && world.getBlock(x, y, z) == BlockHelper.BigCrafting ? new ContainerBigCrafting(player.inventory, world, x, y, z) : null;
 		case 2: return new DNAContainer();
 		case 3: return new DNAContainer();
 		case 4: return new DNAContainer();
@@ -83,60 +79,52 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int id, EntityPlayer player, World world,
 			int x, int y, int z) {
 
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity entity = world.getTileEntity(x, y, z);
 
 		if (entity instanceof TileEntityDNAExtractor) {
 			return new GuiDNAExtractor(player.inventory,
-					(TileEntityDNAExtractor) world.getBlockTileEntity(x, y, z));
+					(TileEntityDNAExtractor) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDNAMixer) {
 			return new GuiDNAMixer(player.inventory,
-					(TileEntityDNAMixer) world.getBlockTileEntity(x, y, z));
+					(TileEntityDNAMixer) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDNAAssembler) {
 			return new GuiMobAssembler(player.inventory,
-					(TileEntityDNAAssembler) world.getBlockTileEntity(x, y, z));
+					(TileEntityDNAAssembler) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDisasembler) {
 			return new GuiDisasembler(player.inventory,
-					(TileEntityDisasembler) world.getBlockTileEntity(x, y, z));
+					(TileEntityDisasembler) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityIronFurnace) {
 			return new GuiIronFurnace(player.inventory,
-					(TileEntityIronFurnace) world.getBlockTileEntity(x, y, z));
+					(TileEntityIronFurnace) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityDiamondFurnace) {
 			return new GuiDiamondFurnace(player.inventory,
 					(TileEntityDiamondFurnace) world
-							.getBlockTileEntity(x, y, z));
+							.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityGoldFurnace) {
 			return new GuiGoldFurnace(player.inventory,
-					(TileEntityGoldFurnace) world.getBlockTileEntity(x, y, z));
-		}
-
-		if (entity instanceof TileEntityDoubleFurnace) {
-			return new GuiDoubleFurnace(player.inventory,
-					(TileEntityDoubleFurnace) world.getBlockTileEntity(x, y, z));
+					(TileEntityGoldFurnace) world.getTileEntity(x, y, z));
 		}
 
 		if (entity instanceof TileEntityPowerFurnace) {
 			return new GuiPoweredFurnace(player.inventory,
-					(TileEntityPowerFurnace) world.getBlockTileEntity(x, y, z));
+					(TileEntityPowerFurnace) world.getTileEntity(x, y, z));
 		}
 
 		switch (id) {
 		case 1:
-			return id == craftingTable
-					&& world.getBlockId(x, y, z) == BlockHelper.BigCrafting.blockID ? new GuiBigCrafting(
-					player.inventory, world, x, y, z) : null;
-
+			return id == craftingTable && world.getBlock(x, y, z) == BlockHelper.BigCrafting ? new GuiBigCrafting(player.inventory, world, x, y, z) : null;
 		case 2:
 			return new GuiCowDNA(new DNAContainer());
 		case 3:

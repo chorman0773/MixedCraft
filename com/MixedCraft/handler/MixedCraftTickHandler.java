@@ -3,26 +3,7 @@ package com.MixedCraft.handler;
 import java.util.EnumSet;
 import java.util.Random;
 
-import com.MixedCraft.ItemHelper;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-public class MixedCraftTickHandler implements ITickHandler
-{
+public class MixedCraftTickHandler{
 	Random rand = new Random();
 
 	/*public void onPlayerTick(EntityPlayer player, World par2World, Random random, int x, int y, int z)
@@ -77,7 +58,7 @@ public class MixedCraftTickHandler implements ITickHandler
 			}
 		}
 	}*/
-
+/*
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData)
 	{
@@ -99,5 +80,5 @@ public class MixedCraftTickHandler implements ITickHandler
 	public String getLabel()
 	{
 		return "MixedCraft Tick Handler";
-	}
+	}*/
 }

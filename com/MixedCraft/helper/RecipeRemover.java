@@ -2,19 +2,20 @@ package com.MixedCraft.helper;
 
 import java.util.ArrayList;
 
-import com.MixedCraft.recipes.RecipeHelper;
-
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 
+import com.MixedCraft.recipes.RecipeHelper;
+
 public class RecipeRemover {
 	
     public static void init() { 	
         RecipeHelper.init();
-        removeRecipes(Item.bow);
+        removeRecipes(Items.bow);
     }
     
     public static void removeRecipes(Item removeThis)

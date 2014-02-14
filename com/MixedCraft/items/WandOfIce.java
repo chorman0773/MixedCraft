@@ -1,8 +1,8 @@
 package com.MixedCraft.items;
 
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
@@ -55,12 +55,12 @@ public class WandOfIce extends ItemBaseWand {
 	}
 	
 	protected int freezeBlock(World w, int x, int y, int z){
-		int target = w.getBlock(x, y, z);
-		if(target == Block.waterStill.block || target == Block.waterMoving.block){
-			w.setBlock(x, y, z, Block.ice.block);
+		Block target = w.getBlock(x, y, z);
+		if(target == Blocks.water){
+			w.setBlock(x, y, z, Blocks.ice);
 			return 1;
-		} else if(target == Block.lavaMoving.block || target == Block.lavaStill.block){
-			w.setBlock(x, y, z, Block.cobblestone.block);
+		} else if(target == Blocks.lava){
+			w.setBlock(x, y, z, Blocks.cobblestone);
 			return 1;
 		}
 		return 0;

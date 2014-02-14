@@ -1,17 +1,8 @@
 package com.MixedCraft.helper;
 
-import com.MixedCraft.Achievements;
-import com.MixedCraft.BlockHelper;
-import com.MixedCraft.ItemHelper;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.ICraftingHandler;
-
-public class CraftingHandler implements ICraftingHandler {
-
+public class CraftingHandler {
+/*
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 		
@@ -43,6 +34,6 @@ public class CraftingHandler implements ICraftingHandler {
 		{
 			player.addStat(Achievements.Tin, 1);
 		}
-	}
+	}*/
 }
 

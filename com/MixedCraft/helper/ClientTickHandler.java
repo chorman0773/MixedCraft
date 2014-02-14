@@ -1,31 +1,10 @@
 package com.MixedCraft.helper;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.util.EnumSet;
 
-
-
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.multiplayer.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
-
-import org.lwjgl.opengl.GL11;
-
-import com.MixedCraft.entity.EntityCompanion;
-
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
-
-public class ClientTickHandler implements ITickHandler
+public class ClientTickHandler
 {
 	private static boolean initialized = false;
-
+/*
 	Minecraft mc = Minecraft.getMinecraft();
 	
 	
@@ -80,5 +59,5 @@ public class ClientTickHandler implements ITickHandler
 		gig.drawTexturedModalRect(var29, var26, 0, 0, 200 + 3, 10);
 		gig.drawTexturedModalRect(var29, var26, 0, 10, (int) ManaHelper.getBarValue() + 1, 20);  
 		}
-	}
+	}*/
 }

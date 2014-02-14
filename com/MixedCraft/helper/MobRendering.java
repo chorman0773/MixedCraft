@@ -3,6 +3,7 @@ package com.MixedCraft.helper;
 import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.MixedCraft.*;
@@ -29,10 +30,10 @@ public class MobRendering {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCompanion.class, new RenderTameable());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityDroid.class, new RenderDroid(new ModelDroid()));
-        MinecraftForgeClient.registerItemRenderer(ItemHelper.Droid.itemID, new RenderDroidItem());
+        MinecraftForgeClient.registerItemRenderer(ItemHelper.Droid, new RenderDroidItem());
 		
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTable.class, new RenderTable());
-        MinecraftForgeClient.registerItemRenderer(BlockHelper.Table.blockID, new ItemTableRenderer());
+        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(BlockHelper.Table), new ItemTableRenderer());
         
         //ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHugeChest.class, new RenderHugeChest());
         //MinecraftForgeClient.registerItemRenderer(BlockHelper.HugeChest.blockID, new ItemRenderHugeChest());

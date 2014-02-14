@@ -2,16 +2,26 @@ package com.MixedCraft.helper;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.MixedCraft.*;
-import com.MixedCraft.Cape.*;
-import com.MixedCraft.blocks.tileEntity.*;
-import com.MixedCraft.dimension.*;
-import com.MixedCraft.gen.*;
-import com.MixedCraft.handler.*;
+import com.MixedCraft.Achievements;
+import com.MixedCraft.BlockHelper;
+import com.MixedCraft.Event;
+import com.MixedCraft.ItemHelper;
+import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
+import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
+import com.MixedCraft.blocks.tileEntity.TileEntityDNAMixer;
+import com.MixedCraft.blocks.tileEntity.TileEntityDiamondFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntityGoldFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntityIronFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntityPowerFurnace;
+import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
+import com.MixedCraft.dimension.DimensionHelper;
+import com.MixedCraft.gen.WorldGenMixedMinable;
+import com.MixedCraft.handler.EntityLivingHandler;
+import com.MixedCraft.handler.HelperHandler;
 
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.*;
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy extends HelperHandler {
 	
@@ -19,18 +29,15 @@ public class CommonProxy extends HelperHandler {
 
 	//ClientProxy
 	public void preInit(FMLPreInitializationEvent event) {         
-		ConfigHelper.initConfig(event);
-		GameRegistry.registerWorldGenerator(new WorldGenMixedMinable());
+		ConfigHelper.initConfig();
+		GameRegistry.registerWorldGenerator(new WorldGenMixedMinable(), 10);
 		BlockHelper.addNames();
 		ItemHelper.addNames(); 
 		HarvestLevelHelper.init();
 		RecipeRemover.init();
 		MobRegistry.init();
 		DimensionHelper.init();
-		tickRegistry();
 		registerTileEntity();
-		GameRegistry.registerPlayerTracker(new ManaHelper());
-		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		MinecraftForge.EVENT_BUS.register(new Event());
 	}
 
@@ -49,11 +56,5 @@ public class CommonProxy extends HelperHandler {
 	public void init(FMLInitializationEvent event) {     
 		Achievements.init();
 		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
-	}
-
-	public static void tickRegistry() {
-		TickRegistry.registerTickHandler(new MixedCraftTickHandler(), Side.CLIENT);
-		TickRegistry.registerTickHandler(new DevCapesTickHandler(), Side.CLIENT);
-
 	}
 }

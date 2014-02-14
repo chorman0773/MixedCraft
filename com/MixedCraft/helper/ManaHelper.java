@@ -1,15 +1,9 @@
 package com.MixedCraft.helper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.common.IPlayerTracker;
+public class ManaHelper{
 
-public class ManaHelper implements IPlayerTracker {
-
-        public static HashMap<String, Integer> bars = new HashMap<String, Integer>();
+        /*public static HashMap<String, Integer> bars = new HashMap<String, Integer>();
         public static HashMap<String, Integer> delays = new HashMap<String, Integer>();
         private static ArrayList manaList = new ArrayList(0);
         public static String playerID;
@@ -92,5 +86,5 @@ public class ManaHelper implements IPlayerTracker {
         @Override
         public void onPlayerRespawn(EntityPlayer player) {
                 add(player.username);
-        }
+        }*/
 }

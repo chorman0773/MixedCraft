@@ -27,7 +27,7 @@ public class GuiPoweredFurnace extends GuiContainer{
 	public void drawGuiContainerForegroundLayer(int par1, int par2){
 		String s = "Powered Furnace";
 		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(I18n.getString("container.inventory"), 8, this.ySize - 96 + 5, 4210752);
+		this.fontRendererObj.drawString("Inventory", 8, this.ySize - 96 + 5, 4210752);
 	}
 	
 	public void drawGuiContainerBackgroundLayer(float f, int j, int i) {

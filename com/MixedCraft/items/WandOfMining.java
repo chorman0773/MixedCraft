@@ -26,7 +26,7 @@ public class WandOfMining extends ItemBaseWand {
 	public int getBaseRepairCost() {
 		return 5;
 	}
-
+	/*
 	@Override 
 	public boolean onItemUse(ItemStack srcItemStack, EntityPlayer playerEntity, World world, int targetX, int targetY, int targetZ, int par7, float par8, float par9, float par10) {
 		if (!playerEntity.capabilities.isCreativeMode) {
@@ -93,6 +93,6 @@ public class WandOfMining extends ItemBaseWand {
 		Material mat = w.getBlockMaterial(x, y, z);
 
 		return mat == Material.rock;
-	}
+	}*/
 
 }

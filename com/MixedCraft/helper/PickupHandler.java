@@ -1,17 +1,9 @@
 package com.MixedCraft.helper;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 
-import com.MixedCraft.Achievements;
-import com.MixedCraft.BlockHelper;
-import com.MixedCraft.ItemHelper;
+public class PickupHandler {
 
-import cpw.mods.fml.common.IPickupNotifier;
-
-public class PickupHandler implements IPickupNotifier {
-
-	@Override
+	/*@Override
 	public void notifyPickup(EntityItem item, EntityPlayer player) {
 
 
@@ -24,10 +16,5 @@ public class PickupHandler implements IPickupNotifier {
 		{
 			player.addStat(Achievements.TinOre, 1);
 		}
-
-		
-		
-		
-	}
-
+	}*/
 }

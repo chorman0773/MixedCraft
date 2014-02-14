@@ -11,38 +11,104 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
+import com.google.common.collect.Sets;
 
-import cpw.mods.fml.common.eventhandler.Event;
-import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolShickaxe extends ItemTool
 {
-    private static Set blocksEffectiveAgainst = Blocks.blocksList;
-    private int weaponDamage;
-    private String iconPath;
-    protected ToolMaterial theToolMaterial;
+	private static final Set<Blocks> blocksEffectiveAgainst = Sets.newHashSet(new Blocks[256]);
 
-    public ToolShickaxe(ToolMaterial par2EnumToolMaterial, String par2)
-    {
-        super(1, par2EnumToolMaterial, blocksEffectiveAgainst);
-        setCreativeTab(MixedCraft.ToolTab);
-        registerShickaxeTextures(par2);
-        setUnlocalizedName(par2);
-        this.theToolMaterial = par2EnumToolMaterial;
-        setCreativeTab(MixedCraft.ToolTab);
-        GameRegistry.registerItem(this, "Shickaxe");
+	protected ToolMaterial theToolMaterial;
+
+	private String iconPath;
+
+	public ToolShickaxe(ToolMaterial par2EnumToolMaterial, String name) {
+		super(0, par2EnumToolMaterial, blocksEffectiveAgainst);
+		this.theToolMaterial = par2EnumToolMaterial;
+		setCreativeTab(MixedCraft.ToolTab);
+		setUnlocalizedName(name);
+		registerTexture(name);
+	}
+
+	@Override
+	public boolean canHarvestBlock(Block par1Block, ItemStack itemStack)
+	{
+		if(par1Block != Blocks.bedrock)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean func_150897_b(Block block)
+	{
+        return block == Blocks.obsidian ? this.toolMaterial.getHarvestLevel() == 3 : (block != Blocks.diamond_block && block != Blocks.diamond_ore ? (block != Blocks.emerald_ore && block != Blocks.emerald_block ? (block != Blocks.gold_block && block != Blocks.gold_ore ? (block != Blocks.iron_block && block != Blocks.iron_ore ? (block != Blocks.lapis_block && block != Blocks.lapis_ore ? (block != Blocks.redstone_ore && block != Blocks.lit_redstone_ore ? (block.getMaterial() == Material.rock ? true : (block.getMaterial() == Material.iron ? true : block.getMaterial() == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2);
+	}
+
+	public float func_150893_a(ItemStack item, Block block) {
+		return 	block.getMaterial() != Material.anvil && block.getMaterial() != Material.cactus && block.getMaterial() != Material.cake && block.getMaterial() != Material.carpet && block.getMaterial() != Material.circuits && block.getMaterial() != Material.clay 
+				&& block.getMaterial() != Material.cloth && block.getMaterial() != Material.coral && block.getMaterial() != Material.craftedSnow && block.getMaterial() != Material.dragonEgg && block.getMaterial() != Material.fire && block.getMaterial() != Material.glass
+				&& block.getMaterial() != Material.gourd && block.getMaterial() != Material.grass && block.getMaterial() != Material.ground && block.getMaterial() != Material.ice && block.getMaterial() != Material.iron && block.getMaterial() != Material.leaves && block.getMaterial() != Material.packedIce
+				&& block.getMaterial() != Material.piston && block.getMaterial() != Material.plants && block.getMaterial() != Material.portal && block.getMaterial() != Material.redstoneLight && block.getMaterial() != Material.rock && block.getMaterial() != Material.sand && block.getMaterial() != Material.snow && block.getMaterial() != Material.sponge 
+				&& block.getMaterial() != Material.tnt && block.getMaterial() != Material.vine && block.getMaterial() != Material.web && block.getMaterial() != Material.wood ? super.func_150893_a(item, block) : this.efficiencyOnProperMaterial;
+	}
+
+	@Override
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+        if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack)) {
+            return false;
+            
+        } else {
+            UseHoeEvent event = new UseHoeEvent(par2EntityPlayer, par1ItemStack, par3World, par4, par5, par6);
+            if (MinecraftForge.EVENT_BUS.post(event)) {
+                return false;
+            }
+
+            if (event.getResult() == Result.ALLOW) {
+                par1ItemStack.damageItem(1, par2EntityPlayer);
+                return true;
+            }
+
+            Block block = par3World.getBlock(par4, par5, par6);
+
+            if (par7 != 0 && par3World.getBlock(par4, par5 + 1, par6).isAir(par3World, par4, par5 + 1, par6) && (block == Blocks.grass || block == Blocks.dirt)) {
+                Block block1 = Blocks.farmland;
+                par3World.playSoundEffect((double)((float)par4 + 0.5F), (double)((float)par5 + 0.5F), (double)((float)par6 + 0.5F), block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
+
+                if (par3World.isRemote) {
+                    return true;
+                } else {
+                    par3World.setBlock(par4, par5, par6, block1);
+                    par1ItemStack.damageItem(1, par2EntityPlayer);
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
     }
 
-    public Item registerShickaxeTextures(String texture) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
+		par3List.add("\u00a7aEfficiency: " + this.theToolMaterial.getEfficiencyOnProperMaterial());
+		if (par1ItemStack.getMaxDamage() != -1) {
+			par3List.add(par1ItemStack.getMaxDamage() - par1ItemStack.getItemDamage() + " Uses");
+		} else {
+			par3List.add("\u00a7aInfinite Uses");
+		}
+	}
+	
+	
+    public Item registerTexture(String texture) {
         iconPath = texture;
         return this;
     }
@@ -51,73 +117,5 @@ public class ToolShickaxe extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister icon) {
         itemIcon = icon.registerIcon(Utils.MOD_ID + ":" + iconPath);
-    }
-
-    @Override
-    public boolean canHarvestBlock(Block par1Block)
-    {
-        return par1Block == Block.obsidian ? this.toolMaterial.getHarvestLevel() >= 3 : (par1Block != Block.snow && par1Block != Block.blockDiamond && par1Block != Block.oreDiamond ? (par1Block != Block.oreEmerald && par1Block != Block.blockEmerald ? (par1Block != Block.blockGold && par1Block != Block.oreGold ? (par1Block != Block.blockIron && par1Block != Block.oreIron ? (par1Block != Block.blockLapis && par1Block != Block.oreLapis ? (par1Block != Block.oreRedstone && par1Block != Block.oreRedstoneGlowing ? (par1Block.blockMaterial == Material.rock ? true : (par1Block.blockMaterial == Material.iron ? true : par1Block.blockMaterial == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2);
-    }
-
-    @Override
-    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
-    {
-        return par2Block != null && (par2Block.blockMaterial == Material.wood || par2Block.blockMaterial == Material.iron || par2Block.blockMaterial == Material.anvil || par2Block.blockMaterial == Material.rock) ? this.efficiencyOnProperMaterial : super.getStrVsBlock(par1ItemStack, par2Block);
-    }
-
-    @Override
-    public boolean onItemUse(ItemStack var1, EntityPlayer var2, World var3, int var4, int var5, int var6, int var7, float var8, float var9, float var10)
-    {
-        if (!var2.canPlayerEdit(var4, var5, var6, var7, var1))
-            return false;
-        else
-        {
-            UseHoeEvent var11 = new UseHoeEvent(var2, var1, var3, var4, var5, var6);
-
-            if (MinecraftForge.EVENT_BUS.post(var11))
-                return false;
-            else if (var11.getResult() == Event.Result.ALLOW)
-            {
-                var1.damageItem(1, var2);
-                return true;
-            }
-            else
-            {
-                int var12 = var3.getBlock(var4, var5, var6);
-                int var13 = var3.getBlockId(var4, var5 + 1, var6);
-
-                if ((var7 == 0 || var13 != 0 || var12 != Block.grass.blockID) && var12 != Block.dirt.blockID)
-                    return false;
-                else
-                {
-                    Block var14 = Block.tilledField;
-                    var3.playSoundEffect(var4 + 0.5F, var5 + 0.5F, var6 + 0.5F, var14.stepSound.getStepSound(), (var14.stepSound.getVolume() + 1.0F) / 2.0F, var14.stepSound.getPitch() * 0.8F);
-
-                    if (var3.isRemote)
-                        return true;
-                    else
-                    {
-                        var3.setBlock(var4, var5, var6, var14.blockID);
-                        var1.damageItem(1, var2);
-                        return true;
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-    {
-        par3List.add(EnumChatFormatting.GREEN + "Efficiency: " + this.theToolMaterial.getEfficiencyOnProperMaterial());
-        if (par1ItemStack.getMaxDamage() != -1)
-        {
-            par3List.add(par1ItemStack.getMaxDamage() - par1ItemStack.getItemDamage() +  " Uses");
-        }
-        else
-        {
-            par3List.add(EnumChatFormatting.DARK_AQUA + "Infinite Uses");
-        }
     }
 }

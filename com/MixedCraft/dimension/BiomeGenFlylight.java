@@ -27,8 +27,8 @@ public class BiomeGenFlylight extends BiomeGenBase{
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 3, 2, 6));
         spawnableWaterCreatureList.clear();
         spawnableCaveCreatureList.clear();
-		maxHeight = 2.0F;
-		minHeight = 1.2F;
+		/*maxHeight = 2.0F;
+		minHeight = 1.2F;*/
 		this.theBiomeDecorator.reedGen = new WorldGenModReed();
 	}
 
