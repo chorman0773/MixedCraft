@@ -1,11 +1,13 @@
 package com.MixedCraft.items.tools;
 
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -24,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolShickaxe extends ItemTool
 {
-    private static Block[] blocksEffectiveAgainst = Block.blocksList;
+    private static Set blocksEffectiveAgainst = Blocks.blocksList;
     private int weaponDamage;
     private String iconPath;
     protected ToolMaterial theToolMaterial;
