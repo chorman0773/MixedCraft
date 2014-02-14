@@ -29,7 +29,87 @@ import com.MixedCraft.gen.WorldGenFlylightTree;
 
 public class ChunkGeneratorFlylight implements IChunkProvider
 {
-	private Random rand;
+
+	@Override
+	public boolean chunkExists(int var1, int var2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Chunk provideChunk(int var1, int var2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Chunk loadChunk(int var1, int var2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void populate(IChunkProvider var1, int var2, int var3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean saveChunks(boolean var1, IProgressUpdate var2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean unloadQueuedChunks() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canSave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String makeString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getPossibleCreatures(EnumCreatureType var1, int var2, int var3,
+			int var4) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ChunkPosition func_147416_a(World var1, String var2, int var3,
+			int var4, int var5) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getLoadedChunkCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void recreateStructures(int var1, int var2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveExtraData() {
+		// TODO Auto-generated method stub
+		
+	}
+	/*private Random rand;
 	private NoiseGeneratorOctaves noiseGen1;
 	private NoiseGeneratorOctaves noiseGen2;
 	private NoiseGeneratorOctaves noiseGen3;
@@ -180,7 +260,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 					}
 					else
 					{
-						byte var18 = var3[var17];
+						Block var18 = var3[var17];
 
 						if (var18 == 0)
 						{
@@ -235,19 +315,11 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		}
 	}
 
-	/**
-	 * loads or generates the chunk at the chunk location specified
-	 */
 	@Override
 	public Chunk loadChunk(int var1, int var2)
 	{
 		return this.provideChunk(var1, var2);
-	}
 
-	/**
-	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
-	 * specified chunk from the map seed and chunk seed
-	 */
 	@Override
 	public Chunk provideChunk(int var1, int var2)
 	{
@@ -417,18 +489,12 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		return var1;
 	}
 
-	/**
-	 * Checks to see if a chunk exists at x, y
-	 */
 	@Override
 	public boolean chunkExists(int var1, int var2)
 	{
 		return true;
 	}
 
-	/**
-	 * Populates chunk with ores etc etc
-	 */
 	@Override
 	public void populate(IChunkProvider var1, int var2, int var3)
 	{
@@ -539,7 +605,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			if (var19 < 63 || rand.nextInt(10) == 0) {
 				(new WorldGenLakes(BlockHelper.Water)).generate(worldObj, rand, var18, var19, var20);
 			}
-		}*/
+		}
 
 		int xMin = var2 << 4;
 		int zMin = var3 << 4;
@@ -599,37 +665,24 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		BlockSand.fallInstantly = false;
 	}
 
-	/**
-	 * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.
-	 * Return true if all chunks have been saved.
-	 */
 	@Override
 	public boolean saveChunks(boolean var1, IProgressUpdate var2)
 	{
 		return true;
 	}
 
-	/**
-	 * Returns if the IChunkProvider supports saving.
-	 */
 	@Override
 	public boolean canSave()
 	{
 		return true;
 	}
 
-	/**
-	 * Converts the instance data to a readable string.
-	 */
 	@Override
 	public String makeString()
 	{
 		return "";
 	}
 
-	/**
-	 * Returns a list of creatures of the specified type that can spawn at the given location.
-	 */
 	@Override
 	public List getPossibleCreatures(EnumCreatureType var1, int var2, int var3, int var4)
 	{
@@ -637,9 +690,6 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		return var5 == null ? null : var5.getSpawnableList(var1);
 	}
 
-	/**
-	 * Returns the location of the closest structure of the specified type. If not found returns null.
-	 */
 	@Override
 	public ChunkPosition findClosestStructure(World var1, String var2, int var3, int var4, int var5)
 	{
@@ -666,4 +716,11 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 	public void saveExtraData() {
 
 	}
+
+	@Override
+	public ChunkPosition func_147416_a(World var1, String var2, int var3,
+			int var4, int var5) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
 }

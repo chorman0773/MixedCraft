@@ -3,13 +3,16 @@ package com.MixedCraft.gen;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.MixedCraft.BlockHelper;
 
-public class WorldGenFlylightTree extends WorldGenerator
+public class WorldGenFlylightTree extends WorldGenAbstractTree
 {
     private final int minTreeHeight;
     private final boolean vinesGrow;
@@ -30,123 +33,125 @@ public class WorldGenFlylightTree extends WorldGenerator
         this.vinesGrow = var5;
     }
 
-    public boolean generate(World var1, Random var2, int var3, int var4, int var5)
+    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
-        int var6 = var2.nextInt(3) + this.minTreeHeight;
-        boolean var7 = true;
+        int l = par2Random.nextInt(3) + this.minTreeHeight;
+        boolean flag = true;
 
-        if (var4 >= 1 && var4 + var6 + 1 <= 256)
+        if (par4 >= 1 && par4 + l + 1 <= 256)
         {
-            int var8;
-            byte var9;
-            int var10;
-            int var11;
+            byte b0;
+            int k1;
+            Block block;
 
-            for (var8 = var4; var8 <= var4 + 1 + var6; ++var8)
+            for (int i1 = par4; i1 <= par4 + 1 + l; ++i1)
             {
-                var9 = 1;
+                b0 = 1;
 
-                if (var8 == var4)
+                if (i1 == par4)
                 {
-                    var9 = 0;
+                    b0 = 0;
                 }
 
-                if (var8 >= var4 + 1 + var6 - 2)
+                if (i1 >= par4 + 1 + l - 2)
                 {
-                    var9 = 2;
+                    b0 = 2;
                 }
 
-                for (int var12 = var3 - var9; var12 <= var3 + var9 && var7; ++var12)
+                for (int j1 = par3 - b0; j1 <= par3 + b0 && flag; ++j1)
                 {
-                    for (var10 = var5 - var9; var10 <= var5 + var9 && var7; ++var10)
+                    for (k1 = par5 - b0; k1 <= par5 + b0 && flag; ++k1)
                     {
-                        if (var8 >= 0 && var8 < 256)
+                        if (i1 >= 0 && i1 < 256)
                         {
-                            var11 = var1.getBlockId(var12, var8, var10);
-                            Block var13 = Block.blocksList[var11];
+                            block = par1World.getBlock(j1, i1, k1);
 
-                            if (var11 != 0 && !var13.isLeaves(var1, var12, var8, var10) && var11 != BlockHelper.FlyLightGrass.blockID && var11 != BlockHelper.FlyLightDirt.blockID && !var13.isWood(var1, var12, var8, var10))
+                            if (!this.isReplaceable(par1World, j1, i1, k1))
                             {
-                                var7 = false;
+                                flag = false;
                             }
                         }
                         else
                         {
-                            var7 = false;
+                            flag = false;
                         }
                     }
                 }
             }
 
-            if (!var7)
+            if (!flag)
             {
                 return false;
             }
             else
             {
-                var8 = var1.getBlockId(var3, var4 - 1, var5);
+                Block block2 = par1World.getBlock(par3, par4 - 1, par5);
 
-                if ((var8 == BlockHelper.FlyLightGrass.blockID || var8 == BlockHelper.FlyLightDirt.blockID) && var4 < 256 - var6 - 1)
+                boolean isSoil = block2.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
+                if (isSoil && par4 < 256 - l - 1)
                 {
-                    this.setBlock(var1, var3, var4 - 1, var5, BlockHelper.FlyLightDirt.blockID);
-                    var9 = 3;
-                    byte var19 = 0;
-                    int var14;
-                    int var15;
-                    int var20;
+                    block2.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
+                    b0 = 3;
+                    byte b1 = 0;
+                    int l1;
+                    int i2;
+                    int j2;
+                    int i3;
 
-                    for (var10 = var4 - var9 + var6; var10 <= var4 + var6; ++var10)
+                    for (k1 = par4 - b0 + l; k1 <= par4 + l; ++k1)
                     {
-                        var11 = var10 - (var4 + var6);
-                        var20 = var19 + 1 - var11 / 2;
+                        i3 = k1 - (par4 + l);
+                        l1 = b1 + 1 - i3 / 2;
 
-                        for (var14 = var3 - var20; var14 <= var3 + var20; ++var14)
+                        for (i2 = par3 - l1; i2 <= par3 + l1; ++i2)
                         {
-                            var15 = var14 - var3;
+                            j2 = i2 - par3;
 
-                            for (int var16 = var5 - var20; var16 <= var5 + var20; ++var16)
+                            for (int k2 = par5 - l1; k2 <= par5 + l1; ++k2)
                             {
-                                int var17 = var16 - var5;
-                                Block var18 = Block.blocksList[var1.getBlockId(var14, var10, var16)];
+                                int l2 = k2 - par5;
 
-                                if ((Math.abs(var15) != var20 || Math.abs(var17) != var20 || var2.nextInt(2) != 0 && var11 != 0) && (var18 == null || var18.canBeReplacedByLeaves(var1, var14, var10, var16)))
+                                if (Math.abs(j2) != l1 || Math.abs(l2) != l1 || par2Random.nextInt(2) != 0 && i3 != 0)
                                 {
-                                    this.setBlockAndMetadata(var1, var14, var10, var16, BlockHelper.FlylightLeaves.blockID, this.metaLeaves);
+                                    Block block1 = par1World.getBlock(i2, k1, k2);
+
+                                    if (block1.isAir(par1World, i2, k1, k2) || block1.isLeaves(par1World, i2, k1, k2))
+                                    {
+                                        this.setBlockAndNotifyAdequately(par1World, i2, k1, k2, BlockHelper.FlylightLeaves, this.metaLeaves);
+                                    }
                                 }
                             }
                         }
                     }
 
-                    Block var21;
-
-                    for (var10 = 0; var10 < var6; ++var10)
+                    for (k1 = 0; k1 < l; ++k1)
                     {
-                        var11 = var1.getBlockId(var3, var4 + var10, var5);
-                        var21 = Block.blocksList[var11];
+                        block = par1World.getBlock(par3, par4 + k1, par5);
 
-                        if (var11 == 0 || var21 == null || var21.isLeaves(var1, var3, var4 + var10, var5))
+                        if (block.isAir(par1World, par3, par4 + k1, par5) || block.isLeaves(par1World, par3, par4 + k1, par5))
                         {
-                            this.setBlockAndMetadata(var1, var3, var4 + var10, var5, BlockHelper.FlylightLog.blockID, this.metaWood);
-                            if (this.vinesGrow && var10 > 0)
+                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5, BlockHelper.FlylightLog, this.metaWood);
+
+                            if (this.vinesGrow && k1 > 0)
                             {
-                                if (var2.nextInt(3) > 0 && var1.isAirBlock(var3 - 1, var4 + var10, var5))
+                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + k1, par5))
                                 {
-                                    this.setBlockAndMetadata(var1, var3 - 1, var4 + var10, var5, BlockHelper.Vine.blockID, 8);
+                                    this.setBlockAndNotifyAdequately(par1World, par3 - 1, par4 + k1, par5, BlockHelper.Vine, 8);
                                 }
 
-                                if (var2.nextInt(3) > 0 && var1.isAirBlock(var3 + 1, var4 + var10, var5))
+                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + k1, par5))
                                 {
-                                    this.setBlockAndMetadata(var1, var3 + 1, var4 + var10, var5, BlockHelper.Vine.blockID, 2);
+                                    this.setBlockAndNotifyAdequately(par1World, par3 + 1, par4 + k1, par5, BlockHelper.Vine, 2);
                                 }
 
-                                if (var2.nextInt(3) > 0 && var1.isAirBlock(var3, var4 + var10, var5 - 1))
+                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + k1, par5 - 1))
                                 {
-                                    this.setBlockAndMetadata(var1, var3, var4 + var10, var5 - 1, BlockHelper.Vine.blockID, 1);
+                                    this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5 - 1, BlockHelper.Vine, 1);
                                 }
 
-                                if (var2.nextInt(3) > 0 && var1.isAirBlock(var3, var4 + var10, var5 + 1))
+                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + k1, par5 + 1))
                                 {
-                                    this.setBlockAndMetadata(var1, var3, var4 + var10, var5 + 1, BlockHelper.Vine.blockID, 4);
+                                    this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5 + 1, BlockHelper.Vine, 4);
                                 }
                             }
                         }
@@ -154,53 +159,51 @@ public class WorldGenFlylightTree extends WorldGenerator
 
                     if (this.vinesGrow)
                     {
-                        for (var10 = var4 - 3 + var6; var10 <= var4 + var6; ++var10)
+                        for (k1 = par4 - 3 + l; k1 <= par4 + l; ++k1)
                         {
-                            var11 = var10 - (var4 + var6);
-                            var20 = 2 - var11 / 2;
+                            i3 = k1 - (par4 + l);
+                            l1 = 2 - i3 / 2;
 
-                            for (var14 = var3 - var20; var14 <= var3 + var20; ++var14)
+                            for (i2 = par3 - l1; i2 <= par3 + l1; ++i2)
                             {
-                                for (var15 = var5 - var20; var15 <= var5 + var20; ++var15)
+                                for (j2 = par5 - l1; j2 <= par5 + l1; ++j2)
                                 {
-                                    var21 = Block.blocksList[var1.getBlockId(var14, var10, var15)];
-
-                                    if (var21 != null && var21.isLeaves(var1, var14, var10, var15))
+                                    if (par1World.getBlock(i2, k1, j2).isLeaves(par1World, i2, k1, j2))
                                     {
-                                        if (var2.nextInt(4) == 0 && var1.getBlockId(var14 - 1, var10, var15) == 0)
+                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2 - 1, k1, j2).isAir(par1World, i2 - 1, k1, j2))
                                         {
-                                            this.growVines(var1, var14 - 1, var10, var15, 8);
+                                            this.growVines(par1World, i2 - 1, k1, j2, 8);
                                         }
 
-                                        if (var2.nextInt(4) == 0 && var1.getBlockId(var14 + 1, var10, var15) == 0)
+                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2 + 1, k1, j2).isAir(par1World, i2 + 1, k1, j2))
                                         {
-                                            this.growVines(var1, var14 + 1, var10, var15, 2);
+                                            this.growVines(par1World, i2 + 1, k1, j2, 2);
                                         }
 
-                                        if (var2.nextInt(4) == 0 && var1.getBlockId(var14, var10, var15 - 1) == 0)
+                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2, k1, j2 - 1).isAir(par1World, i2, k1, j2 - 1))
                                         {
-                                            this.growVines(var1, var14, var10, var15 - 1, 1);
+                                            this.growVines(par1World, i2, k1, j2 - 1, 1);
                                         }
 
-                                        if (var2.nextInt(4) == 0 && var1.getBlockId(var14, var10, var15 + 1) == 0)
+                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2, k1, j2 + 1).isAir(par1World, i2, k1, j2 + 1))
                                         {
-                                            this.growVines(var1, var14, var10, var15 + 1, 4);
+                                            this.growVines(par1World, i2, k1, j2 + 1, 4);
                                         }
                                     }
                                 }
                             }
                         }
 
-                        if (var2.nextInt(5) == 0 && var6 > 5)
+                        if (par2Random.nextInt(5) == 0 && l > 5)
                         {
-                            for (var10 = 0; var10 < 2; ++var10)
+                            for (k1 = 0; k1 < 2; ++k1)
                             {
-                                for (var11 = 0; var11 < 4; ++var11)
+                                for (i3 = 0; i3 < 4; ++i3)
                                 {
-                                    if (var2.nextInt(4 - var10) == 0)
+                                    if (par2Random.nextInt(4 - k1) == 0)
                                     {
-                                        var20 = var2.nextInt(3);
-                                        //this.setBlockAndMetadata(var1, var3 + Direction.offsetX[Direction.rotateOpposite[var11]], var4 + var6 - 5 + var10, var5 + Direction.offsetZ[Direction.rotateOpposite[var11]], Block.cocoaPlant.blockID, var20 << 2 | var11);
+                                        l1 = par2Random.nextInt(3);
+                                        this.setBlockAndNotifyAdequately(par1World, par3 + Direction.offsetX[Direction.rotateOpposite[i3]], par4 + l - 5 + k1, par5 + Direction.offsetZ[Direction.rotateOpposite[i3]], Blocks.cocoa, l1 << 2 | i3);
                                     }
                                 }
                             }
@@ -221,22 +224,25 @@ public class WorldGenFlylightTree extends WorldGenerator
         }
     }
 
-    private void growVines(World var1, int var2, int var3, int var4, int var5)
+    /**
+     * Grows vines downward from the given block for a given length. Args: World, x, starty, z, vine-length
+     */
+    private void growVines(World par1World, int par2, int par3, int par4, int par5)
     {
-        this.setBlockAndMetadata(var1, var2, var3, var4, BlockHelper.Vine.blockID, var5);
-        int var6 = 4;
+        this.setBlockAndNotifyAdequately(par1World, par2, par3, par4, BlockHelper.Vine, par5);
+        int i1 = 4;
 
         while (true)
         {
-            --var3;
+            --par3;
 
-            if (var1.getBlockId(var2, var3, var4) != 0 || var6 <= 0)
+            if (par1World.getBlock(par2, par3, par4).isAir(par1World, par2, par3, par4) || i1 <= 0)
             {
                 return;
             }
 
-            this.setBlockAndMetadata(var1, var2, var3, var4, BlockHelper.Vine.blockID, var5);
-            --var6;
+            this.setBlockAndNotifyAdequately(par1World, par2, par3, par4, BlockHelper.Vine, par5);
+            --i1;
         }
     }
 }
