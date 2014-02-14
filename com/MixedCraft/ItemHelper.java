@@ -78,15 +78,15 @@ public class ItemHelper extends HelperHandler{
 	public static final Item CowZombieSpawner = new ItemCowZombiePlacer().registerTextures("CowZombieSpawner").setUnlocalizedName("CowZombieSpawn").setCreativeTab(MixedCraft.SpawnerTab);
 	
 	//TODO: Put mobs in!
-	//public static final Item CowSlimeSpawner = new ItemCowSlimePlacer(x.CowSlimeSpawnerID).registerTextures("CowSlimeSpawner").setUnlocalizedName("CowSlimeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowBlazeSpawner = new ItemCowBlazePlacer(x.CowBlazeSpawnerID).registerTextures("CowBlazeSpawner").setUnlocalizedName("CowBlazeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSpiderSpawner = new ItemCowSpiderPlacer(x.CowSpiderSpawnerID).registerTextures("CowSpiderSpawner").setUnlocalizedName("CowSpiderSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowGhastSpawner = new ItemCowGhastPlacer(x.CowGhastSpawnerID).registerTextures("CowGhastSpawner").setUnlocalizedName("CowGhastSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowMagmaCubeSpawner = new ItemCowMagmaCubePlacer(x.CowMagmaCubeSpawnerID).registerTextures("CowMagmaCubeSpawner").setUnlocalizedName("CowMagmaCubeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSkeletonSpawner = new ItemCowSkeletonPlacer(x.CowSkeletonSpawnerID).registerTextures("CowSkeletonSpawner").setUnlocalizedName("CowSkeletonSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSquidSpawner = new ItemCowSquidPlacer(x.CowSquidSpawnerID).registerTextures("CowSquidSpawner").setUnlocalizedName("CowSquidSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowWitherSpawner = new ItemCowWitherPlacer(x.CowWitherSpawnerID).registerTextures("CowWitherSpawner").setUnlocalizedName("CowWitherSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowWitherSSpawner = new ItemCowWitherSPlacer(x.CowWitherSSpawnerID).registerTextures("CowWitherSSpawner").setUnlocalizedName("CowWitherSSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowSlimeSpawner = new ItemCowSlimePlacer().registerTextures("CowSlimeSpawner").setUnlocalizedName("CowSlimeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowBlazeSpawner = new ItemCowBlazePlacer().registerTextures("CowBlazeSpawner").setUnlocalizedName("CowBlazeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowSpiderSpawner = new ItemCowSpiderPlacer().registerTextures("CowSpiderSpawner").setUnlocalizedName("CowSpiderSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowGhastSpawner = new ItemCowGhastPlacer().registerTextures("CowGhastSpawner").setUnlocalizedName("CowGhastSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowMagmaCubeSpawner = new ItemCowMagmaCubePlacer().registerTextures("CowMagmaCubeSpawner").setUnlocalizedName("CowMagmaCubeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowSkeletonSpawner = new ItemCowSkeletonPlacer().registerTextures("CowSkeletonSpawner").setUnlocalizedName("CowSkeletonSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowSquidSpawner = new ItemCowSquidPlacer().registerTextures("CowSquidSpawner").setUnlocalizedName("CowSquidSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowWitherSpawner = new ItemCowWitherPlacer().registerTextures("CowWitherSpawner").setUnlocalizedName("CowWitherSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowWitherSSpawner = new ItemCowWitherSPlacer().registerTextures("CowWitherSSpawner").setUnlocalizedName("CowWitherSSpawn").setCreativeTab(MixedCraft.SpawnerTab);
 
 	public static final Item CopperIngot = new ItemsBase("CopperIngot").setCreativeTab(MixedCraft.MiscTab);
 	public static final Item TinIngot = new ItemsBase("TinIngot").setCreativeTab(MixedCraft.MiscTab);
@@ -120,7 +120,7 @@ public class ItemHelper extends HelperHandler{
     public static final Item ChocolateBean = new ItemModSeeds(BlockHelper.ChocolateCrop, Blocks.farmland, "ChocolateBean");
 	public static final Item Droid = new ItemDroid();
 	public static final Item Wand = new ItemMobShooter();
-	//public static final Item Test = new ItemHouse(4235);
+	//public static final Item Test = new ItemHouse();
 	
 	public static final Item wandDeath = new WandOfDeath("wandDeath");
 	public static final Item wandFire = new WandOfFire("wandFire");

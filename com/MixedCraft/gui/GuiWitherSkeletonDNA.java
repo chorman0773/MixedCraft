@@ -13,11 +13,6 @@ import net.minecraft.world.World;
 
 public class GuiWitherSkeletonDNA extends GuiBaseDNA{
 
-	public GuiWitherSkeletonDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		this.fontRendererObj.drawString("WITHER SKELTON", 40 + 12, 20 - 33, 0xFFFFFF);
@@ -30,7 +25,6 @@ public class GuiWitherSkeletonDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A skeleton type mob that uses a", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("sword instead of a bow, this mob", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRendererObj.drawString("can cause a bad effect on touch.", 1 - 10, 20 + 149, 0xFFFFFF);
-		
+		this.fontRendererObj.drawString("can cause a bad effect on touch.", 1 - 10, 20 + 149, 0xFFFFFF);	
 	}
 }

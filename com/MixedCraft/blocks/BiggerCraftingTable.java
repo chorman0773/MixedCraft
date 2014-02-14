@@ -22,9 +22,9 @@ public class BiggerCraftingTable extends BlocksBase{
 	@SideOnly(Side.CLIENT)
 	private IIcon workbenchIIconFront;
 
-	public BiggerCraftingTable()
-	{
+	public BiggerCraftingTable() {
 		super(Material.wood);
+		setStepSound(Block.soundTypeWood);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -34,7 +34,7 @@ public class BiggerCraftingTable extends BlocksBase{
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIIcons(IIconRegister par1IIconRegister)
+	public void registerBlockIcons(IIconRegister par1IIconRegister)
 	{
 		this.blockIcon = par1IIconRegister.registerIcon("MixedCraft:BigSide");
 		this.workbenchIIconTop = par1IIconRegister.registerIcon("MixedCraft:BigTop");

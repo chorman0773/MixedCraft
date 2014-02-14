@@ -13,10 +13,6 @@ import net.minecraft.world.World;
 
 public class GuiPigDNA extends GuiBaseDNA{
 
-	public GuiPigDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
 	
 	protected void drawGuiContainerForegroundLayer(int par1, int par2)
 	{

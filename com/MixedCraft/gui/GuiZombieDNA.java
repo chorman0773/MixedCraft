@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiZombieDNA extends GuiBaseDNA{
 
-	public GuiZombieDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("ZOMBIE", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,7 +24,6 @@ public class GuiZombieDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A mob that is keen on killing you.", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("It also picks up items that are on", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRendererObj.drawString("left laying around.", 1 - 10, 20 + 149, 0xFFFFFF);
-		
+		this.fontRendererObj.drawString("left laying around.", 1 - 10, 20 + 149, 0xFFFFFF);	
 	}
 }

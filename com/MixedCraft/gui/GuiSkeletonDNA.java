@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiSkeletonDNA extends GuiBaseDNA{
 
-	public GuiSkeletonDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("SKELETON", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,6 +24,5 @@ public class GuiSkeletonDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A monster that fires arrows with its", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("bow.", 1 - 10, 20 + 139, 0xFFFFFF);
-
 	}
 }

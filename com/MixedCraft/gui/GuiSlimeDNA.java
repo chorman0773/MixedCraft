@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiSlimeDNA extends GuiBaseDNA{
 
-	public GuiSlimeDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("SLIME", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,6 +24,5 @@ public class GuiSlimeDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A monster that will muiltiply itself", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("into three smaller versions of itself.", 1 - 10, 20 + 139, 0xFFFFFF);
-
 	}
 }

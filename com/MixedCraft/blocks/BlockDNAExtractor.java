@@ -4,11 +4,13 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.MixedCraft.BlockHelper;
@@ -17,6 +19,11 @@ import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
 import com.MixedCraft.helper.ConfigHelper;
 import com.MixedCraft.helper.ContainerBase;
 import com.MixedCraft.helper.GuiHandler;
+import com.MixedCraft.helper.Utils;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockDNAExtractor extends ContainerBase {
 
@@ -28,6 +35,12 @@ public class BlockDNAExtractor extends ContainerBase {
 		super(Material.wood);
 		registerTexture("DNAExtractor_Side", "DNAExtractor_Top" , "DNAExtractor_Bottom");
 	}
+	
+    public Block setName(String name) {
+        GameRegistry.registerBlock(this, name);
+        setBlockName(name);
+        return this;
+    }
 
 	public TileEntity createNewTileEntity(World var1, int idk) 
 	{

@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiSpiderDNA extends GuiBaseDNA{
 
-	public GuiSpiderDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("SPIDER", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,6 +24,5 @@ public class GuiSpiderDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A monster that is passive you during", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("the night and angry during the day.", 1 - 10, 20 + 139, 0xFFFFFF);
-
 	}
 }

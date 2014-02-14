@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiBlazeDNA extends GuiBaseDNA{
 
-	public GuiBlazeDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("BLAZE", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);

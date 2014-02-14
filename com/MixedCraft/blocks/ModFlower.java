@@ -1,16 +1,16 @@
 package com.MixedCraft.blocks;
 
+import net.minecraft.block.BlockBush;
+
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
 
-import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
-
-public class ModFlower extends BlockFlower {
+public class ModFlower extends BlockBush {
 	
-	public ModFlower(int wut, String tex) {
-		super(wut);
+	public ModFlower(String tex) {
+		super();
 		setBlockTextureName(Utils.MOD_ID + ":" + tex);
+		setCreativeTab(MixedCraft.BlockTab);
 	}
 
 }

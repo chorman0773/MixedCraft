@@ -17,7 +17,7 @@ public class ModTallGrass extends ModFlower implements IShearable {
 
     public ModTallGrass(String s)
     {
-        super(0, s);
+        super(s);
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }

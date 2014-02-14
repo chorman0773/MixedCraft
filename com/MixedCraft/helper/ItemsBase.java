@@ -17,6 +17,7 @@ public class ItemsBase extends Item {
         registerTextures(texture);
         setUnlocalizedName(texture);
         this.setCreativeTab(MixedCraft.MiscTab);
+        LangRegistry.addItem(this);
     }
     
     public Item registerTextures(String texture) {

@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiCowDNA extends GuiBaseDNA{
 
-	public GuiCowDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("COW", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Animal", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -31,6 +25,5 @@ public class GuiCowDNA extends GuiBaseDNA{
 		this.fontRendererObj.drawString("A wandering animal that grazes through", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("the grass. This animal has four legs.", 1 - 10, 20 + 139, 0xFFFFFF);
 		this.fontRendererObj.drawString("This animal is used for leather/milk.", 1 - 10, 20 + 149, 0xFFFFFF);
-
 	}
 }

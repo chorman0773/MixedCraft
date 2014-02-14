@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiGhastDNA extends GuiBaseDNA{
 
-	public GuiGhastDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("GHAST", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,7 +24,6 @@ public class GuiGhastDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A large creature thats in the", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("Nether and fires charges at you", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRendererObj.drawString("on sight.", 1 - 10, 20 + 149, 0xFFFFFF);
-		
+		this.fontRendererObj.drawString("on sight.", 1 - 10, 20 + 149, 0xFFFFFF);	
 	}
 }

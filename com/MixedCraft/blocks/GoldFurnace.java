@@ -21,13 +21,14 @@ import net.minecraft.world.World;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.MixedCraft;
+import com.MixedCraft.blocks.container.BlockModContainer;
 import com.MixedCraft.blocks.tileEntity.TileEntityGoldFurnace;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class GoldFurnace extends BlockContainer
+public class GoldFurnace extends BlockModContainer
 {
 
 	private final Random GoldFurnaceRand = new Random();
@@ -40,11 +41,9 @@ public class GoldFurnace extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	private IIcon GoldFurnaceIIconFront;
 
-	public GoldFurnace(boolean par2)
-	{
+	public GoldFurnace(boolean par2) {
 		super(Material.rock);
 		this.isActive = par2;
-
 	}
 
 	public Item getItemDropped(int par1, Random par2Random, int par3)

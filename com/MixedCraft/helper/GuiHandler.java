@@ -126,35 +126,35 @@ public class GuiHandler implements IGuiHandler {
 		case 1:
 			return id == craftingTable && world.getBlock(x, y, z) == BlockHelper.BigCrafting ? new GuiBigCrafting(player.inventory, world, x, y, z) : null;
 		case 2:
-			return new GuiCowDNA(new DNAContainer());
+			return new GuiCowDNA();
 		case 3:
-			return new GuiPigDNA(new DNAContainer());
+			return new GuiPigDNA();
 		case 4:
-			return new GuiBlazeDNA(new DNAContainer());
+			return new GuiBlazeDNA();
 		case 5:
-			return new GuiChickenDNA(new DNAContainer());
+			return new GuiChickenDNA();
 		case 6:
-			return new GuiCreeperDNA(new DNAContainer());
+			return new GuiCreeperDNA();
 		case 7:
-			return new GuiEndermanDNA(new DNAContainer());
+			return new GuiEndermanDNA();
 		case 8:
-			return new GuiGhastDNA(new DNAContainer());
+			return new GuiGhastDNA();
 		case 9:
-			return new GuiSheepDNA(new DNAContainer());
+			return new GuiSheepDNA();
 		case 10:
-			return new GuiSkeletonDNA(new DNAContainer());
+			return new GuiSkeletonDNA();
 		case 11:
-			return new GuiSlimeDNA(new DNAContainer());
+			return new GuiSlimeDNA();
 		case 12:
-			return new GuiSpiderDNA(new DNAContainer());
+			return new GuiSpiderDNA();
 		case 13:
-			return new GuiSquidDNA(new DNAContainer());
+			return new GuiSquidDNA();
 		case 14:
-			return new GuiWitherDNA(new DNAContainer());
+			return new GuiWitherDNA();
 		case 15:
-			return new GuiWitherSkeletonDNA(new DNAContainer());
+			return new GuiWitherSkeletonDNA();
 		case 16:
-			return new GuiZombieDNA(new DNAContainer());
+			return new GuiZombieDNA();
 		}
 		return null;
 	}

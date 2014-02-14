@@ -13,23 +13,12 @@ import net.minecraft.world.World;
 
 public class GuiWitherDNA extends GuiBaseDNA{
 
-	public GuiWitherDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("WITHER", 40 + 12, 20 - 33, 0xFFFFFF);
-		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
-
 		this.fontRendererObj.drawString("Mob", 40 + 16, 20 + 56, 0xFFFFFF);
-		
 		this.fontRendererObj.drawString("Wither", 40 + 16, 20 + 71, 0xFFFFFF);
-
 		this.fontRendererObj.drawString("A monster that kills everything", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("around it.", 1 - 10, 20 + 139, 0xFFFFFF);
-
 	}
 }

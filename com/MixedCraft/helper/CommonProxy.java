@@ -23,8 +23,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+
 public class CommonProxy extends HelperHandler {
-	
+
 	public void registerRenderInformation() {}    
 
 	//ClientProxy
@@ -39,6 +40,12 @@ public class CommonProxy extends HelperHandler {
 		DimensionHelper.init();
 		registerTileEntity();
 		MinecraftForge.EVENT_BUS.register(new Event());
+		LangRegistry.init();
+		if(Utils.DEBUG){
+			LangRegistry.addBlockNames();
+		    LangRegistry.addItemNames();
+		}
+		LangRegistry.closeFile();
 	}
 
 	public void registerTileEntity() {
@@ -49,7 +56,8 @@ public class CommonProxy extends HelperHandler {
 		GameRegistry.registerTileEntity(TileEntityDNAAssembler.class, "TileEntity Assember");
 		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
-		GameRegistry.registerTileEntity(TileEntityPowerFurnace.class, "TileEntity SolarPPanel");
+		GameRegistry.registerTileEntity(TileEntityPowerFurnace.class, "TileEntity Power Furnace");
+
 
 	}
 

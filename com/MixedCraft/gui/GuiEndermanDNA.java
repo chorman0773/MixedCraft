@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiEndermanDNA extends GuiBaseDNA{
 
-	public GuiEndermanDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("ENDERMAN", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Monster", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,7 +24,6 @@ public class GuiEndermanDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A tall black figure that likes to", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("teleport and gets aggresive when", 1 - 10, 20 + 139, 0xFFFFFF);
-		this.fontRendererObj.drawString("looked at.", 1 - 10, 20 + 149, 0xFFFFFF);
-		
+		this.fontRendererObj.drawString("looked at.", 1 - 10, 20 + 149, 0xFFFFFF);		
 	}
 }

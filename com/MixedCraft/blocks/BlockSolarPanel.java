@@ -1,34 +1,28 @@
 package com.MixedCraft.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
-import com.MixedCraft.MixedCraft;
-import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
-import com.MixedCraft.helper.ContainerBase;
-
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDaylightDetector;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityDaylightDetector;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSolarPanel extends ContainerBase
+import com.MixedCraft.MixedCraft;
+import com.MixedCraft.blocks.container.BlockModContainer;
+import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
+
+public class BlockSolarPanel extends BlockModContainer
 {
 
 	public BlockSolarPanel()
 	{
 		super(Material.wood);
 		this.setCreativeTab(MixedCraft.BlockTab);
-
+		setStepSound(Block.soundTypeMetal);
 		registerTexture("SolarPanel_Side", "SolarPanel_Top", "SolarPanel_Bottom");
 	}
 
@@ -43,7 +37,7 @@ public class BlockSolarPanel extends ContainerBase
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {}
 
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {}
-
+	
 	public void updateLightLevel(World par1World, int par2, int par3, int par4)
 	{
 		if (!par1World.provider.hasNoSky)

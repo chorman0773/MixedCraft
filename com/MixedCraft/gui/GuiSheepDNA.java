@@ -12,14 +12,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class GuiSheepDNA extends GuiBaseDNA{
-
-	public GuiSheepDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
 	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("SHEEP", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Animal", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -31,6 +25,5 @@ public class GuiSheepDNA extends GuiBaseDNA{
 		this.fontRendererObj.drawString("A wandering animal that grazes trough", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("the grass. This animal has four legs.", 1 - 10, 20 + 139, 0xFFFFFF);
 		this.fontRendererObj.drawString("This animal is used for wool.", 1 - 10, 20 + 149, 0xFFFFFF);
-
 	}
 }

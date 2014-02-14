@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiChickenDNA extends GuiBaseDNA{
 
-	public GuiChickenDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("CHICKEN", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Animal", 40 + 16, 20 + 39, 0xFFFFFF);

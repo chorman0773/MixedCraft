@@ -13,13 +13,7 @@ import net.minecraft.world.World;
 
 public class GuiSquidDNA extends GuiBaseDNA{
 
-	public GuiSquidDNA(Container par1)
-	{
-		super(new DNAContainer());
-	}
-	
-	protected void drawGuiContainerForegroundLayer(int par1, int par2)
-	{
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		this.fontRendererObj.drawString("SQUID", 40 + 12, 20 - 33, 0xFFFFFF);
 		
 		this.fontRendererObj.drawString("Animal", 40 + 16, 20 + 39, 0xFFFFFF);
@@ -30,6 +24,5 @@ public class GuiSquidDNA extends GuiBaseDNA{
 
 		this.fontRendererObj.drawString("A creature that swims all day and", 1 - 10, 20 + 129, 0xFFFFFF);
 		this.fontRendererObj.drawString("drops ink sacks.", 1 - 10, 20 + 139, 0xFFFFFF);
-
 	}
 }

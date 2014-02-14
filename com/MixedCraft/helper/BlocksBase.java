@@ -10,10 +10,12 @@ import net.minecraft.util.IIcon;
 
 import com.MixedCraft.MixedCraft;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlocksBase extends Block {
+	
     protected IIcon tileSide;
     protected String tileSideName;
     protected IIcon tileTop;
@@ -21,13 +23,12 @@ public class BlocksBase extends Block {
     protected IIcon tileBottom;
     protected String tileBottomName;
     protected boolean enableStats = true;
-
-
-
+    
     public BlocksBase(Material material) {
         super(material);
         this.setCreativeTab(MixedCraft.BlockTab);
         setHardness(2.0F);
+        LangRegistry.addBlock(this);
     }
     
     public boolean getEnableStats()
@@ -63,6 +64,13 @@ public class BlocksBase extends Block {
         tileTop = icon.registerIcon(Utils.MOD_ID +":" + tileTopName);
         tileBottom = icon.registerIcon(Utils.MOD_ID +":" + tileBottomName);
     }
+    
+    public Block setName(String name) {
+        GameRegistry.registerBlock(this, name);
+        setBlockName(name);
+        registerTexture(name);
+        return this;
+    }
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -73,14 +81,10 @@ public class BlocksBase extends Block {
     @Override
     public Item getItemDropped(int par1, Random par2Random, int par3) {
         return Item.getItemFromBlock(this);
-    }
-    
-    
+    }  
 
     @Override
     public int quantityDropped(int meta, int fortune, Random random) {
         return 1;
     }
-    
-
 }

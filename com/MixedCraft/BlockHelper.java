@@ -21,18 +21,18 @@ public class BlockHelper extends HelperHandler{
 
 
 
-	public static final Block Extractor = new BlockDNAExtractor().setBlockName("Extractor").setHardness(2.0F);
-	public static final Block Mixer = new BlockDNAMixer().setBlockName("Mixer").setHardness(2.0F);
-	public static final Block Assembler = new BlockMobAssembler().setBlockName("Assembler").setHardness(2.0F);
+	public static final Block Extractor = new BlockDNAExtractor().setName("Extractor").setHardness(2.0F);
+	public static final Block Mixer = new BlockDNAMixer().setName("Mixer").setHardness(2.0F);
+	public static final Block Assembler = new BlockMobAssembler().setName("Assembler").setHardness(2.0F);
 
-	public static final Block CopperOre = new ModBlock().registerTexture("CopperOre").setBlockName("CopperOre").setHardness(7.0F);
-	public static final Block BigCrafting = new BiggerCraftingTable().setBlockName("Craft").setStepSound(Block.soundTypeWood);
-	public static final Block TinOre = new ModBlock().registerTexture("TinOre").setBlockName("TinOre").setHardness(7.0F);
-	public static final Block CopperBlock = new ModBlock().registerTexture("CopperBlock").setBlockName("CopperBlock").setHardness(7.0F).setStepSound(Block.soundTypeMetal);
-	public static final Block TinBlock = new ModBlock().registerTexture("TinBlock").setBlockName("TinBlock").setHardness(7.0F).setHardness(7.0F).setStepSound(Block.soundTypeMetal);	
-	public static final Block SilverBlock = new ModBlock().registerTexture("SilverBlock").setBlockName("SilverBlock").setHardness(7.0F).setHardness(7.0F).setStepSound(Block.soundTypeMetal);
-	public static final Block SilverOre = new ModBlock().registerTexture("SilverOre").setBlockName("SilverOre").setHardness(7.0F);	
-	public static final BlockSolarPanel SolarPanel = (BlockSolarPanel) new BlockSolarPanel().setBlockName("SolarPanel").setHardness(2.0F).setHardness(7.0F).setStepSound(Block.soundTypeMetal);
+	public static final Block CopperOre = new ModBlock().setName("CopperOre").setHardness(7.0F);
+	public static final Block BigCrafting = new BiggerCraftingTable().setName("BigCraftingTable");
+	public static final Block TinOre = new ModBlock().setName("TinOre").setHardness(7.0F);
+	public static final Block CopperBlock = new ModBlock().setName("CopperBlock").setHardness(7.0F).setStepSound(Block.soundTypeMetal);
+	public static final Block TinBlock = new ModBlock().setName("TinBlock").setHardness(7.0F).setStepSound(Block.soundTypeMetal);	
+	public static final Block SilverBlock = new ModBlock().setName("SilverBlock").setHardness(7.0F).setStepSound(Block.soundTypeMetal);
+	public static final Block SilverOre = new ModBlock().setName("SilverOre").setHardness(7.0F);	
+	public static final BlockSolarPanel SolarPanel = (BlockSolarPanel) new BlockSolarPanel().setName("SolarPanel").setHardness(2.0F);
 	public static final Block CowSheepWool = new ModBlock().registerTexture("CowSheepWool").setBlockName("CowSheepWool").setHardness(0.2F).setStepSound(Block.soundTypeCloth);
 	//public static final Block Disassembler = new Disassembler().setBlockName("Disasembler").setCreativeTab(MixedCraft.BlockTab);	
 	public static final Block IronFurnaceOff = (new BlockIronFurnace(false)).setHardness(3.5F).setStepSound(Block.soundTypeMetal).setBlockName("IronFurnaceOff").setCreativeTab(MixedCraft.BlockTab);
@@ -61,12 +61,12 @@ public class BlockHelper extends HelperHandler{
     public static final Block GoldFurnaceOff = new GoldFurnace(false).setBlockName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
     public static final Block GoldFurnaceOn = new GoldFurnace(true).setBlockName("GoldFurnace").setCreativeTab(null);
     
-    //public static final Block Flower1 = new ModFlower(0, "FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
-    //public static final Block Flower2 = new ModFlower(0, "FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block Flower1 = new ModFlower("FlyLightFlower_1").setBlockName("Flower1");
+    public static final Block Flower2 = new ModFlower("FlyLightFlower_2").setBlockName("Flower2");
     public static final Block FlylightLog = new ModLog("FlyLight").setBlockName("Log").setHardness(1.5F).setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightLeaves = new ModLeaves("FlyLight").setHardness(0.4F).setBlockName("Leaves").setCreativeTab(MixedCraft.BlockTab);
-    //public static final Block FlylightFern = new ModTallGrass("FlyLightFern").setBlockName("Fern").setCreativeTab(MixedCraft.BlockTab);
-    //public static final Block FlylightGrass = new ModTallGrass("FlyLightGrass").setBlockName("Grass").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block FlylightFern = new ModTallGrass("FlyLightFern").setBlockName("Fern").setCreativeTab(MixedCraft.BlockTab);
+    public static final Block FlylightGrass = new ModTallGrass("FlyLightGrass").setBlockName("Grass").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightCane = new FlylightSugarCane().registerTexture("FlyLightSugarCane").setBlockName("Cane").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightSapling = new FlylightSapling("FlylightSapling").setBlockName("Sapling").setCreativeTab(MixedCraft.BlockTab);
     public static final Block Water = new ModWater().setBlockName("Water").setCreativeTab(MixedCraft.BlockTab);
@@ -124,24 +124,12 @@ public class BlockHelper extends HelperHandler{
 		addBlock(IronFurnaceOn, "Iron Furnace On");
 		addBlock(IronFurnaceOff, "Iron Furnace");
 		//addBlock(Disassembler, "Disassembler");
-		addBlock(CowSheepWool, "COWSHEEP Wool");
-		addBlock(SolarPanel, "Solar Panel");
-		addBlock(Extractor, "DNA Extractor");
-		addBlock(Mixer, "DNA Mixer");
-		addBlock(Assembler, "Mob Assembler");
-		addBlock(CopperOre, "Copper Ore");
-		addBlock(BigCrafting, "Big Crafting Table");
-		addBlock(TinOre, "Tin Ore");
-		addBlock(CopperBlock, "Copper Block");
-		addBlock(TinBlock, "Tin Block");
-		addBlock(SilverOre, "Silver Ore");
-		addBlock(SilverBlock, "Silver Block");	 
+		addBlock(CowSheepWool, "COWSHEEP Wool");	 
 		//addBlock(FlyLightGrass, "Flylight Grass");
 		//addBlock(FlyLightDirt, "Flylight Dirt");
 		addBlock(Test, "Colourful Block");
 		//addBlock(FlyLightOre, "Flylight Ore");
 		//addBlock(FlyLightPortal, "Flylight Portal");
 		//addBlock(FlyLightStone, "Flylight Stone");
-		addBlock(SlowSand, "Sink Sand");
 	}
 }
