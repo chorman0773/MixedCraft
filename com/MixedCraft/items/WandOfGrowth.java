@@ -62,7 +62,7 @@ public class WandOfGrowth extends ItemBaseWand {
 			while(world.getBlock(targetX, y, targetZ) == Blocks.cactus){
 				y++;
 			}
-			if(world.getBlock(targetX, y, targetZ) == null){
+			if(world.getBlock(targetX, y, targetZ) != null){
 
 				world.setBlock(targetX, y, targetZ, Blocks.cactus);
 			}
@@ -73,7 +73,7 @@ public class WandOfGrowth extends ItemBaseWand {
 			while(world.getBlock(targetX, y, targetZ) == Blocks.reeds){
 				y++;
 			}
-			if(world.getBlock(targetX, y, targetZ) == null){
+			if(world.getBlock(targetX, y, targetZ) != null){
 
 				world.setBlock(targetX, y, targetZ, Blocks.reeds);
 			}

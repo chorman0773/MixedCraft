@@ -222,7 +222,7 @@ public class LightningBow extends ItemsBase
 		}
 	}
 
-	public IIcon getIIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	{
 		if(player.getItemInUse() == null) return this.itemIcon;
 

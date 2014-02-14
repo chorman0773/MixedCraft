@@ -7,13 +7,15 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.world.biome.BiomeGenBase;
 
 import com.MixedCraft.BlockHelper;
-import com.MixedCraft.gen.WorldGenModReed;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BiomeGenFlylight extends BiomeGenBase{
 
+    protected static final BiomeGenBase.Height flylight = new BiomeGenBase.Height(2.0F, 1.2F);
+
+	
 	public BiomeGenFlylight() {
 		super(DimensionHelper.FlyLightID);		 
 		setBiomeName("Flylight");
@@ -27,9 +29,7 @@ public class BiomeGenFlylight extends BiomeGenBase{
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 3, 2, 6));
         spawnableWaterCreatureList.clear();
         spawnableCaveCreatureList.clear();
-		/*maxHeight = 2.0F;
-		minHeight = 1.2F;*/
-		this.theBiomeDecorator.reedGen = new WorldGenModReed();
+        setHeight(flylight);
 	}
 
 	@SideOnly(Side.CLIENT)

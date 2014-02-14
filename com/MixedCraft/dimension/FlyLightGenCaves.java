@@ -2,206 +2,196 @@ package com.MixedCraft.dimension;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.MapGenBase;
-
 import com.MixedCraft.BlockHelper;
 
-public class FlyLightGenCaves extends MapGenBase
-{
-    protected void generateLargeCaveNode(long var1, int var3, int var4, byte[] var5, double var6, double var8, double var10)
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.MapGenBase;
+
+public class FlyLightGenCaves extends MapGenBase {
+
+    protected void func_151542_a(long p_151542_1_, int p_151542_3_, int p_151542_4_, Block[] p_151542_5_, double p_151542_6_, double p_151542_8_, double p_151542_10_)
     {
-        this.generateCaveNode(var1, var3, var4, var5, var6, var8, var10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+        this.func_151541_a(p_151542_1_, p_151542_3_, p_151542_4_, p_151542_5_, p_151542_6_, p_151542_8_, p_151542_10_, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
     }
 
-    protected void generateCaveNode(long var1, int var3, int var4, byte[] var5, double var6, double var8, double var10, float var12, float var13, float var14, int var15, int var16, double var17)
+    protected void func_151541_a(long p_151541_1_, int p_151541_3_, int p_151541_4_, Block[] p_151541_5_, double p_151541_6_, double p_151541_8_, double p_151541_10_, float p_151541_12_, float p_151541_13_, float p_151541_14_, int p_151541_15_, int p_151541_16_, double p_151541_17_)
     {
-        double var19 = var3 * 16 + 8;
-        double var21 = var4 * 16 + 8;
-        float var23 = 0.0F;
-        float var24 = 0.0F;
-        Random var25 = new Random(var1);
+        double d4 = (double)(p_151541_3_ * 16 + 8);
+        double d5 = (double)(p_151541_4_ * 16 + 8);
+        float f3 = 0.0F;
+        float f4 = 0.0F;
+        Random random = new Random(p_151541_1_);
 
-        if (var16 <= 0)
+        if (p_151541_16_ <= 0)
         {
-            int var26 = this.range * 16 - 16;
-            var16 = var26 - var25.nextInt(var26 / 4);
+            int j1 = this.range * 16 - 16;
+            p_151541_16_ = j1 - random.nextInt(j1 / 4);
         }
 
-        boolean var62 = false;
+        boolean flag2 = false;
 
-        if (var15 == -1)
+        if (p_151541_15_ == -1)
         {
-            var15 = var16 / 2;
-            var62 = true;
+            p_151541_15_ = p_151541_16_ / 2;
+            flag2 = true;
         }
 
-        int var27 = var25.nextInt(var16 / 2) + var16 / 4;
+        int k1 = random.nextInt(p_151541_16_ / 2) + p_151541_16_ / 4;
 
-        for (boolean var28 = var25.nextInt(6) == 0; var15 < var16; ++var15)
+        for (boolean flag = random.nextInt(6) == 0; p_151541_15_ < p_151541_16_; ++p_151541_15_)
         {
-            double var29 = 1.5D + MathHelper.sin(var15 * (float)Math.PI / var16) * var12 * 1.0F;
-            double var31 = var29 * var17;
-            float var33 = MathHelper.cos(var14);
-            float var34 = MathHelper.sin(var14);
-            var6 += MathHelper.cos(var13) * var33;
-            var8 += var34;
-            var10 += MathHelper.sin(var13) * var33;
+            double d6 = 1.5D + (double)(MathHelper.sin((float)p_151541_15_ * (float)Math.PI / (float)p_151541_16_) * p_151541_12_ * 1.0F);
+            double d7 = d6 * p_151541_17_;
+            float f5 = MathHelper.cos(p_151541_14_);
+            float f6 = MathHelper.sin(p_151541_14_);
+            p_151541_6_ += (double)(MathHelper.cos(p_151541_13_) * f5);
+            p_151541_8_ += (double)f6;
+            p_151541_10_ += (double)(MathHelper.sin(p_151541_13_) * f5);
 
-            if (var28)
+            if (flag)
             {
-                var14 *= 0.92F;
+                p_151541_14_ *= 0.92F;
             }
             else
             {
-                var14 *= 0.7F;
+                p_151541_14_ *= 0.7F;
             }
 
-            var14 += var24 * 0.1F;
-            var13 += var23 * 0.1F;
-            var24 *= 0.9F;
-            var23 *= 0.75F;
-            var24 += (var25.nextFloat() - var25.nextFloat()) * var25.nextFloat() * 2.0F;
-            var23 += (var25.nextFloat() - var25.nextFloat()) * var25.nextFloat() * 4.0F;
+            p_151541_14_ += f4 * 0.1F;
+            p_151541_13_ += f3 * 0.1F;
+            f4 *= 0.9F;
+            f3 *= 0.75F;
+            f4 += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.0F;
+            f3 += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4.0F;
 
-            if (!var62 && var15 == var27 && var12 > 1.0F && var16 > 0)
+            if (!flag2 && p_151541_15_ == k1 && p_151541_12_ > 1.0F && p_151541_16_ > 0)
             {
-                this.generateCaveNode(var25.nextLong(), var3, var4, var5, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 - ((float)Math.PI / 2F), var14 / 3.0F, var15, var16, 1.0D);
-                this.generateCaveNode(var25.nextLong(), var3, var4, var5, var6, var8, var10, var25.nextFloat() * 0.5F + 0.5F, var13 + ((float)Math.PI / 2F), var14 / 3.0F, var15, var16, 1.0D);
+                this.func_151541_a(random.nextLong(), p_151541_3_, p_151541_4_, p_151541_5_, p_151541_6_, p_151541_8_, p_151541_10_, random.nextFloat() * 0.5F + 0.5F, p_151541_13_ - ((float)Math.PI / 2F), p_151541_14_ / 3.0F, p_151541_15_, p_151541_16_, 1.0D);
+                this.func_151541_a(random.nextLong(), p_151541_3_, p_151541_4_, p_151541_5_, p_151541_6_, p_151541_8_, p_151541_10_, random.nextFloat() * 0.5F + 0.5F, p_151541_13_ + ((float)Math.PI / 2F), p_151541_14_ / 3.0F, p_151541_15_, p_151541_16_, 1.0D);
                 return;
             }
 
-            if (var62 || var25.nextInt(4) != 0)
+            if (flag2 || random.nextInt(4) != 0)
             {
-                double var35 = var6 - var19;
-                double var37 = var10 - var21;
-                double var39 = var16 - var15;
-                double var41 = var12 + 2.0F + 16.0F;
+                double d8 = p_151541_6_ - d4;
+                double d9 = p_151541_10_ - d5;
+                double d10 = (double)(p_151541_16_ - p_151541_15_);
+                double d11 = (double)(p_151541_12_ + 2.0F + 16.0F);
 
-                if (var35 * var35 + var37 * var37 - var39 * var39 > var41 * var41)
-                    return;
-
-                if (var6 >= var19 - 16.0D - var29 * 2.0D && var10 >= var21 - 16.0D - var29 * 2.0D && var6 <= var19 + 16.0D + var29 * 2.0D && var10 <= var21 + 16.0D + var29 * 2.0D)
+                if (d8 * d8 + d9 * d9 - d10 * d10 > d11 * d11)
                 {
-                    int var43 = MathHelper.floor_double(var6 - var29) - var3 * 16 - 1;
-                    int var44 = MathHelper.floor_double(var6 + var29) - var3 * 16 + 1;
-                    int var45 = MathHelper.floor_double(var8 - var31) - 1;
-                    int var46 = MathHelper.floor_double(var8 + var31) + 1;
-                    int var47 = MathHelper.floor_double(var10 - var29) - var4 * 16 - 1;
-                    int var48 = MathHelper.floor_double(var10 + var29) - var4 * 16 + 1;
+                    return;
+                }
 
-                    if (var43 < 0)
+                if (p_151541_6_ >= d4 - 16.0D - d6 * 2.0D && p_151541_10_ >= d5 - 16.0D - d6 * 2.0D && p_151541_6_ <= d4 + 16.0D + d6 * 2.0D && p_151541_10_ <= d5 + 16.0D + d6 * 2.0D)
+                {
+                    int i4 = MathHelper.floor_double(p_151541_6_ - d6) - p_151541_3_ * 16 - 1;
+                    int l1 = MathHelper.floor_double(p_151541_6_ + d6) - p_151541_3_ * 16 + 1;
+                    int k4 = MathHelper.floor_double(p_151541_8_ - d7) - 1;
+                    int i2 = MathHelper.floor_double(p_151541_8_ + d7) + 1;
+                    int j4 = MathHelper.floor_double(p_151541_10_ - d6) - p_151541_4_ * 16 - 1;
+                    int j2 = MathHelper.floor_double(p_151541_10_ + d6) - p_151541_4_ * 16 + 1;
+
+                    if (i4 < 0)
                     {
-                        var43 = 0;
+                        i4 = 0;
                     }
 
-                    if (var44 > 16)
+                    if (l1 > 16)
                     {
-                        var44 = 16;
+                        l1 = 16;
                     }
 
-                    if (var45 < 1)
+                    if (k4 < 1)
                     {
-                        var45 = 1;
+                        k4 = 1;
                     }
 
-                    if (var46 > 120)
+                    if (i2 > 248)
                     {
-                        var46 = 120;
+                        i2 = 248;
                     }
 
-                    if (var47 < 0)
+                    if (j4 < 0)
                     {
-                        var47 = 0;
+                        j4 = 0;
                     }
 
-                    if (var48 > 16)
+                    if (j2 > 16)
                     {
-                        var48 = 16;
+                        j2 = 16;
                     }
 
-                    boolean var49 = false;
-                    int var51;
-                    int var50;
+                    boolean flag3 = false;
+                    int k2;
+                    int j3;
 
-                    for (var50 = var43; !var49 && var50 < var44; ++var50)
+                    for (k2 = i4; !flag3 && k2 < l1; ++k2)
                     {
-                        for (int var52 = var47; !var49 && var52 < var48; ++var52)
+                        for (int l2 = j4; !flag3 && l2 < j2; ++l2)
                         {
-                            for (int var53 = var46 + 1; !var49 && var53 >= var45 - 1; --var53)
+                            for (int i3 = i2 + 1; !flag3 && i3 >= k4 - 1; --i3)
                             {
-                                var51 = (var50 * 16 + var52) * 128 + var53;
+                                j3 = (k2 * 16 + l2) * 256 + i3;
 
-                                if (var53 >= 0 && var53 < 128)
+                                if (i3 >= 0 && i3 < 256)
                                 {
-                                    if (var5[var51] == BlockHelper.Water.blockID || var5[var51] == BlockHelper.Water.blockID)
+                                    Block block = p_151541_5_[j3];
+
+                                    if (isOceanBlock(p_151541_5_, j3, k2, i3, l2, p_151541_3_, p_151541_4_))
                                     {
-                                        var49 = true;
+                                        flag3 = true;
                                     }
 
-                                    if (var53 != var45 - 1 && var50 != var43 && var50 != var44 - 1 && var52 != var47 && var52 != var48 - 1)
+                                    if (i3 != k4 - 1 && k2 != i4 && k2 != l1 - 1 && l2 != j4 && l2 != j2 - 1)
                                     {
-                                        var53 = var45;
+                                        i3 = k4;
                                     }
                                 }
                             }
                         }
                     }
 
-                    if (!var49)
+                    if (!flag3)
                     {
-                        for (var50 = var43; var50 < var44; ++var50)
+                        for (k2 = i4; k2 < l1; ++k2)
                         {
-                            double var63 = (var50 + var3 * 16 + 0.5D - var6) / var29;
+                            double d14 = ((double)(k2 + p_151541_3_ * 16) + 0.5D - p_151541_6_) / d6;
 
-                            for (var51 = var47; var51 < var48; ++var51)
+                            for (j3 = j4; j3 < j2; ++j3)
                             {
-                                double var54 = (var51 + var4 * 16 + 0.5D - var10) / var29;
-                                int var56 = (var50 * 16 + var51) * 128 + var46;
-                                boolean var57 = false;
+                                double d13 = ((double)(j3 + p_151541_4_ * 16) + 0.5D - p_151541_10_) / d6;
+                                int k3 = (k2 * 16 + j3) * 256 + i2;
+                                boolean flag1 = false;
 
-                                if (var63 * var63 + var54 * var54 < 1.0D)
+                                if (d14 * d14 + d13 * d13 < 1.0D)
                                 {
-                                    for (int var58 = var46 - 1; var58 >= var45; --var58)
+                                    for (int l3 = i2 - 1; l3 >= k4; --l3)
                                     {
-                                        double var59 = (var58 + 0.5D - var8) / var31;
+                                        double d12 = ((double)l3 + 0.5D - p_151541_8_) / d7;
 
-                                        if (var59 > -0.7D && var63 * var63 + var59 * var59 + var54 * var54 < 1.0D)
+                                        if (d12 > -0.7D && d14 * d14 + d12 * d12 + d13 * d13 < 1.0D)
                                         {
-                                            byte var61 = var5[var56];
+                                            Block block1 = p_151541_5_[k3];
 
-                                            if (var61 == BlockHelper.FlyLightGrass.blockID)
+                                            if (isTopBlock(p_151541_5_, k3, k2, l3, j3, p_151541_3_, p_151541_4_))
                                             {
-                                                var57 = true;
+                                                flag1 = true;
                                             }
-
-                                            if (var61 != BlockHelper.FlyLightStone.blockID || var61 != BlockHelper.FlyLightDirt.blockID || var61 != BlockHelper.FlyLightGrass.blockID)
-                                            {
-                                                if (var58 < 10)
-                                                {
-                                                    var5[var56] = (byte)Block.lavaMoving.blockID;
-                                                }
-                                                else
-                                                {
-                                                    var5[var56] = 0;
-
-                                                    if (var57 && var5[var56 - 1] == BlockHelper.FlyLightDirt.blockID)
-                                                    {
-                                                        var5[var56 - 1] = this.worldObj.getBiomeGenForCoords(var50 + var3 * 16, var51 + var4 * 16).topBlock;
-                                                    }
-                                                }
-                                            }
+                                            digBlock(p_151541_5_, k3, k2, l3, j3, p_151541_3_, p_151541_4_, flag1);
                                         }
 
-                                        --var56;
+                                        --k3;
                                     }
                                 }
                             }
                         }
 
-                        if (var62)
+                        if (flag2)
                         {
                             break;
                         }
@@ -211,44 +201,102 @@ public class FlyLightGenCaves extends MapGenBase
         }
     }
 
-    /**
-     * Recursively called by generate() (generate) and optionally by itself.
-     */
-    @Override
-    protected void recursiveGenerate(World var1, int var2, int var3, int var4, int var5, byte[] var6)
+    protected void func_151538_a(World p_151538_1_, int p_151538_2_, int p_151538_3_, int p_151538_4_, int p_151538_5_, Block[] p_151538_6_)
     {
-        int var7 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(40) + 1) + 1);
+        int i1 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(15) + 1) + 1);
 
-        if (this.rand.nextInt(15) != 0)
+        if (this.rand.nextInt(7) != 0)
         {
-            var7 = 0;
+            i1 = 0;
         }
 
-        for (int var8 = 0; var8 < var7; ++var8)
+        for (int j1 = 0; j1 < i1; ++j1)
         {
-            double var9 = var2 * 16 + this.rand.nextInt(16);
-            double var11 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-            double var13 = var3 * 16 + this.rand.nextInt(16);
-            int var15 = 1;
+            double d0 = (double)(p_151538_2_ * 16 + this.rand.nextInt(16));
+            double d1 = (double)this.rand.nextInt(this.rand.nextInt(120) + 8);
+            double d2 = (double)(p_151538_3_ * 16 + this.rand.nextInt(16));
+            int k1 = 1;
 
-            if (this.rand.nextInt(2) == 0)
+            if (this.rand.nextInt(4) == 0)
             {
-                this.generateLargeCaveNode(this.rand.nextLong(), var4, var5, var6, var9, var11, var13);
-                var15 += this.rand.nextInt(4);
+                this.func_151542_a(this.rand.nextLong(), p_151538_4_, p_151538_5_, p_151538_6_, d0, d1, d2);
+                k1 += this.rand.nextInt(4);
             }
 
-            for (int var16 = 0; var16 < var15; ++var16)
+            for (int l1 = 0; l1 < k1; ++l1)
             {
-                float var17 = this.rand.nextFloat() * (float)Math.PI * 2.0F;
-                float var18 = (this.rand.nextFloat() - 0.5F) * 2.0F / 8.0F;
-                float var19 = this.rand.nextFloat() * 2.0F + this.rand.nextFloat();
+                float f = this.rand.nextFloat() * (float)Math.PI * 2.0F;
+                float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F / 8.0F;
+                float f2 = this.rand.nextFloat() * 2.0F + this.rand.nextFloat();
 
                 if (this.rand.nextInt(10) == 0)
                 {
-                    var19 *= this.rand.nextFloat() * this.rand.nextFloat() * 3.0F + 1.0F;
+                    f2 *= this.rand.nextFloat() * this.rand.nextFloat() * 3.0F + 1.0F;
                 }
 
-                this.generateCaveNode(this.rand.nextLong(), var4, var5, var6, var9, var11, var13, var19, var17, var18, 0, 0, 1.0D);
+                this.func_151541_a(this.rand.nextLong(), p_151538_4_, p_151538_5_, p_151538_6_, d0, d1, d2, f2, f, f1, 0, 0, 1.0D);
+            }
+        }
+    }
+
+    protected boolean isOceanBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ)
+    {
+        return data[index] == Blocks.flowing_water || data[index] == Blocks.water;
+    }
+
+    //Exception biomes to make sure we generate like vanilla
+    private boolean isExceptionBiome(BiomeGenBase biome)
+    {
+        if (biome == BiomeGenBase.mushroomIsland) return true;
+        if (biome == BiomeGenBase.beach) return true;
+        if (biome == BiomeGenBase.desert) return true;
+        return false;
+    }
+
+    //Determine if the block at the specified location is the top block for the biome, we take into account
+    //Vanilla bugs to make sure that we generate the map the same way vanilla does.
+    private boolean isTopBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ)
+    {
+        BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
+        return (isExceptionBiome(biome) ? data[index] == Blocks.grass : data[index] == biome.topBlock);
+    }
+
+    /**
+     * Digs out the current block, default implementation removes stone, filler, and top block
+     * Sets the block to lava if y is less then 10, and air other wise.
+     * If setting to air, it also checks to see if we've broken the surface and if so 
+     * tries to make the floor the biome's top block
+     * 
+     * @param data Block data array
+     * @param index Pre-calculated index into block data
+     * @param x local X position
+     * @param y local Y position
+     * @param z local Z position
+     * @param chunkX Chunk X position
+     * @param chunkZ Chunk Y position
+     * @param foundTop True if we've encountered the biome's top block. Ideally if we've broken the surface.
+     */
+    protected void digBlock(Block[] data, int index, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop)
+    {
+        BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
+        Block top    = (isExceptionBiome(biome) ? Blocks.grass : biome.topBlock);
+        Block filler = (isExceptionBiome(biome) ? Blocks.dirt  : biome.fillerBlock);
+        Block block  = data[index];
+
+        if (block == BlockHelper.FlyLightStone || block == filler || block == top)
+        {
+            if (y < 10)
+            {
+                data[index] = Blocks.lava;
+            }
+            else
+            {
+                data[index] = null;
+
+                if (foundTop && data[index - 1] == filler)
+                {
+                    data[index - 1] = top;
+                }
             }
         }
     }

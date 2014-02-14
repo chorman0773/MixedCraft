@@ -56,10 +56,10 @@ public class WandOfIce extends ItemBaseWand {
 	
 	protected int freezeBlock(World w, int x, int y, int z){
 		Block target = w.getBlock(x, y, z);
-		if(target == Blocks.water){
+		if(target == Blocks.water || target == Blocks.flowing_water){
 			w.setBlock(x, y, z, Blocks.ice);
 			return 1;
-		} else if(target == Blocks.lava){
+		} else if(target == Blocks.lava|| target == Blocks.flowing_lava){
 			w.setBlock(x, y, z, Blocks.cobblestone);
 			return 1;
 		}
