@@ -31,12 +31,12 @@ public class AssemblerRecipes
 
     private AssemblerRecipes()
     {
-        this.addSmelting(ItemHelper.CowChickenMixedDrive.itemID, new ItemStack(ItemHelper.CowChickenSpawner), 0.0F);  
-        this.addSmelting(ItemHelper.CowPigMixedDrive.itemID, new ItemStack(ItemHelper.CowPigSpawner), 0.0F);    
-        this.addSmelting(ItemHelper.CowSheepMixedDrive.itemID, new ItemStack(ItemHelper.CowSheepSpawner), 0.0F);    
-        this.addSmelting(ItemHelper.CowCreeperMixedDrive.itemID, new ItemStack(ItemHelper.CowCreeperSpawner), 0.0F);    
-        this.addSmelting(ItemHelper.CowEndermanMixedDrive.itemID, new ItemStack(ItemHelper.CowEndermanSpawner), 0.0F);    
-        this.addSmelting(ItemHelper.CowZombieMixedDrive.itemID, new ItemStack(ItemHelper.CowZombieSpawner), 0.0F);    
+        this.addSmelting(ItemHelper.CowChickenMixedDrive, new ItemStack(ItemHelper.CowChickenSpawner), 0.0F);  
+        this.addSmelting(ItemHelper.CowPigMixedDrive, new ItemStack(ItemHelper.CowPigSpawner), 0.0F);    
+        this.addSmelting(ItemHelper.CowSheepMixedDrive, new ItemStack(ItemHelper.CowSheepSpawner), 0.0F);    
+        this.addSmelting(ItemHelper.CowCreeperMixedDrive, new ItemStack(ItemHelper.CowCreeperSpawner), 0.0F);    
+        this.addSmelting(ItemHelper.CowEndermanMixedDrive, new ItemStack(ItemHelper.CowEndermanSpawner), 0.0F);    
+        this.addSmelting(ItemHelper.CowZombieMixedDrive, new ItemStack(ItemHelper.CowZombieSpawner), 0.0F);    
         //this.addSmelting(ItemHelper.CowSlimeMixedDrive.itemID, new ItemStack(ItemHelper.CowSlimeSpawner), 0.0F);
        // this.addSmelting(ItemHelper.CowBlazeMixedDrive.itemID, new ItemStack(ItemHelper.CowBlazeSpawner), 0.0F);
         //this.addSmelting(ItemHelper.CowSpiderMixedDrive.itemID, new ItemStack(ItemHelper.CowSpiderSpawner), 0.0F);
@@ -51,10 +51,10 @@ public class AssemblerRecipes
     /**
      * Adds a smelting recipe.
      */
-    public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
+    public void addSmelting(Item par1, ItemStack par2ItemStack, float par3)
     {
-        this.smeltingList.put(Integer.valueOf(par1), par2ItemStack);
-        this.experienceList.put(Integer.valueOf(par2ItemStack.itemID), Float.valueOf(par3));
+        this.smeltingList.put(par1, par2ItemStack);
+        this.experienceList.put(par2ItemStack, Float.valueOf(par3));
     }
 
     public Map getSmeltingList()
@@ -82,12 +82,12 @@ public class AssemblerRecipes
         {
             return null;
         }
-        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item.itemID, item.getItemDamage()));
+        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item, item.getItemDamage()));
         if (ret != null) 
         {
             return ret;
         }
-        return (ItemStack)smeltingList.get(Integer.valueOf(item.itemID));
+        return (ItemStack)smeltingList.get(item);
     }
 
     /**
@@ -100,13 +100,13 @@ public class AssemblerRecipes
             return 0;
         }
         float ret = item.getItem().getSmeltingExperience(item);
-        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item.itemID, item.getItemDamage())))
+        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item, item.getItemDamage())))
         {
-            ret = metaExperience.get(Arrays.asList(item.itemID, item.getItemDamage()));
+            ret = metaExperience.get(Arrays.asList(item, item.getItemDamage()));
         }
-        if (ret < 0 && experienceList.containsKey(item.itemID))
+        if (ret < 0 && experienceList.containsKey(item))
         {
-            ret = ((Float)experienceList.get(item.itemID)).floatValue();
+            ret = ((Float)experienceList.get(item)).floatValue();
         }
         return (ret < 0 ? 0 : ret);
     }

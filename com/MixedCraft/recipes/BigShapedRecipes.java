@@ -21,12 +21,12 @@ public class BigShapedRecipes implements IRecipe
     private ItemStack recipeOutput;
 
     /** Is the itemID of the output item that you get when craft the recipe. */
-    public final int recipeOutputItemID;
+    public final ItemStack recipeOutputItemID;
     private boolean field_92101_f;
 
     public BigShapedRecipes(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack)
     {
-        this.recipeOutputItemID = par4ItemStack.itemID;
+        this.recipeOutputItemID = par4ItemStack;
         this.recipeWidth = par1;
         this.recipeHeight = par2;
         this.recipeItems = par3ArrayOfItemStack;
@@ -96,7 +96,7 @@ public class BigShapedRecipes implements IRecipe
                         return false;
                     }
 
-                    if (itemstack.itemID != itemstack1.itemID)
+                    if (itemstack != itemstack1)
                     {
                         return false;
                     }

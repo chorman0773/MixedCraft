@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.MixedCraft.ItemHelper;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import com.MixedCraft.ItemHelper;
 
 public class ExtractorRecipes
 {
@@ -32,41 +32,41 @@ public class ExtractorRecipes
 
     private ExtractorRecipes()
     {
-        this.addSmelting(ItemHelper.CowDNADrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.SheepDNADrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.ChickenDNADrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.FailDrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.CowPigMixedDrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.CowChickenMixedDrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(ItemHelper.CowSheepMixedDrive.itemID, new ItemStack(ItemHelper.FailDrive), 0.0F);
-        this.addSmelting(Item.porkRaw.itemID, new ItemStack(ItemHelper.PigDNADrive), 0.0F);
-        this.addSmelting(Item.beefRaw.itemID, new ItemStack(ItemHelper.CowDNADrive), 0.0F);
-        this.addSmelting(Block.cloth.blockID, new ItemStack(ItemHelper.SheepDNADrive), 0.0F);
-        this.addSmelting(Item.gunpowder.itemID, new ItemStack(ItemHelper.CreeperDNADrive), 0.0F);
-        this.addSmelting(Item.chickenRaw.itemID, new ItemStack(ItemHelper.ChickenDNADrive), 0.0F);
-        this.addSmelting(Item.enderPearl.itemID, new ItemStack(ItemHelper.EndermanDNADrive), 0.0F);
-        this.addSmelting(Item.rottenFlesh.itemID, new ItemStack(ItemHelper.ZombieDNADrive), 0.0F);
-        this.addSmelting(Item.feather.itemID, new ItemStack(ItemHelper.ChickenDNADrive), 0.0F);
-        this.addSmelting(Item.bone.itemID, new ItemStack(ItemHelper.SkeletonDNADrive), 0.0F);
-        this.addSmelting(Item.ghastTear.itemID, new ItemStack(ItemHelper.GhastDNADrive), 0.0F);
-        this.addSmelting(Item.arrow.itemID, new ItemStack(ItemHelper.SkeletonDNADrive), 0.0F);
-        this.addSmelting(Item.silk.itemID, new ItemStack(ItemHelper.SpiderDNADrive), 0.0F);
-        this.addSmelting(Item.slimeBall.itemID, new ItemStack(ItemHelper.SlimeDNADrive), 0.0F);
-        this.addSmelting(Item.blazeRod.itemID, new ItemStack(ItemHelper.BlazeDNADrive), 0.0F);
-        this.addSmelting(Item.spiderEye.itemID, new ItemStack(ItemHelper.SpiderDNADrive), 0.0F);
-        this.addSmelting(Item.dyePowder.itemID, new ItemStack(ItemHelper.SquidDNADrive), 0.0F);
-        this.addSmelting(Item.skull.itemID, 1, new ItemStack(ItemHelper.WitherSDNADrive), 0.0F);
-        this.addSmelting(Item.netherStar.itemID, new ItemStack(ItemHelper.WitherDNADrive), 0.0F);
+        this.addSmelting(ItemHelper.CowDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.SheepDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.ChickenDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.FailDrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.CowPigMixedDrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.CowChickenMixedDrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(ItemHelper.CowSheepMixedDrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
+        this.addSmelting(Items.porkchop, new ItemStack(ItemHelper.PigDNADrive), 0.0F);
+        this.addSmelting(Items.beef, new ItemStack(ItemHelper.CowDNADrive), 0.0F);
+        this.addSmelting(Blocks.wool, new ItemStack(ItemHelper.SheepDNADrive), 0.0F);
+        this.addSmelting(Items.gunpowder, new ItemStack(ItemHelper.CreeperDNADrive), 0.0F);
+        this.addSmelting(Items.chicken, new ItemStack(ItemHelper.ChickenDNADrive), 0.0F);
+        this.addSmelting(Items.ender_pearl, new ItemStack(ItemHelper.EndermanDNADrive), 0.0F);
+        this.addSmelting(Items.rotten_flesh, new ItemStack(ItemHelper.ZombieDNADrive), 0.0F);
+        this.addSmelting(Items.feather, new ItemStack(ItemHelper.ChickenDNADrive), 0.0F);
+        this.addSmelting(Items.bone, new ItemStack(ItemHelper.SkeletonDNADrive), 0.0F);
+        this.addSmelting(Items.ghast_tear, new ItemStack(ItemHelper.GhastDNADrive), 0.0F);
+        this.addSmelting(Items.arrow, new ItemStack(ItemHelper.SkeletonDNADrive), 0.0F);
+        this.addSmelting(Items.string, new ItemStack(ItemHelper.SpiderDNADrive), 0.0F);
+        this.addSmelting(Items.slime_ball, new ItemStack(ItemHelper.SlimeDNADrive), 0.0F);
+        this.addSmelting(Items.blaze_rod, new ItemStack(ItemHelper.BlazeDNADrive), 0.0F);
+        this.addSmelting(Items.spider_eye, new ItemStack(ItemHelper.SpiderDNADrive), 0.0F);
+        this.addSmelting(Items.dye, new ItemStack(ItemHelper.SquidDNADrive), 0.0F);
+        this.addSmelting(Items.skull, new ItemStack(ItemHelper.WitherSDNADrive), 0.0F);
+        this.addSmelting(Items.nether_star, new ItemStack(ItemHelper.WitherDNADrive), 0.0F);
     }
 
 
     /**
      * Adds a smelting recipe.
      */
-    public void addSmelting(int par1, ItemStack par2ItemStack, float par3)
+    public void addSmelting(Object par1, ItemStack par2ItemStack, float par3)
     {
-        this.smeltingList.put(Integer.valueOf(par1), par2ItemStack);
-        this.experienceList.put(Integer.valueOf(par2ItemStack.itemID), Float.valueOf(par3));
+        this.smeltingList.put(par1, par2ItemStack);
+        this.experienceList.put(par2ItemStack, Float.valueOf(par3));
     }
 
     public Map getSmeltingList()
@@ -94,12 +94,12 @@ public class ExtractorRecipes
         {
             return null;
         }
-        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item.itemID, item.getItemDamage()));
+        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item, item.getItemDamage()));
         if (ret != null) 
         {
             return ret;
         }
-        return (ItemStack)smeltingList.get(Integer.valueOf(item.itemID));
+        return (ItemStack)smeltingList.get(item);
     }
 
     /**
@@ -112,13 +112,13 @@ public class ExtractorRecipes
             return 0;
         }
         float ret = item.getItem().getSmeltingExperience(item);
-        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item.itemID, item.getItemDamage())))
+        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item, item.getItemDamage())))
         {
-            ret = metaExperience.get(Arrays.asList(item.itemID, item.getItemDamage()));
+            ret = metaExperience.get(Arrays.asList(item, item.getItemDamage()));
         }
-        if (ret < 0 && experienceList.containsKey(item.itemID))
+        if (ret < 0 && experienceList.containsKey(item))
         {
-            ret = ((Float)experienceList.get(item.itemID)).floatValue();
+            ret = ((Float)experienceList.get(item)).floatValue();
         }
         return (ret < 0 ? 0 : ret);
     }
