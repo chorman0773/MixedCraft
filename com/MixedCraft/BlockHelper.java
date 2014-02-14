@@ -61,12 +61,12 @@ public class BlockHelper extends HelperHandler{
     public static final Block GoldFurnaceOff = new GoldFurnace(false).setBlockName("GoldFurnace").setCreativeTab(MixedCraft.BlockTab);
     public static final Block GoldFurnaceOn = new GoldFurnace(true).setBlockName("GoldFurnace").setCreativeTab(null);
     
-    public static final Block Flower1 = new ModFlower(0, "FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block Flower2 = new ModFlower(0, "FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);
+    //public static final Block Flower1 = new ModFlower(0, "FlyLightFlower_1").setBlockName("Flower1").setCreativeTab(MixedCraft.BlockTab);
+    //public static final Block Flower2 = new ModFlower(0, "FlyLightFlower_2").setBlockName("Flower2").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightLog = new ModLog("FlyLight").setBlockName("Log").setHardness(1.5F).setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightLeaves = new ModLeaves("FlyLight").setHardness(0.4F).setBlockName("Leaves").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block FlylightFern = new ModTallGrass("FlyLightFern").setBlockName("Fern").setCreativeTab(MixedCraft.BlockTab);
-    public static final Block FlylightGrass = new ModTallGrass("FlyLightGrass").setBlockName("Grass").setCreativeTab(MixedCraft.BlockTab);
+    //public static final Block FlylightFern = new ModTallGrass("FlyLightFern").setBlockName("Fern").setCreativeTab(MixedCraft.BlockTab);
+    //public static final Block FlylightGrass = new ModTallGrass("FlyLightGrass").setBlockName("Grass").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightCane = new FlylightSugarCane().registerTexture("FlyLightSugarCane").setBlockName("Cane").setCreativeTab(MixedCraft.BlockTab);
     public static final Block FlylightSapling = new FlylightSapling("FlylightSapling").setBlockName("Sapling").setCreativeTab(MixedCraft.BlockTab);
     public static final Block Water = new ModWater().setBlockName("Water").setCreativeTab(MixedCraft.BlockTab);
@@ -106,16 +106,14 @@ public class BlockHelper extends HelperHandler{
 		addBlock(Emerald, "Flylight Emerald Ore");
 		addBlock(Vine, "Vine");
 		addBlock(Water, "Flylight Water");
-		addBlock(Flower1, "Flylight Flower");
-		addBlock(Flower2, "Flylight Flower 2");
+		//addBlock(Flower1, "Flylight Flower");
+		//addBlock(Flower2, "Flylight Flower 2");
 		addBlock(FlylightLog, "Flylight Log");
 		addBlock(FlylightLeaves, "Flylight Leaves");
-		addBlock(FlylightFern, "Flylight Fern");
-		addBlock(FlylightGrass, "Flylight Tall Grass");
-		addBlock(FlylightCane, "Flylight SugarCane");
-		addBlock(FlylightSapling, "Flylight Sapling");
-		//addBlock(DoubleFurnace, "Double Furnace");
-		//addBlock(DoubleFurnaceOn, "DoubleFurnace On");
+		//addBlock(FlylightFern, "Flylight Fern");
+		//addBlock(FlylightGrass, "Flylight Tall Grass");
+		//addBlock(FlylightCane, "Flylight SugarCane");
+		//addBlock(FlylightSapling, "Flylight Sapling");
 		addBlock(GoldFurnaceOn, "Gold Furnace On");
 		addBlock(GoldFurnaceOff, "Gold Furnace");
 		//addBlock(House1, EnumChatFormatting.DARK_GREEN + "Auto House: 1");
@@ -138,12 +136,12 @@ public class BlockHelper extends HelperHandler{
 		addBlock(TinBlock, "Tin Block");
 		addBlock(SilverOre, "Silver Ore");
 		addBlock(SilverBlock, "Silver Block");	 
-		addBlock(FlyLightGrass, "Flylight Grass");
-		addBlock(FlyLightDirt, "Flylight Dirt");
+		//addBlock(FlyLightGrass, "Flylight Grass");
+		//addBlock(FlyLightDirt, "Flylight Dirt");
 		addBlock(Test, "Colourful Block");
-		addBlock(FlyLightOre, "Flylight Ore");
-		addBlock(FlyLightPortal, "Flylight Portal");
-		addBlock(FlyLightStone, "Flylight Stone");
+		//addBlock(FlyLightOre, "Flylight Ore");
+		//addBlock(FlyLightPortal, "Flylight Portal");
+		//addBlock(FlyLightStone, "Flylight Stone");
 		addBlock(SlowSand, "Sink Sand");
 	}
 }

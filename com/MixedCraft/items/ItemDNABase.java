@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.ItemsBase;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -19,6 +20,7 @@ public class ItemDNABase extends ItemsBase{
 
 	public ItemDNABase(int Gui){
 		super("DNAKey");
+		GameRegistry.registerItem(this, "DNAKey");
 		this.Gui = Gui;
 	}
 

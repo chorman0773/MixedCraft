@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 
 import com.MixedCraft.helper.ItemsBase;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,7 +17,7 @@ public class ItemMixedBase extends ItemsBase{
 
 	public ItemMixedBase() {
 		super("MixedDNAKey");
-
+		GameRegistry.registerItem(this, "MixedDNAKey");
 	}
 
 	public ItemMixedBase setDescription(String[] desc) {
