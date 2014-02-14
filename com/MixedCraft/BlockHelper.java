@@ -53,7 +53,7 @@ public class BlockHelper extends HelperHandler{
 
 	//public static final Block House1 = new BlockHouse1().setHardness(3.5F).setStepSound(Block.soundTypeMetal).setBlockName("House1").setLightLevel(0.875F);
 
-    public static final Block SlowSand = new BlockSinkSand().setHardness(1.0F).setStepSound(Block.soundTypeSand).setBlockName("SlowSand").setBlockTextureName("sand");
+    public static final Block SlowSand = new BlockSinkSand().setName("SlowSand");
 
     public static final Block ChocolateCake = new BlockChocolateCake().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("ChocolateCake").setBlockTextureName("ChocolateCake");
     public static final Block ChocolateCrop = new BlockChocolateCrop().setBlockName("ChocolateCrop").setBlockTextureName("ChocolateCrop");

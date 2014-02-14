@@ -132,13 +132,13 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.redstone_ore, 5)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 8; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(150);
 			int randPosZ = chunkZ + rand.nextInt(16);
 
-			(new WorldGenMinable(BlockHelper.SlowSand, 7, Blocks.sand)).generate(world, rand, randPosX, randPosY, randPosZ);		
+			(new WorldGenMinable(BlockHelper.SlowSand, 15, Blocks.sand)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 	}
 }
