@@ -15,7 +15,7 @@ public class ClientProxy extends CommonProxy {
     
     @Override
     public void registerCape() {
-		DevCapes.getInstance().registerConfig("https://www.dropbox.com/s/vlyyr7ujn42tne9/Capes.json", "MixedCraft");
+		DevCapes.getInstance().registerConfig("https://dl.dropboxusercontent.com/s/vlyyr7ujn42tne9/Capes.json", "MixedCraft");
     }
 
 }

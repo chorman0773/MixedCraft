@@ -71,7 +71,7 @@ public class MixedCraft extends HelperHandler{
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		//proxy.registerCape();
+		proxy.registerCape();
 	}	
 
 	@EventHandler
