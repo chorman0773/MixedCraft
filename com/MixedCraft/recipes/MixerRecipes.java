@@ -2,8 +2,10 @@ package com.MixedCraft.recipes;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.MixedCraft.ItemHelper;
 
@@ -11,6 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 
 public class MixerRecipes
 {
@@ -48,7 +51,7 @@ public class MixerRecipes
         this.addSmelting(ItemHelper.SquidDNADrive, new ItemStack(ItemHelper.CowSquidMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.WitherDNADrive, new ItemStack(ItemHelper.CowWitherMixedDrive), 0.0F);
         this.addSmelting(ItemHelper.WitherSDNADrive, new ItemStack(ItemHelper.CowWitherSMixedDrive), 0.0F);
-
+        
         /*this.addSmelting(ItemHelper.ChickenDNADrive, new ItemStack(ItemHelper.PigChickenMixedDrive), 0.0F);
         //this.addSmelting(ItemHelper.CowDNADrive, new ItemStack(ItemHelper.Cow), 0.0F);
         this.addSmelting(ItemHelper.CreeperDNADrive, new ItemStack(ItemHelper.PigCreeperMixedDrive), 0.0F);
@@ -67,65 +70,70 @@ public class MixerRecipes
         
         
     }
+    public void addSmelting(Item item, ItemStack stack, float XP)
+    {
+        this.func_151394_a(new ItemStack(item, 1, 32767), stack, XP);
+    }
+    
+    public void addSmelting(Block item, ItemStack stack, float XP)
+    {
+        this.func_151394_a(new ItemStack(item, 1, 32767), stack, XP);
+    }
 
-    /**
-     * Adds a smelting recipe.
-     */
-    public static void addSmelting(Item input, ItemStack output, float XP) {
-		GameRegistry.addSmelting(input, output, XP);
-	}
+    public void func_151394_a(ItemStack p_151394_1_, ItemStack p_151394_2_, float p_151394_3_)
+    {
+        this.smeltingList.put(p_151394_1_, p_151394_2_);
+        this.experienceList.put(p_151394_2_, Float.valueOf(p_151394_3_));
+    }
+
+    public ItemStack getSmeltingResult(ItemStack p_151395_1_)
+    {
+        Iterator iterator = this.smeltingList.entrySet().iterator();
+        Entry entry;
+
+        do
+        {
+            if (!iterator.hasNext())
+            {
+                return null;
+            }
+
+            entry = (Entry)iterator.next();
+        }
+        while (!this.func_151397_a(p_151395_1_, (ItemStack)entry.getKey()));
+
+        return (ItemStack)entry.getValue();
+    }
+
+    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
+    {
+        return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
+    }
 
     public Map getSmeltingList()
     {
         return this.smeltingList;
     }
 
-    /**
-     * A metadata sensitive version of adding a furnace recipe.
-     */
-    public void addSmelting(int itemID, int metadata, ItemStack itemstack, float experience)
+    public float func_151398_b(ItemStack p_151398_1_)
     {
-        metaSmeltingList.put(Arrays.asList(itemID, metadata), itemstack);
-        metaExperience.put(Arrays.asList(itemID, metadata), experience);
-    }
+        float ret = p_151398_1_.getItem().getSmeltingExperience(p_151398_1_);
+        if (ret != -1) return ret;
 
-    /**
-     * Used to get the resulting ItemStack form a source ItemStack
-     * @param item The Source ItemStack
-     * @return The result ItemStack
-     */
-    public ItemStack getSmeltingResult(ItemStack item) 
-    {
-        if (item == null)
-        {
-            return null;
-        }
-        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item, item.getItemDamage()));
-        if (ret != null) 
-        {
-            return ret;
-        }
-        return (ItemStack)smeltingList.get(item);
-    }
+        Iterator iterator = this.experienceList.entrySet().iterator();
+        Entry entry;
 
-    /**
-     * Grabs the amount of base experience for this item to give when pulled from the furnace slot.
-     */
-    public float getExperience(ItemStack item)
-    {
-        if (item == null || item.getItem() == null)
+        do
         {
-            return 0;
+            if (!iterator.hasNext())
+            {
+                return 0.0F;
+            }
+
+            entry = (Entry)iterator.next();
         }
-        float ret = item.getItem().getSmeltingExperience(item);
-        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item, item.getItemDamage())))
-        {
-            ret = metaExperience.get(Arrays.asList(item, item.getItemDamage()));
-        }
-        if (ret < 0 && experienceList.containsKey(item))
-        {
-            ret = ((Float)experienceList.get(item)).floatValue();
-        }
-        return (ret < 0 ? 0 : ret);
+        while (!this.func_151397_a(p_151398_1_, (ItemStack)entry.getKey()));
+
+        return ((Float)entry.getValue()).floatValue();
     }
 }

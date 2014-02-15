@@ -2,11 +2,15 @@ package com.MixedCraft.recipes;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.MixedCraft.ItemHelper;
@@ -30,8 +34,7 @@ public class ExtractorRecipes
         return smeltingBase;
     }
 
-    private ExtractorRecipes()
-    {
+    private ExtractorRecipes() {
         this.addSmelting(ItemHelper.CowDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
         this.addSmelting(ItemHelper.SheepDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
         this.addSmelting(ItemHelper.ChickenDNADrive, new ItemStack(ItemHelper.FailDrive), 0.0F);
@@ -58,15 +61,58 @@ public class ExtractorRecipes
         this.addSmelting(Items.skull, new ItemStack(ItemHelper.WitherSDNADrive), 0.0F);
         this.addSmelting(Items.nether_star, new ItemStack(ItemHelper.WitherDNADrive), 0.0F);
     }
+    
+    public boolean isItem(ItemStack i){
+    	if(i.getItem() == Items.porkchop || i.getItem() == Items.beef || i.getItem() == Item.getItemFromBlock(Blocks.wool) 
+    			|| i.getItem() == Items.gunpowder || i.getItem() == Items.chicken || i.getItem() == Items.ender_pearl
+    			|| i.getItem() == Items.rotten_flesh || i.getItem() == Items.feather || i.getItem() == Items.bone 
+    			|| i.getItem() == Items.ghast_tear || i.getItem() == Items.arrow || i.getItem() == Items.string
+    			|| i.getItem() == Items.slime_ball || i.getItem() == Items.blaze_rod || i.getItem() == Items.spider_eye 
+    			|| i.getItem() == Items.dye || i == new ItemStack(Items.skull, 1, 1) || i.getItem() == Items.nether_star){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
 
-
-    /**
-     * Adds a smelting recipe.
-     */
-    public void addSmelting(Object par1, ItemStack par2ItemStack, float par3)
+    public void addSmelting(Item item, ItemStack stack, float XP)
     {
-        this.smeltingList.put(par1, par2ItemStack);
-        this.experienceList.put(par2ItemStack, Float.valueOf(par3));
+        this.func_151394_a(new ItemStack(item, 1, 32767), stack, XP);
+    }
+    
+    public void addSmelting(Block item, ItemStack stack, float XP)
+    {
+        this.func_151394_a(new ItemStack(item, 1, 32767), stack, XP);
+    }
+
+    public void func_151394_a(ItemStack p_151394_1_, ItemStack p_151394_2_, float p_151394_3_)
+    {
+        this.smeltingList.put(p_151394_1_, p_151394_2_);
+        this.experienceList.put(p_151394_2_, Float.valueOf(p_151394_3_));
+    }
+
+    public ItemStack getSmeltingResult(ItemStack p_151395_1_)
+    {
+        Iterator iterator = this.smeltingList.entrySet().iterator();
+        Entry entry;
+
+        do
+        {
+            if (!iterator.hasNext())
+            {
+                return null;
+            }
+
+            entry = (Entry)iterator.next();
+        }
+        while (!this.func_151397_a(p_151395_1_, (ItemStack)entry.getKey()));
+
+        return (ItemStack)entry.getValue();
+    }
+
+    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
+    {
+        return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
     }
 
     public Map getSmeltingList()
@@ -74,52 +120,25 @@ public class ExtractorRecipes
         return this.smeltingList;
     }
 
-    /**
-     * A metadata sensitive version of adding a furnace recipe.
-     */
-    public void addSmelting(int itemID, int metadata, ItemStack itemstack, float experience)
+    public float func_151398_b(ItemStack p_151398_1_)
     {
-        metaSmeltingList.put(Arrays.asList(itemID, metadata), itemstack);
-        metaExperience.put(Arrays.asList(itemID, metadata), experience);
-    }
+        float ret = p_151398_1_.getItem().getSmeltingExperience(p_151398_1_);
+        if (ret != -1) return ret;
 
-    /**
-     * Used to get the resulting ItemStack form a source ItemStack
-     * @param item The Source ItemStack
-     * @return The result ItemStack
-     */
-    public ItemStack getSmeltingResult(ItemStack item) 
-    {
-        if (item == null)
-        {
-            return null;
-        }
-        ItemStack ret = (ItemStack)metaSmeltingList.get(Arrays.asList(item, item.getItemDamage()));
-        if (ret != null) 
-        {
-            return ret;
-        }
-        return (ItemStack)smeltingList.get(item);
-    }
+        Iterator iterator = this.experienceList.entrySet().iterator();
+        Entry entry;
 
-    /**
-     * Grabs the amount of base experience for this item to give when pulled from the furnace slot.
-     */
-    public float getExperience(ItemStack item)
-    {
-        if (item == null || item.getItem() == null)
+        do
         {
-            return 0;
+            if (!iterator.hasNext())
+            {
+                return 0.0F;
+            }
+
+            entry = (Entry)iterator.next();
         }
-        float ret = item.getItem().getSmeltingExperience(item);
-        if (ret < 0 && metaExperience.containsKey(Arrays.asList(item, item.getItemDamage())))
-        {
-            ret = metaExperience.get(Arrays.asList(item, item.getItemDamage()));
-        }
-        if (ret < 0 && experienceList.containsKey(item))
-        {
-            ret = ((Float)experienceList.get(item)).floatValue();
-        }
-        return (ret < 0 ? 0 : ret);
+        while (!this.func_151397_a(p_151398_1_, (ItemStack)entry.getKey()));
+
+        return ((Float)entry.getValue()).floatValue();
     }
 }
