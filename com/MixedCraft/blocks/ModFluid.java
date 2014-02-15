@@ -8,5 +8,5 @@ public class ModFluid extends Fluid{
 	public ModFluid(String fluidName) {
 		super(fluidName);
 		FluidRegistry.registerFluid(this);	
-		}
+	}
 }

@@ -17,6 +17,7 @@ public class ModOre extends ModBlock{
 	public ModOre() {
 		super();
 		setLightLevel(0.6F);
+		setHardness(3.0F);
 	}
 
 	@Override

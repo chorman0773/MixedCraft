@@ -41,9 +41,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 
 	private void generateSurface(World world, Random rand, int chunkX, int chunkZ){
 
-
-		for(int i = 0; i < 8; i++)
-		{
+		for(int i = 0; i < 8; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(50);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -51,8 +49,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(BlockHelper.CopperOre, 5)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 		
-		for(int i = 0; i < 8; i++)
-		{
+		for(int i = 0; i < 8; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(50);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -60,8 +57,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(BlockHelper.TinOre, 5)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(20);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -69,8 +65,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(BlockHelper.SilverOre, 3)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 7; i++)
-		{
+		for(int i = 0; i < 7; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -78,8 +73,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.coal_ore, 15)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -87,8 +81,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.iron_ore, 8)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 		
-		for(int i = 0; i < 2; i++)
-		{
+		for(int i = 0; i < 2; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -96,8 +89,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.diamond_ore, 6)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -105,8 +97,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.emerald_ore, 1)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -114,8 +105,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.gold_ore, 6)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -123,8 +113,7 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.lapis_ore, 5)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 3; i++)
-		{
+		for(int i = 0; i < 3; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(100);
 			int randPosZ = chunkZ + rand.nextInt(16);
@@ -132,13 +121,12 @@ public class WorldGenMixedMinable implements IWorldGenerator{
 			(new WorldGenMinable(Blocks.redstone_ore, 5)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}
 		
-		for(int i = 0; i < 10; i++)
-		{
+		for(int i = 0; i < 5; i++) {
 			int randPosX = chunkX + rand.nextInt(16);
 			int randPosY = rand.nextInt(150);
 			int randPosZ = chunkZ + rand.nextInt(16);
 
-			(new WorldGenMinable(BlockHelper.SlowSand, 15, Blocks.sand)).generate(world, rand, randPosX, randPosY, randPosZ);		
+			(new WorldGenMinable(BlockHelper.SlowSand, 25, Blocks.sand)).generate(world, rand, randPosX, randPosY, randPosZ);		
 		}	
 	}
 }

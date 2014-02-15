@@ -72,13 +72,13 @@ public class BlockHelper extends HelperHandler{
     public static final Block Water = new ModWater().setBlockName("Water").setCreativeTab(MixedCraft.BlockTab);
     public static final Block Vine = new ModVine().registerTexture("FlylightVine").setBlockName("Vine").setCreativeTab(MixedCraft.BlockTab);
     
-    public static final Block Iron = new ModOre().registerTexture("Iron").setHardness(3.0F).setBlockName("Iron");
-    public static final Block Gold = new ModOre().registerTexture("Gold").setHardness(3.0F).setBlockName("Gold");
-    public static final Block Lapis = new ModOre().registerTexture("Lapis").setHardness(3.0F).setBlockName("Lapis");
-    public static final Block Redstone = new ModOre().registerTexture("Redstone").setHardness(3.0F).setBlockName("Redstone");
-    public static final Block Diamond = new ModOre().registerTexture("Diamond").setHardness(3.0F).setBlockName("Diamond");
-    public static final Block Coal = new ModOre().registerTexture("Coal").setHardness(3.0F).setBlockName("Coal");
-    public static final Block Emerald = new ModOre().registerTexture("Emerald").setHardness(3.0F).setBlockName("Emerald"); 
+    public static final Block Iron = new ModOre().registerTexture("Iron").setBlockName("Iron");
+    public static final Block Gold = new ModOre().registerTexture("Gold").setBlockName("Gold");
+    public static final Block Lapis = new ModOre().registerTexture("Lapis").setBlockName("Lapis");
+    public static final Block Redstone = new ModOre().registerTexture("Redstone").setBlockName("Redstone");
+    public static final Block Diamond = new ModOre().registerTexture("Diamond").setBlockName("Diamond");
+    public static final Block Coal = new ModOre().registerTexture("Coal").setBlockName("Coal");
+    public static final Block Emerald = new ModOre().registerTexture("Emerald").setBlockName("Emerald"); 
     
     public static final Block PoweredFurnace = new BlockPoweredFurnace(false);
     public static final Block PoweredFurnaceOn = new BlockPoweredFurnace(true);

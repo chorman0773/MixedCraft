@@ -59,19 +59,9 @@ public class MixedCraft extends HelperHandler{
 			return ItemHelper.SilverIngot;
 		}
 	};
-
-	public static void addTabName(){
-		addTabName("DNA", "DNA Tab");
-		addTabName("MixedDNA", "Mixed DNA Tab");
-		addTabName("Spawner", "Spawner Tab");
-		addTabName("Block", "Block Tab");
-		addTabName("Tool", "Tool Tab");
-		addTabName("Misc", "Misc. Tab");
-	}
-
+	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{	    
+	public void preInit(FMLPreInitializationEvent event) {	    
 		proxy.preInit(event);
 		proxy.registerRenderInformation();
 		event.getModMetadata().credits = "The_Slayer ~ The programmer, DrCyano ~ The programmer for the Magic Wands mod";
@@ -79,10 +69,9 @@ public class MixedCraft extends HelperHandler{
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
-		addTabName();
+		//proxy.registerCape();
 	}	
 
 	@EventHandler

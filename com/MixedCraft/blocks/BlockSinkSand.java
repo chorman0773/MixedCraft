@@ -33,4 +33,9 @@ public class BlockSinkSand extends BlockFalling{
         setBlockTextureName(name);
         return this;
     }
+    
+    @Override
+    public boolean isOpaqueCube() {
+    	return true;
+    }
 }

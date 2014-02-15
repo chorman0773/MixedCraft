@@ -65,4 +65,6 @@ public class CommonProxy extends HelperHandler {
 		Achievements.init();
 		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
 	}
+	
+	public void registerCape(){ }
 }
