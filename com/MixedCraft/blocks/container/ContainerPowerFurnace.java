@@ -27,6 +27,7 @@ public class ContainerPowerFurnace extends Container
 		this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 56, 35));
 		this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 8, 56));
 		this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 2, 116, 35));
+		this.addSlotToContainer(new Slot(par2TileEntityFurnace, 3, 27, 8));
 		int i;
 
 		for (i = 0; i < 3; ++i)

@@ -112,6 +112,7 @@ public class ItemHelper extends HelperHandler{
 
 	public static final Item TNTBow = new ItemTNTBow().setUnlocalizedName("TNTBow").setCreativeTab(MixedCraft.ToolTab);
 	public static final Item TNTArrow = new ModItem().registerTextures("TNTArrow").setUnlocalizedName("TNTArrow").setCreativeTab(MixedCraft.MiscTab);
+	public static final Item TorchBow = new ItemTorchBow();
 
 	public static final Item ChocalateCake = new ItemReed(BlockHelper.ChocolateCake).setUnlocalizedName("ChocolateCake").setTextureName("MixedCraft:ChocolateCake").setCreativeTab(MixedCraft.BlockTab);
 	public static final Item LightningRod = new ItemLightningRod().registerTextures("LightningRod").setUnlocalizedName("LightningRod").setCreativeTab(MixedCraft.ToolTab);
@@ -133,8 +134,10 @@ public class ItemHelper extends HelperHandler{
 	public static final Item wandTeleport = new WandOfTeleportation("wandTeleport");
 	public static final Item wandHarming = new WandOfHarming("wandHarm");
 	
-	public static final Item TorchBow = new ItemTorchBow();
-	
+	public static final Item batteryWeak = new ItemBattery(1500).setName("weakBattery");
+	public static final Item battery = new ItemBattery(3000).setName("battery");
+	public static final Item batteryStrong = new ItemBattery(5000).setName("strongBattery");
+
 	public static void addNames(){
 		addItem(TorchBow, "Torch Bow");
 		

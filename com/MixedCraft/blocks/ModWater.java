@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModWater extends BlockFluidClassic{
 
-	IIcon[] theIIcon;
+	public IIcon[] theIIcon;
 	
 	public ModWater() {
 		super(MixedCraft.Mod, Material.water);
@@ -23,14 +23,12 @@ public class ModWater extends BlockFluidClassic{
 	}
 
 	@Override
-    public IIcon getIcon(int par1, int par2)
-    {
+    public IIcon getIcon(int par1, int par2) {
         return par1 != 0 && par1 != 1 ? this.theIIcon[1] : this.theIIcon[0];
     }
 	
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IIconRegister)
-	{
+	public void registerBlockIcons(IIconRegister par1IIconRegister) {
 		this.theIIcon = new IIcon[] {par1IIconRegister.registerIcon(Utils.MOD_ID + ":" + "Liquid"), par1IIconRegister.registerIcon(Utils.MOD_ID + ":" + "Liquid_2")};
 	}
 }

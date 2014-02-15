@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
-import net.minecraft.block.BlockFlower;
+import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -17,23 +16,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.MixedCraft.ItemHelper;
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChocolateCrop extends BlockFlower
+public class BlockChocolateCrop extends ModFlower implements IGrowable
 {
     @SideOnly(Side.CLIENT)
     private IIcon[] IIconArray;
 
-    public BlockChocolateCrop()
-    {
-        super(0);
+    public BlockChocolateCrop() {
+        super("");
         this.setTickRandomly(true);
         float f = 0.5F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-        this.setCreativeTab((CreativeTabs)null);
+        this.setCreativeTab(null);
         this.setHardness(0.0F);
         this.setStepSound(soundTypeGrass);
         this.disableStats();
@@ -205,4 +204,19 @@ public class BlockChocolateCrop extends BlockFlower
             this.IIconArray[i] = par1IIconRegister.registerIcon(Utils.MOD_ID + ":" + "ChocolateCrop_" + i);
         }
     }
+
+	@Override
+	public boolean func_149851_a(World var1, int var2, int var3, int var4, boolean var5) {
+		 return var1.getBlockMetadata(var2, var3, var4) != 7;
+	}
+
+	@Override
+	public boolean func_149852_a(World var1, Random var2, int var3, int var4, int var5) {
+		return true;
+	}
+
+	@Override
+	public void func_149853_b(World var1, Random var2, int var3, int var4, int var5) {
+		this.fertilize(var1, var3, var4, var5);
+	}
 }

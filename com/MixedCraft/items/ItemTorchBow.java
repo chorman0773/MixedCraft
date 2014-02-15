@@ -25,7 +25,7 @@ public class ItemTorchBow extends ItemsBase
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 		setUnlocalizedName("TorchBow");
-		setCreativeTab(MixedCraft.MiscTab);
+		setCreativeTab(MixedCraft.ToolTab);
 	}
 
 

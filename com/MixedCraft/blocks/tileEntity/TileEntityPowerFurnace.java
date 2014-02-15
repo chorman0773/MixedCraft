@@ -12,21 +12,20 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.MixedCraft.ItemHelper;
 import com.MixedCraft.blocks.BlockPoweredFurnace;
+import com.MixedCraft.items.ItemPower;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityPowerFurnace extends TileEntity implements ISidedInventory{
-	
+
 	private static final int[] slots_top = new int[] {0};
 	private static final int[] slots_bottom = new int[] {2, 1};
 	private static final int[] slots_sides = new int[] {1};
 
-	/**
-	 * The ItemStacks that hold the items currently being used in the furnace
-	 */
-	private ItemStack[] slots = new ItemStack[3];
+	private ItemStack[] slots = new ItemStack[4];
 
 	public int maceratingSpeed = 100;
 
@@ -37,26 +36,16 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 
 	private String field_94130_e;
 
-	/**
-	 * Returns the number of slots in the inventory.
-	 */
 	public int getSizeInventory()
 	{
 		return this.slots.length;
 	}
 
-	/**
-	 * Returns the stack in slot i
-	 */
 	public ItemStack getStackInSlot(int par1)
 	{
 		return this.slots[par1];
 	}
 
-	/**
-	 * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
-	 * new stack.
-	 */
 	public ItemStack decrStackSize(int par1, int par2)
 	{
 		if (this.slots[par1] != null)
@@ -87,10 +76,6 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 	}
 
-	/**
-	 * When some containers are closed they call this on each slot, then drop whatever it returns as an EntityItem -
-	 * like when you close a workbench GUI.
-	 */
 	public ItemStack getStackInSlotOnClosing(int par1)
 	{
 		if (this.slots[par1] != null)
@@ -103,9 +88,6 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 	}
 
-	/**
-	 * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-	 */
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
 	{
 		this.slots[par1] = par2ItemStack;
@@ -116,34 +98,21 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 	}
 
-	/**
-	 * Returns the name of the inventory.
-	 */
 	public String getInvName()
 	{
 		return this.isInvNameLocalized() ? this.field_94130_e : "container.powerfurnace";
 	}
 
-	/**
-	 * If this returns false, the inventory name will be used as an unlocalized name, and translated into the player's
-	 * language. Otherwise it will be used directly.
-	 */
 	public boolean isInvNameLocalized()
 	{
 		return this.field_94130_e != null && this.field_94130_e.length() > 0;
 	}
 
-	/**
-	 * Sets the custom display name to use when opening a GUI linked to this tile entity.
-	 */
 	public void setGuiDisplayName(String par1Str)
 	{
 		this.field_94130_e = par1Str;
 	}
 
-	/**
-	 * Reads a tile entity from NBT.
-	 */
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readFromNBT(par1NBTTagCompound);
@@ -170,9 +139,6 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 	}
 
-	/**
-	 * Writes a tile entity to NBT.
-	 */
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeToNBT(par1NBTTagCompound);
@@ -198,27 +164,28 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 			par1NBTTagCompound.setString("CustomName", this.field_94130_e);
 		}
 	}
-	
+
 	public boolean isOre(ItemStack itemstack){
 		String[] oreNames = OreDictionary.getOreNames();
 
 		for(int i = 0; i < oreNames.length; i++){
-    			if(oreNames[i].contains("ore")){
-	    			if(OreDictionary.getOres(oreNames[i]) != null){
-	    				if(OreDictionary.getOres(oreNames[i]).get(0) == itemstack){
-	    					//this.maceratingSpeed = 50;
-	    					return true;      
-	    				}
-	    			}
-    			}
-    		}
+			if(oreNames[i].contains("ore")){
+				if(OreDictionary.getOres(oreNames[i]) != null){
+					if(OreDictionary.getOres(oreNames[i]).get(0) == itemstack){
+						return true;      
+					}
+				}
+			}
+		}
 		return true;
 	}
 
-	/**
-	 * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't
-	 * this more of a set than a get?*
-	 */
+	private boolean isBattery(){
+		if(this.slots[3] != null)
+			return this.slots[3].getItem() instanceof ItemPower;
+		return false;
+	}
+
 	public int getInventoryStackLimit()
 	{
 		return 64;
@@ -234,9 +201,6 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		return this.power * par1 / this.maxPower;
 	}
 
-	/**
-	 * Returns true if the furnace is currently burning
-	 */
 	public boolean hasPower()
 	{
 		return this.power > 0;
@@ -246,12 +210,8 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		return this.cookTime > 0;
 	}
 
-	/**
-	 * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
-	 * ticks and creates a new spawn inside its implementation.
-	 */
 	public void updateEntity(){
-		boolean flag = this.power > 0;
+		boolean flag = hasPower();
 		boolean flag1 = false;
 
 		if (hasPower() && isMacerating()){
@@ -259,19 +219,34 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 		}
 
 		if (!this.worldObj.isRemote){
-			if (this.power < this.maxPower && this.getItemPower(this.slots[1]) > 0){
-				this.power += getItemPower(this.slots[1]);
-
-				flag1 = true;
-
-				if (this.slots[1] != null){
-					this.slots[1].stackSize--;
-
-					if (this.slots[1].stackSize == 0){
-						this.slots[1] = this.slots[1].getItem().getContainerItem(slots[1]);
-					}
-				}                
+			
+			if(isBattery() && this.slots[3].getItemDamage() > 0 && power > 0){
+				this.slots[3].setItemDamage(this.slots[3].getItemDamage() -1);
+				this.power--;
 			}
+			
+			if (this.power < this.maxPower && this.getItemPower(this.slots[1]) > 0){
+				if(!this.slots[1].isItemStackDamageable()){
+
+
+					this.power += getItemPower(this.slots[1]);
+					flag1 = true;
+
+					if (this.slots[1] != null){
+						this.slots[1].stackSize--;
+
+						if (this.slots[1].stackSize == 0){
+							this.slots[1] = this.slots[1].getItem().getContainerItem(slots[1]);
+						}
+					}                
+				} else {
+					if(this.slots[1].getItemDamage() < this.slots[1].getMaxDamage()){
+						this.power += getItemPower(this.slots[1]);
+						this.slots[1] = new ItemStack(this.slots[1].getItem(), this.slots[1].stackSize, this.slots[1].getItemDamage() + 1);
+					}
+				}
+			}
+
 
 			if (this.hasPower() && this.canSmelt())
 			{
@@ -342,9 +317,9 @@ public class TileEntityPowerFurnace extends TileEntity implements ISidedInventor
 			return 0;
 		}else{
 			Item i = par0ItemStack.getItem();
-
-			if(i == Items.redstone) return 20;
-			if(i == Item.getItemFromBlock(Blocks.redstone_block)) return 100;
+			if(i == ItemHelper.battery) return 1;
+			if(i == ItemHelper.batteryStrong) return 1;
+			if(i == ItemHelper.batteryWeak) return 1;
 			return 0;
 		}
 	}

@@ -22,6 +22,7 @@ public class RecipeHelper {
 	
 	static ItemStack s;
 	static ItemStack b;
+	static ItemStack k;
 	
 	public static void Shaped(){
 				
@@ -74,8 +75,10 @@ public class RecipeHelper {
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandMining, 1), new Object[] {"S", "I", "I", 'S', Items.diamond_pickaxe, 'I', Blocks.gold_block});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.wandTeleport, 1), new Object[] {"S", "I", "I", 'S', Items.ender_eye, 'I', Blocks.gold_block});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.Wand, 1), new Object[] {"S", "G", "I", 'S', Items.feather, 'I', Blocks.diamond_block, 'G', Blocks.gold_block});
-		//GameRegistry.addRecipe(new ItemStack(Blocks.furnace, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
+		GameRegistry.addRecipe(new ItemStack(Blocks.furnace, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
 		GameRegistry.addRecipe(new ItemStack(Items.stick, 16), new Object[] {"L", "L", 'L', BlockHelper.FlylightLog});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.battery, 1, ItemHelper.battery.getMaxDamage()), new Object[] {"IRI", "IRI", "IRI", 'I', Items.iron_ingot, 'R', Items.redstone});
+
 	}
 
 	public static void BigShapedCrafting(){

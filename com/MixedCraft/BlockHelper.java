@@ -125,11 +125,12 @@ public class BlockHelper extends HelperHandler{
 		addBlock(IronFurnaceOff, "Iron Furnace");
 		//addBlock(Disassembler, "Disassembler");
 		addBlock(CowSheepWool, "COWSHEEP Wool");	 
-		//addBlock(FlyLightGrass, "Flylight Grass");
-		//addBlock(FlyLightDirt, "Flylight Dirt");
+		addBlock(FlyLightGrass, "Flylight Grass");
+		addBlock(FlyLightDirt, "Flylight Dirt");
 		addBlock(Test, "Colourful Block");
-		//addBlock(FlyLightOre, "Flylight Ore");
-		//addBlock(FlyLightPortal, "Flylight Portal");
-		//addBlock(FlyLightStone, "Flylight Stone");
+		addBlock(FlyLightOre, "Flylight Ore");
+		addBlock(FlyLightPortal, "Flylight Portal");
+		addBlock(FlyLightStone, "Flylight Stone");
+		addBlock(ChocolateCrop, "Chocolate Crop");
 	}
 }

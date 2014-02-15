@@ -10,16 +10,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class Event {	
 	
 	@SubscribeEvent
-	public void bonemealUsed(BonemealEvent event)
-	{
-		if(event.world.getBlock(event.x, event.y, event.z) == BlockHelper.FlylightSapling)
-		{
+	public void bonemealUsed(BonemealEvent event) {
+		if(event.world.getBlock(event.x, event.y, event.z) == BlockHelper.FlylightSapling) {
 			((FlylightSapling)BlockHelper.FlylightSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
-		}
-		
-		if(event.world.getBlock(event.x, event.y, event.z) == BlockHelper.ChocolateCrop)
-		{
-			((BlockChocolateCrop)BlockHelper.ChocolateCrop).fertilize(event.world, event.x, event.y, event.z);
 		}
 	}
 }
