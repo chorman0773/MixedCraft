@@ -31,6 +31,20 @@ public class LangRegistry {
 					addToFile("itemGroup.Tool=MixedCraft: Tools");
 					addToFile("itemGroup.Misc=MixedCraft: Misc");
 					addToFile("itemGroup.Spawner=MixedCraft: Spawner");
+					addToFile("achievement.Extractor=Ready To Extract!");
+					addToFile("achievement.Extractor.desc=Just Craft An Extractor!");
+					addToFile("achievement.Mixer=Ready To Mix!");
+					addToFile("achievement.Mixer.desc=Just Craft A Mixer!");
+					addToFile("achievement.Assembler=Ready To Assemble!");
+					addToFile("achievement.Assembler.desc=Just Craft A Mob Assembler!");
+					addToFile("achievement.CopperOre=Mine Copper!");
+					addToFile("achievement.CopperOre.desc=Just Mine Some Copper!");
+					addToFile("achievement.TinOre=Mine Tin!");
+					addToFile("achievement.TinOre.desc=Just Mine Some Tin!");
+					addToFile("achievement.Copper=Smelt Some Copper Ore!");
+					addToFile("achievement.Copper.desc=Just Smelt Some Copper Ore!");
+					addToFile("achievement.Tin=Smelt Some Tin Ore!");
+					addToFile("achievement.Tin.desc=Just Smelt Some Tin Ore!");
 					canWrite = true;
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -47,6 +61,20 @@ public class LangRegistry {
 						addToFile("itemGroup.Tool=MixedCraft: Tools");
 						addToFile("itemGroup.Misc=MixedCraft: Misc");
 						addToFile("itemGroup.Spawner=MixedCraft: Spawner");
+						addToFile("achievement.Extractor=Ready To Extract!");
+						addToFile("achievement.Extractor.desc=Just Craft An Extractor!");
+						addToFile("achievement.Mixer=Ready To Mix!");
+						addToFile("achievement.Mixer.desc=Just Craft A Mixer!");
+						addToFile("achievement.Assembler=Ready To Assemble!");
+						addToFile("achievement.Assembler.desc=Just Craft A Mob Assembler!");
+						addToFile("achievement.CopperOre=Mine Copper!");
+						addToFile("achievement.CopperOre.desc=Just Mine Some Copper!");
+						addToFile("achievement.TinOre=Mine Tin!");
+						addToFile("achievement.TinOre.desc=Just Mine Some Tin!");
+						addToFile("achievement.Copper=Smelt Some Copper Ore!");
+						addToFile("achievement.Copper.desc=Just Smelt Some Copper Ore!");
+						addToFile("achievement.Tin=Smelt Some Tin Ore!");
+						addToFile("achievement.Tin.desc=Just Smelt Some Tin Ore!");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -61,6 +89,20 @@ public class LangRegistry {
 						addToFile("itemGroup.Tool=MixedCraft: Tools");
 						addToFile("itemGroup.Misc=MixedCraft: Misc");
 						addToFile("itemGroup.Spawner=MixedCraft: Spawner");
+						addToFile("achievement.Extractor=Ready To Extract!");
+						addToFile("achievement.Extractor.desc=Just Craft An Extractor!");
+						addToFile("achievement.Mixer=Ready To Mix!");
+						addToFile("achievement.Mixer.desc=Just Craft A Mixer!");
+						addToFile("achievement.Assembler=Ready To Assemble!");
+						addToFile("achievement.Assembler.desc=Just Craft A Mob Assembler!");
+						addToFile("achievement.CopperOre=Mine Copper!");
+						addToFile("achievement.CopperOre.desc=Just Mine Some Copper!");
+						addToFile("achievement.TinOre=Mine Tin!");
+						addToFile("achievement.TinOre.desc=Just Mine Some Tin!");
+						addToFile("achievement.Copper=Smelt Some Copper Ore!");
+						addToFile("achievement.Copper.desc=Just Smelt Some Copper Ore!");
+						addToFile("achievement.Tin=Smelt Some Tin Ore!");
+						addToFile("achievement.Tin.desc=Just Smelt Some Tin Ore!");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

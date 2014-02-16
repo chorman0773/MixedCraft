@@ -175,9 +175,6 @@ public class ItemHelper extends HelperHandler{
 		addItem(CopperIngot, "Copper Ingot");
 		addItem(SilverIngot, "Silver Ingot");
 
-		addAlotItem("DNAKey", "DNA Key");
-		addAlotItem("MixedDNA", "Mixed DNA Key");
-
 		addItem(DiamondHandsaw, "Diamond Handsaw");
 		addItem(GoldHandsaw, "Gold Handsaw");
 		
@@ -195,7 +192,5 @@ public class ItemHelper extends HelperHandler{
 		addItem(SilverAxe, "Silver Axe");
 
 		addItem(Wand, "Wand");
-		
-		addAlotItem("MixedDNAKey", "Mixed DNA Key");
 	}
 }
