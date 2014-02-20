@@ -57,8 +57,6 @@ public class CommonProxy extends HelperHandler {
 		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
 		GameRegistry.registerTileEntity(TileEntityPowerFurnace.class, "TileEntity Power Furnace");
-
-
 	}
 
 	public void init(FMLInitializationEvent event) {     

@@ -37,11 +37,9 @@ public class WandOfMagicMissile extends ItemBaseWand {
 	}
 
 	@Override 
-	public ItemStack onEaten (ItemStack srcItemStack, World world, EntityPlayer playerEntity)
-	{ 
+	public ItemStack onEaten (ItemStack srcItemStack, World world, EntityPlayer playerEntity) { 
 
-		if (!playerEntity.capabilities.isCreativeMode)
-		{
+		if (!playerEntity.capabilities.isCreativeMode) {
 			if(isOutOfCharge(srcItemStack)){
 				playSound(noChargeAttackSound,world,playerEntity);
 				return srcItemStack;
@@ -51,8 +49,7 @@ public class WandOfMagicMissile extends ItemBaseWand {
 
 		playSound("mob.endermen.portal",world,playerEntity);
 
-		if (!world.isRemote/* && ManaHelper.useBar(playerEntity, 10)*/)
-		{
+		if (!world.isRemote && ManaHelper.useBar(playerEntity, 10)) {
 			world.spawnEntityInWorld(new MagicMissile(world, playerEntity,  2.0F));
 		}
 		return srcItemStack;
@@ -63,7 +60,8 @@ public class WandOfMagicMissile extends ItemBaseWand {
 		return 1;
 	}
 
-	@Override  public int getBaseRepairCost(){
+	@Override  
+	public int getBaseRepairCost(){
 		return 7;
 	}
 }
