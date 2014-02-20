@@ -60,7 +60,7 @@ public class WandOfTeleportation extends ItemBaseWand {
 			}
 			srcItemStack.damageItem(getUseCost(), playerEntity);
 		}
-		if (!world.isRemote/* && ManaHelper.useBar(playerEntity, 50)*/)
+		if (!world.isRemote && ManaHelper.useBar(playerEntity, 50))
 		{
 			world.spawnEntityInWorld(new EntityHarmlessEnderPearl(world, playerEntity));
 		}

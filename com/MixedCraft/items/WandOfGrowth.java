@@ -56,18 +56,17 @@ public class WandOfGrowth extends ItemBaseWand {
 		Block target = world.getBlock(targetX, targetY, targetZ);
 		ItemStack fauxItemStack = new ItemStack(Items.dye);
 		
-		if(target == Blocks.cactus/* && ManaHelper.useBar(playerEntity, 10)*/){
+		if(target == Blocks.cactus && ManaHelper.useBar(playerEntity, 10)){
 
-			int y = targetY+1;
+			int y = targetY + 1;
 			while(world.getBlock(targetX, y, targetZ) == Blocks.cactus){
 				y++;
 			}
 			if(world.getBlock(targetX, y, targetZ) != null){
-
 				world.setBlock(targetX, y, targetZ, Blocks.cactus);
 			}
 			return true;
-		} else if(target == Blocks.reeds/* && ManaHelper.useBar(playerEntity, 10)*/){
+		} else if(target == Blocks.reeds && ManaHelper.useBar(playerEntity, 10)){
 
 			int y = targetY+1;
 			while(world.getBlock(targetX, y, targetZ) == Blocks.reeds){
@@ -78,11 +77,11 @@ public class WandOfGrowth extends ItemBaseWand {
 				world.setBlock(targetX, y, targetZ, Blocks.reeds);
 			}
 			return true;
-		} else if(target == Blocks.cobblestone/* && ManaHelper.useBar(playerEntity, 10)*/){
+		} else if(target == Blocks.cobblestone && ManaHelper.useBar(playerEntity, 10)){
 
 			world.setBlock(targetX, targetY, targetZ, Blocks.mossy_cobblestone);
 			return true;
-		} else if(target == Blocks.stonebrick/* && ManaHelper.useBar(playerEntity, 10)*/){
+		} else if(target == Blocks.stonebrick && ManaHelper.useBar(playerEntity, 10)){
 			if( world.getBlockMetadata(targetX, targetY, targetZ) == 0){
 
 				world.setBlockMetadataWithNotify(targetX, targetY, targetZ, 1, 3);
@@ -90,7 +89,5 @@ public class WandOfGrowth extends ItemBaseWand {
 			}
 		}
 		return ItemDye.applyBonemeal(fauxItemStack, world, targetX, targetY, targetZ, playerEntity);
-		
 	}
-
 }
