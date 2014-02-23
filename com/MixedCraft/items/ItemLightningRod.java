@@ -14,14 +14,12 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemLightningRod extends ItemsBase{
 
 	public ItemLightningRod(){
-		super("");
 		setMaxStackSize(1);
 		setMaxDamage(100);
 	}
 
 	@Override 
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer entityplayer) {
-
 		float f = 1.0F;
 		float f1 = entityplayer.prevRotationPitch + (entityplayer.rotationPitch - entityplayer.prevRotationPitch) * f;
 		float f2 = entityplayer.prevRotationYaw + (entityplayer.rotationYaw - entityplayer.prevRotationYaw) * f;
@@ -40,9 +38,8 @@ public class ItemLightningRod extends ItemsBase{
 		Vec3 vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
 		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3d, vec3d1, false);
 
-		if (movingobjectposition == null) {
+		if (movingobjectposition == null) 
 			return item;
-		}
 
 		if (movingobjectposition.typeOfHit == MovingObjectType.BLOCK) {
 			int i = movingobjectposition.blockX;

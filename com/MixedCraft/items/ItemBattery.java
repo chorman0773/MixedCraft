@@ -12,7 +12,7 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemBattery extends ItemPower{
 
 	public ItemBattery(int power) {
-		super("", power);
+		super(power);
 	}
 
 	@Override

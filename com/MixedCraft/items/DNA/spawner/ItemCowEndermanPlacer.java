@@ -16,7 +16,7 @@ public class ItemCowEndermanPlacer extends ItemsBase
 
 	public ItemCowEndermanPlacer()
 	{
-		super("");
+		super();
 	}
 
 

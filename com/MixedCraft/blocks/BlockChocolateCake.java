@@ -156,6 +156,6 @@ public class BlockChocolateCake extends BlocksBase
     @SideOnly(Side.CLIENT)
     public Item getItem(World par1World, int par2, int par3, int par4)
     {
-        return ItemHelper.ChocalateCake;
+        return ItemHelper.ChocolateCake;
     }
 }

@@ -19,8 +19,7 @@ public class ItemDNABase extends ItemsBase{
 	private int Gui;
 
 	public ItemDNABase(int Gui){
-		super("DNAKey");
-		GameRegistry.registerItem(this, "DNAKey");
+		super();
 		this.Gui = Gui;
 	}
 
@@ -29,7 +28,7 @@ public class ItemDNABase extends ItemsBase{
 		return var1;
 	}
 
-	public ItemDNABase setDescriptors(String[] descs) {
+	public ItemDNABase setDescription(String[] descs) {
 		descriptors = descs;
 		return this;
 	}
@@ -41,5 +40,4 @@ public class ItemDNABase extends ItemsBase{
 			par3List.add(desc);
 		}
 	}
-
 }

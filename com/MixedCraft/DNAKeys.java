@@ -26,7 +26,6 @@ public class DNAKeys {
 	public static String[] Wither = {EnumChatFormatting.AQUA + "DNA", "From: WITHER"};
 
 	//MIXED
-	
 	//COW
 	public static String[] CowPig = {EnumChatFormatting.GREEN + "Mixed DNA", "From: COWPIG"};
 	public static String[] CowSheep = {EnumChatFormatting.GREEN + "Mixed DNA", "From: COWSHEEP"};
@@ -44,7 +43,6 @@ public class DNAKeys {
 	public static String[] CowWitherS = {EnumChatFormatting.GREEN + "Mixed DNA", "From: COWWITHERSKELETON"};
 	public static String[] CowWither = {EnumChatFormatting.GREEN + "Mixed DNA", "From: COWWITHER"};
 
-	
 	//PIG
 	public static String[] PigSheep = {EnumChatFormatting.GREEN + "Mixed DNA", "From: PIGSHEEP"};
 	public static String[] PigChicken = {EnumChatFormatting.GREEN + "Mixed DNA", "From: PIGCHICKEN"};

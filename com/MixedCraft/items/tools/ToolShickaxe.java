@@ -20,6 +20,7 @@ import com.MixedCraft.helper.Utils;
 import com.google.common.collect.Sets;
 
 import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -31,25 +32,21 @@ public class ToolShickaxe extends ItemTool
 
 	private String iconPath;
 
-	public ToolShickaxe(ToolMaterial par2EnumToolMaterial, String name) {
+	public ToolShickaxe(ToolMaterial par2EnumToolMaterial) {
 		super(0, par2EnumToolMaterial, blocksEffectiveAgainst);
 		this.theToolMaterial = par2EnumToolMaterial;
 		setCreativeTab(MixedCraft.ToolTab);
-		setUnlocalizedName(name);
-		registerTexture(name);
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block par1Block, ItemStack itemStack)
-	{
+	public boolean canHarvestBlock(Block par1Block, ItemStack itemStack) {
 		if(par1Block != Blocks.bedrock)
 			return true;
 		else
 			return false;
 	}
 
-	public boolean func_150897_b(Block block)
-	{
+	public boolean func_150897_b(Block block) {
         return block == Blocks.obsidian ? this.toolMaterial.getHarvestLevel() == 3 : (block != Blocks.diamond_block && block != Blocks.diamond_ore ? (block != Blocks.emerald_ore && block != Blocks.emerald_block ? (block != Blocks.gold_block && block != Blocks.gold_ore ? (block != Blocks.iron_block && block != Blocks.iron_ore ? (block != Blocks.lapis_block && block != Blocks.lapis_ore ? (block != Blocks.redstone_ore && block != Blocks.lit_redstone_ore ? (block.getMaterial() == Material.rock ? true : (block.getMaterial() == Material.iron ? true : block.getMaterial() == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 1) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 2);
 	}
 
@@ -107,6 +104,13 @@ public class ToolShickaxe extends ItemTool
 		}
 	}
 	
+	public Item setName(String name){
+		setTextureName(name);
+		setUnlocalizedName(name);
+		GameRegistry.registerItem(this, name);
+		registerTexture(name);
+		return this;
+	}
 	
     public Item registerTexture(String texture) {
         iconPath = texture;

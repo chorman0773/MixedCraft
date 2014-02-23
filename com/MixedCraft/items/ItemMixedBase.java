@@ -15,11 +15,6 @@ public class ItemMixedBase extends ItemsBase{
 
 	private String[] description;
 
-	public ItemMixedBase() {
-		super("MixedDNAKey");
-		GameRegistry.registerItem(this, "MixedDNAKey");
-	}
-
 	public ItemMixedBase setDescription(String[] desc) {
 		description = desc;
 		return this;

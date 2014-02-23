@@ -10,11 +10,11 @@ import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.ItemsBase;
 
 public abstract class ItemBaseWand extends ItemsBase {
-	
+
 	public static String noChargeAttackSound = "random.bow";
 
-	public ItemBaseWand(String par1) {
-		super(par1);
+	public ItemBaseWand() {
+		super();
 		this.maxStackSize = 1;
 		this.setCreativeTab(MixedCraft.MiscTab);
 	}
@@ -30,14 +30,13 @@ public abstract class ItemBaseWand extends ItemsBase {
 	public boolean getIsRepairable(ItemStack stack, ItemStack mat) {
 		return mat.getItem() == Items.gold_ingot;
 	}
-	
+
 	public boolean isOutOfCharge(ItemStack stack){
 		return stack.getItemDamage() >= (stack.getMaxDamage() - getUseCost());
 	}
-	
+
 	protected void playSound(String sound, World world, EntityPlayer playerEntity){
-		if (!world.isRemote)
-		{
+		if (!world.isRemote) {
 			world.playSoundAtEntity(playerEntity, sound, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		}
 	}

@@ -21,7 +21,6 @@ public class ItemTorchBow extends ItemsBase
 {
 
 	public ItemTorchBow() {
-		super("");
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 		setUnlocalizedName("TorchBow");

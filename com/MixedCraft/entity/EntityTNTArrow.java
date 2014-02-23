@@ -11,6 +11,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -368,7 +369,6 @@ public class EntityTNTArrow extends EntityArrow
                         }
 
                         this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-                        worldObj.createExplosion(this, posX, posY, posZ, size, false);
                         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
                         {
                             this.setDead();
@@ -403,9 +403,10 @@ public class EntityTNTArrow extends EntityArrow
                     this.arrowShake = 7;
                     this.setIsCritical(false);
 
-                    if (this.field_145790_g.getMaterial() != Material.air)
-                    {
+                    if (this.field_145790_g.getMaterial() != Material.air){
                         this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+                        worldObj.createExplosion(this, posX, posY, posZ, size, false);
+                        setDead();
                     }
                 }
             }

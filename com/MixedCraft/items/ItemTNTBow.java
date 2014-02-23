@@ -21,9 +21,7 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemTNTBow extends ItemsBase
 {
 
-	public ItemTNTBow()
-	{
-		super("");
+	public ItemTNTBow() {
 		this.maxStackSize = 1;
 		this.setMaxDamage(384);
 	}

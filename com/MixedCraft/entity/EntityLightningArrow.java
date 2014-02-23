@@ -51,7 +51,7 @@ public class EntityLightningArrow extends EntityArrow
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 2.0D;
+    private double damage = 10.0D;
     /**
      * The amount of knockback an arrow applies when it hits a mob.
      */
@@ -366,10 +366,7 @@ public class EntityLightningArrow extends EntityArrow
                                 ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
                             }
                         }
-                    	worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, posX, posY, posZ));
-                    	worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, posX, posY, posZ));
-                    	worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, posX, posY, posZ));
-                    	worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, posX, posY, posZ));
+                    	
                         this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
                         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
@@ -406,9 +403,10 @@ public class EntityLightningArrow extends EntityArrow
                     this.arrowShake = 7;
                     this.setIsCritical(false);
 
-                    if (this.field_145790_g.getMaterial() != Material.air)
-                    {
+                    if (this.field_145790_g.getMaterial() != Material.air) {
                         this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+                        worldObj.spawnEntityInWorld(new EntityLightningBolt(worldObj, posX, posY, posZ));
+                        setDead();
                     }
                 }
             }

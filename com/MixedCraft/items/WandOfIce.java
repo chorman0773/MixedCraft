@@ -12,8 +12,7 @@ public class WandOfIce extends ItemBaseWand {
 	
 	public static int defaultCharges = 100;
 	
-	public WandOfIce(String par2) {
-		super(par2);
+	public WandOfIce() {
         this.setMaxDamage(defaultCharges + 1);
 	}
 

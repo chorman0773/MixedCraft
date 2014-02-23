@@ -16,8 +16,7 @@ public class WandOfGrowth extends ItemBaseWand {
 	
 	public static int defaultCharges = 100;
 	
-	public WandOfGrowth(String par2) {
-		super(par2);
+	public WandOfGrowth() {
         this.setMaxDamage(defaultCharges + 1);
 	}
 

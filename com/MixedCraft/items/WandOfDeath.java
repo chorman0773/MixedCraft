@@ -15,8 +15,7 @@ public class WandOfDeath extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfDeath(String par2) {
-		super(par2);
+	public WandOfDeath() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 

@@ -14,8 +14,7 @@ public class WandOfHarming extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfHarming(String par2) {
-		super(par2);
+	public WandOfHarming() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 

@@ -5,8 +5,7 @@ import com.MixedCraft.helper.ItemsBase;
 
 public class ItemPower extends ItemsBase{
 
-	public ItemPower(String texture, int power) {
-		super(texture);
+	public ItemPower(int power) {
 		setCreativeTab(MixedCraft.MiscTab);
 		setMaxDamage(power);
 		maxStackSize = 1;

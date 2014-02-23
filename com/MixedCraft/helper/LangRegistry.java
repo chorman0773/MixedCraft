@@ -15,6 +15,8 @@ public class LangRegistry {
 
 	private static ArrayList<Block> blocks   = new ArrayList<Block>();
 	private static ArrayList<Item>  items    = new ArrayList<Item>();
+	private static ArrayList<Item>  itemDNA  = new ArrayList<Item>();
+	private static ArrayList<Item>  itemMix  = new ArrayList<Item>();
 	private static boolean          canWrite = false;
 	private static BufferedWriter   writer;
 
@@ -137,6 +139,14 @@ public class LangRegistry {
 		items.add(item);
 	}
 
+	public static void addDNAItem(Item item){
+		itemDNA.add(item);
+	}
+	
+	public static void addMixedItem(Item item) {
+		itemMix.add(item);
+	}
+
 	public static void addBlockNames(){
 		for(int k = 0; k < blocks.size(); k++){
 			Block block = blocks.get(k);
@@ -201,6 +211,88 @@ public class LangRegistry {
 		}
 	}
 
+	public static void addDNAItemNames(){
+		for(int k = 0; k < itemDNA.size(); k++){
+			Item item = itemDNA.get(k);
+			String name = item.getUnlocalizedName().substring(5);
+			char firstLetter = name.charAt(0);
+			char secondLetter = name.charAt(1);
+			char thirdLetter = name.charAt(2);
+			int numChars = 0;
+			if (Character.isLowerCase(firstLetter)) 
+				firstLetter = Character.toUpperCase(firstLetter);
+
+			if (Character.isLowerCase(secondLetter)) 
+				secondLetter = Character.toUpperCase(secondLetter);
+
+			if (Character.isLowerCase(thirdLetter)) 
+				thirdLetter = Character.toUpperCase(thirdLetter);
+
+			String inGame = name.substring(1);
+			for (int p = 0; p < name.length(); p++) {
+				char c = name.charAt(p);
+				int code = (int) c;
+
+				if (p != 0) {
+					for (int n = 65; n < 90; n++) {
+						if (code == n) {
+							numChars++;
+							if (numChars == 1)
+								inGame = new StringBuffer(inGame).insert(p - 1, " ").toString();
+							else
+								inGame = new StringBuffer(inGame).insert(p, " ").toString();
+						}
+					}
+				}
+			}
+			String finalName = firstLetter + secondLetter + thirdLetter + inGame;
+			addToFile("item." + name + ".name=" + finalName);
+		}
+	}
+	
+	public static void addMixItemNames(){
+		for(int k = 0; k < itemMix.size(); k++){
+			Item item = itemMix.get(k);
+			String name = item.getUnlocalizedName().substring(5);
+			char firstLetter = name.charAt(0);
+			char fithLetter = name.charAt(5);
+			char sixthLetter = name.charAt(6);
+			char seventhLetter = name.charAt(7);
+			int numChars = 0;
+			if (Character.isLowerCase(firstLetter)) 
+				fithLetter = Character.toUpperCase(firstLetter);
+			
+			if (Character.isLowerCase(fithLetter)) 
+				fithLetter = Character.toUpperCase(fithLetter);
+
+			if (Character.isLowerCase(sixthLetter)) 
+				sixthLetter = Character.toUpperCase(sixthLetter);
+
+			if (Character.isLowerCase(seventhLetter)) 
+				seventhLetter = Character.toUpperCase(seventhLetter);
+
+			String inGame = name.substring(1);
+			for (int p = 0; p < name.length(); p++) {
+				char c = name.charAt(p);
+				int code = (int) c;
+
+				if (p != 0) {
+					for (int n = 65; n < 90; n++) {
+						if (code == n) {
+							numChars++;
+							if (numChars == 1)
+								inGame = new StringBuffer(inGame).insert(p - 1, " ").toString();
+							else
+								inGame = new StringBuffer(inGame).insert(p, " ").toString();
+						}
+					}
+				}
+			}
+			String finalName = firstLetter + inGame;
+			addToFile("item." + name + ".name=" + finalName);
+		}
+	}
+
 	public static void addToFile(String text){
 		try {
 			writer.write(text + "\n");
@@ -216,5 +308,4 @@ public class LangRegistry {
 			e.printStackTrace();
 		}
 	}
-
 }

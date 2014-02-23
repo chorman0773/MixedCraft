@@ -7,6 +7,7 @@ import net.minecraft.item.ItemPickaxe;
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.Utils;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,7 +21,15 @@ public class PickaxeBase extends ItemPickaxe{
         this.setCreativeTab(MixedCraft.ToolTab);
 	}
 	
-    public Item registerItemTexture(String texture) {
+	public Item setName(String name){
+		setTextureName(name);
+		setUnlocalizedName(name);
+		GameRegistry.registerItem(this, name);
+		registerTexture(name);
+		return this;
+	}
+	
+    public Item registerTexture(String texture) {
         iconPath = texture;
         return this;
     }

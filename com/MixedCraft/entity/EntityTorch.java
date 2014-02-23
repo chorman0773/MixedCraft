@@ -33,7 +33,7 @@ public class EntityTorch extends EntityArrow
     private int field_145789_f = -1;
     private Block field_145790_g;
     private int inData;
-    private boolean inGround;
+    private boolean inGround, hasPlaced = false;
     /**
      * 1 if the player can pick up the arrow
      */
@@ -48,7 +48,7 @@ public class EntityTorch extends EntityArrow
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 2.0D;
+    private double damage = 0.0D;
     /**
      * The amount of knockback an arrow applies when it hits a mob.
      */
@@ -357,10 +357,6 @@ public class EntityTorch extends EntityArrow
                         {
                             this.setDead();
                         }
-                        
-                        if(movingobjectposition.typeOfHit.BLOCK != null){
-                    		worldObj.setBlock((int)posX, (int)posY, (int)posZ, Blocks.torch, 0, 0);
-                    	}
                     }
                     else
                     {
@@ -394,6 +390,11 @@ public class EntityTorch extends EntityArrow
                     if (this.field_145790_g.getMaterial() != Material.air)
                     {
                         this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+                        if(!hasPlaced){
+                        	worldObj.setBlock((int)posX, (int)posY, (int)posZ, Blocks.torch, 0, 0);
+                        	setDead();
+                        	hasPlaced = true;
+                        }
                     }
                 }
             }

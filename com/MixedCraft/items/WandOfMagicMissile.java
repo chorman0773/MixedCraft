@@ -12,8 +12,7 @@ public class WandOfMagicMissile extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfMagicMissile(String par2) {
-		super(par2);
+	public WandOfMagicMissile() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
@@ -32,12 +31,12 @@ public class WandOfMagicMissile extends ItemBaseWand {
 	}
 
 	@Override 
-	public void onPlayerStoppedUsing (ItemStack srcItemStack, World world, EntityPlayer playerEntity, int timeRemain){
+	public void onPlayerStoppedUsing(ItemStack srcItemStack, World world, EntityPlayer playerEntity, int timeRemain){
 		super.onPlayerStoppedUsing(srcItemStack, world, playerEntity, timeRemain);
 	}
 
 	@Override 
-	public ItemStack onEaten (ItemStack srcItemStack, World world, EntityPlayer playerEntity) { 
+	public ItemStack onEaten(ItemStack srcItemStack, World world, EntityPlayer playerEntity) { 
 
 		if (!playerEntity.capabilities.isCreativeMode) {
 			if(isOutOfCharge(srcItemStack)){

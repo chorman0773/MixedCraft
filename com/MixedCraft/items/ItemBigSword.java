@@ -3,22 +3,21 @@ package com.MixedCraft.items;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.items.tools.SwordBase;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBigSword extends SwordBase{
 
-	public ItemBigSword(ToolMaterial par3enum, String name) {
+	public ItemBigSword(ToolMaterial par3enum) {
 		super(par3enum);
-		setUnlocalizedName(name);
-		registerTexture(name);
-		setCreativeTab(MixedCraft.ToolTab);
 	}
 
 	@Override
@@ -39,6 +38,14 @@ public class ItemBigSword extends SwordBase{
 		itemstack.damageItem(1, player);
 		player.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
 		return itemstack;
+	}
+	
+	public Item setName(String name){
+		setTextureName(name);
+		setUnlocalizedName(name);
+		GameRegistry.registerItem(this, name);
+		registerTexture(name);
+		return this;
 	}
 
 	@Override

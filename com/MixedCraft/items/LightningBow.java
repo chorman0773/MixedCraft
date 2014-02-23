@@ -15,42 +15,17 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import com.MixedCraft.ItemHelper;
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.entity.EntityLightningArrow;
 import com.MixedCraft.helper.ItemsBase;
 
-public class LightningBow extends ItemsBase
-{
+public class LightningBow extends ItemsBase {
 
-	public LightningBow()
-	{
-		super("");
+	public LightningBow() {
 		this.maxStackSize = 1;
 		this.setMaxDamage(500);
+		setCreativeTab(MixedCraft.ToolTab);
 	}
-
-
-	/*public void lightning(EntityPlayer player){
-		float f = 1.0F;
-		float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
-		float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
-		double d = player.prevPosX + (player.posX - player.prevPosX) * (double)f;
-		double d1 = (player.prevPosY + (player.posY - player.prevPosY) * (double)f + 1.6200000000000001D) - (double)player.yOffset;
-		double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double)f;
-		Vec3 vec3d = Vec3.createVectorHelper(d, d1, d2);
-		float f3 = MathHelper.cos(-f2 * 0.01745329F - 3.141593F);
-		float f4 = MathHelper.sin(-f2 * 0.01745329F - 3.141593F);
-		float f5 = -MathHelper.cos(-f1 * 0.01745329F);
-		float f6 = MathHelper.sin(-f1 * 0.01745329F);
-		float f7 = f4 * f5;
-		float f8 = f6;
-		float f9 = f3 * f5;
-		double d3 = 5000D;
-		Vec3 vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
-
-	}*/
-
-
-
 
 	/**
 	 * called when the player releases the use item button. Args: itemstack, world, player, itemInUseCount

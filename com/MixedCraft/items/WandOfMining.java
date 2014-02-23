@@ -12,8 +12,7 @@ public class WandOfMining extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfMining(String par2) {
-		super(par2);
+	public WandOfMining() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 

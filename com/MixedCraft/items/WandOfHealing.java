@@ -15,8 +15,7 @@ public class WandOfHealing extends ItemBaseWand {
 
 	public static int defaultCharges = 64;
 
-	public WandOfHealing(String par2) {
-		super(par2);
+	public WandOfHealing() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 
@@ -45,8 +44,7 @@ public class WandOfHealing extends ItemBaseWand {
 
 		ItemStack hp = new ItemStack(Items.potionitem);
 		hp.setItemDamage(0x0005 + 0x4000);
-		if (!world.isRemote && ManaHelper.useBar(playerEntity, 40))
-		{
+		if (!world.isRemote && ManaHelper.useBar(playerEntity, 40)) {
 			world.spawnEntityInWorld(new EntityPotion(world, playerEntity,  hp));
 		}
 

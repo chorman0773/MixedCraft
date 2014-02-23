@@ -15,8 +15,7 @@ public class WandOfHarvesting extends ItemBaseWand {
 	
 	public static int defaultCharges = 100;
 	
-	public WandOfHarvesting(String par2) {
-		super(par2);
+	public WandOfHarvesting() {
         this.setMaxDamage(defaultCharges + 1);
 	}
 

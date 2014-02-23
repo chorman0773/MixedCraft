@@ -33,7 +33,6 @@ public class CommonProxy extends HelperHandler {
 		ConfigHelper.initConfig();
 		GameRegistry.registerWorldGenerator(new WorldGenMixedMinable(), 10);
 		BlockHelper.addNames();
-		ItemHelper.addNames(); 
 		HarvestLevelHelper.init();
 		RecipeRemover.init();
 		MobRegistry.init();

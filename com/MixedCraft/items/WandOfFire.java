@@ -14,8 +14,7 @@ public class WandOfFire extends ItemBaseWand  {
 
 	public static int defaultCharges = 64;
 
-	public WandOfFire(String par2) {
-		super(par2);
+	public WandOfFire() {
 		this.setMaxDamage(defaultCharges + 1);
 	}
 

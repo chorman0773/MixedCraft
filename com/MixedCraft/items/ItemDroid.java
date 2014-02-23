@@ -10,17 +10,17 @@ import com.MixedCraft.helper.ItemsBase;
 public class ItemDroid extends ItemsBase{
 
 	public ItemDroid(){
-		super("");
+		super();
 		setUnlocalizedName("DroidItem");
 	}
 	
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int se, float hitX, float hitY, float hitZ){
-		if(!world.isRemote){
+		if(!world.isRemote) {
 			world.spawnEntityInWorld(new EntityDroid(world, x + 0.5, y + 1.5, z + 0.5));
 			stack.stackSize--;
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}

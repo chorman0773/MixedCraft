@@ -14,57 +14,45 @@ import net.minecraftforge.common.util.ForgeDirection;
 import com.MixedCraft.helper.ItemsBase;
 
 public class ItemModSeeds extends ItemsBase implements IPlantable {
-	
-    private Block field_150925_a;
-    private Block soilBlockID;
 
-    public ItemModSeeds(Block p_i45352_1_, Block p_i45352_2_, String name) {
-    	super(name);
-        this.field_150925_a = p_i45352_1_;
-        this.soilBlockID = p_i45352_2_;
-        this.setCreativeTab(CreativeTabs.tabMaterials);
-    }
+	private Block crop;
+	private Block soilBlockID;
 
-    public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
-    {
-        if (par7 != 1)
-        {
-            return false;
-        }
-        else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
-        {
-            if (par3World.getBlock(par4, par5, par6).canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
-            {
-                par3World.setBlock(par4, par5 + 1, par6, this.field_150925_a);
-                --par1ItemStack.stackSize;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }
+	public ItemModSeeds(Block crop, Block soil) {
+		this.crop = crop;
+		this.soilBlockID = soil;
+		this.setCreativeTab(CreativeTabs.tabMaterials);
+	}
 
-    @Override
-    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
-    {
-        return field_150925_a == Blocks.nether_wart ? EnumPlantType.Nether : EnumPlantType.Crop;
-    }
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+		if (par7 != 1) {
+			return false;
+		}
+		else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
+			if (par3World.getBlock(par4, par5, par6).canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
+				par3World.setBlock(par4, par5 + 1, par6, this.crop);
+				--par1ItemStack.stackSize;
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 
-    @Override
-    public Block getPlant(IBlockAccess world, int x, int y, int z)
-    {
-        return field_150925_a;
-    }
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
+		return crop == Blocks.nether_wart ? EnumPlantType.Nether : EnumPlantType.Crop;
+	}
 
-    @Override
-    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
-    {
-        return 0;
-    }
+	@Override
+	public Block getPlant(IBlockAccess world, int x, int y, int z) {
+		return crop;
+	}
+
+	@Override
+	public int getPlantMetadata(IBlockAccess world, int x, int y, int z) {
+		return 0;
+	}
 }

@@ -51,7 +51,7 @@ public class RecipeHelper {
 		GameRegistry.addRecipe(new ItemStack(BlockHelper.DiamondFurnaceOff, 1), new Object[] {"III", "I I", "III", 'I', Items.diamond});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.GoldDoor, 1), new Object[] {"II", "II", "II", 'I', Items.gold_ingot});
 
-		GameRegistry.addRecipe(new ItemStack(ItemHelper.ChocalateCake, 1), new Object[] {"CCC", "ESE", "MMM", 'C', ItemHelper.ChocolateBean, 'E', Items.egg, 'M', Items.milk_bucket, 'S', Items.sugar});
+		GameRegistry.addRecipe(new ItemStack(ItemHelper.ChocolateCake, 1), new Object[] {"CCC", "ESE", "MMM", 'C', ItemHelper.ChocolateBean, 'E', Items.egg, 'M', Items.milk_bucket, 'S', Items.sugar});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.DiamondBigSword, 1), new Object[] {" DD", "DDD", "SD ", 'S', Items.stick, 'D', Items.diamond});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.IronBigSword, 1), new Object[] {" DD", "DDD", "SD ", 'S', Items.stick, 'D', Items.iron_ingot});
 		GameRegistry.addRecipe(new ItemStack(ItemHelper.GoldBigSword, 1), new Object[] {" DD", "DDD", "SD ", 'S', Items.stick, 'D', Items.iron_ingot});
@@ -93,7 +93,7 @@ public class RecipeHelper {
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.LightningRod, 1), new Object[] {"DBD", "DBD", "DBD", "DBD", "DBD", 'B',  Items.blaze_rod, 'D', Items.diamond});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.FlameSword, 1), new Object[] {"PRP", "PRP", "PRP", "DBD", "PBP", 'B',  Items.blaze_rod, 'D', Items.diamond, 'P', Items.blaze_powder, 'R', Items.redstone});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Items.saddle, 1), new Object[] {" S ", "LLL", "LLL", "LLL", " S ", 'L', Items.leather, 'S', Items.string});
-		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.ChocalateCake, 1), new Object[] {"CCC", "ESE", "MMM", 'C', ItemHelper.ChocolateBean, 'E', Items.egg, 'M', Items.milk_bucket, 'S', Items.sugar});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.ChocolateCake, 1), new Object[] {"CCC", "ESE", "MMM", 'C', ItemHelper.ChocolateBean, 'E', Items.egg, 'M', Items.milk_bucket, 'S', Items.sugar});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Blocks.diamond_block, 1), new Object[] {"III", "III", "III", 'I', Items.diamond});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Blocks.iron_block, 1), new Object[] {"III", "III", "III", 'I', Items.iron_ingot});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Blocks.gold_block, 1), new Object[] {"III", "III", "III", 'I', Items.gold_ingot});
