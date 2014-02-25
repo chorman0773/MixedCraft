@@ -4,7 +4,6 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.MixedCraft.Achievements;
 import com.MixedCraft.BlockHelper;
-import com.MixedCraft.ClientEvent;
 import com.MixedCraft.Event;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
@@ -37,6 +36,7 @@ public class CommonProxy extends HelperHandler {
 		MobRegistry.init();
 		DimensionHelper.init();
 		registerTileEntity();
+		MinecraftForge.EVENT_BUS.register(new Event());
 		LangRegistry.init();
 		if(Utils.DEBUG){
 			LangRegistry.addBlockNames();
@@ -58,8 +58,6 @@ public class CommonProxy extends HelperHandler {
 
 	public void init(FMLInitializationEvent event) {     
 		Achievements.init();
-		MinecraftForge.EVENT_BUS.register(new Event());
-    	MinecraftForge.EVENT_BUS.register(new ClientEvent());
 	}
 	
 	public void registerCape(){ }

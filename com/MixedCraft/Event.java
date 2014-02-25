@@ -36,11 +36,6 @@ public class Event {
 		GuiManaBar.draw();
 	}
 	
-	/*@SubscribeEvent
-	public static void onPlayerTrack(Player e){//TODO figure out IPlayerTracker
-		
-	}*/
-	
 	@SubscribeEvent
 	public static void onItemCrafted(ItemCraftedEvent event){
 		if(event.crafting.getItem() == ItemHelper.battery){
