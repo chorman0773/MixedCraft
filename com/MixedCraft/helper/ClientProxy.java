@@ -1,5 +1,8 @@
 package com.MixedCraft.helper;
 
+import net.minecraftforge.common.MinecraftForge;
+
+import com.MixedCraft.ClientEvent;
 import com.MixedCraft.MixedCraft;
 import com.jadarstudios.developercapes.DevCapes;
 

@@ -4,8 +4,8 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.MixedCraft.Achievements;
 import com.MixedCraft.BlockHelper;
+import com.MixedCraft.ClientEvent;
 import com.MixedCraft.Event;
-import com.MixedCraft.ItemHelper;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAMixer;
@@ -16,7 +16,6 @@ import com.MixedCraft.blocks.tileEntity.TileEntityPowerFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
 import com.MixedCraft.dimension.DimensionHelper;
 import com.MixedCraft.gen.WorldGenMixedMinable;
-import com.MixedCraft.handler.EntityLivingHandler;
 import com.MixedCraft.handler.HelperHandler;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -38,7 +37,6 @@ public class CommonProxy extends HelperHandler {
 		MobRegistry.init();
 		DimensionHelper.init();
 		registerTileEntity();
-		MinecraftForge.EVENT_BUS.register(new Event());
 		LangRegistry.init();
 		if(Utils.DEBUG){
 			LangRegistry.addBlockNames();
@@ -60,7 +58,8 @@ public class CommonProxy extends HelperHandler {
 
 	public void init(FMLInitializationEvent event) {     
 		Achievements.init();
-		MinecraftForge.EVENT_BUS.register(new EntityLivingHandler());
+		MinecraftForge.EVENT_BUS.register(new Event());
+    	MinecraftForge.EVENT_BUS.register(new ClientEvent());
 	}
 	
 	public void registerCape(){ }

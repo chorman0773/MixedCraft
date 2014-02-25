@@ -18,13 +18,12 @@ import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
 
 @Mod(modid = Utils.MOD_ID, name = Utils.MOD_NAME, version = Utils.MOD_VERSION)
-public class MixedCraft extends HelperHandler{
+public class MixedCraft extends HelperHandler {
 
 	@Instance(Utils.MOD_ID)
 	public static MixedCraft instance;
 
 	@SidedProxy(serverSide = Utils.COMMONPROXY, clientSide = Utils.CLIENTPROXY)
-
 	public static CommonProxy proxy; 
 
 	public static Fluid Mod = new ModFluid("Fluid");
@@ -79,5 +78,4 @@ public class MixedCraft extends HelperHandler{
 
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event){}
-
 }

@@ -127,7 +127,7 @@ public class ContainerPowerFurnace extends Container
 	                        return null;
 	                    }
 	                }
-	                else if (TileEntityGoldFurnace.isItemFuel(itemstack1))
+	                else if (TileEntityPowerFurnace.isItemFuel(itemstack1))
 	                {
 	                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
 	                    {
