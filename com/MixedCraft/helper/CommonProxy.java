@@ -2,6 +2,7 @@ package com.MixedCraft.helper;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.MixedCraft.AchievementEvent;
 import com.MixedCraft.Achievements;
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.Event;
@@ -17,10 +18,10 @@ import com.MixedCraft.dimension.DimensionHelper;
 import com.MixedCraft.gen.WorldGenMixedMinable;
 import com.MixedCraft.handler.HelperHandler;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-
 
 public class CommonProxy extends HelperHandler {
 
@@ -58,6 +59,7 @@ public class CommonProxy extends HelperHandler {
 
 	public void init(FMLInitializationEvent event) {     
 		Achievements.init();
+		FMLCommonHandler.instance().bus().register(new AchievementEvent());
 	}
 	
 	public void registerCape(){ }

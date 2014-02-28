@@ -12,6 +12,7 @@ import com.MixedCraft.gui.GuiManaBar;
 import com.MixedCraft.helper.ManaHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
@@ -37,43 +38,22 @@ public class Event {
 	}
 	
 	@SubscribeEvent
-	public static void onItemCrafted(ItemCraftedEvent event){
-		if(event.crafting.getItem() == ItemHelper.battery){
-			event.player.addStat(Achievements.Assembler, 1);
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onItemSmelting(ItemSmeltedEvent event){
-		if(event.smelting.getItem() == ItemHelper.CopperIngot){
-			event.player.addStat(Achievements.Copper, 1);
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onItemPickup(ItemPickupEvent event){
-		if(event.pickedUp == new EntityItem(event.player.worldObj, event.player.posX, event.player.posY, event.player.posZ, new ItemStack(BlockHelper.CopperOre, 1))) {
-			event.player.addStat(Achievements.CopperOre, 1);
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onPlayerLoggedIn(PlayerLoggedInEvent event){
+	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
 	
 	@SubscribeEvent
-	public static void onPlayerLoggedOut(PlayerLoggedOutEvent event){
+	public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event){
 		ManaHelper.remove(event.player.getDisplayName());
 	}
 	
 	@SubscribeEvent
-	public static void onPlayerRespawn(PlayerRespawnEvent event){
+	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
 	
 	@SubscribeEvent
-	public static void onPlayerChangedDimension(PlayerChangedDimensionEvent event){
+	public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
 }

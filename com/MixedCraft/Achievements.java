@@ -14,8 +14,8 @@ import net.minecraftforge.common.AchievementPage;
 
 public class Achievements extends HelperHandler{
 
-	public static final Achievement CopperOre = new Achievement("CopperOre", "CopperOre", 0, 1, BlockHelper.CopperOre, null).registerStat(); 
-	public static final Achievement TinOre = new Achievement("TinOre", "TinOre", 4, 1, BlockHelper.TinOre, null).registerStat(); 
+	public static final Achievement CopperOre = new Achievement("CopperOre", "CopperOre", 0, 1, BlockHelper.CopperOre, (Achievement)null).registerStat(); 
+	public static final Achievement TinOre = new Achievement("TinOre", "TinOre", 4, 1, BlockHelper.TinOre, (Achievement)null).registerStat(); 
 
 	public static final Achievement Copper = new Achievement("Copper", "Copper", 0, 3, ItemHelper.CopperIngot, CopperOre).registerStat(); 
 	public static final Achievement Tin = new Achievement("Tin", "Tin", 4, 3, ItemHelper.TinIngot, TinOre).registerStat(); 
@@ -28,8 +28,5 @@ public class Achievements extends HelperHandler{
 
 	public static void init(){
 		AchievementPage.registerAchievementPage(MixedPage);
-
-		//GameRegistry.registerPickupHandler(new PickupHandler());
-		//GameRegistry.registerCraftingHandler(new CraftingHandler());
 	}
 }

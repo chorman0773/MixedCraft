@@ -20,9 +20,8 @@ public class RecipeHelper {
 		BigShapelessCrafting();
 	}
 	
-	static ItemStack s;
-	static ItemStack b;
-	static ItemStack k;
+	private static ItemStack s;
+	private static ItemStack b;
 	
 	public static void Shaped(){
 				
