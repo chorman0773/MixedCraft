@@ -21,8 +21,7 @@ public class WorldProviderFlyLight extends WorldProvider {
 
     @Override
     public IChunkProvider createChunkGenerator() {
-        //return new ChunkGeneratorFlylight(this.worldObj, this.worldObj.getSeed());
-    	return new ChunkGeneratorFlylight();
+        return new ChunkGeneratorFlylight(this.worldObj, this.worldObj.getSeed());
     }
 
     @Override

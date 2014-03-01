@@ -16,100 +16,26 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
+import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
+import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.feature.WorldGenLiquids;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.ChunkProviderEvent;
+import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
+import net.minecraftforge.event.terraingen.TerrainGen;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.gen.WorldGenFlylightTree;
 
-public class ChunkGeneratorFlylight implements IChunkProvider
-{
+import cpw.mods.fml.common.eventhandler.Event.Result;
 
-	@Override
-	public boolean chunkExists(int var1, int var2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+public class ChunkGeneratorFlylight implements IChunkProvider {
 
-	@Override
-	public Chunk provideChunk(int var1, int var2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Chunk loadChunk(int var1, int var2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void populate(IChunkProvider var1, int var2, int var3) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean saveChunks(boolean var1, IProgressUpdate var2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean unloadQueuedChunks() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canSave() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String makeString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List getPossibleCreatures(EnumCreatureType var1, int var2, int var3,
-			int var4) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ChunkPosition func_147416_a(World var1, String var2, int var3,
-			int var4, int var5) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getLoadedChunkCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void recreateStructures(int var1, int var2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveExtraData() {
-		// TODO Auto-generated method stub
-		
-	}
-	/*private Random rand;
+	private Random rand;
 	private NoiseGeneratorOctaves noiseGen1;
 	private NoiseGeneratorOctaves noiseGen2;
 	private NoiseGeneratorOctaves noiseGen3;
@@ -117,11 +43,11 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 	public NoiseGeneratorOctaves noiseGen5;
 	public NoiseGeneratorOctaves noiseGen6;
 	public NoiseGeneratorOctaves mobSpawnerNoise; 
-	private MapGenVillage villageGenerator = new MapGenVillage();
+	//private MapGenVillage villageGenerator = new MapGenVillage();
 	private World worldObj;
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
-	private MapGenBase caveGenerator = new FlyLightGenCaves();
+	private MapGenBase caveGenerator = new MapGenCaves();
 	private BiomeGenBase[] biomesForGeneration;
 	double[] noise3;
 	double[] noise1;
@@ -130,17 +56,19 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 	double[] noise6;
 	float[] field_35388_l;
 	int[][] field_914_i = new int[32][32];
-    public WorldGenerator coalGen;
-    public WorldGenerator emeraldGen;
-    public WorldGenerator diamondGen;
-    public WorldGenerator ironGen;
-    public WorldGenerator lapisGen;
-    public WorldGenerator goldGen;
-    public WorldGenerator redstoneGen;
+	public WorldGenerator coalGen;
+	public WorldGenerator emeraldGen;
+	public WorldGenerator diamondGen;
+	public WorldGenerator ironGen;
+	public WorldGenerator lapisGen;
+	public WorldGenerator goldGen;
+	public WorldGenerator redstoneGen;
 
-
-	public ChunkGeneratorFlylight(World var1, long var2)
 	{
+		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, EventType.CAVE);
+	}
+
+	public ChunkGeneratorFlylight(World var1, long var2) {
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -159,24 +87,21 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		this.emeraldGen = new WorldGenMinable(BlockHelper.Emerald, 1, BlockHelper.FlyLightStone);
 	}
 
-	public void generateTerrain(int var1, int var2, byte[] var3)
+	public void generateTerrain(int var1, int var2, Block[] var3)
 	{
-		byte var4 = 4;
-		byte var5 = 16;
-		byte var6 = 63;
-		int var7 = var4 + 1;
-		byte var8 = 17;
-		int var9 = var4 + 1;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, var1 * 4 - 2, var2 * 4 - 2, var7 + 5, var9 + 5);
-		this.noiseArray = this.initializeNoiseField(this.noiseArray, var1 * var4, 0, var2 * var4, var7, var8, var9);
+		byte var6 = 2;
+		int var7 = var6 + 1;
+		byte var8 = 33;
+		int var9 = var6 + 1;
+		this.noiseArray = this.initializeNoiseField(this.noiseArray, var1 * var6, 0, var2 * var6, var7, var8, var9);
 
-		for (int var10 = 0; var10 < var4; ++var10)
+		for (int var10 = 0; var10 < var6; ++var10)
 		{
-			for (int var11 = 0; var11 < var4; ++var11)
+			for (int var11 = 0; var11 < var6; ++var11)
 			{
-				for (int var12 = 0; var12 < var5; ++var12)
+				for (int var12 = 0; var12 < 32; ++var12)
 				{
-					double var13 = 0.125D;
+					double var13 = 0.25D;
 					double var15 = this.noiseArray[((var10 + 0) * var9 + var11 + 0) * var8 + var12 + 0];
 					double var17 = this.noiseArray[((var10 + 0) * var9 + var11 + 1) * var8 + var12 + 0];
 					double var19 = this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 0];
@@ -186,37 +111,34 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 					double var27 = (this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 1] - var19) * var13;
 					double var29 = (this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12 + 1] - var21) * var13;
 
-					for (int var31 = 0; var31 < 8; ++var31)
+					for (int var31 = 0; var31 < 4; ++var31)
 					{
-						double var32 = 0.25D;
+						double var32 = 0.125D;
 						double var34 = var15;
 						double var36 = var17;
 						double var38 = (var19 - var15) * var32;
 						double var40 = (var21 - var17) * var32;
 
-						for (int var42 = 0; var42 < 4; ++var42)
+						for (int var42 = 0; var42 < 8; ++var42)
 						{
-							int var43 = var42 + var10 * 4 << 11 | 0 + var11 * 4 << 7 | var12 * 8 + var31;
+							int var43 = var42 + var10 * 8 << 11 | 0 + var11 * 8 << 7 | var12 * 4 + var31;
 							short var44 = 128;
-							var43 -= var44;
-							double var45 = 0.25D;
-							double var47 = (var36 - var34) * var45;
-							double var49 = var34 - var47;
+							double var45 = 0.125D;
+							double var47 = var34;
+							double var49 = (var36 - var34) * var45;
 
-							for (int var51 = 0; var51 < 4; ++var51)
+							for (int var51 = 0; var51 < 8; ++var51)
 							{
-								if ((var49 += var47) > 0.0D)
+								Block var52 = null;
+
+								if (var47 > 0.0D)
 								{
-									var3[var43 += var44] = BlockHelper.FlyLightStone;
+									var52 = Blocks.stone;
 								}
-								else if (var12 * 8 + var31 < var6)
-								{
-									var3[var43 += var44] = Blocks.flowing_water;
-								}
-								else
-								{
-									var3[var43 += var44] = 0;
-								}
+
+								var3[var43] = var52;
+								var43 += var44;
+								var47 += var49;
 							}
 
 							var34 += var38;
@@ -233,12 +155,16 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		}
 	}
 
-	public void replaceBlocksForBiome(int var1, int var2, byte[] var3, BiomeGenBase[] var4)
+	public void replaceBlocksForBiome(int var1, int var2, Block[] var3, BiomeGenBase[] var4)
 	{
 		byte var5 = 63;
 		double var6 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, var1 * 16, var2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
+		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, var1, var2, var3, var4);
+        MinecraftForge.EVENT_BUS.post(event);
+        if (event.getResult() == Result.DENY) return;
+		
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
@@ -248,7 +174,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				Block var14 = var10.topBlock;
-				Block var15 = var10.fillerBlock;
+				Block var15 = BlockHelper.FlyLightGrass;
 
 				for (int var16 = 127; var16 >= 0; --var16)
 				{
@@ -256,37 +182,30 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						var3[var17] = (byte)Blocks.bedrock;
+						var3[var17] = null;
 					}
 					else
 					{
 						Block var18 = var3[var17];
 
-						if (var18 == 0)
+						if (var18 == null)
 						{
 							var13 = -1;
 						}
-						else if (var18 != Blocks.stone)
+						else if (var18 == Blocks.stone)
 						{
 							if (var13 == -1)
 							{
 								if (var12 <= 0)
 								{
-									var14 = 0;
-									var15 = (byte)BlockHelper.FlyLightStone;
+									var14 = BlockHelper.FlyLightGrass;
+									var15 = BlockHelper.FlyLightGrass;
 								}
 								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
-									var14 = var10.topBlock;
-									var15 = var10.fillerBlock;
+									var14 = BlockHelper.FlyLightGrass;
+									var15 = BlockHelper.FlyLightStone;
 								}
-
-								if (var16 < var5 && var14 == 0)
-								{
-									var14 = (byte)Block.waterMoving;
-								}
-
-								var13 = var12;
 
 								if (var16 >= var5 - 1)
 								{
@@ -302,11 +221,23 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 								--var13;
 								var3[var17] = var15;
 
-								if (var13 == 0 && var15 == Block.sand)
+								if (var13 == 0 && var15 == BlockHelper.FlyLightGrass)
 								{
-									var13 = this.rand.nextInt(4);
-									var15 = (byte)Block.sandStone;
+									var13 = -1;
+									var15 = BlockHelper.FlyLightGrass;
 								}
+							}
+						}
+
+						if (var13 > 0)
+						{
+							--var13;
+							var3[var17] = var15;
+
+							if (var13 == 0 && var15 == BlockHelper.FlyLightGrass)
+							{
+								var13 = -1;
+								var15 = BlockHelper.FlyLightGrass;
 							}
 						}
 					}
@@ -315,31 +246,30 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		}
 	}
 
-	@Override
-	public Chunk loadChunk(int var1, int var2)
+	public Chunk provideChunk(int par1, int par2)
 	{
-		return this.provideChunk(var1, var2);
+		this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
+		Block[] ablock = new Block[32768];
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+		this.generateTerrain(par1, par2, ablock);
+		//this.caveGenerator.func_151539_a(this, worldObj, par1, par2, ablock);
+		this.replaceBlocksForBiome(par1, par2, ablock, this.biomesForGeneration);
+		Chunk chunk = new Chunk(this.worldObj, ablock, par1, par2);
+		byte[] abyte = chunk.getBiomeArray();
 
-	@Override
-	public Chunk provideChunk(int var1, int var2)
-	{
-		this.rand.setSeed(var1 * 341873128712L + var2 * 132897987541L);
-		byte[] var3 = new byte[32768];
-		this.generateTerrain(var1, var2, var3);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, var1 * 16, var2 * 16, 16, 16);
-		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, var1, var2, var3);
-		this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
-		Chunk var4 = new Chunk(this.worldObj, var1, var2);
-		byte[] var5 = var4.getBiomeArray();
-
-		for (int var6 = 0; var6 < var5.length; ++var6)
+		for (int k = 0; k < abyte.length; ++k)
 		{
-			var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
+			abyte[k] = (byte)this.biomesForGeneration[k].biomeID;
 		}
 
-		var4.generateSkylightMap();
-		return var4;
+		chunk.generateSkylightMap();
+		return chunk;
+	}
+
+
+	@Override
+	public Chunk loadChunk(int var1, int var2) {
+		return this.provideChunk(var1, var2);
 	}
 
 	private double[] initializeNoiseField(double[] var1, int var2, int var3, int var4, int var5, int var6, int var7)
@@ -390,15 +320,15 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 					for (int var24 = -var21; var24 <= var21; ++var24)
 					{
 						BiomeGenBase var25 = this.biomesForGeneration[var16 + var23 + 2 + (var17 + var24 + 2) * (var5 + 5)];
-						float var26 = this.field_35388_l[var23 + 2 + (var24 + 2) * 5] / (var25.minHeight + 2.0F);
+						float var26 = this.field_35388_l[var23 + 2 + (var24 + 2) * 5] / (var25.rootHeight + 2.0F);
 
-						if (var25.minHeight > var22.minHeight)
+						if (var25.rootHeight > var22.rootHeight)
 						{
 							var26 /= 2.0F;
 						}
 
-						var18 += var25.maxHeight * var26;
-						var19 += var25.minHeight * var26;
+						var18 += var25.rootHeight * var26;
+						var19 += var25.rootHeight * var26;
 						var20 += var26;
 					}
 				}
@@ -503,7 +433,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 		int var5 = var3 * 16;
 		BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
-		this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, var2, var3);
+		//this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, var2, var3);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -522,59 +452,59 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			var14 = var5 + this.rand.nextInt(16);
 			(new WorldGenMinable(BlockHelper.FlyLightOre, 6, BlockHelper.FlyLightStone)).generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		int k, l, i1, j;
-		
-        for (j = 0; j < 50; ++j)
-        {
-            k = var4+ this.rand.nextInt(16) + 8;
-            l = this.rand.nextInt(this.rand.nextInt(120) + 8);
-            i1 = var5 + this.rand.nextInt(16) + 8;
-            (new WorldGenLiquids(BlockHelper.Water)).generate(worldObj, rand, k, l, i1);
-        }
-        
+
+		for (j = 0; j < 50; ++j)
+		{
+			k = var4+ this.rand.nextInt(16) + 8;
+			l = this.rand.nextInt(this.rand.nextInt(120) + 8);
+			i1 = var5 + this.rand.nextInt(16) + 8;
+			(new WorldGenLiquids(BlockHelper.Water)).generate(worldObj, rand, k, l, i1);
+		}
+
 		for(j = 0; j < 13; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(250);
 			var14 = var5 + rand.nextInt(16);
 			coalGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 8; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(200);
 			var14 = var5 + rand.nextInt(16);
 			ironGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 6; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(100);
 			var14 = var5 + rand.nextInt(16);
 			goldGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 5; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(50);
 			var14 = var5 + rand.nextInt(16);
 			diamondGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 8; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(60);
 			var14 = var5 + rand.nextInt(16);
 			redstoneGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 5; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(50);
 			var14 = var5 + rand.nextInt(16);
 			emeraldGen.generate(worldObj, rand, var12, var13, var14);
 		}
-		
+
 		for(j = 0; j < 4; j++){
 			var12 = var4 + rand.nextInt(16);
 			var13 = rand.nextInt(50);
@@ -596,8 +526,8 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 			var21 = this.worldObj.getHeightValue(var19, var20);
 			var17.generate(this.worldObj, this.rand, var19, var21, var20);
 		}
-		
-		/*if (rand.nextInt(8) == 0) {
+
+		if (rand.nextInt(8) == 0) {
 			var18 = var4 + rand.nextInt(16) + 8;
 			var19 = rand.nextInt(128);
 			var20 = var4 + rand.nextInt(16) + 8;
@@ -691,12 +621,6 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 	}
 
 	@Override
-	public ChunkPosition findClosestStructure(World var1, String var2, int var3, int var4, int var5)
-	{
-		return null;
-	}
-
-	@Override
 	public int getLoadedChunkCount()
 	{
 		return 0;
@@ -718,9 +642,7 @@ public class ChunkGeneratorFlylight implements IChunkProvider
 	}
 
 	@Override
-	public ChunkPosition func_147416_a(World var1, String var2, int var3,
-			int var4, int var5) {
-		// TODO Auto-generated method stub
+	public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5) {
 		return null;
-	}*/
+	}
 }
