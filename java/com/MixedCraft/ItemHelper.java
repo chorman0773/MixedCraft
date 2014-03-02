@@ -70,23 +70,22 @@ public class ItemHelper extends HelperHandler{
 	public static final Item PigWitherMixedDrive = new ItemMixedBase().setDescription(DNAKeys.PigWither).setName("mixeddnaKey");
 	public static final Item PigWitherSMixedDrive = new ItemMixedBase().setDescription(DNAKeys.PigWitherS).setName("mixeddnaKey");
 	
-	public static final Item CowPigSpawner = new ItemCowPigSpawner().setName("cowPigSpawner");
-	public static final Item CowSheepSpawner = new ItemCowSheepPlacer().setName("cowSheepSpawner");
-	public static final Item CowChickenSpawner = new ItemCowChickenSpawner().setName("cowChickenSpawner");
-	public static final Item CowCreeperSpawner = new ItemCreeperPlacer().setName("cowCreeperSpawner");
-	public static final Item CowEndermanSpawner = new ItemCowEndermanPlacer().setName("cowEndermanSpawner");
-	public static final Item CowZombieSpawner = new ItemCowZombiePlacer().setName("cowZombieSpawner");
-	
+	public static final Item CowPigSpawner = new ItemCowSpawner().setName("cowPigSpawner");
+	public static final Item CowSheepSpawner = new ItemCowSpawner().setName("cowSheepSpawner");
+	public static final Item CowChickenSpawner = new ItemCowSpawner().setName("cowChickenSpawner");
+	public static final Item CowCreeperSpawner = new ItemCowSpawner().setName("cowCreeperSpawner");
+	public static final Item CowEndermanSpawner = new ItemCowSpawner().setName("cowEndermanSpawner");
+	public static final Item CowZombieSpawner = new ItemCowSpawner().setName("cowZombieSpawner");
 	//TODO: Put mobs in!
-	//public static final Item CowSlimeSpawner = new ItemCowSlimePlacer().registerTextures("CowSlimeSpawner").setUnlocalizedName("CowSlimeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowBlazeSpawner = new ItemCowBlazePlacer().registerTextures("CowBlazeSpawner").setUnlocalizedName("CowBlazeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSpiderSpawner = new ItemCowSpiderPlacer().registerTextures("CowSpiderSpawner").setUnlocalizedName("CowSpiderSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowGhastSpawner = new ItemCowGhastPlacer().registerTextures("CowGhastSpawner").setUnlocalizedName("CowGhastSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowMagmaCubeSpawner = new ItemCowMagmaCubePlacer().registerTextures("CowMagmaCubeSpawner").setUnlocalizedName("CowMagmaCubeSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSkeletonSpawner = new ItemCowSkeletonPlacer().registerTextures("CowSkeletonSpawner").setUnlocalizedName("CowSkeletonSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowSquidSpawner = new ItemCowSquidPlacer().registerTextures("CowSquidSpawner").setUnlocalizedName("CowSquidSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowWitherSpawner = new ItemCowWitherPlacer().registerTextures("CowWitherSpawner").setUnlocalizedName("CowWitherSpawn").setCreativeTab(MixedCraft.SpawnerTab);
-	//public static final Item CowWitherSSpawner = new ItemCowWitherSPlacer().registerTextures("CowWitherSSpawner").setUnlocalizedName("CowWitherSSpawn").setCreativeTab(MixedCraft.SpawnerTab);
+	//public static final Item CowSlimeSpawner = new ItemCowSpawner();
+	//public static final Item CowBlazeSpawner = new ItemCowSpawner();
+	//public static final Item CowSpiderSpawner = new ItemCowSpawner();
+	//public static final Item CowGhastSpawner = new ItemCowSpawner();
+	//public static final Item CowMagmaCubeSpawner = new ItemCowSpawner();
+	//public static final Item CowSkeletonSpawner = new ItemCowSpawner();
+	//public static final Item CowSquidSpawner = new ItemCowSpawner();
+	//public static final Item CowWitherSpawner = new ItemCowSpawner();
+	//public static final Item CowWitherSSpawner = new ItemCowSpawner();
 
 	public static final Item CopperIngot = new ItemsBase().setName("copperIngot");
 	public static final Item TinIngot = new ItemsBase().setName("tinIngot");
@@ -102,8 +101,8 @@ public class ItemHelper extends HelperHandler{
 	public static final Item SilverShickaxe = new ToolShickaxe(SilverShick).setName("silverShickaxe");
 	public static final Item DiamondBigSword = new ItemBigSword(Diamond).setName("diamondBigSword");
 	public static final Item IronBigSword = new ItemBigSword(Iron).setName("ironBigSword");
-	public static final Item GoldBigSword = new ItemBigSword(Gold).setName("goldBigSword");
-	public static final Item WoodBigSword = new ItemBigSword(Wood).setName("woodBigSword");
+	public static final Item GoldBigSword = new ItemBigSword(Gold).setName("goldenBigSword");
+	public static final Item WoodBigSword = new ItemBigSword(Wood).setName("woodenBigSword");
 	public static final Item StoneBigSword = new ItemBigSword(Stone).setName("stoneBigSword");
 
 	public static final Item LightningBow = new LightningBow().setName("lightningBow");
@@ -114,7 +113,7 @@ public class ItemHelper extends HelperHandler{
 	public static final Item TNTArrow = new ModItem().setName("tntArrow");
 	public static final Item TorchBow = new ItemTorchBow().setName("torchBow");
 
-	public static final Item ChocolateCake = new ItemModReed(BlockHelper.ChocolateCake).setName("chocolate");
+	public static final Item ChocolateCake = new ItemModReed(BlockHelper.ChocolateCake).setName("chocolateCake");
 	public static final Item LightningRod = new ItemLightningRod().setName("lightningRod");
 	public static final Item FlameSword = new ItemFlameSword(Flame).setName("flameSword");
 
@@ -137,4 +136,6 @@ public class ItemHelper extends HelperHandler{
 	public static final Item batteryWeak = new ItemBattery(1500).setName("weakBattery");
 	public static final Item battery = new ItemBattery(3000).setName("battery");
 	public static final Item batteryStrong = new ItemBattery(5000).setName("strongBattery");
+	
+	public static final Item itemWindmill = new ItemWindmill().setName("windmill");
 }

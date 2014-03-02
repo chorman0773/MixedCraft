@@ -8,8 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public enum EnumColourHandler
-{
+public enum EnumColourHandler {
     BLACK('0'),
     DARK_BLUE('1'),
     DARK_GREEN('2'),
@@ -34,13 +33,11 @@ public enum EnumColourHandler
     RESET('r');
     private final String colour;
 
-    private EnumColourHandler(char par3)
-    {
+    private EnumColourHandler(char par3) {
         this.colour = "\u00a7" + par3;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return this.colour;
     }
 }

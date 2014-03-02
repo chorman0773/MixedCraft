@@ -14,14 +14,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemsBase extends Item {
 	private String iconPath;
 
-
 	public ItemsBase() {
-		if(this instanceof ItemDNABase)
-			LangRegistry.addDNAItem(this);
-		else if(this instanceof ItemMixedBase)
-			LangRegistry.addMixedItem(this);
-		else
-			LangRegistry.addItem(this);
+		LangRegistry.addItem(this);
 	}
 
 	public Item registerTextures(String texture) {

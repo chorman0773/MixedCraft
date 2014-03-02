@@ -48,7 +48,6 @@ public class EntityTorch extends EntityArrow
     public Entity shootingEntity;
     private int ticksInGround;
     private int ticksInAir;
-    private double damage = 0.0D;
     /**
      * The amount of knockback an arrow applies when it hits a mob.
      */
@@ -308,13 +307,6 @@ public class EntityTorch extends EntityArrow
                 if (movingobjectposition.entityHit != null)
                 {
                     f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-                    int k = MathHelper.ceiling_double_int((double)f2 * this.damage);
-
-                    if (this.getIsCritical())
-                    {
-                        k += this.rand.nextInt(k / 2 + 2);
-                    }
-
 
                     if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
                     {
@@ -477,7 +469,6 @@ public class EntityTorch extends EntityArrow
         par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
         par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
         par1NBTTagCompound.setByte("pickup", (byte)this.canBePickedUp);
-        par1NBTTagCompound.setDouble("damage", this.damage);
     }
 
     /**
@@ -493,11 +484,6 @@ public class EntityTorch extends EntityArrow
         this.inData = par1NBTTagCompound.getByte("inData") & 255;
         this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
         this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
-
-        if (par1NBTTagCompound.hasKey("damage", 99))
-        {
-            this.damage = par1NBTTagCompound.getDouble("damage");
-        }
 
         if (par1NBTTagCompound.hasKey("pickup", 99))
         {
@@ -522,16 +508,6 @@ public class EntityTorch extends EntityArrow
     public float getShadowSize()
     {
         return 0.0F;
-    }
-
-    public void setDamage(double par1)
-    {
-        this.damage = par1;
-    }
-
-    public double getDamage()
-    {
-        return this.damage;
     }
 
     /**

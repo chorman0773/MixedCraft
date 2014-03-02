@@ -8,15 +8,16 @@ import net.minecraft.world.World;
 
 import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.ItemsBase;
+import com.MixedCraft.helper.LangRegistry;
 
 public abstract class ItemBaseWand extends ItemsBase {
 
 	public static String noChargeAttackSound = "random.bow";
 
 	public ItemBaseWand() {
-		super();
 		this.maxStackSize = 1;
 		this.setCreativeTab(MixedCraft.MiscTab);
+		LangRegistry.addItem(this);
 	}
 
 	public abstract int getUseCost();

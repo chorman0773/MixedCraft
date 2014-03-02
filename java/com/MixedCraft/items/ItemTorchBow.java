@@ -51,6 +51,7 @@ public class ItemTorchBow extends ItemsBase
 			par2World.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f10 * 0.5F);
 
 			player.inventory.consumeInventoryItem(Item.getItemFromBlock(Blocks.torch));
+			if(!par2World.isRemote)
 			par2World.spawnEntityInWorld(entityarrow);
 		}
 	}

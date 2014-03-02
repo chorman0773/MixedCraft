@@ -79,10 +79,6 @@ public class LightningBow extends ItemsBase {
 
 
 			EntityLightningArrow entityarrow = new EntityLightningArrow(par2World, player, f10 * 2.0F);
-			//EntityLightningBolt lightning = new EntityLightningBolt(par2World, player.posX, player.posY, player.posZ);
-			//MovingObjectPosition movingobjectposition = par2World.rayTraceBlocks_do_do(vec3d, vec3d1, false, true);
-
-
 
 			if (f10 == 1.0F)
 			{
@@ -135,6 +131,7 @@ public class LightningBow extends ItemsBase {
 			}*/
 
 				//par2World.spawnEntityInWorld(lightning);
+			if(!par2World.isRemote)
 				par2World.spawnEntityInWorld(entityarrow);
 			}
 		}

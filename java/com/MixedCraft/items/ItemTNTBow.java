@@ -113,7 +113,7 @@ public class ItemTNTBow extends ItemsBase
 			{
 				player.inventory.consumeInventoryItem(ItemHelper.TNTArrow);
 			}
-
+			if(!par2World.isRemote)
 				par2World.spawnEntityInWorld(entityarrow);
 			}
 		}

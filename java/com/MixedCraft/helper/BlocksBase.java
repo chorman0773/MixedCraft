@@ -31,16 +31,11 @@ public class BlocksBase extends Block {
         LangRegistry.addBlock(this);
     }
     
-    public boolean getEnableStats()
-    {
+    public boolean getEnableStats() {
         return this.enableStats;
     }
 
-    /**
-     * Disable statistics for the block, the block will no count for mined or placed.
-     */
-    public Block disableStats()
-    {
+    public Block disableStats() {
         this.enableStats = false;
         return this;
     }
@@ -67,13 +62,13 @@ public class BlocksBase extends Block {
     
     public Block setName(String name) {
         GameRegistry.registerBlock(this, name);
-        setBlockName(name);
+        setBlockName(name);                 
         registerTexture(name);
         return this;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
+    @SideOnly(Side.CLIENT) 
     public IIcon getIcon(int side, int meta) {
         return side == 1 ? tileTop : side == 0 ? tileBottom : tileSide;
     }

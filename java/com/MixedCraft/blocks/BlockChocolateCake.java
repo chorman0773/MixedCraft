@@ -28,8 +28,7 @@ public class BlockChocolateCake extends BlocksBase
     @SideOnly(Side.CLIENT)
     private IIcon field_94382_c;
 
-    public BlockChocolateCake()
-    {
+    public BlockChocolateCake() {
         super(Material.cake);
         this.setTickRandomly(true);
        

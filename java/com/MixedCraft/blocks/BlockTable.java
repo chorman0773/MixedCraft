@@ -12,32 +12,28 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTable extends BlocksBase {
+	
     public BlockTable() {
-        super(Material.rock);
-       
+        super(Material.rock);   
     }
 
     @Override
-    public boolean renderAsNormalBlock()
-    {
+    public boolean renderAsNormalBlock() {
         return false;
     }
 
     @Override
-    public boolean isOpaqueCube()
-    {
+    public boolean isOpaqueCube() {
         return false;
     }
 
     @Override
-    public int getRenderType()
-    {
+    public int getRenderType() {
         return -1;
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IIconRegister)
-    {
-        this.blockIcon = par1IIconRegister.registerIcon("planks_oak");
+    public void registerBlockIcons(IIconRegister par1IIconRegister) {
+        this.blockIcon = par1IIconRegister.registerIcon("plank_oak");
     }
 }

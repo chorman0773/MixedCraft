@@ -27,28 +27,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPoweredFurnace extends BlockContainer
-{
-	/**
-	 * Is the random generator used by PowerFurnace to drop the inventory contents in random directions.
-	 */
+public class BlockPoweredFurnace extends BlockContainer {
 	private final Random PowerFurnaceRand = new Random();
-
-	/** True if this is an active PowerFurnace, false if idle */
 	private final boolean isActive;
-
-	/**
-	 * This flag is used to prevent the PowerFurnace inventory to be dropped upon block removal, is used internally when the
-	 * PowerFurnace block changes from idle to active and vice-versa.
-	 */
 	private static boolean keepPowerFurnaceInventory;
 	@SideOnly(Side.CLIENT)
 	private IIcon PowerFurnaceIIconTop;
 	@SideOnly(Side.CLIENT)
 	private IIcon PowerFurnaceIIconFront;
 
-	public BlockPoweredFurnace(boolean par2)
-	{
+	public BlockPoweredFurnace(boolean par2) {
 		super(Material.rock);
 		this.isActive = par2;
 		if(!par2){
@@ -69,33 +57,27 @@ public class BlockPoweredFurnace extends BlockContainer
 		this.setDefaultDirection(par1World, par2, par3, par4);
 	}
 
-	private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-	{
-		if (!par1World.isRemote)
-		{
+	private void setDefaultDirection(World par1World, int par2, int par3, int par4) {
+		if (!par1World.isRemote) {
 			Block block = par1World.getBlock(par2, par3, par4 - 1);
             Block block1 = par1World.getBlock(par2, par3, par4 + 1);
             Block block2 = par1World.getBlock(par2 - 1, par3, par4);
             Block block3 = par1World.getBlock(par2 + 1, par3, par4);
 			byte b0 = 3;
 
-			if (block.func_149730_j() && !block1.func_149730_j())
-            {
+			if (block.func_149730_j() && !block1.func_149730_j()) {
                 b0 = 3;
             }
 
-            if (block1.func_149730_j() && !block.func_149730_j())
-            {
+            if (block1.func_149730_j() && !block.func_149730_j()) {
                 b0 = 2;
             }
 
-            if (block2.func_149730_j() && !block3.func_149730_j())
-            {
+            if (block2.func_149730_j() && !block3.func_149730_j()) {
                 b0 = 5;
             }
 
-            if (block3.func_149730_j() && !block2.func_149730_j())
-            {
+            if (block3.func_149730_j() && !block2.func_149730_j()) {
                 b0 = 4;
             }
 
@@ -116,13 +98,10 @@ public class BlockPoweredFurnace extends BlockContainer
 	}
 
 	public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer player, int var6, float var7, float var8, float var9) {
-		if (!player.isSneaking())
-		{ 
+		if (!player.isSneaking()) { 
 			player.openGui(MixedCraft.instance, 1, var1, var2, var3, var4);
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -132,20 +111,16 @@ public class BlockPoweredFurnace extends BlockContainer
 		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 		keepPowerFurnaceInventory = true;
 
-		if (par0)
-		{
+		if (par0) {
 			par1World.setBlock(par2, par3, par4, BlockHelper.PoweredFurnaceOn);
-		}
-		else
-		{
+		} else {
 			par1World.setBlock(par2, par3, par4, BlockHelper.PoweredFurnace);
 		}
 
 		keepPowerFurnaceInventory = true;
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
 
-		if (tileentity != null)
-		{
+		if (tileentity != null) {
 			tileentity.validate();
 			par1World.setTileEntity(par2, par3, par4, tileentity);
 		}

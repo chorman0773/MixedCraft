@@ -260,7 +260,7 @@ public class LangRegistry {
 			char seventhLetter = name.charAt(7);
 			int numChars = 0;
 			if (Character.isLowerCase(firstLetter)) 
-				fithLetter = Character.toUpperCase(firstLetter);
+				firstLetter = Character.toUpperCase(firstLetter);
 			
 			if (Character.isLowerCase(fithLetter)) 
 				fithLetter = Character.toUpperCase(fithLetter);
@@ -288,7 +288,7 @@ public class LangRegistry {
 					}
 				}
 			}
-			String finalName = firstLetter + inGame;
+			String finalName = firstLetter + fithLetter + sixthLetter + seventhLetter + inGame;
 			addToFile("item." + name + ".name=" + finalName);
 		}
 	}

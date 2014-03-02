@@ -33,9 +33,9 @@ public class WandOfTeleportation extends ItemBaseWand {
 	public int getMaxItemUseDuration(ItemStack par1ItemStack){
 		return 400;
 	}
+	
 	@Override 
-	public EnumAction getItemUseAction(ItemStack par1ItemStack)
-	{
+	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
 		return EnumAction.bow;
 	}
 
@@ -52,16 +52,14 @@ public class WandOfTeleportation extends ItemBaseWand {
 	
 	@Override 
 	public void onPlayerStoppedUsing (ItemStack srcItemStack, World world, EntityPlayer playerEntity, int timeRemain){
-		if (!playerEntity.capabilities.isCreativeMode)
-		{
+		if(!playerEntity.capabilities.isCreativeMode) {
 			if(isOutOfCharge(srcItemStack)){
 				playSound(noChargeAttackSound,world,playerEntity);
 				return;
 			}
 			srcItemStack.damageItem(getUseCost(), playerEntity);
 		}
-		if (!world.isRemote && ManaHelper.useBar(playerEntity, 50))
-		{
+		if(!world.isRemote && ManaHelper.useBar(playerEntity, 50)) {
 			world.spawnEntityInWorld(new EntityHarmlessEnderPearl(world, playerEntity));
 		}
 	}

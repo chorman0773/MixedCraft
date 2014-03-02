@@ -15,7 +15,7 @@ public class ItemLightningRod extends ItemsBase{
 
 	public ItemLightningRod(){
 		setMaxStackSize(1);
-		setMaxDamage(100);
+		setMaxDamage(20);
 	}
 
 	@Override 

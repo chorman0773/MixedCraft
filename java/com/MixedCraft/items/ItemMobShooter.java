@@ -33,7 +33,6 @@ public class ItemMobShooter extends ItemsBase {
 			if (isCharged(itemstack.getItemDamage())) {
 				target.motionX = (target.posX - player.posX) * 2;
 				target.motionZ = (target.posZ - player.posZ) * 2;
-				
 				itemstack.setItemDamage(0);
 			}else{
 				itemstack.setItemDamage(itemstack.getItemDamage() + 1);
@@ -80,23 +79,19 @@ public class ItemMobShooter extends ItemsBase {
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int se, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote && player.isSneaking()) {
 			EntityDroid ship = new EntityDroid(world);
-			
 			ship.posX = x + 0.5;
 			ship.posY = y + 1.5;
 			ship.posZ = z + 0.5;
-			
 			if (isCharged(stack.getItemDamage())) {
 				world.spawnEntityInWorld(ship);
 				
 				stack.setItemDamage(0);
-			}else{
+			} else {
 				stack.setItemDamage(stack.getItemDamage() + 1);			
 			}
-			
 			world.spawnEntityInWorld(ship);
-
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 		
