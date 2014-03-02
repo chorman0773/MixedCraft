@@ -3,9 +3,11 @@ package com.MixedCraft;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 
 import com.MixedCraft.blocks.FlylightSapling;
 import com.MixedCraft.gui.GuiManaBar;
@@ -22,38 +24,51 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
 public class Event {	
-	
+
 	@SubscribeEvent
 	public void bonemealUsed(BonemealEvent event) {
 		if(event.world.getBlock(event.x, event.y, event.z) == BlockHelper.FlylightSapling) {
 			((FlylightSapling)BlockHelper.FlylightSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onRenderOverlay(RenderGameOverlayEvent e){
 		if(!Minecraft.getMinecraft().playerController.shouldDrawHUD() || e.isCancelable() || e.type != ElementType.EXPERIENCE) 
 			return;
 		GuiManaBar.draw();
 	}
-	
+
 	@SubscribeEvent
-	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
+	public void onBlockHarvested(HarvestDropsEvent event){
+		if (event.harvester != null) {
+			if (event.harvester.getHeldItem().getItem() == ItemHelper.SilverPickaxe || event.harvester.getHeldItem().getItem() == ItemHelper.SilverShickaxe) {
+				ItemStack stack = FurnaceRecipes.smelting().getSmeltingResult(new ItemStack(event.block, 1, event.blockMetadata));
+				if (stack != null) {
+					event.drops.clear();
+					event.drops.add(stack.copy());
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
-	
+
 	@SubscribeEvent
-	public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event){
+	public void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event){
 		ManaHelper.remove(event.player.getDisplayName());
 	}
-	
+
 	@SubscribeEvent
-	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event){
+	public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
-	
+
 	@SubscribeEvent
-	public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event){
+	public void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event){
 		ManaHelper.add(event.player.getDisplayName());
 	}
 }

@@ -10,7 +10,7 @@ import cpw.mods.fml.common.gameevent.TickEvent;
 public class ClientEvent {
 
 	@SubscribeEvent
-	public static void onTick(TickEvent event){
+	public void onTick(TickEvent event){
 		ManaHelper.updateAllBars(MinecraftServer.getServer().getConfigurationManager().playerEntityList);
 	}
 	
