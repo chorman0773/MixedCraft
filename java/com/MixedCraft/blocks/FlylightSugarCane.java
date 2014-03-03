@@ -13,18 +13,18 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.BlocksBase;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class FlylightSugarCane extends BlocksBase implements IPlantable
-{
+public class FlylightSugarCane extends BlocksBase implements IPlantable {
 	
-    public FlylightSugarCane()
-    {
+    public FlylightSugarCane() {
         super(Material.plants);
         float f = 0.375F;
+        setCreativeTab(MixedCraft.BlockTab);
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
         this.setTickRandomly(true);
     }

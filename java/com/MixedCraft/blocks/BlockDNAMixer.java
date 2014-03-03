@@ -32,6 +32,7 @@ public class BlockDNAMixer extends ContainerBase {
 
 	public BlockDNAMixer() {
 		super(Material.wood);
+		setHardness(2.0F);
 		registerTexture("DNAMixer_Side", "DNAMixer_Top" , "DNAMixer_Bottom");
 	}
 	

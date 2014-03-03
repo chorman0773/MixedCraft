@@ -3,7 +3,6 @@ package com.MixedCraft.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,13 +20,13 @@ import net.minecraft.world.World;
 
 import com.MixedCraft.BlockHelper;
 import com.MixedCraft.MixedCraft;
+import com.MixedCraft.blocks.container.BlockModContainer;
 import com.MixedCraft.blocks.tileEntity.TileEntityPowerFurnace;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPoweredFurnace extends BlockContainer {
+public class BlockPoweredFurnace extends BlockModContainer {
 	private final Random PowerFurnaceRand = new Random();
 	private final boolean isActive;
 	private static boolean keepPowerFurnaceInventory;

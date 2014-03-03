@@ -33,6 +33,7 @@ public class BlockMobAssembler extends ContainerBase {
 
 	public BlockMobAssembler() {
 		super(Material.wood);
+		setHardness(2.0F);
 		registerTexture("MobAssembler_Side", "MobAssembler_Top" , "MobAssembler_Bottom");
 	}
 

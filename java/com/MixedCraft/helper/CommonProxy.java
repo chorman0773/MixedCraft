@@ -14,6 +14,7 @@ import com.MixedCraft.blocks.tileEntity.TileEntityGoldFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntityIronFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntityPowerFurnace;
 import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
+import com.MixedCraft.blocks.tileEntity.TileEntityWindmill;
 import com.MixedCraft.dimension.DimensionHelper;
 import com.MixedCraft.gen.WorldGenMixedMinable;
 import com.MixedCraft.handler.HelperHandler;
@@ -55,6 +56,7 @@ public class CommonProxy extends HelperHandler {
 		GameRegistry.registerTileEntity(TileEntityGoldFurnace.class, "TileEntity Gold Furnace");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "TileEntity SolarPanel");
 		GameRegistry.registerTileEntity(TileEntityPowerFurnace.class, "TileEntity Power Furnace");
+		GameRegistry.registerTileEntity(TileEntityWindmill.class, "TileEntity Windmill");
 	}
 
 	public void init(FMLInitializationEvent event) {     

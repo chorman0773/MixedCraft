@@ -15,9 +15,9 @@ import net.minecraftforge.common.IShearable;
 
 public class ModTallGrass extends ModFlower implements IShearable {
 
-    public ModTallGrass(String s)
+    public ModTallGrass()
     {
-        super(s);
+        super();
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }

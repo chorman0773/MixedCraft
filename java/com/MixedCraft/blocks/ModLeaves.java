@@ -2,19 +2,26 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class ModLeaves extends LeavesBase
-{
+public class ModLeaves extends LeavesBase {
+	
 	int[] adjacentTreeBlocks;
-	public ModLeaves(String par2)
-	{
+	
+	public ModLeaves() {
 		super(true);
 		this.setTickRandomly(true);
-		this.registerTexture(par2 + "Leaves");
+	}
+	
+	public Block setName(String name){
+		GameRegistry.registerBlock(this, name);
+		setBlockName(name);
+		registerTexture(name);
+		return this;
 	}
 
 	@Override
@@ -22,7 +29,7 @@ public class ModLeaves extends LeavesBase
 		return null; 	
 	}
 
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	{
 		byte b0 = 1;
 		int j1 = b0 + 1;

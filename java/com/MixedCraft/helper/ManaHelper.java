@@ -23,9 +23,9 @@ public class ManaHelper{
 		delays.put(username, 200);
 	}
 
-	public static void remove(String par1) {
-		bars.remove(par1);
-		delays.remove(par1);
+	public static void remove(String username) {
+		bars.remove(username);
+		delays.remove(username);
 	}
 
 	public static void updateAllBars(List<EntityPlayer> players) {
@@ -38,7 +38,7 @@ public class ManaHelper{
 				bars.put(user, bars.get(user) + 1);
 				if(mana != 200){
 					regen(1);
-				}else{
+				} else {
 					regen(0);
 				}
 			}                

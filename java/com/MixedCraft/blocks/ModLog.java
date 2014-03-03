@@ -1,18 +1,26 @@
 package com.MixedCraft.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.MixedCraft.helper.BlocksBase;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class ModLog extends BlocksBase{
 
-	public ModLog(String par2) {
+	public ModLog() {
 		super(Material.wood);
 		setStepSound(soundTypeWood);
-		setBlockName(par2);
-		this.registerTexture(par2 + "Log_Side", par2 + "Log_Top", par2 + "Log_Top");
+	}
+	
+	public Block setName(String name){
+		GameRegistry.registerBlock(this, name);
+		setBlockName(name);
+		registerTexture(name + "_Side", name + "_Top", name + "_Top");
+		return this;
 	}
 
 	@Override

@@ -50,7 +50,8 @@ public class BlockIronFurnace extends BlockModContainer
     {
         super(Material.rock);
         this.isActive = par2;
-       
+        setHardness(3.5F);
+        setStepSound(Block.soundTypeMetal);
     }
 
     /**

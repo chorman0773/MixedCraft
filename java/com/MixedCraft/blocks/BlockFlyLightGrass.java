@@ -21,6 +21,7 @@ public class BlockFlyLightGrass extends BlocksBase
         super(Material.grass);
         this.setTickRandomly(true);
         this.registerTexture("FlyLightGrass_Side", "FlyLightGrass_Top", "FlyLightGrass_Bottom");
+        setHardness(1.5F); setLightLevel(0.7F);
     }
 
     @Override

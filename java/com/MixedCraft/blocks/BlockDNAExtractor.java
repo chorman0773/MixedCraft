@@ -33,6 +33,7 @@ public class BlockDNAExtractor extends ContainerBase {
 
 	public BlockDNAExtractor() {
 		super(Material.wood);
+		setHardness(2.0F);
 		registerTexture("DNAExtractor_Side", "DNAExtractor_Top" , "DNAExtractor_Bottom");
 	}
 	

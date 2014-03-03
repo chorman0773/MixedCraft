@@ -28,7 +28,7 @@ public class BlockChocolateCrop extends ModFlower implements IGrowable
     private IIcon[] IIconArray;
 
     public BlockChocolateCrop() {
-        super("");
+        super();
         this.setTickRandomly(true);
         float f = 0.5F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);

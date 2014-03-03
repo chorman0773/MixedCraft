@@ -43,7 +43,8 @@ public class BlockDiamondFurnace extends BlockModContainer
 	{
 		super(Material.rock);
 		this.isActive = par2;
-
+		setHardness(3.5F);
+        setStepSound(Block.soundTypeMetal);
 	}
 
 	public Item getItemDropped(int par1, Random par2Random, int par3)

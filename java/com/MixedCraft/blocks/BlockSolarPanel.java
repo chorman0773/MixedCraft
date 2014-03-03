@@ -18,8 +18,7 @@ import com.MixedCraft.blocks.tileEntity.TileEntitySolarPanel;
 public class BlockSolarPanel extends BlockModContainer
 {
 
-	public BlockSolarPanel()
-	{
+	public BlockSolarPanel() {
 		super(Material.wood);
 		this.setCreativeTab(MixedCraft.BlockTab);
 		setStepSound(Block.soundTypeMetal);
@@ -34,8 +33,8 @@ public class BlockSolarPanel extends BlockModContainer
 
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {}
 
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {}
-
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {}
+	
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {}
 	
 	public void updateLightLevel(World par1World, int par2, int par3, int par4)

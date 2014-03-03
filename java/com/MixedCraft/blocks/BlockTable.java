@@ -1,20 +1,24 @@
 package com.MixedCraft.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import com.MixedCraft.MixedCraft;
+import com.MixedCraft.blocks.container.BlockModContainer;
 import com.MixedCraft.blocks.tileEntity.TileEntityTable;
-import com.MixedCraft.helper.BlocksBase;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTable extends BlocksBase {
+public class BlockTable extends BlockModContainer {
 	
     public BlockTable() {
         super(Material.rock);   
+        setStepSound(Block.soundTypeWood);
+        setCreativeTab(MixedCraft.BlockTab);
     }
 
     @Override
@@ -35,5 +39,10 @@ public class BlockTable extends BlocksBase {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IIconRegister) {
         this.blockIcon = par1IIconRegister.registerIcon("plank_oak");
+    }
+    
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+    	return new TileEntityTable();
     }
 }
