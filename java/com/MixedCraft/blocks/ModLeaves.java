@@ -2,6 +2,8 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import com.MixedCraft.MixedCraft;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -14,6 +16,8 @@ public class ModLeaves extends LeavesBase {
 	
 	public ModLeaves() {
 		super(true);
+		setHardness(0.4F);
+		setCreativeTab(MixedCraft.BlockTab);
 		this.setTickRandomly(true);
 	}
 	

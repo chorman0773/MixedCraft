@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.MixedCraft.MixedCraft;
 import com.MixedCraft.helper.BlocksBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -14,6 +15,8 @@ public class ModLog extends BlocksBase{
 	public ModLog() {
 		super(Material.wood);
 		setStepSound(soundTypeWood);
+		setHardness(1.5F);
+		setCreativeTab(MixedCraft.BlockTab);
 	}
 	
 	public Block setName(String name){

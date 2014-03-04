@@ -44,6 +44,10 @@ public class GoldFurnace extends BlockModContainer
 	public GoldFurnace(boolean par2) {
 		super(Material.rock);
 		this.isActive = par2;
+		if(!par2)
+			setCreativeTab(MixedCraft.BlockTab);
+		else
+			setCreativeTab(null);
 	}
 
 	public Item getItemDropped(int par1, Random par2Random, int par3)

@@ -32,7 +32,7 @@ public class CommonProxy extends HelperHandler {
 	public void preInit(FMLPreInitializationEvent event) {         
 		ConfigHelper.initConfig();
 		GameRegistry.registerWorldGenerator(new WorldGenMixedMinable(), 10);
-		BlockHelper.addNames();
+		BlockHelper.addOre();
 		HarvestLevelHelper.init();
 		RecipeRemover.init();
 		MobRegistry.init();

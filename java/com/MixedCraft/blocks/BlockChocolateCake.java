@@ -2,6 +2,7 @@ package com.MixedCraft.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +32,8 @@ public class BlockChocolateCake extends BlocksBase
     public BlockChocolateCake() {
         super(Material.cake);
         this.setTickRandomly(true);
-       
+        setHardness(0.5F);
+        setStepSound(Block.soundTypeCloth);
     }
 
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)

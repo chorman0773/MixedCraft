@@ -15,9 +15,7 @@ import net.minecraftforge.common.IShearable;
 
 public class ModTallGrass extends ModFlower implements IShearable {
 
-    public ModTallGrass()
-    {
-        super();
+    public ModTallGrass() {
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
     }
@@ -31,7 +29,7 @@ public class ModTallGrass extends ModFlower implements IShearable {
     {
         super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
     }
-
+    
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune)
     {

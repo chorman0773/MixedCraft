@@ -31,7 +31,7 @@ public class BlockFlylightPortal extends BreakableBase
 
 	public String name;
 	public BlockFlylightPortal() {
-		super(Utils.MOD_ID + ":" + "FlylightPortal", Material.portal, false);
+		super(Utils.MOD_ID + ":" + "flylightPortal", Material.portal, false);
 		this.setTickRandomly(true);
 		setCreativeTab(MixedCraft.BlockTab);
 	}

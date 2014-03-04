@@ -11,7 +11,6 @@ public class ItemDroid extends ItemsBase{
 
 	public ItemDroid(){
 		super();
-		setUnlocalizedName("DroidItem");
 	}
 	
 	@Override

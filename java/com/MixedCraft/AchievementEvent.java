@@ -9,7 +9,6 @@ public class AchievementEvent {
 
 	@SubscribeEvent
 	public void onItemCrafted(PlayerEvent.ItemCraftedEvent event){
-		System.out.println("YOLO");
 		if(event.crafting.getItem().equals(BlockHelper.Assembler)){
 			event.player.addStat(Achievements.Assembler, 1);
 		}
@@ -25,7 +24,6 @@ public class AchievementEvent {
 	
 	@SubscribeEvent
 	public void onItemSmelting(PlayerEvent.ItemSmeltedEvent event){
-		System.out.println("#YOLO");
 		if(event.smelting.getItem().equals(ItemHelper.CopperIngot)){
 			event.player.addStat(Achievements.Copper, 1);
 		}
@@ -37,7 +35,6 @@ public class AchievementEvent {
 	
 	@SubscribeEvent
 	public void onItemPickup(PlayerEvent.ItemPickupEvent event){
-		System.out.println("YOLO SWEG");
 		if(event.pickedUp.equals(new ItemStack(BlockHelper.TinOre))) {
 			event.player.addStat(Achievements.TinOre, 1);
 		}

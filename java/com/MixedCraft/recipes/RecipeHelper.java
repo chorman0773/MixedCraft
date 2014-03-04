@@ -138,7 +138,7 @@ public class RecipeHelper {
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandMissile, 1), new Object[] {"S", "B", "I", 'S', Items.arrow, 'B', Items.bow, 'I', Blocks.gold_block});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandMining, 1), new Object[] {"S", "I", "I", 'S', Items.diamond_pickaxe, 'I', Blocks.gold_block});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(ItemHelper.wandTeleport, 1), new Object[] {"S", "I", "I", 'S', Items.ender_eye, 'I', Blocks.gold_block});
-		//CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Blocks.furnace, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
+		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Blocks.furnace, 1), new Object[] {"SSS", "S S", "SSS", 'S', BlockHelper.FlyLightStone});
 		CraftingBigManager.getInstance().addShapedRecipe(new ItemStack(Items.stick, 16), new Object[] {"L", "L", 'L', BlockHelper.FlylightLog});
 	}
 

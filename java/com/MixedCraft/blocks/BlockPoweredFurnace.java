@@ -38,13 +38,10 @@ public class BlockPoweredFurnace extends BlockModContainer {
 	public BlockPoweredFurnace(boolean par2) {
 		super(Material.rock);
 		this.isActive = par2;
-		if(!par2){
+		if(!par2)
 			setCreativeTab(MixedCraft.BlockTab);
-			setBlockName("Power Furnace");
-		}else{
+		else
 			setCreativeTab(null);
-			setBlockName("Power Furnace On");
-		}
 	}
 
 	public Item getItemDropped(int par1, Random par2Random, int par3) {
