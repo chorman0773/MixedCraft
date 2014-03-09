@@ -11,6 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
@@ -102,6 +103,7 @@ public class ToolShickaxe extends ItemTool
 		} else {
 			par3List.add("\u00a7aInfinite Uses");
 		}
+		par3List.add(EnumChatFormatting.GREEN + "Smelts on mine");
 	}
 	
 	public Item setName(String name){

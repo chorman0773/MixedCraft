@@ -1,11 +1,10 @@
 package com.MixedCraft.helper;
 
-import net.minecraftforge.common.MinecraftForge;
-
 import com.MixedCraft.ClientEvent;
 import com.MixedCraft.MixedCraft;
 import com.jadarstudios.developercapes.DevCapes;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class ClientProxy extends CommonProxy {
@@ -14,6 +13,7 @@ public class ClientProxy extends CommonProxy {
     	//TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
     	MobRendering.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(MixedCraft.instance, new GuiHandler());
+		
     }
     
     @Override

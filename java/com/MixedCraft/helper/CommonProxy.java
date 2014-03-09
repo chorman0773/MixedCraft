@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.MixedCraft.AchievementEvent;
 import com.MixedCraft.Achievements;
 import com.MixedCraft.BlockHelper;
+import com.MixedCraft.ClientEvent;
 import com.MixedCraft.Event;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAAssembler;
 import com.MixedCraft.blocks.tileEntity.TileEntityDNAExtractor;
@@ -61,6 +62,7 @@ public class CommonProxy extends HelperHandler {
 
 	public void init(FMLInitializationEvent event) {     
 		Achievements.init();
+		MinecraftForge.EVENT_BUS.register(new ClientEvent());
 		FMLCommonHandler.instance().bus().register(new AchievementEvent());
 	}
 	

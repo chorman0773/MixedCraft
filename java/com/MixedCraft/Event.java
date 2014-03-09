@@ -1,7 +1,9 @@
 package com.MixedCraft;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -44,7 +46,7 @@ public class Event {
 		if (event.harvester != null) {
 			if (event.harvester.getHeldItem().getItem() == ItemHelper.SilverPickaxe || event.harvester.getHeldItem().getItem() == ItemHelper.SilverShickaxe) {
 				ItemStack stack = FurnaceRecipes.smelting().getSmeltingResult(new ItemStack(event.block, 1, event.blockMetadata));
-				if (stack != null) {
+				if (stack != null && event.block != Blocks.redstone_ore && event.block != Blocks.lapis_ore) {
 					event.drops.clear();
 					event.drops.add(stack.copy());
 				}

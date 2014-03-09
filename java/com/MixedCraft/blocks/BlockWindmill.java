@@ -30,10 +30,10 @@ public class BlockWindmill extends BlockModContainer{
 		return false;
 	}
 	
-	/*@Override
+	@Override
 	public int getRenderType() {
 		return -1;
-	}*/
+	}
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
