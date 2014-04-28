@@ -45,7 +45,7 @@ public class DeathSkull extends EntityWitherSkull {
 			if (par1MovingObjectPosition.entityHit != null)
 			{
 
-				par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.magic, 20.0F);
+				par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.magic, 5.0F);
 
 
 				if (par1MovingObjectPosition.entityHit instanceof EntityLivingBase)
@@ -54,7 +54,7 @@ public class DeathSkull extends EntityWitherSkull {
 
 					if (witherSeconds > 0)
 					{
-						((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(Potion.wither.id, 20 * witherSeconds, 1));
+						((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(20, 20 * witherSeconds, 1));
 					}
 				}
 			}
